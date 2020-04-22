@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>一个人的旅行</title>
+  
+  <subtitle>一个人的旅行</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.onestravel.cn/"/>
+  <updated>2020-04-22T02:50:40.009Z</updated>
+  <id>https://blog.onestravel.cn/</id>
+  
+  <author>
+    <name>onestravel</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Glide-4.11.0 浅析</title>
+    <link href="https://blog.onestravel.cn/20200403/android-ndk/glide-4.11.0-qian-xi/"/>
+    <id>https://blog.onestravel.cn/20200403/android-ndk/glide-4.11.0-qian-xi/</id>
+    <published>2020-04-03T05:00:00.000Z</published>
+    <updated>2020-04-22T02:50:40.009Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Glide-4-11-0-浅析&quot;&gt;&lt;a href=&quot;#Glide-4-11-0-浅析&quot; class=&quot;headerlink&quot; title=&quot;Glide-4.11.0 浅析&quot;&gt;&lt;/a&gt;Glide-4.11.0 浅析&lt;/h1&gt;&lt;p&gt;Glide
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="glide" scheme="https://blog.onestravel.cn/tags/glide/"/>
+    
+      <category term="code" scheme="https://blog.onestravel.cn/tags/code/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OneActionBar 通用标题头</title>
+    <link href="https://blog.onestravel.cn/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/"/>
+    <id>https://blog.onestravel.cn/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/</id>
+    <published>2019-08-25T02:00:00.000Z</published>
+    <updated>2020-04-17T01:32:54.397Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;OneActionBar-使用说明&quot;&gt;&lt;a href=&quot;#OneActionBar-使用说明&quot; class=&quot;headerlink&quot; title=&quot;OneActionBar 使用说明&quot;&gt;&lt;/a&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="one-extend-lib" scheme="https://blog.onestravel.cn/tags/one-extend-lib/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【FFmpeg】(二) 视频解码、像素格式转换与Native原生绘制</title>
+    <link href="https://blog.onestravel.cn/20190401/android-ndk/ffmpeg-er-shi-pin-jie-ma-xiang-su-ge-shi-zhuan-huan-yu-native-yuan-sheng-hui-zhi/"/>
+    <id>https://blog.onestravel.cn/20190401/android-ndk/ffmpeg-er-shi-pin-jie-ma-xiang-su-ge-shi-zhuan-huan-yu-native-yuan-sheng-hui-zhi/</id>
+    <published>2019-04-01T10:36:00.000Z</published>
+    <updated>2020-03-30T03:14:16.735Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;视频解码、像素格式转换与Native原生绘制&quot;&gt;&lt;a href=&quot;#视频解码、像素格式转换与Native原生绘制&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="FFmpeg" scheme="https://blog.onestravel.cn/tags/FFmpeg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍</title>
+    <link href="https://blog.onestravel.cn/20190325/android-ndk/ffmpeg-yi-yin-shi-pin-xiang-guan-ji-chu-zhi-shi-yi-ji-ffmpeg-jie-shao-yu-bian-yi/"/>
+    <id>https://blog.onestravel.cn/20190325/android-ndk/ffmpeg-yi-yin-shi-pin-xiang-guan-ji-chu-zhi-shi-yi-ji-ffmpeg-jie-shao-yu-bian-yi/</id>
+    <published>2019-03-25T02:15:00.000Z</published>
+    <updated>2020-03-30T03:14:16.735Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;【FFmpeg】-一-音视频相关基础知识以及FFmpeg介绍&quot;&gt;&lt;a href=&quot;#【FFmpeg】-一-音视频相关基础知识以及FFmpeg介绍&quot; class=&quot;headerlink&quot; title=&quot;【FFmpeg】(一)
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="FFmpeg" scheme="https://blog.onestravel.cn/tags/FFmpeg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AndroidStudio下集成Fmod，实现仿QQ变声效果（二）</title>
+    <link href="https://blog.onestravel.cn/20190318/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-er/"/>
+    <id>https://blog.onestravel.cn/20190318/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-er/</id>
+    <published>2019-03-18T07:01:00.000Z</published>
+    <updated>2020-03-30T03:14:16.733Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;AndroidStudio下集成Fmod，实现仿QQ变声效果（二）&quot;&gt;&lt;a href=&quot;#AndroidStudio下集成Fmod，实现仿QQ变声效果（二）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="Fmod" scheme="https://blog.onestravel.cn/tags/Fmod/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AndroidStudio下集成Fmod，实现仿QQ变声效果（一）</title>
+    <link href="https://blog.onestravel.cn/20190310/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-yi/"/>
+    <id>https://blog.onestravel.cn/20190310/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-yi/</id>
+    <published>2019-03-10T00:25:00.000Z</published>
+    <updated>2020-03-30T03:14:16.733Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;AndroidStudio下集成Fmod，实现仿QQ变声效果&quot;&gt;&lt;a href=&quot;#AndroidStudio下集成Fmod，实现仿QQ变声效果&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="Fmod" scheme="https://blog.onestravel.cn/tags/Fmod/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AndroidStudio下NDK开发流程</title>
+    <link href="https://blog.onestravel.cn/20190301/android-ndk/androidstudio-xia-jin-xing-ndk-kai-fa/"/>
+    <id>https://blog.onestravel.cn/20190301/android-ndk/androidstudio-xia-jin-xing-ndk-kai-fa/</id>
+    <published>2019-03-01T02:15:00.000Z</published>
+    <updated>2020-03-30T03:14:16.733Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;AndroidStudio下NDK开发流程&quot;&gt;&lt;a href=&quot;#AndroidStudio下NDK开发流程&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BottomNavigationBar 导航菜单</title>
+    <link href="https://blog.onestravel.cn/20190130/android-ndk/bottomnavigationbar-ke-yi-tu-qi-de-dao-hang-cai-dan/"/>
+    <id>https://blog.onestravel.cn/20190130/android-ndk/bottomnavigationbar-ke-yi-tu-qi-de-dao-hang-cai-dan/</id>
+    <published>2019-01-30T02:00:00.000Z</published>
+    <updated>2020-03-30T03:14:16.734Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;BottomNavigationBar-使用说明&quot;&gt;&lt;a href=&quot;#BottomNavigationBar-使用说明&quot; class=&quot;headerlink&quot; title=&quot;BottomNavigationBar 使用说明&quot;&gt;&lt;/a&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="BottomNavigationBar" scheme="https://blog.onestravel.cn/tags/BottomNavigationBar/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kotlin语言基于Mvp+Retrofit+RxJava封装的Android项目的基础依赖库</title>
+    <link href="https://blog.onestravel.cn/20181225/android-ndk/kotlin-yu-yan-ji-yu-mvp-retrofit-rxjava-feng-zhuang-de-android-xiang-mu-de-ji-chu-yi-lai-ku/"/>
+    <id>https://blog.onestravel.cn/20181225/android-ndk/kotlin-yu-yan-ji-yu-mvp-retrofit-rxjava-feng-zhuang-de-android-xiang-mu-de-ji-chu-yi-lai-ku/</id>
+    <published>2018-12-25T02:00:00.000Z</published>
+    <updated>2020-03-30T03:14:16.734Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Kotlin语言基于Mvp-Retrofit-RxJava封装的Android项目的基础依赖库&quot;&gt;&lt;a href=&quot;#Kotlin语言基于Mvp-Retrofit-RxJava封装的Android项目的基础依赖库&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/categories/Android-NDK/Kotlin/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(七)Kotlin 小案例与展望未来</title>
+    <link href="https://blog.onestravel.cn/20181212/kotlin/qi-kotlin-xiao-an-li-yu-zhan-wang-wei-lai/"/>
+    <id>https://blog.onestravel.cn/20181212/kotlin/qi-kotlin-xiao-an-li-yu-zhan-wang-wei-lai/</id>
+    <published>2018-12-12T02:00:00.000Z</published>
+    <updated>2020-03-30T03:14:16.747Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;一、Kotlin-的应用场景&quot;&gt;&lt;a href=&quot;#一、Kotlin-的应用场景&quot; class=&quot;headerlink&quot; title=&quot;一、Kotlin 的应用场景&quot;&gt;&lt;/a&gt;一、Kotlin 的应用场景&lt;/h3&gt;&lt;h4
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/categories/Android-NDK/Kotlin/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(六)Kotlin 与 Java 混合开发</title>
+    <link href="https://blog.onestravel.cn/20181211/kotlin/liu-kotlin-yu-java-hun-he-kai-fa/"/>
+    <id>https://blog.onestravel.cn/20181211/kotlin/liu-kotlin-yu-java-hun-he-kai-fa/</id>
+    <published>2018-12-11T02:00:00.000Z</published>
+    <updated>2020-03-30T03:14:16.747Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;一、基本互操作&quot;&gt;&lt;a href=&quot;#一、基本互操作&quot; class=&quot;headerlink&quot; title=&quot;一、基本互操作&quot;&gt;&lt;/a&gt;一、基本互操作&lt;/h3&gt;&lt;h4 id=&quot;1、属性读写&quot;&gt;&lt;a href=&quot;#1、属性读写&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/categories/Android-NDK/Kotlin/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(五)协程 Coroutine</title>
+    <link href="https://blog.onestravel.cn/20181210/kotlin/wu-xie-cheng-coroutine/"/>
+    <id>https://blog.onestravel.cn/20181210/kotlin/wu-xie-cheng-coroutine/</id>
+    <published>2018-12-10T02:00:00.000Z</published>
+    <updated>2020-03-30T03:14:16.747Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;一、协程的概念&quot;&gt;&lt;a href=&quot;#一、协程的概念&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/categories/Android-NDK/Kotlin/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(四)Kotlin 领域特定语言 DSL</title>
+    <link href="https://blog.onestravel.cn/20181209/kotlin/si-kotlin-ling-yu-te-ding-yu-yan-dsl/"/>
+    <id>https://blog.onestravel.cn/20181209/kotlin/si-kotlin-ling-yu-te-ding-yu-yan-dsl/</id>
+    <published>2018-12-09T02:00:00.000Z</published>
+    <updated>2020-03-30T03:14:16.748Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;一、领域特定语言-DSL的概念&quot;&gt;&lt;a href=&quot;#一、领域特定语言-DSL的概念&quot; class=&quot;headerlink&quot; title=&quot;一、领域特定语言 DSL的概念&quot;&gt;&lt;/a&gt;一、领域特定语言
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/categories/Android-NDK/Kotlin/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(三)Kotlin 高阶函数</title>
+    <link href="https://blog.onestravel.cn/20181208/kotlin/san-kotlin-gao-jie-han-shu/"/>
+    <id>https://blog.onestravel.cn/20181208/kotlin/san-kotlin-gao-jie-han-shu/</id>
+    <published>2018-12-08T02:00:00.000Z</published>
+    <updated>2020-03-30T03:14:16.747Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;一、基本概念&quot;&gt;&lt;a href=&quot;#一、基本概念&quot; class=&quot;headerlink&quot; title=&quot;一、基本概念&quot;&gt;&lt;/a&gt;一、基本概念&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;传入或者返回函数的函数&lt;/li&gt;
+&lt;li&gt;函数引用 
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/categories/Android-NDK/Kotlin/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(二)Kotlin 面向对象</title>
+    <link href="https://blog.onestravel.cn/20181207/kotlin/er-kotlin-mian-xiang-dui-xiang/"/>
+    <id>https://blog.onestravel.cn/20181207/kotlin/er-kotlin-mian-xiang-dui-xiang/</id>
+    <published>2018-12-07T02:00:00.000Z</published>
+    <updated>2020-03-30T03:14:16.747Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;一、面向对象的概念&quot;&gt;&lt;a href=&quot;#一、面向对象的概念&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/categories/Android-NDK/Kotlin/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(一)Kotlin 基础语法</title>
+    <link href="https://blog.onestravel.cn/20181206/kotlin/yi-kotlin-ji-chu-yu-fa/"/>
+    <id>https://blog.onestravel.cn/20181206/kotlin/yi-kotlin-ji-chu-yu-fa/</id>
+    <published>2018-12-06T02:00:00.000Z</published>
+    <updated>2020-03-30T03:14:16.746Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;一、-Kotlin语法&quot;&gt;&lt;a href=&quot;#一、-Kotlin语法&quot; class=&quot;headerlink&quot; title=&quot;一、 Kotlin语法&quot;&gt;&lt;/a&gt;一、 Kotlin语法&lt;/h3&gt;&lt;h4 id=&quot;1-变量与常量&quot;&gt;&lt;a href=&quot;#1-变量与常量&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/categories/Android-NDK/Kotlin/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="Kotlin" scheme="https://blog.onestravel.cn/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>（六）C++中的类型转换与STL标准模板库</title>
+    <link href="https://blog.onestravel.cn/20181123/c-c/liu-c-zhong-de-lei-xing-zhuan-huan-io-liu-yu-stl-biao-zhun-mo-ban-ku/"/>
+    <id>https://blog.onestravel.cn/20181123/c-c/liu-c-zhong-de-lei-xing-zhuan-huan-io-liu-yu-stl-biao-zhun-mo-ban-ku/</id>
+    <published>2018-11-23T03:35:00.000Z</published>
+    <updated>2020-03-30T03:14:16.738Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;C-中的类型转换与STL标准模板库&quot;&gt;&lt;a href=&quot;#C-中的类型转换与STL标准模板库&quot; class=&quot;headerlink&quot; title=&quot;C++中的类型转换与STL标准模板库&quot;&gt;&lt;/a&gt;C++中的类型转换与STL标准模板库&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="C/C++" scheme="https://blog.onestravel.cn/categories/Android-NDK/C-C/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="C/C++" scheme="https://blog.onestravel.cn/tags/C-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>（五）C++中的异常处理与模板类</title>
+    <link href="https://blog.onestravel.cn/20181103/c-c/wu-c-zhong-de-yi-chang-chu-li-yu-mo-ban-lei/"/>
+    <id>https://blog.onestravel.cn/20181103/c-c/wu-c-zhong-de-yi-chang-chu-li-yu-mo-ban-lei/</id>
+    <published>2018-11-03T12:15:00.000Z</published>
+    <updated>2020-03-30T03:14:16.737Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;C-中的异常处理与模板类&quot;&gt;&lt;a href=&quot;#C-中的异常处理与模板类&quot; class=&quot;headerlink&quot; title=&quot;C++中的异常处理与模板类&quot;&gt;&lt;/a&gt;C++中的异常处理与模板类&lt;/h1&gt;&lt;h2 id=&quot;一、C-中的异常处理&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="C/C++" scheme="https://blog.onestravel.cn/categories/Android-NDK/C-C/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="C/C++" scheme="https://blog.onestravel.cn/tags/C-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>（四）C++中的继承、多态和模板函数</title>
+    <link href="https://blog.onestravel.cn/20181025/c-c/si-c-zhong-de-ji-cheng-duo-tai-he-mo-ban-han-shu/"/>
+    <id>https://blog.onestravel.cn/20181025/c-c/si-c-zhong-de-ji-cheng-duo-tai-he-mo-ban-han-shu/</id>
+    <published>2018-10-25T10:05:00.000Z</published>
+    <updated>2020-03-30T03:14:16.738Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;C-中的继承、多态和模板函数&quot;&gt;&lt;a href=&quot;#C-中的继承、多态和模板函数&quot; class=&quot;headerlink&quot; title=&quot;C++中的继承、多态和模板函数&quot;&gt;&lt;/a&gt;C++中的继承、多态和模板函数&lt;/h1&gt;&lt;h2 id=&quot;一、继承&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="C/C++" scheme="https://blog.onestravel.cn/categories/Android-NDK/C-C/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="C/C++" scheme="https://blog.onestravel.cn/tags/C-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>（三）C++中的静态成员与this指针</title>
+    <link href="https://blog.onestravel.cn/20181020/c-c/san-c-zhong-de-jing-tai-cheng-yuan-this-zhi-zhen-you-yuan-han-shu-yu-yun-suan-fu-chong-zai/"/>
+    <id>https://blog.onestravel.cn/20181020/c-c/san-c-zhong-de-jing-tai-cheng-yuan-this-zhi-zhen-you-yuan-han-shu-yu-yun-suan-fu-chong-zai/</id>
+    <published>2018-10-20T02:05:00.000Z</published>
+    <updated>2020-03-30T03:14:16.736Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;C-中的静态成员与this指针&quot;&gt;&lt;a href=&quot;#C-中的静态成员与this指针&quot; class=&quot;headerlink&quot; title=&quot;C++中的静态成员与this指针&quot;&gt;&lt;/a&gt;C++中的静态成员与this指针&lt;/h1&gt;&lt;h2 id=&quot;一、静态成员&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+    
+      <category term="C/C++" scheme="https://blog.onestravel.cn/categories/Android-NDK/C-C/"/>
+    
+    
+      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+    
+      <category term="C/C++" scheme="https://blog.onestravel.cn/tags/C-C/"/>
+    
+  </entry>
+  
+</feed>

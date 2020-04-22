@@ -1,0 +1,1713 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="AndroidStudio下集成Fmod，实现仿QQ变声效果（一）, 一个人的旅行">
+    <meta name="description" content="AndroidStudio下集成Fmod，实现仿QQ变声效果前言在使用QQ的时候，我们会发现有一个炫酷的功能，那就是变声，效果图如下;其实QQ变声效果就是使用了Fmod声音引擎，通过NDK的开发，来实现对声音的变换。今天我们先进行一下QQ变">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>AndroidStudio下集成Fmod，实现仿QQ变声效果（一） | 一个人的旅行</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">一个人的旅行</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">一个人的旅行</div>
+        <div class="logo-desc">
+            
+            冰冻三尺，非一日之寒；为山九仞，岂一日之功；不忘初心，方得始终！
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/onestravel" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #519afe;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/onestravel" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/20190310/fmod-player.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        AndroidStudio下集成Fmod，实现仿QQ变声效果（一）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android-NDK/" target="_blank">
+                                <span class="chip bg-color">Android/NDK</span>
+                            </a>
+                        
+                            <a href="/tags/Fmod/" target="_blank">
+                                <span class="chip bg-color">Fmod</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android-NDK/" class="post-category" target="_blank">
+                                Android/NDK
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-03-10
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="AndroidStudio下集成Fmod，实现仿QQ变声效果"><a href="#AndroidStudio下集成Fmod，实现仿QQ变声效果" class="headerlink" title="AndroidStudio下集成Fmod，实现仿QQ变声效果"></a>AndroidStudio下集成Fmod，实现仿QQ变声效果</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>在使用QQ的时候，我们会发现有一个炫酷的功能，那就是变声，效果图如下;其实QQ变声效果就是使用了Fmod声音引擎，通过NDK的开发，来实现对声音的变换。今天我们先进行一下QQ变声效果的前期实现，先引入Fmod库，实现音频文件的播放</strong><br><img src="/images/20190310/qq_voice_change.png" alt="QQ变声"></p>
+<h2 id="一、前期准备"><a href="#一、前期准备" class="headerlink" title="一、前期准备"></a>一、前期准备</h2><ul>
+<li><strong><a href="https://www.fmod.com/download" target="_blank" rel="noopener">【Fmod下载】</a></strong>：点击该连接后，进行注册，登录以后再下载,选择版本<br><img src="/images/20190310/fmod_download.png" alt="Fmod下载"></li>
+<li><strong>【Android Studio】</strong>：Android Studio实现NDK支持<br><img src="/images/20190310/ndk_download.png" alt="NDK下载"></li>
+</ul>
+<h2 id="二、实现使用fmod播放assets下的音频"><a href="#二、实现使用fmod播放assets下的音频" class="headerlink" title="二、实现使用fmod播放assets下的音频"></a>二、实现使用fmod播放assets下的音频</h2><h3 id="1、创建一个支持C-的Android项目"><a href="#1、创建一个支持C-的Android项目" class="headerlink" title="1、创建一个支持C++的Android项目"></a>1、创建一个支持C++的Android项目</h3><p><img src="/images/20190310/create_1.png" alt="创建支持C++的Android项目-1"></p>
+<p><img src="/images/20190310/create_2.png" alt="创建支持C++的Android项目-2"></p>
+<p><img src="/images/20190310/create_3.png" alt="创建支持C++的Android项目-3"></p>
+<p><strong>创建好之后会在app/src/main 下面看到cpp文件夹，这就是进行NDK开发的C/C++层的文件夹</strong></p>
+<h3 id="2、配置Android项目"><a href="#2、配置Android项目" class="headerlink" title="2、配置Android项目"></a>2、配置Android项目</h3><ul>
+<li>在 app/src/main 下创建 jniLibs 文件夹</li>
+<li>将下载好的fmod包打开，进入到 api/lowlevel/ 下，可以看到 examples 、inc 、lib 三个文件夹</li>
+<li>将 inc 文件夹整体复制到 src/main/cpp 目录下</li>
+<li>将 lib 文件夹下的 fmod.jar 复制到 libs 目录下，并且右键该jar包，Add As Library </li>
+<li>将 lib 文件夹下的 so 动态库的不同平台的文件夹复制到 刚刚创建好的 jniLibs 目录下</li>
+<li>将 examples 目录下的common.h,common.cpp,common_platform.h,common_platform.cpp,play_sound.cpp 文件复制到src/main/cpp 目录下</li>
+<li>修改common.h中 #include “fmod.h” 为 #include “inc/fmod.h”</li>
+<li>修改common.cpp中 #include “fmod_errors.h” 为 #include “inc/fmod_errors.h”</li>
+<li>修改play_sound.cpp中 #include “fmod.hpp” 为 #include “inc/fmod.hpp”</li>
+<li>将 examples/java 下的org文件夹整个赋值到 src/main/java 目录下，并修改 AndroidManifest.xml 中的启动类为  org.fmod.example.MainActivity</li>
+<li>在app下的build.gradle 中的 defaultConfig 木块中新增 NDK 配置</li>
+</ul>
+<pre><code>    ndk {
+            abiFilters &quot;armeabi-v7a&quot;, &quot;arm64-v8a&quot;, &quot;x86&quot;, &quot;x86_64&quot;
+        }</code></pre><ul>
+<li>将引入的so动态库和play_sound.cpp等加入到 CMakeLists.txt 文件中，具体配置如下：</li>
+</ul>
+<pre><code>cmake_minimum_required(VERSION 3.4.1)
+
+set(distribution_DIR ${PROJECT_SOURCE_DIR}../../jniLibs)
+include_directories(src/main/cpp/inc)
+add_library( sound
+        SHARED
+        play_sound.cpp
+        common.cpp
+        common_platform.cpp)
+add_library( fmod
+        SHARED
+        IMPORTED )
+set_target_properties( fmod
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libfmod.so)
+add_library( fmodL
+        SHARED
+        IMPORTED )
+set_target_properties( fmodL
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libfmodL.so )
+find_library( # Sets the name of the path variable.
+        log-lib
+        log)
+target_link_libraries( sound
+        fmod
+        fmodL
+        ${log-lib} )
+</code></pre><ul>
+<li>修改 org.fmod.example.MainActivity 中的static 方法,删除一些未引入的library，更改刚刚在 CMakeLists.txt 文件中定义的library 如下：</li>
+</ul>
+<pre><code> static {
+        try {
+            System.loadLibrary(&quot;fmodL&quot;);
+        } catch (UnsatisfiedLinkError e) {
+        }
+        try {
+            System.loadLibrary(&quot;fmod&quot;);
+        } catch (UnsatisfiedLinkError e) {
+        }
+        System.loadLibrary(&quot;sound&quot;);
+    }</code></pre><ul>
+<li>将 examples/media 文件夹下的音频资源文件复制到项目的 assets 目录下，具体文件引入可查看 play_sound.cpp 文件42~52行；这里将所有后缀为 .wav 和 .mp3 的文件都复制到 assets 目录下。</li>
+</ul>
+<pre><code>    result = system-&gt;createSound(Common_MediaPath(&quot;drumloop.wav&quot;), FMOD_DEFAULT, 0, &amp;sound1);
+    ERRCHECK(result);
+
+    result = sound1-&gt;setMode(FMOD_LOOP_OFF);    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
+    ERRCHECK(result);                           /* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
+
+    result = system-&gt;createSound(Common_MediaPath(&quot;jaguar.wav&quot;), FMOD_DEFAULT, 0, &amp;sound2);
+    ERRCHECK(result);
+
+    result = system-&gt;createSound(Common_MediaPath(&quot;swish.wav&quot;), FMOD_DEFAULT, 0, &amp;sound3);
+    ERRCHECK(result);</code></pre><ul>
+<li>到这里，我们所有的步骤都已经完成了，可以成功运行项目了，项目运行起来后，我们可以看到界面上加载了三首音频文件，分别对应 A , B , C 三个按钮，我们点击这三个按钮，就可以播放对应的音频文件</li>
+</ul>
+<h2 id="三、项目改造"><a href="#三、项目改造" class="headerlink" title="三、项目改造"></a>三、项目改造</h2><p><strong>第二部的操作是完全使用了 fmod 的示例来完成 assets 目录下的音频文件的播放，我们可以看到这个是使用的 org.fmod.example.MainActivity 进行播放的，我们接下来将播放的 native 方法抽取成一个 utils 类，然后再自己的MainActivity中调用（使用org.fmod.example.MainActivity的布局）；然后再添加点击 D 和 E 按钮时播放音频文件的功能</strong></p>
+<h3 id="1、抽取-FmodUtils-java-工具类，使用自己包路径下的-MainActivity-实现播放"><a href="#1、抽取-FmodUtils-java-工具类，使用自己包路径下的-MainActivity-实现播放" class="headerlink" title="1、抽取 FmodUtils.java 工具类，使用自己包路径下的 MainActivity 实现播放"></a>1、抽取 FmodUtils.java 工具类，使用自己包路径下的 MainActivity 实现播放</h3><h4 id="1-1-FmodUtils-java-类如下，在原有main-方法加了参数，传入Activity实例："><a href="#1-1-FmodUtils-java-类如下，在原有main-方法加了参数，传入Activity实例：" class="headerlink" title="1.1 FmodUtils.java 类如下，在原有main()方法加了参数，传入Activity实例："></a>1.1 FmodUtils.java 类如下，在原有main()方法加了参数，传入Activity实例：</h4><pre><code>package org.fmod.core;
+
+import android.app.Activity;
+
+/**
+ * @author onestravel
+ * @version 1.0.0
+ * @name org.fmod.example.FmodUtils
+ * @description //TODO
+ */
+public class FmodUtils {
+    private static FmodUtils mInstance;
+
+    private FmodUtils() {
+
+    }
+
+    public static FmodUtils getInstance() {
+        synchronized (FmodUtils.class) {
+            if (mInstance == null) {
+                mInstance = new FmodUtils();
+            }
+        }
+        return mInstance;
+    }
+
+
+    public native String getButtonLabel(int index);
+    public native void buttonDown(int index);
+    public native void buttonUp(int index);
+    public native void setStateCreate();
+    public native void setStateStart();
+    public native void setStateStop();
+    public native void setStateDestroy();
+    public native void main(Activity context);
+
+    static
+    {
+        try { 
+            System.loadLibrary(&quot;fmodL&quot;);
+        }
+        catch (UnsatisfiedLinkError e) { }
+        try { 
+            System.loadLibrary(&quot;fmod&quot;);
+        }
+        catch (UnsatisfiedLinkError e) { }
+
+        System.loadLibrary(&quot;sound&quot;);
+    }
+}
+</code></pre><h4 id="1-2-更改cpp-文件中的-native-函数"><a href="#1-2-更改cpp-文件中的-native-函数" class="headerlink" title="1.2 更改cpp 文件中的 native 函数"></a>1.2 更改cpp 文件中的 native 函数</h4><p><strong>更改 common_platform.cpp 文件中对应的 native 函数名称(154~200行)</strong></p>
+<pre><code>#include &quot;common.h&quot;
+#include &lt;string.h&gt;
+#include &lt;jni.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+
+JNIEnv *gJNIEnv;
+jobject gMainActivityObject;
+int gDownButtons;
+int gLastDownButtons;
+int gPressedButtons;
+bool gSuspendState;
+bool gQuitState;
+std::string gUIString;
+std::vector&lt;char *&gt; gPathList;
+
+int FMOD_Main(); // Defined in example
+
+void Common_Init(void **extraDriverData)
+{
+    gDownButtons = 0;
+    gLastDownButtons = 0;
+    gPressedButtons = 0;
+    gSuspendState = false;
+    gQuitState = false;
+}
+
+void Common_Close()
+{
+    for (std::vector&lt;char *&gt;::iterator item = gPathList.begin(); item != gPathList.end(); ++item)
+    {
+        free(*item);
+    }
+
+    gPathList.clear();
+}
+
+void Common_Update()
+{
+    jstring text = gJNIEnv-&gt;NewStringUTF(gUIString.c_str());
+    jclass mainActivityClass = gJNIEnv-&gt;GetObjectClass(gMainActivityObject);
+    jmethodID updateScreenMethodID = gJNIEnv-&gt;GetMethodID(mainActivityClass, &quot;updateScreen&quot;, &quot;(Ljava/lang/String;)V&quot;);
+
+    gJNIEnv-&gt;CallVoidMethod(gMainActivityObject, updateScreenMethodID, text);
+
+    gJNIEnv-&gt;DeleteLocalRef(text);
+    gJNIEnv-&gt;DeleteLocalRef(mainActivityClass);
+
+    gUIString.clear();
+
+    gPressedButtons = (gLastDownButtons ^ gDownButtons) &amp; gDownButtons;
+    gLastDownButtons = gDownButtons;
+
+    if (gQuitState)
+    {
+        gPressedButtons |= (1 &lt;&lt; BTN_QUIT);
+    }
+}
+
+void Common_Sleep(unsigned int ms)
+{
+    usleep(ms * 1000);
+}
+
+void Common_Exit(int returnCode)
+{
+    exit(returnCode);
+}
+
+void Common_DrawText(const char *text)
+{
+    char s[256];
+    snprintf(s, sizeof(s), &quot;%s\n&quot;, text);
+
+    gUIString.append(s);
+}
+
+void Common_LoadFileMemory(const char *name, void **buff, int *length)
+{
+    FILE *file = fopen(name, &quot;rb&quot;);
+
+    fseek(file, 0, SEEK_END);
+    long len = ftell(file);
+    fseek(file, 0, SEEK_SET);
+
+    void *mem = malloc(len);
+    fread(mem, 1, len, file);
+
+    fclose(file);
+
+    *buff = mem;
+    *length = len;
+}
+
+void Common_UnloadFileMemory(void *buff)
+{
+    free(buff);
+}
+
+bool Common_BtnPress(Common_Button btn)
+{
+    return ((gPressedButtons &amp; (1 &lt;&lt; btn)) != 0);
+}
+
+bool Common_BtnDown(Common_Button btn)
+{
+    return ((gDownButtons &amp; (1 &lt;&lt; btn)) != 0);
+}
+
+const char *Common_BtnStr(Common_Button btn)
+{
+    switch (btn)
+    {
+        case BTN_ACTION1: return &quot;A&quot;;
+        case BTN_ACTION2: return &quot;B&quot;;
+        case BTN_ACTION3: return &quot;C&quot;;
+        case BTN_ACTION4: return &quot;D&quot;;
+        case BTN_UP:      return &quot;Up&quot;;
+        case BTN_DOWN:    return &quot;Down&quot;;
+        case BTN_LEFT:    return &quot;Left&quot;;
+        case BTN_RIGHT:   return &quot;Right&quot;;
+        case BTN_MORE:    return &quot;E&quot;;
+        case BTN_QUIT:    return &quot;Back&quot;;
+        default:          return &quot;Unknown&quot;;
+    }
+}
+
+const char *Common_MediaPath(const char *fileName)
+{
+    char *filePath = (char *)calloc(256, sizeof(char));
+
+    strcat(filePath, &quot;file:///android_asset/&quot;);
+    strcat(filePath, fileName);
+    gPathList.push_back(filePath);
+
+    return filePath;
+}
+
+const char *Common_WritePath(const char *fileName)
+{
+    return Common_MediaPath(fileName);
+}
+
+bool Common_SuspendState()
+{
+    return gSuspendState;
+}
+
+extern &quot;C&quot;
+{
+
+jstring Java_org_fmod_core_FmodUtils_getButtonLabel(JNIEnv *env, jobject thiz, jint index)
+{
+    return env-&gt;NewStringUTF(Common_BtnStr((Common_Button)index));
+}
+
+void Java_org_fmod_core_FmodUtils_buttonDown(JNIEnv *env, jobject thiz, jint index)
+{
+    gDownButtons |= (1 &lt;&lt; index);
+}
+
+void Java_org_fmod_core_FmodUtils_buttonUp(JNIEnv *env, jobject thiz, jint index)
+{
+    gDownButtons &amp;= ~(1 &lt;&lt; index);
+}
+
+void Java_org_fmod_core_FmodUtils_setStateCreate(JNIEnv *env, jobject thiz)
+{
+
+}
+
+void Java_org_fmod_core_FmodUtils_setStateStart(JNIEnv *env, jobject thiz)
+{
+    gSuspendState = false;
+}
+
+void Java_org_fmod_core_FmodUtils_setStateStop(JNIEnv *env, jobject thiz)
+{
+    gSuspendState = true;
+}
+
+void Java_org_fmod_core_FmodUtils_setStateDestroy(JNIEnv *env, jobject thiz)
+{
+    gQuitState = true;
+}
+
+void Java_org_fmod_core_FmodUtils_main(JNIEnv *env, jobject thiz,jobject act)
+{
+    gJNIEnv = env;
+    gMainActivityObject = act;
+
+    FMOD_Main();
+}
+
+} /* extern &quot;C&quot; */
+</code></pre><h4 id="1-3-替换MainActivity"><a href="#1-3-替换MainActivity" class="headerlink" title="1.3 替换MainActivity"></a>1.3 替换MainActivity</h4><p><strong>将 org.fmod.example.MainActivity 复制到自己的包路径下 ， 删除文件中 native 方法和 static 方法，新增 mFmodUtils 成员变量，并实例化，将调用 native 方法的地方都改成 mFmodUtils 实例下的方法，注意 main() 方法需要传当前 Activity 进去</strong></p>
+<pre><code>public class MainActivity extends Activity implements OnTouchListener, Runnable {
+    private TextView mTxtScreen;
+    private Thread mThread;
+    private FmodUtils mFmodUtils;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mFmodUtils = FmodUtils.getInstance();
+        // Create the text area
+        mTxtScreen = new TextView(this);
+        mTxtScreen.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10.0f);
+        mTxtScreen.setTypeface(Typeface.MONOSPACE);
+
+        // Create the buttons
+        Button[] buttons = new Button[9];
+        for (int i = 0; i &lt; buttons.length; i++) {
+            buttons[i] = new Button(this);
+            buttons[i].setText(mFmodUtils.getButtonLabel(i));
+            buttons[i].setOnTouchListener(this);
+            buttons[i].setId(i);
+        }
+
+        // Create the button row layouts
+        LinearLayout llTopRowButtons = new LinearLayout(this);
+        llTopRowButtons.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout llMiddleRowButtons = new LinearLayout(this);
+        llMiddleRowButtons.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout llBottomRowButtons = new LinearLayout(this);
+        llBottomRowButtons.setOrientation(LinearLayout.HORIZONTAL);
+
+        // Create the main view layout
+        LinearLayout llView = new LinearLayout(this);
+        llView.setOrientation(LinearLayout.VERTICAL);
+
+        // Create layout parameters
+        LayoutParams lpLayout = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1.0f);
+
+        // Set up the view hierarchy
+        llTopRowButtons.addView(buttons[0], lpLayout);
+        llTopRowButtons.addView(buttons[6], lpLayout);
+        llTopRowButtons.addView(buttons[1], lpLayout);
+        llMiddleRowButtons.addView(buttons[4], lpLayout);
+        llMiddleRowButtons.addView(buttons[8], lpLayout);
+        llMiddleRowButtons.addView(buttons[5], lpLayout);
+        llBottomRowButtons.addView(buttons[2], lpLayout);
+        llBottomRowButtons.addView(buttons[7], lpLayout);
+        llBottomRowButtons.addView(buttons[3], lpLayout);
+        llView.addView(mTxtScreen, lpLayout);
+        llView.addView(llTopRowButtons);
+        llView.addView(llMiddleRowButtons);
+        llView.addView(llBottomRowButtons);
+
+        setContentView(llView);
+
+        // Request necessary permissions
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+            String[] perms = {&quot;android.permission.RECORD_AUDIO&quot;, &quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;};
+            if (checkSelfPermission(perms[0]) == PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(perms[1]) == PackageManager.PERMISSION_DENIED) {
+                requestPermissions(perms, 200);
+            }
+        }
+
+        org.fmod.FMOD.init(this);
+
+        mThread = new Thread(this, &quot;Example Main&quot;);
+        mThread.start();
+
+        mFmodUtils.setStateCreate();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mFmodUtils.setStateStart();
+    }
+
+    @Override
+    protected void onStop() {
+        mFmodUtils.setStateStop();
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mFmodUtils.setStateDestroy();
+
+        try {
+            mThread.join();
+        } catch (InterruptedException e) {
+        }
+
+        org.fmod.FMOD.close();
+
+        super.onDestroy();
+    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+            mFmodUtils.buttonDown(view.getId());
+        } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+            mFmodUtils.buttonUp(view.getId());
+        }
+
+        return true;
+    }
+
+    @Override
+    public void run() {
+        mFmodUtils.main(this);
+    }
+
+    public void updateScreen(final String text) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mTxtScreen.setText(text);
+            }
+        });
+    }
+
+
+}
+</code></pre><h4 id="1-4-更改AndroidManifest"><a href="#1-4-更改AndroidManifest" class="headerlink" title="1.4 更改AndroidManifest"></a>1.4 更改AndroidManifest</h4><p><strong>更改 AndroidManifest.xml 文件中的启动页的 Activity 为自己包路径下的 MainActivity ，删除fmod 示例的 MainActivity ,就可以运行成功了</strong></p>
+<h3 id="2、实现按钮-D-和-E-播放音频"><a href="#2、实现按钮-D-和-E-播放音频" class="headerlink" title="2、实现按钮 D 和 E 播放音频"></a>2、实现按钮 D 和 E 播放音频</h3><p><strong>我们使用 singing.wav 和 wave.mp3 来实现 D 和 E 按钮播放音频的功能</strong></p>
+<h4 id="2-1-加载音频文件"><a href="#2-1-加载音频文件" class="headerlink" title="2.1 加载音频文件"></a>2.1 加载音频文件</h4><p><strong>在play_sound.cpp 中的 FMOD_Main() 函数中的do…while前，定义 sound4 和 sound5 变量，然后使用这两个变量加载对应的音频文件</strong></p>
+<pre><code>    FMOD::System     *system;
+    // 新增属性 sound4 和 sound5
+    FMOD::Sound      *sound1, *sound2, *sound3, *sound4, *sound5;
+    FMOD::Channel    *channel = 0;
+    FMOD_RESULT       result;
+    unsigned int      version;
+    void             *extradriverdata = 0;
+
+    Common_Init(&amp;extradriverdata);
+
+    /*
+        Create a System object and initialize
+    */
+    result = FMOD::System_Create(&amp;system);
+    ERRCHECK(result);
+
+    result = system-&gt;getVersion(&amp;version);
+    ERRCHECK(result);
+
+    if (version &lt; FMOD_VERSION)
+    {
+        Common_Fatal(&quot;FMOD lib version %08x doesn&#39;t match header version %08x&quot;, version, FMOD_VERSION);
+    }
+
+    result = system-&gt;init(32, FMOD_INIT_NORMAL, extradriverdata);
+    ERRCHECK(result);
+
+    result = system-&gt;createSound(Common_MediaPath(&quot;drumloop.wav&quot;), FMOD_DEFAULT, 0, &amp;sound1);
+    ERRCHECK(result);
+
+    result = sound1-&gt;setMode(FMOD_LOOP_OFF);    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
+    ERRCHECK(result);                           /* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
+
+    result = system-&gt;createSound(Common_MediaPath(&quot;jaguar.wav&quot;), FMOD_DEFAULT, 0, &amp;sound2);
+    ERRCHECK(result);
+
+    result = system-&gt;createSound(Common_MediaPath(&quot;swish.wav&quot;), FMOD_DEFAULT, 0, &amp;sound3);
+    ERRCHECK(result);
+
+    //为sound4 加载音频文件singing.wav
+    result = system-&gt;createSound(Common_MediaPath(&quot;singing.wav&quot;), FMOD_DEFAULT, 0, &amp;sound4);
+    ERRCHECK(result);
+
+    //为sound5 加载音频文件wave.mp3
+    result = system-&gt;createSound(Common_MediaPath(&quot;wave.mp3&quot;), FMOD_DEFAULT, 0, &amp;sound5);
+    ERRCHECK(result);</code></pre><h4 id="2-2-将音频播放与按钮事件关联"><a href="#2-2-将音频播放与按钮事件关联" class="headerlink" title="2.2 将音频播放与按钮事件关联"></a>2.2 将音频播放与按钮事件关联</h4><p><strong>在play_sound.cpp 中的 FMOD_Main() 函数中的do…while的{}中，处理 D 和 E 按钮的事件，播放sound4 和 sound 5 , 按钮的事件类型可在 common_platform.cpp 中的 Common_BtnStr 函数中查看</strong></p>
+<p>Common_BtnStr 函数</p>
+<pre><code>const char *Common_BtnStr(Common_Button btn)
+{
+    switch (btn)
+    {
+        case BTN_ACTION1: return &quot;A&quot;;
+        case BTN_ACTION2: return &quot;B&quot;;
+        case BTN_ACTION3: return &quot;C&quot;;
+        case BTN_ACTION4: return &quot;D&quot;;
+        case BTN_UP:      return &quot;Up&quot;;
+        case BTN_DOWN:    return &quot;Down&quot;;
+        case BTN_LEFT:    return &quot;Left&quot;;
+        case BTN_RIGHT:   return &quot;Right&quot;;
+        case BTN_MORE:    return &quot;E&quot;;
+        case BTN_QUIT:    return &quot;Back&quot;;
+        default:          return &quot;Unknown&quot;;
+    }
+}
+</code></pre><p>处理 D 和 E 按钮的事件，播放音频</p>
+<pre><code>        //处理按钮 D 的事件，播放 sound4
+        if (Common_BtnPress(BTN_ACTION4))
+        {
+            result = system-&gt;playSound(sound4, 0, false, &amp;channel);
+            ERRCHECK(result);
+        }
+
+        //处理按钮 E 的事件，播放 sound5
+        if (Common_BtnPress(BTN_MORE))
+        {
+            result = system-&gt;playSound(sound5, 0, false, &amp;channel);
+            ERRCHECK(result);
+        }</code></pre><h4 id="2-3-释放-sound4-和-sound5"><a href="#2-3-释放-sound4-和-sound5" class="headerlink" title="2.3 释放 sound4 和 sound5"></a>2.3 释放 sound4 和 sound5</h4><p><strong>在do…while 执行之后，释放加载了对应音频文件的属性</strong></p>
+<pre><code>/*
+        Shut down
+    */
+    result = sound1-&gt;release();
+    ERRCHECK(result);
+    result = sound2-&gt;release();
+    ERRCHECK(result);
+    result = sound3-&gt;release();
+    ERRCHECK(result);
+
+    //释放sound4
+    result = sound4-&gt;release();
+    ERRCHECK(result);
+    //释放sound5
+    result = sound5-&gt;release();
+    ERRCHECK(result);
+
+    result = system-&gt;close();
+    ERRCHECK(result);
+    result = system-&gt;release();
+    ERRCHECK(result);
+
+    Common_Close();</code></pre><h4 id="2-4-play-sound-cpp-完整代码"><a href="#2-4-play-sound-cpp-完整代码" class="headerlink" title="2.4 play_sound.cpp 完整代码"></a>2.4 play_sound.cpp 完整代码</h4><p><strong>更改完成之后，按钮D 和 E 播放音频的功能实现了，点击运行就可以了，下面贴上play_sound.cpp的完整代码</strong></p>
+<pre><code>/*==============================================================================
+Play Sound Example
+Copyright (c), Firelight Technologies Pty, Ltd 2004-2019.
+
+This example shows how to simply load and play multiple sounds, the simplest 
+usage of FMOD. By default FMOD will decode the entire file into memory when it
+loads. If the sounds are big and possibly take up a lot of RAM it would be
+better to use the FMOD_CREATESTREAM flag, this will stream the file in realtime
+as it plays.
+==============================================================================*/
+#include &quot;inc/fmod.hpp&quot;
+#include &quot;common.h&quot;
+
+int FMOD_Main()
+{
+    FMOD::System     *system;
+    // 新增属性 sound4 和 sound5
+    FMOD::Sound      *sound1, *sound2, *sound3, *sound4, *sound5;
+    FMOD::Channel    *channel = 0;
+    FMOD_RESULT       result;
+    unsigned int      version;
+    void             *extradriverdata = 0;
+
+    Common_Init(&amp;extradriverdata);
+
+    /*
+        Create a System object and initialize
+    */
+    result = FMOD::System_Create(&amp;system);
+    ERRCHECK(result);
+
+    result = system-&gt;getVersion(&amp;version);
+    ERRCHECK(result);
+
+    if (version &lt; FMOD_VERSION)
+    {
+        Common_Fatal(&quot;FMOD lib version %08x doesn&#39;t match header version %08x&quot;, version, FMOD_VERSION);
+    }
+
+    result = system-&gt;init(32, FMOD_INIT_NORMAL, extradriverdata);
+    ERRCHECK(result);
+
+    result = system-&gt;createSound(Common_MediaPath(&quot;drumloop.wav&quot;), FMOD_DEFAULT, 0, &amp;sound1);
+    ERRCHECK(result);
+
+    result = sound1-&gt;setMode(FMOD_LOOP_OFF);    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
+    ERRCHECK(result);                           /* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
+
+    result = system-&gt;createSound(Common_MediaPath(&quot;jaguar.wav&quot;), FMOD_DEFAULT, 0, &amp;sound2);
+    ERRCHECK(result);
+
+    result = system-&gt;createSound(Common_MediaPath(&quot;swish.wav&quot;), FMOD_DEFAULT, 0, &amp;sound3);
+    ERRCHECK(result);
+
+    //为sound4 加载音频文件singing.wav
+    result = system-&gt;createSound(Common_MediaPath(&quot;singing.wav&quot;), FMOD_DEFAULT, 0, &amp;sound4);
+    ERRCHECK(result);
+
+    //为sound5 加载音频文件wave.mp3
+    result = system-&gt;createSound(Common_MediaPath(&quot;wave.mp3&quot;), FMOD_DEFAULT, 0, &amp;sound5);
+    ERRCHECK(result);
+
+    /*
+        Main loop
+    */
+    do
+    {
+        Common_Update();
+
+        if (Common_BtnPress(BTN_ACTION1))
+        {
+            result = system-&gt;playSound(sound1, 0, false, &amp;channel);
+            ERRCHECK(result);
+        }
+
+        if (Common_BtnPress(BTN_ACTION2))
+        {
+            result = system-&gt;playSound(sound2, 0, false, &amp;channel);
+            ERRCHECK(result);
+        }
+
+        if (Common_BtnPress(BTN_ACTION3))
+        {
+            result = system-&gt;playSound(sound3, 0, false, &amp;channel);
+            ERRCHECK(result);
+        }
+
+        //处理按钮 D 的事件，播放 sound4
+        if (Common_BtnPress(BTN_ACTION4))
+        {
+            result = system-&gt;playSound(sound4, 0, false, &amp;channel);
+            ERRCHECK(result);
+        }
+
+        //处理按钮 E 的事件，播放 sound5
+        if (Common_BtnPress(BTN_MORE))
+        {
+            result = system-&gt;playSound(sound5, 0, false, &amp;channel);
+            ERRCHECK(result);
+        }
+
+        result = system-&gt;update();
+        ERRCHECK(result);
+
+        {
+            unsigned int ms = 0;
+            unsigned int lenms = 0;
+            bool         playing = 0;
+            bool         paused = 0;
+            int          channelsplaying = 0;
+
+            if (channel)
+            {
+                FMOD::Sound *currentsound = 0;
+
+                result = channel-&gt;isPlaying(&amp;playing);
+                if ((result != FMOD_OK) &amp;&amp; (result != FMOD_ERR_INVALID_HANDLE) &amp;&amp; (result != FMOD_ERR_CHANNEL_STOLEN))
+                {
+                    ERRCHECK(result);
+                }
+
+                result = channel-&gt;getPaused(&amp;paused);
+                if ((result != FMOD_OK) &amp;&amp; (result != FMOD_ERR_INVALID_HANDLE) &amp;&amp; (result != FMOD_ERR_CHANNEL_STOLEN))
+                {
+                    ERRCHECK(result);
+                }
+
+                result = channel-&gt;getPosition(&amp;ms, FMOD_TIMEUNIT_MS);
+                if ((result != FMOD_OK) &amp;&amp; (result != FMOD_ERR_INVALID_HANDLE) &amp;&amp; (result != FMOD_ERR_CHANNEL_STOLEN))
+                {
+                    ERRCHECK(result);
+                }
+
+                channel-&gt;getCurrentSound(&amp;currentsound);
+                if (currentsound)
+                {
+                    result = currentsound-&gt;getLength(&amp;lenms, FMOD_TIMEUNIT_MS);
+                    if ((result != FMOD_OK) &amp;&amp; (result != FMOD_ERR_INVALID_HANDLE) &amp;&amp; (result != FMOD_ERR_CHANNEL_STOLEN))
+                    {
+                        ERRCHECK(result);
+                    }
+                }
+            }
+
+            system-&gt;getChannelsPlaying(&amp;channelsplaying, NULL);
+
+            Common_Draw(&quot;==================================================&quot;);
+            Common_Draw(&quot;Play Sound Example.&quot;);
+            Common_Draw(&quot;Copyright (c) Firelight Technologies 2004-2019.&quot;);
+            Common_Draw(&quot;==================================================&quot;);
+            Common_Draw(&quot;&quot;);
+            Common_Draw(&quot;Press %s to play a mono sound (drumloop)&quot;, Common_BtnStr(BTN_ACTION1));
+            Common_Draw(&quot;Press %s to play a mono sound (jaguar)&quot;, Common_BtnStr(BTN_ACTION2));
+            Common_Draw(&quot;Press %s to play a stereo sound (swish)&quot;, Common_BtnStr(BTN_ACTION3));
+            Common_Draw(&quot;Press %s to quit&quot;, Common_BtnStr(BTN_QUIT));
+            Common_Draw(&quot;&quot;);
+            Common_Draw(&quot;Time %02d:%02d:%02d/%02d:%02d:%02d : %s&quot;, ms / 1000 / 60, ms / 1000 % 60, ms / 10 % 100, lenms / 1000 / 60, lenms / 1000 % 60, lenms / 10 % 100, paused ? &quot;Paused &quot; : playing ? &quot;Playing&quot; : &quot;Stopped&quot;);
+            Common_Draw(&quot;Channels Playing %d&quot;, channelsplaying);
+        }
+
+        Common_Sleep(50);
+    } while (!Common_BtnPress(BTN_QUIT));
+
+    /*
+        Shut down
+    */
+    result = sound1-&gt;release();
+    ERRCHECK(result);
+    result = sound2-&gt;release();
+    ERRCHECK(result);
+    result = sound3-&gt;release();
+    ERRCHECK(result);
+
+    //释放sound4
+    result = sound4-&gt;release();
+    ERRCHECK(result);
+    //释放sound5
+    result = sound5-&gt;release();
+    ERRCHECK(result);
+
+    result = system-&gt;close();
+    ERRCHECK(result);
+    result = system-&gt;release();
+    ERRCHECK(result);
+
+    Common_Close();
+
+    return 0;
+}
+</code></pre><h2 id="项目源码"><a href="#项目源码" class="headerlink" title="项目源码"></a>项目源码</h2><p><a href="https://github.com/onestravel/playSound" target="_blank" rel="noopener">PlaySound源码</a></p>
+<p><strong>到此，我们实现集成 fmod 的音频播放功能已经实现，也实现了其他按钮播放音频文件的功能，这是实现模拟QQ变声项目的前期准备，后面我们会继续实现QQ变声功能。</strong></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://blog.onestravel.cn" class="b-link-green">一个人的旅行</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/20190310/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-yi/" class="b-link-green">AndroidStudio下集成Fmod，实现仿QQ变声效果（一）</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'a52a65db0a634019e27f',
+        clientSecret: 'a04eaebc103e73d3769221171a4b87b55b39998d',
+        repo: 'onestravel.github.io',
+        owner: 'onestravel',
+        admin: "onestravel",
+        id: '2019-03-10T08-25-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/20190318/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-er/">
+                    <div class="card-image">
+                        
+                        <img src="/images/20190318/qq_voice_change.jpg" class="responsive-img" alt="AndroidStudio下集成Fmod，实现仿QQ变声效果（二）">
+                        
+                        <span class="card-title">AndroidStudio下集成Fmod，实现仿QQ变声效果（二）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    
+                            <div class="summary block-with-text">AndroidStudio下集成Fmod，实现仿QQ变声效果（二）前言前一篇博客，我们简单了解了一下 fmod 音频引擎，实现了使用 fmod 来进行音频播放，今天我们在上一个项目的基础上来实现仿QQ变声的效果
+一、Android 布局及点</div>
+                    
+                    
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android-NDK/" class="post-category" target="_blank">
+                                    Android/NDK
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android-NDK/" target="_blank">
+                        <span class="chip bg-color">Android/NDK</span>
+                    </a>
+                    
+                    <a href="/tags/Fmod/" target="_blank">
+                        <span class="chip bg-color">Fmod</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/20190301/android-ndk/androidstudio-xia-jin-xing-ndk-kai-fa/">
+                    <div class="card-image">
+                        
+                        <img src="/images/20190301/studio_ndk.jpg" class="responsive-img" alt="AndroidStudio下NDK开发流程">
+                        
+                        <span class="card-title">AndroidStudio下NDK开发流程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    
+                            <div class="summary block-with-text">AndroidStudio下NDK开发流程前言使用Android Studio进行NDK开发时，可在创建Android Studio项目时选择创建C++项目，创建好之后，默认会在src/main/下创建一个cpp的文件夹，C/C++相关的文</div>
+                    
+                    
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android-NDK/" class="post-category" target="_blank">
+                                    Android/NDK
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android-NDK/" target="_blank">
+                        <span class="chip bg-color">Android/NDK</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 一个人的旅行<br />'
+            + '作者: onestravel<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy; <a href="https://blog.onestravel.cn/" target="_blank">一个人的旅行</a> 基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a> 的主题搭建.
+
+            
+            <br/>
+            &copy;2018-2020  onestravel.cn 版权所有  ICP证：<a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备20009541号</a>
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/onestravel" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:server@onestravel.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1130007032" class="tooltipped" data-tooltip="QQ联系我: 1130007032" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-145377665-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-145377665-1');
+</script>
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

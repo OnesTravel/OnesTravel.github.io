@@ -1,0 +1,1310 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="AndroidStudio下集成Fmod，实现仿QQ变声效果（二）, 一个人的旅行">
+    <meta name="description" content="AndroidStudio下集成Fmod，实现仿QQ变声效果（二）前言前一篇博客，我们简单了解了一下 fmod 音频引擎，实现了使用 fmod 来进行音频播放，今天我们在上一个项目的基础上来实现仿QQ变声的效果
+一、Android 布局及点">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>AndroidStudio下集成Fmod，实现仿QQ变声效果（二） | 一个人的旅行</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">一个人的旅行</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">一个人的旅行</div>
+        <div class="logo-desc">
+            
+            冰冻三尺，非一日之寒；为山九仞，岂一日之功；不忘初心，方得始终！
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/onestravel" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #519afe;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/onestravel" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/20190318/qq_voice_change.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        AndroidStudio下集成Fmod，实现仿QQ变声效果（二）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android-NDK/" target="_blank">
+                                <span class="chip bg-color">Android/NDK</span>
+                            </a>
+                        
+                            <a href="/tags/Fmod/" target="_blank">
+                                <span class="chip bg-color">Fmod</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android-NDK/" class="post-category" target="_blank">
+                                Android/NDK
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-03-18
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="AndroidStudio下集成Fmod，实现仿QQ变声效果（二）"><a href="#AndroidStudio下集成Fmod，实现仿QQ变声效果（二）" class="headerlink" title="AndroidStudio下集成Fmod，实现仿QQ变声效果（二）"></a>AndroidStudio下集成Fmod，实现仿QQ变声效果（二）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>前一篇博客，我们简单了解了一下 fmod 音频引擎，实现了使用 fmod 来进行音频播放，今天我们在上一个项目的基础上来实现仿QQ变声的效果</strong></p>
+<h2 id="一、Android-布局及点击事件实现"><a href="#一、Android-布局及点击事件实现" class="headerlink" title="一、Android 布局及点击事件实现"></a>一、Android 布局及点击事件实现</h2><h3 id="1、页面布局"><a href="#1、页面布局" class="headerlink" title="1、页面布局"></a>1、页面布局</h3><p><strong>简单的进行页面布局，有两个布局，一个是录音界面，长按按钮录音，显示录音时长；另一个是录音完成之后，对声音进行音效处理的界面，包含原声、萝莉、大叔、搞怪、空灵、惊悚六个按钮，并添加了一个返回重新录音的按钮。界面效果如下：</strong></p>
+<p><img src="/images/20190318/record.png" alt="录音"></p>
+<p><img src="/images/20190318/effect.png" alt="音效处理"></p>
+<h3 id="2、长按录音事件"><a href="#2、长按录音事件" class="headerlink" title="2、长按录音事件"></a>2、长按录音事件</h3><p><strong>在这里，我使用了一个录音的工具类，然后处理录音按钮的触摸事件，判断按下和松开的事件，来进行录音，需要录音和存储权限（注意6.0以上动态检查权限，7.0的文件读取权限）</strong></p>
+<p><strong>在使用录音文件播放的时候，第一次是录音生成amr文件，是压缩后的文件，导致在使用 fmod 处理音效以及播放时失败，不能播放出声音，最后换成mav文件，在可以进行音效处理。</strong></p>
+<h4 id="2-1-权限判断"><a href="#2-1-权限判断" class="headerlink" title="2.1 权限判断"></a>2.1 权限判断</h4><p>判断是否获取了录音权限和文件存储权限</p>
+<pre><code>    /**
+     * 获取权限
+     */
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+            String[] perms = {&quot;android.permission.RECORD_AUDIO&quot;, &quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;};
+            if (checkSelfPermission(perms[0]) == PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(perms[1]) == PackageManager.PERMISSION_DENIED) {
+                permission = false;
+                requestPermissions(perms, 200);
+            } else {
+                permission = true;
+            }
+        }
+    }
+</code></pre><h4 id="2-2-处理长按录音效果"><a href="#2-2-处理长按录音效果" class="headerlink" title="2.2 处理长按录音效果"></a>2.2 处理长按录音效果</h4><pre><code>
+    public class MyHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case RECORD_START:
+                    try {
+                        audioRecordUtils.startRecordAndFile();
+                        recording = true;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        recording = false;
+                        requestPermission();
+                    }
+                    break;
+                case RECORD_FINISH:
+                    recording = false;
+                    audioRecordUtils.stopRecordAndFile();
+                    break;
+                case RECORD_CANCEL:
+                    audioRecordUtils.stopRecordAndFile();
+                    recording = false;
+                    break;
+            }
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        org.fmod.FMOD.init(this);
+        audioRecordUtils = AudioRecordUtils.getInstance();
+        audioRecordUtils.setOnAudioStatusUpdateListener(this);
+        recordBtn = findViewById(R.id.recordBtn);
+        recordLl = findViewById(R.id.recordLl);
+        recordTimeTv = findViewById(R.id.recordTimeTv);
+        recordBtn.setOnTouchListener(this);
+        effectUtils = new EffectUtils();
+        requestPermission();
+    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if (permission) {
+                    handler.sendEmptyMessage(RECORD_START);
+                } else {
+                    Toast.makeText(this, &quot;请先同意录音和存储功能权限后使用&quot;, Toast.LENGTH_SHORT).show();
+                    requestPermission();
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                if (recording) {
+                    if (mTime &lt; 1000) {
+                        handler.sendEmptyMessage(RECORD_CANCEL);
+                    }
+
+                    handler.sendEmptyMessage(RECORD_FINISH);
+                } else {
+                    super.onTouchEvent(motionEvent);
+                }
+                break;
+        }
+        return true;
+    }
+
+    /**
+     * 录音中
+     */
+     @Override
+    public void onUpdate(double db, AudioRecordUtils.RecordTimes times) {
+        this.mTime = times.getTime();
+        recordTimeTv.setText(&quot;... &quot; + times.getFormatTime(&quot;mm:ss&quot;) + &quot; ...&quot;);
+    }
+
+
+
+    /**
+     * 录音完成
+     */
+    @Override
+    public void onFinish(float seconds, String filePath) {
+        recordFilePath = filePath;
+        recordLl.setVisibility(View.GONE);
+    }
+</code></pre><h2 id="二、NDK实现音效"><a href="#二、NDK实现音效" class="headerlink" title="二、NDK实现音效"></a>二、NDK实现音效</h2><h3 id="1、native-方法声明"><a href="#1、native-方法声明" class="headerlink" title="1、native 方法声明"></a>1、native 方法声明</h3><p><strong>创建 org.fmod.core.EffectUtils.java 文件，声明音效变换的 native 方法，并且定义音效类型常量</strong></p>
+<pre><code>    public static final int MODE_NORMAL = 0;
+    public static final int MODE_LUOLI = 1;
+    public static final int MODE_DASHU = 2;
+    public static final int MODE_GAOGUAI = 3;
+    public static final int MODE_KONGLING = 4;
+    public static final int MODE_JINGSONG = 5;
+     /**
+     * 音效处理 native 方法
+     * @param path 音频源文件路径
+     * @param mode 特效模式
+     */
+    public native void effect(String path,int mode);</code></pre><h3 id="2、生成头文件-处理Android页面的点击事件"><a href="#2、生成头文件-处理Android页面的点击事件" class="headerlink" title="2、生成头文件,处理Android页面的点击事件"></a>2、生成头文件,处理Android页面的点击事件</h3><p><strong>进入app/src/main/java目录下使用javah命令将创建好的org.fmod.core.EffectUtils.java 编译生成.h 头文件;并将该头文件移动到 cpp 目录下</strong></p>
+<pre><code>javah -encoding utf-8 org.fmod.core.EffectUtils</code></pre><p>Android 页面点击事件</p>
+<pre><code>    /**
+     * 按钮点击事件
+     * @param view
+     */
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.reRecordTv:
+                recordTimeTv.setText(&quot;长按开始录音&quot;);
+                recordLl.setVisibility(View.VISIBLE);
+                break;
+            case R.id.normalLL:
+            effectUtils.effect(recordFilePath,EffectUtils.MODE_NORMAL);
+                break;
+            case R.id.luoliLL:
+                effectUtils.effect(recordFilePath,EffectUtils.MODE_LUOLI);
+                break;
+            case R.id.dashuLL:
+                effectUtils.effect(recordFilePath,EffectUtils.MODE_DASHU);
+                break;
+            case R.id.gaoguaiLL:
+                effectUtils.effect(recordFilePath,EffectUtils.MODE_GAOGUAI);
+                break;
+            case R.id.konglingLL:
+                effectUtils.effect(recordFilePath,EffectUtils.MODE_KONGLING);
+                break;
+            case R.id.jingsongLL:
+                effectUtils.effect(recordFilePath,EffectUtils.MODE_JINGSONG);
+                break;
+        }
+    }</code></pre><h3 id="3、native-实现"><a href="#3、native-实现" class="headerlink" title="3、native 实现"></a>3、native 实现</h3><p><strong>在 cpp 目录下创建 effect.cpp 文件，来实现 native 方法，并将 CMakeLists.txt 中的配置稍作修改</strong></p>
+<p>CMakeLists.txt</p>
+<pre><code>cmake_minimum_required(VERSION 3.4.1)
+
+set(distribution_DIR ${PROJECT_SOURCE_DIR}../../jniLibs)
+include_directories(src/main/cpp/inc)
+
+add_library( effect
+        SHARED
+        effect.cpp)
+
+add_library( fmod
+        SHARED
+        IMPORTED )
+set_target_properties( fmod
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libfmod.so)
+
+add_library( fmodL
+        SHARED
+        IMPORTED )
+set_target_properties( fmodL
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libfmodL.so )
+
+find_library( 
+        log-lib
+        log)
+
+target_link_libraries( effect
+        fmod
+        fmodL
+        ${log-lib} )
+</code></pre><p>effect.cpp </p>
+<pre><code>
+#include &quot;org_fmod_core_EffectUtils.h&quot;
+#include &quot;inc/fmod.h&quot;
+#include &quot;inc/fmod.hpp&quot;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;android/log.h&gt;
+
+#define LOGI(FORMAT, ...) __android_log_print(ANDROID_LOG_INFO,&quot;FILE_PATCH&quot;,FORMAT,__VA_ARGS__);
+#define LOGE(FORMAT, ...) __android_log_print(ANDROID_LOG_ERROR,&quot;FILE_PATCH&quot;,FORMAT,__VA_ARGS__);
+
+JNIEXPORT void JNICALL Java_org_fmod_core_EffectUtils_effect
+        (JNIEnv *env, jobject jobj, jstring j_file_path, jint j_mode) {
+    //路径转换
+    const char *file_path = env-&gt;GetStringUTFChars(j_file_path, NULL);
+    bool playing = true;
+    //加载音频文件
+    FMOD::System *system;
+    FMOD::Sound *sound;
+    FMOD::Channel *channel;
+    FMOD::DSP *dsp;
+    float frequency;
+    try {
+        //初始化
+        System_Create(&amp;system);
+        system-&gt;init(32, FMOD_INIT_NORMAL, NULL);
+        LOGI(&quot;%s&quot;, file_path);
+        //加载录音文件到 sound
+        system-&gt;createSound(file_path, FMOD_DEFAULT,NULL, &amp;sound);
+        //播放音频文件
+        system-&gt;playSound(sound, 0, false, &amp;channel);
+        //播放过程中实现不同的音效配置
+        //在fmod中，处理音效就是更改channel（音轨）
+        switch (j_mode) {
+            case org_fmod_core_EffectUtils_MODE_NORMAL:
+                //无需处理
+                LOGI(&quot;%s&quot;, &quot;正常播放&quot;);
+
+                break;
+            case org_fmod_core_EffectUtils_MODE_LUOLI:
+                //女声为高声，需要将声音提高
+                //DSP 中定义了一些对声音处理的特效，
+                system-&gt;createDSPByType(FMOD_DSP_TYPE_PITCHSHIFT, &amp;dsp);
+                dsp-&gt;setParameterFloat(FMOD_DSP_PITCHSHIFT_PITCH, 2.5);
+                channel-&gt;addDSP(0, dsp);
+                LOGI(&quot;%s&quot;, &quot;萝莉&quot;)
+                break;
+            case org_fmod_core_EffectUtils_MODE_DASHU:
+                //大神为高声，需要将声音音效降低
+                //DSP 中定义了一些对声音处理的特效，
+                system-&gt;createDSPByType(FMOD_DSP_TYPE_PITCHSHIFT, &amp;dsp);
+                dsp-&gt;setParameterFloat(FMOD_DSP_PITCHSHIFT_PITCH, 0.6);
+                channel-&gt;addDSP(0, dsp);
+                LOGI(&quot;%s&quot;, &quot;大叔&quot;)
+                break;
+            case org_fmod_core_EffectUtils_MODE_GAOGUAI:
+                //搞怪
+                //提高说话的速度
+                channel-&gt;getFrequency(&amp;frequency);
+                frequency = frequency * 1.6;
+                channel-&gt;setFrequency(frequency);
+                LOGI(&quot;%s&quot;, &quot;搞怪&quot;)
+                break;
+            case org_fmod_core_EffectUtils_MODE_KONGLING:
+                //空灵就是产生回声，外加一点低音
+                system-&gt;createDSPByType(FMOD_DSP_TYPE_PITCHSHIFT, &amp;dsp);
+                dsp-&gt;setParameterFloat(FMOD_DSP_PITCHSHIFT_PITCH, 0.9);
+                channel-&gt;addDSP(0, dsp);
+                system-&gt;createDSPByType(FMOD_DSP_TYPE_ECHO, &amp;dsp);
+                dsp-&gt;setParameterFloat(FMOD_DSP_ECHO_DELAY, 350);
+                dsp-&gt;setParameterFloat(FMOD_DSP_ECHO_FEEDBACK, 15);
+                channel-&gt;addDSP(1, dsp);
+                LOGI(&quot;%s&quot;, &quot;空灵&quot;)
+                break;
+            case org_fmod_core_EffectUtils_MODE_JINGSONG:
+                //惊悚
+                system-&gt;createDSPByType(FMOD_DSP_TYPE_TREMOLO, &amp;dsp);
+                dsp-&gt;setParameterFloat(FMOD_DSP_TREMOLO_DEPTH, 0.5);
+                channel-&gt;addDSP(0,dsp);
+                LOGI(&quot;%s&quot;, &quot;惊悚&quot;)
+                break;
+            default:
+                break;
+
+        }
+
+    } catch (...) {
+        LOGE(&quot;%s&quot;, &quot;effect error&quot;);
+        goto end;
+    }
+    //更新状态
+    system-&gt;update();
+    //判断是否在播放
+    while (playing) {
+        LOGI(&quot;%s,%d&quot;, &quot;playing&quot;,playing)
+        channel-&gt;isPlaying(&amp;playing);
+        usleep(1 * 1000 * 1000);
+        LOGI(&quot;%s,%d&quot;, &quot;playing&quot;,playing)
+    }
+
+    goto end;
+    //结束，释放资源
+    end:
+    env-&gt;ReleaseStringUTFChars(j_file_path, file_path);
+    sound-&gt;release();
+    system-&gt;close();
+    system-&gt;release();
+}</code></pre><h3 id="4、附表"><a href="#4、附表" class="headerlink" title="4、附表"></a>4、附表</h3><h4 id="4-1-DSP-TYPE-类型说明"><a href="#4-1-DSP-TYPE-类型说明" class="headerlink" title="4.1 DSP_TYPE 类型说明"></a>4.1 DSP_TYPE 类型说明</h4><p><strong>在创建DSP时，system-&gt;createDSPByType(FMOD_DSP_TYPE_PITCHSHIFT, &amp;dsp);  需要传递FMOD_DSP_TYPE,下面介绍一下DSP_TYPE 类型</strong><br>类型名称 | 说明<br>— | —<br>FMOD_DSP_TYPE_UNKNOWN | 此单元是通过非FMOD插件创建的，因此具有未知目的。<br>FMOD_DSP_TYPE_MIXER | 此单元除了接收输入并将它们混合在一起然后将结果提供给声卡单元之外什么都不做。<br>FMOD_DSP_TYPE_OSCILLATOR | 此单元生成正弦/方波/锯/三角形或噪声音。<br>FMOD_DSP_TYPE_LOWPASS | 此单元使用高质量的谐振低通滤波器算法过滤声音，但消耗更多的CPU时间。已弃用，将在以后的版本中删除（有关替代版本，请参阅FMOD_DSP_LOWPASS备注）。<br>FMOD_DSP_TYPE_ITLOWPASS | 此单元使用脉冲跟踪器中使用的谐振低通滤波器算法过滤声音，但截止范围有限（0到8060hz）。<br>FMOD_DSP_TYPE_HIGHPASS | 此单元使用谐振高通滤波器算法过滤声音。已弃用，将在以后的版本中删除（有关替代版本，请参阅FMOD_DSP_HIGHPASS备注）。<br>FMOD_DSP_TYPE_ECHO | 此单元在声音上产生回声并以所需速率淡出。<br>FMOD_DSP_TYPE_FADER | 此单位平移和缩放单位的音量。<br>FMOD_DSP_TYPE_FLANGE | 此单元对声音产生法兰效果。<br>FMOD_DSP_TYPE_DISTORTION | 此单位扭曲声音。<br>FMOD_DSP_TYPE_NORMALIZE | 此单元将声音标准化或放大到一定水平。<br>FMOD_DSP_TYPE_LIMITER | 此单位将声音限制在一定水平。<br>FMOD_DSP_TYPE_PARAMEQ | 此单元衰减或放大选定的频率范围。已弃用，将在以后的版本中删除（有关替代版本，请参阅FMOD_DSP_PARAMEQ备注）。<br>FMOD_DSP_TYPE_PITCHSHIFT | 此单位在不改变播放速度的情况下弯曲声音的音高。<br>FMOD_DSP_TYPE_CHORUS | 此单位对声音产生合唱效果。<br>FMOD_DSP_TYPE_VSTPLUGIN | 此单元允许使用Steinberg VST插件<br>FMOD_DSP_TYPE_WINAMPPLUGIN | 此单元允许使用Nullsoft Winamp插件<br>FMOD_DSP_TYPE_ITECHO | 此单元在声音上产生回声，并以Impulse Tracker中使用的所需速率淡出。<br>FMOD_DSP_TYPE_COMPRESSOR | 此单元实现动态压缩（链接/非链接多声道，宽带）<br>FMOD_DSP_TYPE_SFXREVERB | 此单元实现SFX混响<br>FMOD_DSP_TYPE_LOWPASS_SIMPLE | 此单元使用简单的低通滤波器进行声音滤波，无谐振，但具有灵活的截止频率且速度快。已弃用，将在以后的版本中删除（有关替代版本，请参阅FMOD_DSP_LOWPASS_SIMPLE备注）。<br>FMOD_DSP_TYPE_DELAY | 此单元在声音的各个声道上产生不同的延迟。<br>FMOD_DSP_TYPE_TREMOLO | 此单元对声音产生颤音/斩波效果。<br>FMOD_DSP_TYPE_LADSPAPLUGIN | 不支持/不推荐使用。<br>FMOD_DSP_TYPE_SEND | 该单元将信号的副本发送到DSP树中任何位置的返回DSP。 * /<br>FMOD_DSP_TYPE_RETURN | 本机接收来自多个发送DSP的信号。<br>FMOD_DSP_TYPE_HIGHPASS_SIMPLE | 此单元使用简单的高通滤波器无声共振，但具有灵活的截止频率且速度快。已弃用，将在以后的版本中删除（有关替代版本，请参阅FMOD_DSP_HIGHPASS_SIMPLE备注）。<br>FMOD_DSP_TYPE_PAN | 此单元平移信号，也可能是上混或下混。<br>FMOD_DSP_TYPE_THREE_EQ | 此单元是三频段均衡器。<br>FMOD_DSP_TYPE_FFT | 该单元简单地分析信号并通过getParameter提供频谱信息。 * /<br>FMOD_DSP_TYPE_LOUDNESS_METER | 此单元分析信号的响度和真峰值。<br>FMOD_DSP_TYPE_ENVELOPEFOLLOWER | 此单元跟踪输入/侧链信号的包络。已弃用，将在以后的版本中删除。<br>FMOD_DSP_TYPE_CONVOLUTIONREVERB | 此单元实现卷积混响。<br>FMOD_DSP_TYPE_CHANNELMIX | 此单元提供每信号通道增益和输出通道映射，以允许由多组信号组成的1个多通道信号映射到单个输出信号。<br>FMOD_DSP_TYPE_TRANSCEIVER | 此单元从最多32个不同的插槽中选择“发送”和“接收”。它就像发送/返回，但它使用全局槽而不是返回作为目标。它还有其他功能。多个收发器可以从单个通道接收，或者多个收发器可以发送到单个通道，或两者的组合。<br>FMOD_DSP_TYPE_OBJECTPAN | 此单元将信号发送到3d对象编码器，如Dolby Atmos。支持FMOD_D的子集</p>
+<h4 id="4-2-DSP-的参数类型"><a href="#4-2-DSP-的参数类型" class="headerlink" title="4.2 DSP 的参数类型"></a>4.2 DSP 的参数类型</h4><p><strong>在设置 DSP 的参数类型时，可在 fmod_dsp_effects.h 头文件中查询对应的 DSP类型，即可看到对应的参数类型</strong></p>
+<p>如：FMOD_DSP_TREMOLO,在头文件中查到如下内容</p>
+<pre><code>typedef enum
+{
+    FMOD_DSP_TREMOLO_FREQUENCY,     /* (Type:float) - LFO frequency in Hz.  0.1 to 20.  Default = 5. */
+    FMOD_DSP_TREMOLO_DEPTH,         /* (Type:float) - Tremolo depth.  0 to 1.  Default = 1. */
+    FMOD_DSP_TREMOLO_SHAPE,         /* (Type:float) - LFO shape morph between triangle and sine.  0 to 1.  Default = 0. */
+    FMOD_DSP_TREMOLO_SKEW,          /* (Type:float) - Time-skewing of LFO cycle.  -1 to 1.  Default = 0. */
+    FMOD_DSP_TREMOLO_DUTY,          /* (Type:float) - LFO on-time.  0 to 1.  Default = 0.5. */
+    FMOD_DSP_TREMOLO_SQUARE,        /* (Type:float) - Flatness of the LFO shape.  0 to 1.  Default = 0. */
+    FMOD_DSP_TREMOLO_PHASE,         /* (Type:float) - Instantaneous LFO phase.  0 to 1.  Default = 0. */
+    FMOD_DSP_TREMOLO_SPREAD         /* (Type:float) - Rotation / auto-pan effect.  -1 to 1.  Default = 0. */
+} FMOD_DSP_TREMOLO;
+</code></pre><table>
+<thead>
+<tr>
+<th>DSP 参数类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FMOD_DSP_TREMOLO_FREQUENCY</td>
+<td>（类型：浮点） - 以Hz为单位的LFO频率。 0.1至20.默认= 5.</td>
+</tr>
+<tr>
+<td>FMOD_DSP_TREMOLO_DEPTH</td>
+<td>（类型：浮点） - 颤音深度。 0到1.默认= 1. * /</td>
+</tr>
+<tr>
+<td>FMOD_DSP_TREMOLO_SHAPE</td>
+<td>（类型：浮点） - 三角形和正弦之间的LFO形状变形。 0到1.默认= 0.</td>
+</tr>
+<tr>
+<td>FMOD_DSP_TREMOLO_SKEW</td>
+<td>（类型：浮点） - LFO周期的时间偏移。 -1到1.默认值= 0.</td>
+</tr>
+<tr>
+<td>FMOD_DSP_TREMOLO_DUTY</td>
+<td>（类型：浮点） - LFO开启时间。 0到1.默认值= 0.5。</td>
+</tr>
+<tr>
+<td>FMOD_DSP_TREMOLO_SQUARE</td>
+<td>（类型：浮点） - LFO形状的平坦度。 0到1.默认= 0.</td>
+</tr>
+<tr>
+<td>FMOD_DSP_TREMOLO_PHASE</td>
+<td>（类型：浮点） - 瞬时LFO相位。 0到1.默认= 0. * / FMOD_DSP_TREMOLO_SPREAD</td>
+</tr>
+</tbody></table>
+<h2 id="项目源码"><a href="#项目源码" class="headerlink" title="项目源码"></a>项目源码</h2><p><a href="https://github.com/onestravel/QQVoiceChange" target="_blank" rel="noopener">QQVoiceChange源码</a></p>
+<p><strong>到此，我们以及实现集成 fmod 的模拟QQ变声项目，效果不是完全一样，但也有7分相似，；自己可研究其他效果，来实现模拟更多的声音特效。</strong></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://blog.onestravel.cn" class="b-link-green">一个人的旅行</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/20190318/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-er/" class="b-link-green">AndroidStudio下集成Fmod，实现仿QQ变声效果（二）</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'a52a65db0a634019e27f',
+        clientSecret: 'a04eaebc103e73d3769221171a4b87b55b39998d',
+        repo: 'onestravel.github.io',
+        owner: 'onestravel',
+        admin: "onestravel",
+        id: '2019-03-18T15-01-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/20190325/android-ndk/ffmpeg-yi-yin-shi-pin-xiang-guan-ji-chu-zhi-shi-yi-ji-ffmpeg-jie-shao-yu-bian-yi/">
+                    <div class="card-image">
+                        
+                        <img src="/images/20190325/ffmpeg_start.jpg" class="responsive-img" alt="【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍">
+                        
+                        <span class="card-title">【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    
+                            <div class="summary block-with-text">【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍一、音视频相关基础知识1、视频播放器原理视频播放器就是将一个封装的格式数据进行解封装，得到对应的音频压缩数据和视频压缩数据，再进行相应的音视频解码，得到音频采样数据和视频采样数据</div>
+                    
+                    
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-25
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android-NDK/" class="post-category" target="_blank">
+                                    Android/NDK
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android-NDK/" target="_blank">
+                        <span class="chip bg-color">Android/NDK</span>
+                    </a>
+                    
+                    <a href="/tags/FFmpeg/" target="_blank">
+                        <span class="chip bg-color">FFmpeg</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/20190310/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-yi/">
+                    <div class="card-image">
+                        
+                        <img src="/images/20190310/fmod-player.jpg" class="responsive-img" alt="AndroidStudio下集成Fmod，实现仿QQ变声效果（一）">
+                        
+                        <span class="card-title">AndroidStudio下集成Fmod，实现仿QQ变声效果（一）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    
+                            <div class="summary block-with-text">AndroidStudio下集成Fmod，实现仿QQ变声效果前言在使用QQ的时候，我们会发现有一个炫酷的功能，那就是变声，效果图如下;其实QQ变声效果就是使用了Fmod声音引擎，通过NDK的开发，来实现对声音的变换。今天我们先进行一下QQ变</div>
+                    
+                    
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android-NDK/" class="post-category" target="_blank">
+                                    Android/NDK
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android-NDK/" target="_blank">
+                        <span class="chip bg-color">Android/NDK</span>
+                    </a>
+                    
+                    <a href="/tags/Fmod/" target="_blank">
+                        <span class="chip bg-color">Fmod</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 一个人的旅行<br />'
+            + '作者: onestravel<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy; <a href="https://blog.onestravel.cn/" target="_blank">一个人的旅行</a> 基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a> 的主题搭建.
+
+            
+            <br/>
+            &copy;2018-2020  onestravel.cn 版权所有  ICP证：<a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备20009541号</a>
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/onestravel" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:server@onestravel.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1130007032" class="tooltipped" data-tooltip="QQ联系我: 1130007032" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-145377665-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-145377665-1');
+</script>
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
