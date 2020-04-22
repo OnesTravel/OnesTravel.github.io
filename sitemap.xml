@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.onestravel.cn/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/</loc>
+    
+    <lastmod>2020-04-22T03:59:27.893Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20181225/android-ndk/kotlin-yu-yan-ji-yu-mvp-retrofit-rxjava-feng-zhuang-de-android-xiang-mu-de-ji-chu-yi-lai-ku/</loc>
+    
+    <lastmod>2020-04-22T03:59:18.176Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20190130/android-ndk/bottomnavigationbar-ke-yi-tu-qi-de-dao-hang-cai-dan/</loc>
+    
+    <lastmod>2020-04-22T03:59:05.675Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20190318/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-er/</loc>
+    
+    <lastmod>2020-04-22T03:58:37.445Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.onestravel.cn/20200320/android-ndk/fivefivevideoplayer-shi-yi-ge-ke-yi-gao-du-zi-ding-yi-de-shi-pin-bo-fang-qi/</loc>
     
     <lastmod>2020-04-22T02:59:47.989Z</lastmod>
@@ -12,13 +40,6 @@
     <loc>https://blog.onestravel.cn/20200403/android-ndk/glide-4.11.0-qian-xi/</loc>
     
     <lastmod>2020-04-22T02:50:40.009Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/</loc>
-    
-    <lastmod>2020-04-17T01:32:54.397Z</lastmod>
     
   </url>
   
@@ -72,13 +93,6 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20161009/linux/linux-yong-hu-yong-hu-zu-tian-jia-xiu-gai-shan-chu-ubuntu-centos/</loc>
-    
-    <lastmod>2020-03-30T03:14:16.748Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.onestravel.cn/20180619/linux/centos-7-huan-jing-pei-zhi/</loc>
     
     <lastmod>2020-03-30T03:14:16.748Z</lastmod>
@@ -86,9 +100,9 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20181207/kotlin/er-kotlin-mian-xiang-dui-xiang/</loc>
+    <loc>https://blog.onestravel.cn/20161009/linux/linux-yong-hu-yong-hu-zu-tian-jia-xiu-gai-shan-chu-ubuntu-centos/</loc>
     
-    <lastmod>2020-03-30T03:14:16.747Z</lastmod>
+    <lastmod>2020-03-30T03:14:16.748Z</lastmod>
     
   </url>
   
@@ -107,14 +121,21 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20181210/kotlin/wu-xie-cheng-coroutine/</loc>
+    <loc>https://blog.onestravel.cn/20181211/kotlin/liu-kotlin-yu-java-hun-he-kai-fa/</loc>
     
     <lastmod>2020-03-30T03:14:16.747Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20181211/kotlin/liu-kotlin-yu-java-hun-he-kai-fa/</loc>
+    <loc>https://blog.onestravel.cn/20181207/kotlin/er-kotlin-mian-xiang-dui-xiang/</loc>
+    
+    <lastmod>2020-03-30T03:14:16.747Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20181210/kotlin/wu-xie-cheng-coroutine/</loc>
     
     <lastmod>2020-03-30T03:14:16.747Z</lastmod>
     
@@ -128,14 +149,14 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180522/jenkins/zi-dong-hua-gou-jian-android-xiang-mu-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-er/</loc>
+    <loc>https://blog.onestravel.cn/20180612/jenkins/pei-zhi-xiang-mu-gou-jian-wan-cheng-hou-you-jian-tong-zhi-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-si/</loc>
     
     <lastmod>2020-03-30T03:14:16.745Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180612/jenkins/pei-zhi-xiang-mu-gou-jian-wan-cheng-hou-you-jian-tong-zhi-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-si/</loc>
+    <loc>https://blog.onestravel.cn/20180522/jenkins/zi-dong-hua-gou-jian-android-xiang-mu-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-er/</loc>
     
     <lastmod>2020-03-30T03:14:16.745Z</lastmod>
     
@@ -149,7 +170,7 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180509/java/cong-ling-kai-shi-shi-yong-intellij-idea-chuang-jian-springboot-xiang-mu/</loc>
+    <loc>https://blog.onestravel.cn/20180615/jenkins/zai-linux-shang-pei-zhi-android-zi-dong-hua-gou-jian-huan-jing/</loc>
     
     <lastmod>2020-03-30T03:14:16.744Z</lastmod>
     
@@ -163,7 +184,7 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180615/jenkins/zai-linux-shang-pei-zhi-android-zi-dong-hua-gou-jian-huan-jing/</loc>
+    <loc>https://blog.onestravel.cn/20180509/java/cong-ling-kai-shi-shi-yong-intellij-idea-chuang-jian-springboot-xiang-mu/</loc>
     
     <lastmod>2020-03-30T03:14:16.744Z</lastmod>
     
@@ -191,13 +212,6 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180925/jni/san-jni-yin-yong-yi-chang-chu-li-he-huan-cun-ce-lue/</loc>
-    
-    <lastmod>2020-03-30T03:14:16.740Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.onestravel.cn/20180920/jni/er-jni-de-shu-ju-lei-xing-yi-ji-c-fang-wen-java-shu-xing-he-fang-fa/</loc>
     
     <lastmod>2020-03-30T03:14:16.740Z</lastmod>
@@ -205,14 +219,14 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20161009/h5/html5-li-yong-appcache-he-localstorage-shi-xian-huan-cun-h5-ye-mian-shu-ju/</loc>
+    <loc>https://blog.onestravel.cn/20180925/jni/san-jni-yin-yong-yi-chang-chu-li-he-huan-cun-ce-lue/</loc>
     
-    <lastmod>2020-03-30T03:14:16.739Z</lastmod>
+    <lastmod>2020-03-30T03:14:16.740Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20171020/h5/github-yu-ming-da-jian-ge-ren-zhu-ye-ge-ren-bo-ke/</loc>
+    <loc>https://blog.onestravel.cn/20161009/h5/html5-li-yong-appcache-he-localstorage-shi-xian-huan-cun-h5-ye-mian-shu-ju/</loc>
     
     <lastmod>2020-03-30T03:14:16.739Z</lastmod>
     
@@ -233,6 +247,20 @@
   </url>
   
   <url>
+    <loc>https://blog.onestravel.cn/20171020/h5/github-yu-ming-da-jian-ge-ren-zhu-ye-ge-ren-bo-ke/</loc>
+    
+    <lastmod>2020-03-30T03:14:16.739Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20180903/c-c/si-c-yu-yan-zhi-jie-gou-ti/</loc>
+    
+    <lastmod>2020-03-30T03:14:16.738Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.onestravel.cn/20181123/c-c/liu-c-zhong-de-lei-xing-zhuan-huan-io-liu-yu-stl-biao-zhun-mo-ban-ku/</loc>
     
     <lastmod>2020-03-30T03:14:16.738Z</lastmod>
@@ -247,21 +275,7 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180903/c-c/si-c-yu-yan-zhi-jie-gou-ti/</loc>
-    
-    <lastmod>2020-03-30T03:14:16.738Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.onestravel.cn/20181015/c-c/er-c-zhong-de-lei-yu-gou-zao-han-shu/</loc>
-    
-    <lastmod>2020-03-30T03:14:16.737Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20181103/c-c/wu-c-zhong-de-yi-chang-chu-li-yu-mo-ban-lei/</loc>
     
     <lastmod>2020-03-30T03:14:16.737Z</lastmod>
     
@@ -275,6 +289,13 @@
   </url>
   
   <url>
+    <loc>https://blog.onestravel.cn/20181103/c-c/wu-c-zhong-de-yi-chang-chu-li-yu-mo-ban-lei/</loc>
+    
+    <lastmod>2020-03-30T03:14:16.737Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.onestravel.cn/20180910/c-c/wu-c-yu-yan-zhi-lian-he-ti-mei-ju-yu-io/</loc>
     
     <lastmod>2020-03-30T03:14:16.737Z</lastmod>
@@ -282,14 +303,7 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180930/c-c/yi-c-ming-ming-kong-jian-ji-yin-yong/</loc>
-    
-    <lastmod>2020-03-30T03:14:16.736Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20180825/c-c/yi-c-yu-yan-zhi-ji-ben-shu-ju-lei-xing-shu-ru-shu-chu-zhi-zhen/</loc>
+    <loc>https://blog.onestravel.cn/20180901/c-c/san-c-yu-yan-zhi-zi-fu-chuan-yu-zi-fu-chuan-han-shu/</loc>
     
     <lastmod>2020-03-30T03:14:16.736Z</lastmod>
     
@@ -303,7 +317,14 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180901/c-c/san-c-yu-yan-zhi-zi-fu-chuan-yu-zi-fu-chuan-han-shu/</loc>
+    <loc>https://blog.onestravel.cn/20180930/c-c/yi-c-ming-ming-kong-jian-ji-yin-yong/</loc>
+    
+    <lastmod>2020-03-30T03:14:16.736Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20180825/c-c/yi-c-yu-yan-zhi-ji-ben-shu-ju-lei-xing-shu-ru-shu-chu-zhi-zhen/</loc>
     
     <lastmod>2020-03-30T03:14:16.736Z</lastmod>
     
@@ -331,20 +352,6 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20190130/android-ndk/bottomnavigationbar-ke-yi-tu-qi-de-dao-hang-cai-dan/</loc>
-    
-    <lastmod>2020-03-30T03:14:16.734Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20181225/android-ndk/kotlin-yu-yan-ji-yu-mvp-retrofit-rxjava-feng-zhuang-de-android-xiang-mu-de-ji-chu-yi-lai-ku/</loc>
-    
-    <lastmod>2020-03-30T03:14:16.734Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.onestravel.cn/20190301/android-ndk/androidstudio-xia-jin-xing-ndk-kai-fa/</loc>
     
     <lastmod>2020-03-30T03:14:16.733Z</lastmod>
@@ -353,13 +360,6 @@
   
   <url>
     <loc>https://blog.onestravel.cn/20190310/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-yi/</loc>
-    
-    <lastmod>2020-03-30T03:14:16.733Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20190318/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-er/</loc>
     
     <lastmod>2020-03-30T03:14:16.733Z</lastmod>
     

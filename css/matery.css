@@ -313,7 +313,7 @@ header .side-nav .social-link {
 
 .cover-btns {
     position: relative;
-    top: 10vh;
+    top: 5vh;
     text-align: center;
 }
 
@@ -343,7 +343,7 @@ header .side-nav .social-link {
 
 .cover-social-link {
     position: relative;
-    top: 18vh;
+    top: 10vh;
     text-align: center;
 }
 
@@ -383,7 +383,7 @@ header .go-back i {
 }
 
 .index-cover {
-    height: 100vh;
+    height: 75vh;
 }
 
 .post-cover {
@@ -391,8 +391,8 @@ header .go-back i {
 }
 
 .bg-cover:after {
-    -webkit-animation: rainbow 60s infinite;
-    animation: rainbow 60s infinite;
+    -webkit-animation: rainbow 3600s infinite;
+    animation: rainbow 3600s infinite;
 }
 
 .bg-cover:before, .bg-cover:after {

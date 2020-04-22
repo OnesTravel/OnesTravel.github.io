@@ -302,13 +302,6 @@
 
 <div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
     
-    <div id="prev-cover" class="left waves-effect carousel-control">
-        <i class="icon fa fa-angle-left"></i>
-    </div>
-    <div id="next-cover" class="right waves-effect carousel-control">
-        <i class="icon fa fa-angle-right"></i>
-    </div>
-    
 
     <div class="carousel-item red white-text bg-cover about-cover">
         <div class="container">
@@ -372,115 +365,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDat
     </div>
 
     
-    
-
-    
-    
-    <div class="carousel-item amber white-text carousel-post bg-cover"
-            style="background-image: url('/images/20190318/qq_voice_change.jpg');">
-        <div class="container">
-            <div class="row">
-                <div class="col s10 offset-s1">
-                    
-                        <div class="title center-align">Fmod实现仿QQ变声效果</div>
-                    
-
-                    
-                    <div class="description center-align">
-                    
-                        AndroidStudio下集成Fmod，实现仿QQ变声效果（二）前言前一篇博客，我们简单了解了一下 fmod 音频引擎，实现了使用 fmod 来进行音频播放，今天我们在上一个项目的基础上来实现仿QQ变声的效果
-一、Android 布局及点
-                    
-                    </div>
-                    <div class="cover-btns">
-                        <a href="/20190318/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-er/" class="waves-effect waves-light btn" target="_blank">
-                            <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="carousel-item amber white-text carousel-post bg-cover"
-            style="background-image: url('/images/20190130/bottomnavigationbar.png');">
-        <div class="container">
-            <div class="row">
-                <div class="col s10 offset-s1">
-                    
-                        <div class="title center-align">BottomNavigationBar 导航菜单</div>
-                    
-
-                    
-                    <div class="description center-align">
-                    
-                        BottomNavigationBar 是自定义的一个可以实现App应用底部导航栏某一个菜单凸起的功能的View，可以设置不同图标，颜色和未读消息数（小红点）；也可以设置凸起的高度（不超过导航栏高度的1/2）。
-                    
-                    </div>
-                    <div class="cover-btns">
-                        <a href="/20190130/android-ndk/bottomnavigationbar-ke-yi-tu-qi-de-dao-hang-cai-dan/" class="waves-effect waves-light btn" target="_blank">
-                            <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="carousel-item amber white-text carousel-post bg-cover"
-            style="background-image: url('/images/20190825/oneactionBar.png');">
-        <div class="container">
-            <div class="row">
-                <div class="col s10 offset-s1">
-                    
-                        <div class="title center-align">OneActionBar 通用标题头</div>
-                    
-
-                    
-                    <div class="description center-align">
-                    
-                        自定义ActionBar，支持属性，java代码方式配置，可实现标题，标题带返回键，搜索，搜索带返回键的ActionBar。
-                    
-                    </div>
-                    <div class="cover-btns">
-                        <a href="/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/" class="waves-effect waves-light btn" target="_blank">
-                            <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="carousel-item amber white-text carousel-post bg-cover"
-            style="background-image: url('/images/20181225/android-kotlin.png');">
-        <div class="container">
-            <div class="row">
-                <div class="col s10 offset-s1">
-                    
-                        <div class="title center-align">Kotlin+Mvp+Retrofit+RxJava封装</div>
-                    
-
-                    
-                    <div class="description center-align">
-                    
-                        主要针对使用 Kotlin 语言开发Android项目，使用 MVP+Retrofit+RxJava 架构封装的一些基础类（Activity/ListActivity,Fragment/ListFragment,Adapter），供开发时依赖使用，缩短项目准备时间。
-                    
-                    </div>
-                    <div class="cover-btns">
-                        <a href="/20181225/android-ndk/kotlin-yu-yan-ji-yu-mvp-retrofit-rxjava-feng-zhuang-de-android-xiang-mu-de-ji-chu-yi-lai-ku/" class="waves-effect waves-light btn" target="_blank">
-                            <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
 </div>
 
 <script>
@@ -489,37 +373,16 @@ $(function () {
     coverSlider.carousel({
         duration: Number('120'),
         fullWidth: true,
-        indicators: 'true' === 'true'
+        indicators: 'false' === 'true'
     });
 
     let carouselIntervalId;
     
-    // Loop to call the next cover article picture.
-    let autoCarousel = function() {
-        carouselIntervalId = setInterval(function () {
-            coverSlider.carousel('next');
-        }, 5000);
-    };
-    autoCarousel();
-    
 
     let restartPlay = function () {
         
-        clearInterval(carouselIntervalId);
-        autoCarousel();
-        
     };
 
-    
-    // prev and next cover post.
-    $('#prev-cover').click(function () {
-        coverSlider.carousel('prev');
-        restartPlay();
-    });
-    $('#next-cover').click(function () {
-        coverSlider.carousel('next');
-        restartPlay();
-    });
     
 });
 </script>
@@ -553,6 +416,31 @@ $(function () {
     
     
     <div class="col s12 m6" >
+        <div class="post-card" style="background-image: url('/images/20190130/bottomnavigationbar.png')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                    <a href="/categories/Android-NDK/" class="category" target="_blank">Android/NDK</a>
+                    
+                </div>
+                <a href="/20190130/android-ndk/bottomnavigationbar-ke-yi-tu-qi-de-dao-hang-cai-dan/" target="_blank">
+                    <h3 class="post-title">BottomNavigationBar 导航菜单</h3>
+                </a>
+                <p class="post-description">
+                    
+                        BottomNavigationBar 是自定义的一个可以实现App应用底部导航栏某一个菜单凸起的功能的View，可以设置不同图标，颜色和未读消息数（小红点）；也可以设置凸起的高度（不超过导航栏高度的1/2）。
+                    
+                </p>
+                <a href="/20190130/android-ndk/bottomnavigationbar-ke-yi-tu-qi-de-dao-hang-cai-dan/" target="_blank"
+                        class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" >
         <div class="post-card" style="background-image: url('/images/2020-03-20/full_screen.gif')">
             <div class="post-body">
                 <div class="post-categories">
@@ -570,31 +458,6 @@ $(function () {
                     
                 </p>
                 <a href="/20200320/android-ndk/fivefivevideoplayer-shi-yi-ge-ke-yi-gao-du-zi-ding-yi-de-shi-pin-bo-fang-qi/" target="_blank"
-                        class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
-                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" >
-        <div class="post-card" style="background-image: url('/images/20190130/bottomnavigationbar.png')">
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                    <a href="/categories/Android-NDK/" class="category" target="_blank">Android/NDK</a>
-                    
-                </div>
-                <a href="/20190130/android-ndk/bottomnavigationbar-ke-yi-tu-qi-de-dao-hang-cai-dan/" target="_blank">
-                    <h3 class="post-title">BottomNavigationBar 导航菜单</h3>
-                </a>
-                <p class="post-description">
-                    
-                        BottomNavigationBar 是自定义的一个可以实现App应用底部导航栏某一个菜单凸起的功能的View，可以设置不同图标，颜色和未读消息数（小红点）；也可以设置凸起的高度（不超过导航栏高度的1/2）。
-                    
-                </p>
-                <a href="/20190130/android-ndk/bottomnavigationbar-ke-yi-tu-qi-de-dao-hang-cai-dan/" target="_blank"
                         class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)">
                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                 </a>
