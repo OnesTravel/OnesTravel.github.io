@@ -1,1270 +1,1558 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
-
-
+<!DOCTYPE html>
+<html  lang="zh-CN" >
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="一个人的旅行">
-    <meta name="description" content="一个人的旅行">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>一个人的旅行</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#fff" id="theme-color">
+  <meta name="description" content="冰冻三尺，非一日之寒；为山九仞，岂一日之功；不忘初心，方得始终！">
+  <link rel="icon" href="/favicon.png">
+  <title>一个人的旅行</title>
+  
+  
+  <meta property="og:title" content="一个人的旅行">
+  
+  
+  <meta property="og:url" content="https://blog.onestravel.cn/index.html">
+  
+  
+  <meta property="og:img" content="/medias/avatar.jpg">
+  
+  
+  <meta property="og:img" content="冰冻三尺，非一日之寒；为山九仞，岂一日之功；不忘初心，方得始终！">
+  
+  
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+    var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+      }
+    };
+    setDarkmode();
+  </script>
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  </script>
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+  <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+  <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  <link rel="prefetch" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" as="script">
+  
+  
+  
+  <link rel="prefetch" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" as="script">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/main.css">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
-    <style type="text/css">
-        
-    </style>
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
 
-    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+
+  
+  
 <meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
-
-<header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">一个人的旅行</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
-<ul class="right">
+  <div class="wrapper">
     
-    <li class="hide-on-med-and-down">
-        <a href="/" class="waves-effect waves-light">
-            
-            <i class="fa fa-home"></i>
-            
-            <span>首页</span>
-        </a>
-    </li>
+    <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
+      
+      <img class="navbar-logo-img" src="/favicon.png" alt="logo">
+      
+      <span class="navbar-logo-dsc">一个人的旅行</span>
+    </span>
+  </div>
+  <div class="navbar-menu">
     
-    <li class="hide-on-med-and-down">
-        <a href="/tags" class="waves-effect waves-light">
-            
-            <i class="fa fa-tags"></i>
-            
-            <span>标签</span>
-        </a>
-    </li>
+    <a href="/" class="navbar-menu-item">
     
-    <li class="hide-on-med-and-down">
-        <a href="/categories" class="waves-effect waves-light">
-            
-            <i class="fa fa-bookmark"></i>
-            
-            <span>分类</span>
-        </a>
-    </li>
+    首页
     
-    <li class="hide-on-med-and-down">
-        <a href="/archives" class="waves-effect waves-light">
-            
-            <i class="fa fa-archive"></i>
-            
-            <span>归档</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
-        <a href="/about" class="waves-effect waves-light">
-            
-            <i class="fa fa-user-circle-o"></i>
-            
-            <span>关于</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
-        </a>
-    </li>
-</ul>
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">一个人的旅行</div>
-        <div class="logo-desc">
-            
-            冰冻三尺，非一日之寒；为山九仞，岂一日之功；不忘初心，方得始终！
-            
-        </div>
-    </div>
-
-    
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li>
-            <a href="/" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-home"></i>
-                
-                首页
-            </a>
-        </li>
-        
-        <li>
-            <a href="/tags" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-tags"></i>
-                
-                标签
-            </a>
-        </li>
-        
-        <li>
-            <a href="/categories" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-bookmark"></i>
-                
-                分类
-            </a>
-        </li>
-        
-        <li>
-            <a href="/archives" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-archive"></i>
-                
-                归档
-            </a>
-        </li>
-        
-        <li>
-            <a href="/about" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-user-circle-o"></i>
-                
-                关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                友情链接
-            </a>
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/onestravel" class="waves-effect waves-light" target="_blank">
-                <i class="fa fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
-    </ul>
-</div>
-
-        </div>
-
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #519afe;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/onestravel" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
-
-</header>
-
-
-<style>
-    .carousel-control {
-        width: 45px;
-        height: 45px;
-        line-height: 55px;
-        border-radius: 45px;
-        background: transparent;
-        cursor: pointer;
-        z-index: 100;
-    }
-
-    #prev-cover {
-        position: absolute;
-        top: 48%;
-        left: 8px;
-    }
-
-    #next-cover {
-        position: absolute;
-        top: 48%;
-        right: 8px;;
-    }
-
-    #prev-cover i {
-        margin-right: 3px;
-    }
-
-    #next-cover i {
-        margin-left: 3px;
-    }
-
-    .carousel-control:hover {
-        background-color:rgba(0, 0, 0, .4);
-    }
-
-    .carousel-control i {
-        color: #fff;
-        font-size: 2.4rem;
-    }
-</style>
-
-
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                    一个人的旅行
-                
-            </div>
-
-            <div class="description center-align">
-                
-                    冰冻三尺，非一日之寒；为山九仞，岂一日之功；不忘初心，方得始终！
-                
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-// 每天切换 banner 图.  Switch banner image every day.
-$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDate() + '.jpg)');
-</script>
-
-            <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>开始阅读
-                </a>
-
-                
-                <a href="https://github.com/onestravel" class="waves-effect waves-light btn" target="_blank">
-                    <i class="fa fa-github-alt"></i>Github
-                </a>
-                
-            </div>
-            <div class="cover-social-link">
-    <a href="https://github.com/onestravel" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
     </a>
-
-
-
-    <a href="mailto:server@onestravel.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
+    
+    <a href="/archives" class="navbar-menu-item">
+    
+    归档
+    
     </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1130007032" class="tooltipped" data-tooltip="QQ联系我: 1130007032" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
+    
+    <a href="/tags" class="navbar-menu-item">
+    
+    标签
+    
     </a>
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fa fa-rss"></i>
+    
+    <a href="/categories" class="navbar-menu-item">
+    
+    分类
+    
     </a>
-</div>
-        </div>
+    
+    <a href="/about" class="navbar-menu-item">
+    
+    关于
+    
+    </a>
+    
+    <a href="/friends" class="navbar-menu-item">
+    
+    友链
+    
+    </a>
+    
+    <a class="navbar-menu-item darknavbar" id="dark"><i class="iconfont icon-weather"></i></a>
+    <a class="navbar-menu-item searchnavbar" id="search"><i class="iconfont icon-search" style="font-size: 1.2rem; font-weight: 400;"></i></a>
+  </div>
+</nav>
+    
+    <div id="local-search" style="display: none;">
+      <input class="navbar-menu-item" id="search-input" placeholder="请输入搜索内容...">
+      <div id="search-content"></div>
     </div>
-
     
-</div>
+    <div class="section-wrap">
+      <div class="container">
+        <div class="columns">
+          <main class="main-column">
+<div class="card">
+  
+  <article class="card card-content">
+    <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/">
+      <h1 class="post-title">
+        Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      【笔记四】编译插桩操纵字节码，实现不可能完成的任务根据之前学习的class 字节码文件的解析，接下来在此基础上进行一些更深入的操作，来加深对 class 字节码文件的理解。
+相信做过 Android 开发的工程师大多都遇到过这种需求：
 
-<script>
-$(function () {
-    let coverSlider = $('.carousel');
-    coverSlider.carousel({
-        duration: Number('120'),
-        fullWidth: true,
-        indicators: 'false' === 'true'
-    });
-
-    let carouselIntervalId;
-    
-
-    let restartPlay = function () {
+记录每一个页面的打开和关闭事件，并通过各种 DataTr...
+      
+    </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2020-08-19T06:41:23.578Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2020-08-19</span>
+        </time>
         
-    };
-
-    
-});
-</script>
-
-
-
-<main class="content">
-
-    
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
-
-                    
-
-                    
-
-                    <div id="recommend-sections" class="recommend">
-                        
-
-
-
-
-
-<div class="title"><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;推荐文章</div>
-
-<div class="row">
-
-    
-    
-    <div class="col s12 m6" >
-        <div class="post-card" style="background-image: url('/images/20190130/bottomnavigationbar.png')">
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                    <a href="/categories/Android-NDK/" class="category" target="_blank">Android/NDK</a>
-                    
-                </div>
-                <a href="/20190130/android-ndk/bottomnavigationbar-ke-yi-tu-qi-de-dao-hang-cai-dan/" target="_blank">
-                    <h3 class="post-title">BottomNavigationBar 导航菜单</h3>
-                </a>
-                <p class="post-description">
-                    
-                        BottomNavigationBar 是自定义的一个可以实现App应用底部导航栏某一个菜单凸起的功能的View，可以设置不同图标，颜色和未读消息数（小红点）；也可以设置凸起的高度（不超过导航栏高度的1/2）。
-                    
-                </p>
-                <a href="/20190130/android-ndk/bottomnavigationbar-ke-yi-tu-qi-de-dao-hang-cai-dan/" target="_blank"
-                        class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
-                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
+      </div>
+      <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/">继续阅读 </a>
     </div>
-    
-    
-    <div class="col s12 m6" >
-        <div class="post-card" style="background-image: url('/images/2020-03-20/full_screen.gif')">
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                    <a href="/categories/Android-NDK/" class="category" target="_blank">Android/NDK</a>
-                    
-                </div>
-                <a href="/20200320/android-ndk/fivefivevideoplayer-shi-yi-ge-ke-yi-gao-du-zi-ding-yi-de-shi-pin-bo-fang-qi/" target="_blank">
-                    <h3 class="post-title">FiveFiveVideoPlayer 一个可以高度自定义的播放器</h3>
-                </a>
-                <p class="post-description">
-                    
-                        FiveFiveVideoPlayer 是一个可以高度自定义的播放器，手势改变亮度，音量，进度；支持调整倍速；可以轻松实现全屏视频播放，列表视频播放，小窗口视频播放.
-
-                    
-                </p>
-                <a href="/20200320/android-ndk/fivefivevideoplayer-shi-yi-ge-ke-yi-gao-du-zi-ding-yi-de-shi-pin-bo-fang-qi/" target="_blank"
-                        class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)">
-                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        <div class="post-card" style="background-image: url('/images/20190825/oneactionBar.png')">
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                    <a href="/categories/Android-NDK/" class="category" target="_blank">Android/NDK</a>
-                    
-                </div>
-                <a href="/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/" target="_blank">
-                    <h3 class="post-title">OneActionBar 通用标题头</h3>
-                </a>
-                <p class="post-description">
-                    
-                        自定义ActionBar，支持属性，java代码方式配置，可实现标题，标题带返回键，搜索，搜索带返回键的ActionBar。
-                    
-                </p>
-                <a href="/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/" target="_blank"
-                        class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)">
-                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        <div class="post-card" style="background-image: url('/images/20181225/android-kotlin.png')">
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                    <a href="/categories/Android-NDK/" class="category" target="_blank">Android/NDK</a>
-                    
-                    <a href="/categories/Android-NDK/Kotlin/" class="category" target="_blank">Kotlin</a>
-                    
-                </div>
-                <a href="/20181225/android-ndk/kotlin-yu-yan-ji-yu-mvp-retrofit-rxjava-feng-zhuang-de-android-xiang-mu-de-ji-chu-yi-lai-ku/" target="_blank">
-                    <h3 class="post-title">Kotlin语言基于Mvp+Retrofit+RxJava封装的Android项目的基础依赖库</h3>
-                </a>
-                <p class="post-description">
-                    
-                        主要针对使用 Kotlin 语言开发Android项目，使用 MVP+Retrofit+RxJava 架构封装的一些基础类（Activity/ListActivity,Fragment/ListFragment,Adapter），供开发时依赖使用，缩短项目准备时间。
-                    
-                </p>
-                <a href="/20181225/android-ndk/kotlin-yu-yan-ji-yu-mvp-retrofit-rxjava-feng-zhuang-de-android-xiang-mu-de-ji-chu-yi-lai-ku/" target="_blank"
-                        class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)">
-                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-
+  </article>
 </div>
 
-
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="card">
+  
+  <article class="card card-content">
+    <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/">
+      <h1 class="post-title">
+        Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      【笔记三】字节码层面分析 class 文件结构1. class 的来龙去脉Java 能够实现“一次编译，到处运行”，这其中 class 文件要占大部分功劳；为了让 Java 具有良好的跨平台能力，Java 独具匠心的提供了一种可以在所有平台上都能使用的一种中间代码—字节码类文件（.c...
+      
     </div>
-    
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2020-08-17T03:09:43.525Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2020-08-17</span>
+        </time>
+        
+      </div>
+      <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/">继续阅读 </a>
+    </div>
+  </article>
+</div>
 
-    
+<div class="card">
+  
+  <article class="card card-content">
+    <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/">
+      <h1 class="post-title">
+        Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      【笔记二】GC 回收机制和分代回收策略垃圾回收（Garbage Collection，简写为: GC）是 Java 开发者最关注的一块知识点。Java 语言开发者比 C 语言开发者幸福的地方就在于，不需要手动释放对象的内存，JVM 中的垃圾回收器（Garbage Collector）会为我们自...
+      
+    </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2020-07-19T10:18:47.870Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2020-07-19</span>
+        </time>
+        
+      </div>
+      <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/">继续阅读 </a>
+    </div>
+  </article>
+</div>
 
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20200403/android-ndk/glide-4.11.0-qian-xi/">
-                        <div class="card-image">
-                            
-                            <img src="/images/2020-04-03/glide.jpg" class="responsive-img" alt="Glide-4.11.0 浅析">
-                            
-                            <span class="card-title">Glide-4.11.0 浅析</span>
-                        </div>
-                    </a>
+<div class="card">
+  
+  <article class="card card-content">
+    <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/">
+      <h1 class="post-title">
+        Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      【笔记一】Java程序运行时，内存是如何分配的Java 虚拟机在执行Java 程序的过程中，会把它所管理的内存划分为不同的数据区域；主要分为：程序计数器、虚拟机栈、本地方法栈、堆、方法区。
+下图描述一个 HelloWord.java 文件被加载到内存的过程：
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                今天我们来阅读一下Glide的源码，了解一下Glide 加载图标的原理，我们今天阅读的Glide源码是Glide:4.11.0版本的，是当前最新版本
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-03
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Android-NDK/" class="post-category" target="_blank">
-                                    Android/NDK
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+HelloWord.java 首...
+      
+    </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2020-07-18T01:59:38.950Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2020-07-18</span>
+        </time>
+        
+      </div>
+      <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/">继续阅读 </a>
+    </div>
+  </article>
+</div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Android-NDK/" target="_blank">
-                            <span class="chip bg-color">Android/NDK</span>
-                        </a>
-                        
-                        <a href="/tags/glide/" target="_blank">
-                            <span class="chip bg-color">glide</span>
-                        </a>
-                        
-                        <a href="/tags/code/" target="_blank">
-                            <span class="chip bg-color">code</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20200320/android-ndk/fivefivevideoplayer-shi-yi-ge-ke-yi-gao-du-zi-ding-yi-de-shi-pin-bo-fang-qi/">
-                        <div class="card-image">
-                            
-                            <img src="/images/2020-03-20/full_screen.gif" class="responsive-img" alt="FiveFiveVideoPlayer 一个可以高度自定义的播放器">
-                            
-                            <span class="card-title">FiveFiveVideoPlayer 一个可以高度自定义的播放器</span>
-                        </div>
-                    </a>
+<div class="card">
+  
+  <article class="card card-content">
+    <a href="/20200626/java/bing-fa-bian-cheng/bi-ji-yi-bing-fa-bian-cheng-xian-cheng-ji-chu/">
+      <h1 class="post-title">
+        java/并发编程/笔记一【并发编程】线程基础
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      【并发编程】线程基础一. 实现线程的方式1. 为何说只有一种实现线程的方式1.1 常见的实现线程的方式1.1.1 继承Thread类继承 Thread 类，并重写其中的 run() 方法。
+public class DemoThread extends Thread {
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                FiveFiveVideoPlayer 是一个可以高度自定义的播放器，手势改变亮度，音量，进度；支持调整倍速；可以轻松实现全屏视频播放，列表视频播放，小窗口视频播放.
+    @Overr...
+      
+    </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2020-06-26T14:56:23.285Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2020-06-26</span>
+        </time>
+        
+      </div>
+      <a href="/20200626/java/bing-fa-bian-cheng/bi-ji-yi-bing-fa-bian-cheng-xian-cheng-ji-chu/">继续阅读 </a>
+    </div>
+  </article>
+</div>
 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Android-NDK/" class="post-category" target="_blank">
-                                    Android/NDK
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+<div class="card">
+  
+  <a href="/20200403/android-ndk/glide-4.11.0-qian-xi/" class="image-wrapper" aria-label="thumbnail">
+    <img src="/images/2020-04-03/glide.jpg" data-src="/images/2020-04-03/glide.jpg"
+      srcset="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E"
+      class="image lozad">
+  </a>
+  
+  <article class="card card-content">
+    <a href="/20200403/android-ndk/glide-4.11.0-qian-xi/">
+      <h1 class="post-title">
+        Glide-4.11.0 浅析
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      今天我们来阅读一下Glide的源码，了解一下Glide 加载图标的原理，我们今天阅读的Glide源码是Glide:4.11.0版本的，是当前最新版本
+      
+    </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2020-04-03T05:00:00.000Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2020-04-03</span>
+        </time>
+        
+        <span class="dot"></span>
+        
+        <a href="categories/Android/" class="post-meta-link">Android</a>
+        
+        
+      </div>
+      <a href="/20200403/android-ndk/glide-4.11.0-qian-xi/">继续阅读 </a>
+    </div>
+  </article>
+</div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Android-NDK/" target="_blank">
-                            <span class="chip bg-color">Android/NDK</span>
-                        </a>
-                        
-                        <a href="/tags/FiveFiveVideoPlayer/" target="_blank">
-                            <span class="chip bg-color">FiveFiveVideoPlayer</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/">
-                        <div class="card-image">
-                            
-                            <img src="/images/20190825/oneactionBar.png" class="responsive-img" alt="OneActionBar 通用标题头">
-                            
-                            <span class="card-title">OneActionBar 通用标题头</span>
-                        </div>
-                    </a>
+<div class="card">
+  
+  <a href="/20200320/android-ndk/fivefivevideoplayer-shi-yi-ge-ke-yi-gao-du-zi-ding-yi-de-shi-pin-bo-fang-qi/" class="image-wrapper" aria-label="thumbnail">
+    <img src="/images/2020-03-20/full_screen.gif" data-src="/images/2020-03-20/full_screen.gif"
+      srcset="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E"
+      class="image lozad">
+  </a>
+  
+  <article class="card card-content">
+    <a href="/20200320/android-ndk/fivefivevideoplayer-shi-yi-ge-ke-yi-gao-du-zi-ding-yi-de-shi-pin-bo-fang-qi/">
+      <h1 class="post-title">
+        FiveFiveVideoPlayer 一个可以高度自定义的播放器
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      FiveFiveVideoPlayer 是一个可以高度自定义的播放器，手势改变亮度，音量，进度；支持调整倍速；可以轻松实现全屏视频播放，列表视频播放，小窗口视频播放.
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                自定义ActionBar，支持属性，java代码方式配置，可实现标题，标题带返回键，搜索，搜索带返回键的ActionBar。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Android-NDK/" class="post-category" target="_blank">
-                                    Android/NDK
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+      
+    </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2020-03-20T00:00:00.000Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2020-03-20</span>
+        </time>
+        
+        <span class="dot"></span>
+        
+        <a href="categories/Android/" class="post-meta-link">Android</a>
+        
+        
+      </div>
+      <a href="/20200320/android-ndk/fivefivevideoplayer-shi-yi-ge-ke-yi-gao-du-zi-ding-yi-de-shi-pin-bo-fang-qi/">继续阅读 </a>
+    </div>
+  </article>
+</div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Android-NDK/" target="_blank">
-                            <span class="chip bg-color">Android/NDK</span>
-                        </a>
-                        
-                        <a href="/tags/one-extend-lib/" target="_blank">
-                            <span class="chip bg-color">one-extend-lib</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20190410/algorithm/15.diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="调整数组顺序使奇数位于偶数前面">
-                            
-                            <span class="card-title">调整数组顺序使奇数位于偶数前面</span>
-                        </div>
-                    </a>
+<div class="card">
+  
+  <a href="/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/" class="image-wrapper" aria-label="thumbnail">
+    <img src="/images/20190825/oneactionBar.png" data-src="/images/20190825/oneactionBar.png"
+      srcset="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E"
+      class="image lozad">
+  </a>
+  
+  <article class="card card-content">
+    <a href="/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/">
+      <h1 class="post-title">
+        OneActionBar 通用标题头
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      自定义ActionBar，支持属性，java代码方式配置，可实现标题，标题带返回键，搜索，搜索带返回键的ActionBar。
+      
+    </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2019-08-25T02:00:00.000Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2019-08-25</span>
+        </time>
+        
+        <span class="dot"></span>
+        
+        <a href="categories/Android/" class="post-meta-link">Android</a>
+        
+        
+      </div>
+      <a href="/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/">继续阅读 </a>
+    </div>
+  </article>
+</div>
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-10
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+<div class="card">
+  
+  <article class="card card-content">
+    <a href="/20190410/algorithm/15.diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/">
+      <h1 class="post-title">
+        调整数组顺序使奇数位于偶数前面
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。
+      
+    </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2019-04-10T07:10:00.000Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2019-04-10</span>
+        </time>
+        
+        <span class="dot"></span>
+        
+        <a href="categories/算法/" class="post-meta-link">算法</a>
+        
+        
+      </div>
+      <a href="/20190410/algorithm/15.diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian/">继续阅读 </a>
+    </div>
+  </article>
+</div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%95%B0%E7%BB%84/" target="_blank">
-                            <span class="chip bg-color">数组</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20190408/algorithm/14.shu-zhi-de-zheng-shu-ci-fang/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="数值的整数次方">
-                            
-                            <span class="card-title">数值的整数次方</span>
-                        </div>
-                    </a>
+<div class="card">
+  
+  <article class="card card-content">
+    <a href="/20190408/algorithm/14.shu-zhi-de-zheng-shu-ci-fang/">
+      <h1 class="post-title">
+        数值的整数次方
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
+      
+    </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2019-04-08T06:30:00.000Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2019-04-08</span>
+        </time>
+        
+        <span class="dot"></span>
+        
+        <a href="categories/算法/" class="post-meta-link">算法</a>
+        
+        
+      </div>
+      <a href="/20190408/algorithm/14.shu-zhi-de-zheng-shu-ci-fang/">继续阅读 </a>
+    </div>
+  </article>
+</div>
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-08
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%95%B0%E5%AD%A6/" target="_blank">
-                            <span class="chip bg-color">数学</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20190401/android-ndk/ffmpeg-er-shi-pin-jie-ma-xiang-su-ge-shi-zhuan-huan-yu-native-yuan-sheng-hui-zhi/">
-                        <div class="card-image">
-                            
-                            <img src="/images/20190401/ffmpeg_decode_banner.png" class="responsive-img" alt="【FFmpeg】(二) 视频解码、像素格式转换与Native原生绘制">
-                            
-                            <span class="card-title">【FFmpeg】(二) 视频解码、像素格式转换与Native原生绘制</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                视频解码、像素格式转换与Native原生绘制一、视频解码1、FFmpeg 库简介FFmpeg 一共包含8个库
+<div class="card">
+  
+  <a href="/20190401/android-ndk/ffmpeg-er-shi-pin-jie-ma-xiang-su-ge-shi-zhuan-huan-yu-native-yuan-sheng-hui-zhi/" class="image-wrapper" aria-label="thumbnail">
+    <img src="/images/20190401/ffmpeg_decode_banner.png" data-src="/images/20190401/ffmpeg_decode_banner.png"
+      srcset="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E"
+      class="image lozad">
+  </a>
+  
+  <article class="card card-content">
+    <a href="/20190401/android-ndk/ffmpeg-er-shi-pin-jie-ma-xiang-su-ge-shi-zhuan-huan-yu-native-yuan-sheng-hui-zhi/">
+      <h1 class="post-title">
+        【FFmpeg】(二) 视频解码、像素格式转换与Native原生绘制
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      视频解码、像素格式转换与Native原生绘制一、视频解码1、FFmpeg 库简介FFmpeg 一共包含8个库
 
 avcodec：编解码（最重要的库）
 avformat：封装格式处理
 avfilter：滤镜特效处理
-avdevice：各自设备
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Android-NDK/" class="post-category" target="_blank">
-                                    Android/NDK
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+avdevice：各自设备的输入输出
+avutil：工具库（大部分库都需要这个库...
+      
+    </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2019-04-01T10:36:00.000Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2019-04-01</span>
+        </time>
+        
+        <span class="dot"></span>
+        
+        <a href="categories/NDK/" class="post-meta-link">NDK</a>
+        
+        
+      </div>
+      <a href="/20190401/android-ndk/ffmpeg-er-shi-pin-jie-ma-xiang-su-ge-shi-zhuan-huan-yu-native-yuan-sheng-hui-zhi/">继续阅读 </a>
+    </div>
+  </article>
+</div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Android-NDK/" target="_blank">
-                            <span class="chip bg-color">Android/NDK</span>
-                        </a>
-                        
-                        <a href="/tags/FFmpeg/" target="_blank">
-                            <span class="chip bg-color">FFmpeg</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20190401/algorithm/13.er-jin-zhi-zhong-1-de-ge-shu/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="二进制中 1 的个数">
-                            
-                            <span class="card-title">二进制中 1 的个数</span>
-                        </div>
-                    </a>
+<div class="card">
+  
+  <article class="card card-content">
+    <a href="/20190401/algorithm/13.er-jin-zhi-zhong-1-de-ge-shu/">
+      <h1 class="post-title">
+        二进制中 1 的个数
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
+      
+    </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2019-04-01T04:15:00.000Z">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2019-04-01</span>
+        </time>
+        
+        <span class="dot"></span>
+        
+        <a href="categories/算法/" class="post-meta-link">算法</a>
+        
+        
+      </div>
+      <a href="/20190401/algorithm/13.er-jin-zhi-zhong-1-de-ge-shu/">继续阅读 </a>
+    </div>
+  </article>
+</div>
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-01
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/" target="_blank">
-                            <span class="chip bg-color">二进制</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20190328/algorithm/12.jian-sheng-zi/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="剪绳子">
-                            
-                            <span class="card-title">剪绳子</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                给你一根长度为n的绳子，请把绳子剪成整数长的m段（m、n都是整数，n>1并且m>1），每段绳子的长度记为k[0],k[1],...,k[m]。请问k[0]xk[1]x...xk[m]可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-28
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%9C%80%E4%BC%98%E8%A7%A3/" target="_blank">
-                            <span class="chip bg-color">最优解</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20190326/algorithm/11.ji-qi-ren-de-yun-dong-fan-wei/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="机器人的运动范围">
-                            
-                            <span class="card-title">机器人的运动范围</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 = 18。但是，它不能进入方格（35,38），因为3+5+3+8 = 19。请问该机器人能够达到多少个格子。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-26
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%95%B0%E7%BB%84/" target="_blank">
-                            <span class="chip bg-color">数组</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%9F%A9%E9%98%B5/" target="_blank">
-                            <span class="chip bg-color">矩阵</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20190325/algorithm/10.ju-zhen-zhong-de-lu-jing/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="矩阵中的路径">
-                            
-                            <span class="card-title">矩阵中的路径</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E7%9F%A9%E9%98%B5/" target="_blank">
-                            <span class="chip bg-color">矩阵</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20190325/android-ndk/ffmpeg-yi-yin-shi-pin-xiang-guan-ji-chu-zhi-shi-yi-ji-ffmpeg-jie-shao-yu-bian-yi/">
-                        <div class="card-image">
-                            
-                            <img src="/images/20190325/ffmpeg_start.jpg" class="responsive-img" alt="【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍">
-                            
-                            <span class="card-title">【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍一、音视频相关基础知识1、视频播放器原理视频播放器就是将一个封装的格式数据进行解封装，得到对应的音频压缩数据和视频压缩数据，再进行相应的音视频解码，得到音频采样数据和视频采样数据
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Android-NDK/" class="post-category" target="_blank">
-                                    Android/NDK
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Android-NDK/" target="_blank">
-                            <span class="chip bg-color">Android/NDK</span>
-                        </a>
-                        
-                        <a href="/tags/FFmpeg/" target="_blank">
-                            <span class="chip bg-color">FFmpeg</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/20190320/algorithm/9.xuan-zhuan-shu-zu-de-zui-xiao-shu-zi/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="旋转数组的最小数字">
-                            
-                            <span class="card-title">旋转数组的最小数字</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%95%B0%E7%BB%84/" target="_blank">
-                            <span class="chip bg-color">数组</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
-    </article>
-
+<div class="nav">
+  
+  
+  <div class="nav-item-next">
+    <a href="/page/2/" class="nav-link">
+      <div>
+        <div class="nav-label">下一页</div>
+        
+      </div>
+      <i class="iconfont icon-right nav-next-icon"></i>
+    </a>
+  </div>
+  
+</div>
 </main>
+          <aside class="left-column">
+            
+            <div class="card card-author">
+              
+<img src="/medias/avatar.jpg" class="author-img">
 
-
-<div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a class="left btn-floating btn-large disabled">
-                <i class="fa fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 6</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/2/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fa fa-angle-right"></i>
-            </a>
-            
-        </div>
-    </div>
+<p class="author-name">一个人的旅行</p>
+<p class="author-description">冰冻三尺，非一日之寒；为山九仞，岂一日之功；不忘初心，方得始终！</p>
+<div class="author-message">
+  <a class="author-posts-count" href="/archives">
+    <span>69</span>
+    <span>文章</span>
+  </a>
+  <a class="author-categories-count" href="/categories">
+    <span>13</span>
+    <span>分类</span>
+  </a>
+  <a class="author-tags-count" href="/tags">
+    <span>45</span>
+    <span>标签</span>
+  </a>
 </div>
 
-
-
-<footer class="page-footer bg-color">
-    <div class="container row center-align">
-        <div class="col s12 m8 l8 copy-right">
-            本站由&copy; <a href="https://blog.onestravel.cn/" target="_blank">一个人的旅行</a> 基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a> 的主题搭建.
-
+            </div>
             
-            <br/>
-            &copy;2018-2020  onestravel.cn 版权所有  ICP证：<a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备20009541号</a>
-            
-			
-                <br>
-                
-                <span id="busuanzi_container_site_pv">
-                    <i class="fa fa-heart-o"></i>
-                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
-                </span>
-                
-                
-                <span id="busuanzi_container_site_uv">
-                    <i class="fa fa-users"></i>
-                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
-                </span>
-                
-            
+            <div class="sticky-tablet">
+  
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header"><i class="iconfont icon-fenlei" style="padding-right: 2px;"></i>分类</div>
+  <div class="categories-list">
+    
+      <a href="/categories/NDK">
+        <div class="categories-list-item">
+          NDK
+          <span class="categories-list-item-badge">5</span>
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/onestravel" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:server@onestravel.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1130007032" class="tooltipped" data-tooltip="QQ联系我: 1130007032" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fa fa-rss"></i>
-    </a>
+      </a>
+    
+      <a href="/categories/Android">
+        <div class="categories-list-item">
+          Android
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/CPlusPlus">
+        <div class="categories-list-item">
+          CPlusPlus
+          <span class="categories-list-item-badge">6</span>
+        </div>
+      </a>
+    
+      <a href="/categories/C">
+        <div class="categories-list-item">
+          C
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/前端H5">
+        <div class="categories-list-item">
+          前端H5
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/JNI">
+        <div class="categories-list-item">
+          JNI
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/算法">
+        <div class="categories-list-item">
+          算法
+          <span class="categories-list-item-badge">18</span>
+        </div>
+      </a>
+    
+      <a href="/categories/DevTools">
+        <div class="categories-list-item">
+          DevTools
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/SpringBoot">
+        <div class="categories-list-item">
+          SpringBoot
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Jenkins">
+        <div class="categories-list-item">
+          Jenkins
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Linux">
+        <div class="categories-list-item">
+          Linux
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+  </div>
 </div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>热门标签</div>
+  <div class="tags-list">
+    
+    <a href="\tags\Android" title="Android"><div class="tags-list-item">Android</div></a>
+    
+    <a href="\tags\Kotlin" title="Kotlin"><div class="tags-list-item">Kotlin</div></a>
+    
+    <a href="\tags\CPlusPlus" title="CPlusPlus"><div class="tags-list-item">CPlusPlus</div></a>
+    
+    <a href="\tags\自动化部署" title="自动化部署"><div class="tags-list-item">自动化部署</div></a>
+    
+    <a href="\tags\Jenkins" title="Jenkins"><div class="tags-list-item">Jenkins</div></a>
+    
+    <a href="\tags\数组" title="数组"><div class="tags-list-item">数组</div></a>
+    
+    <a href="\tags\C" title="C"><div class="tags-list-item">C</div></a>
+    
+    <a href="\tags\NDK" title="NDK"><div class="tags-list-item">NDK</div></a>
+    
+    <a href="\tags\斐波那契数列" title="斐波那契数列"><div class="tags-list-item">斐波那契数列</div></a>
+    
+    <a href="\tags\Intellij IDEA" title="Intellij IDEA"><div class="tags-list-item">Intellij IDEA</div></a>
+    
+    <a href="\tags\JNI" title="JNI"><div class="tags-list-item">JNI</div></a>
+    
+    <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
+    
+    <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
+    
+    <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
+    
+    <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
+    
+    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+  <article class="card card-content widescreen-archive archive-widget">
+    <div class="archive-card">
+  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>归档</div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a href="/archives/2020" class="archive-card-list-item">
+              2020
+              <span class="archive-card-list-item-badge">7</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a href="/archives/2019" class="archive-card-list-item">
+              2019
+              <span class="archive-card-list-item-badge">25</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a href="/archives/2018" class="archive-card-list-item">
+              2018
+              <span class="archive-card-list-item-badge">32</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a href="/archives/2017" class="archive-card-list-item">
+              2017
+              <span class="archive-card-list-item-badge">3</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+    
+      <a href="/archives/2016" class="archive-card-list-item">
+          2016
+          <span class="archive-card-list-item-badge">2</span>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+</div>
+          </aside>
+          <aside class="right-column">
+            <div class="sticky-widescreen">
+  
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header"><i class="iconfont icon-wenzhang_huaban" style="padding-right: 2px;"></i>最近文章</div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2020-08-19</div>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2020-08-17</div>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2020-07-19</div>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2020-07-18</div>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+  <article class="card card-content">
+    <div class="archive-card">
+  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>归档</div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a href="/archives/2020" class="archive-card-list-item">
+              2020
+              <span class="archive-card-list-item-badge">7</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a href="/archives/2019" class="archive-card-list-item">
+              2019
+              <span class="archive-card-list-item-badge">25</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a href="/archives/2018" class="archive-card-list-item">
+              2018
+              <span class="archive-card-list-item-badge">32</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a href="/archives/2017" class="archive-card-list-item">
+              2017
+              <span class="archive-card-list-item-badge">3</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+    
+      <a href="/archives/2016" class="archive-card-list-item">
+          2016
+          <span class="archive-card-list-item-badge">2</span>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+</div>
+          </aside>
+        </div>
+      </div>
     </div>
+  </div>
+  
+  <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>Copyright ©
+          
+          2020 -
+          
+          2020
+        </span>
+        &nbsp;
+        <a href="/" class="footer-link">一个人的旅行 </a>
+      </div>
+    </div>
+
+    
+    <div class="footer-dsc">
+      
+      Powered by
+      <a href="https://hexo.io/" class="footer-link" target="_blank" rel="nofollow noopener noreferrer">&nbsp;Hexo </a>
+      
+      
+      <span>&nbsp;|&nbsp;</span>
+      
+      
+      Theme -
+      <a href="https://github.com/theme-kaze" class="footer-link" target="_blank"
+        rel="nofollow noopener noreferrer">&nbsp;Kaze</a>
+      
+    </div>
+    
+    
+    
+    <div class="BbeiAn-info">
+      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+    </div>
+    
+    
+    
+      <div class="footer-dsc">
+        
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+        <span>&nbsp;|&nbsp;</span>
+        
+        
+        本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
 </footer>
+  <a role="button" id="scrollbutton" class="basebutton"  aria-label="回到顶部">
+  <i class="iconfont icon-arrowleft button-icon"></i>
+</a>
+<a role="button" id="menubutton" class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a role="button" id="popbutton" class="basebutton" aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a role="button" id="darkbutton" class="basebutton darkwidget" aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a role="button" id="searchbutton" class="basebutton searchwidget" aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a>
 
-<div class="progress-bar"></div>
+  
+  
+  
 
+  
+  
+  
+  
+<script src="/js/main.js"></script>
 
-<!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
-});
-</script>
-<!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fa fa-angle-up"></i>
-    </a>
-</div>
-
-
-<script src="/libs/materialize/materialize.min.js"></script>
-<script src="/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="/libs/aos/aos.js"></script>
-<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="/js/matery.js"></script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-145377665-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
+  
+  <script>loadScript("/js/lib/busuanzi.min.js")</script>
+  
+  
+  <script>
+    var addLazyload = function () {
+      var observer = lozad('.lozad', {
+        load: function (el) {
+          el.srcset = el.getAttribute('data-src');
+        },
+        loaded: function (el) {
+          el.classList.add('loaded');
+        }
+      });
+      observer.observe();
     }
-
-    gtag('js', new Date());
-    gtag('config', 'UA-145377665-1');
-</script>
-
-
-
-
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-
-
+  </script>
+  <script>loadScript("/js/lib/lozad.min.js", addLazyload)</script>
+  
+  
+  <script>
+    var googleAnalytics = function() {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145377665-1');
+    }
+  </script>
+  <script>loadScript("https://www.googletagmanager.com/gtag/js?id=" + "UA-145377665-1", googleAnalytics)</script>
+  
 </body>
+
 </html>

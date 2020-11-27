@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.onestravel.cn/"/>
-  <updated>2020-04-22T02:50:40.009Z</updated>
+  <updated>2020-08-21T08:02:28.112Z</updated>
   <id>https://blog.onestravel.cn/</id>
   
   <author>
@@ -17,11 +17,121 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</title>
+    <link href="https://blog.onestravel.cn/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"/>
+    <id>https://blog.onestravel.cn/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/</id>
+    <published>2020-08-19T06:41:23.578Z</published>
+    <updated>2020-08-21T08:02:28.112Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;【笔记四】编译插桩操纵字节码，实现不可能完成的任务&quot;&gt;&lt;a href=&quot;#【笔记四】编译插桩操纵字节码，实现不可能完成的任务&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</title>
+    <link href="https://blog.onestravel.cn/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"/>
+    <id>https://blog.onestravel.cn/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/</id>
+    <published>2020-08-17T03:09:43.525Z</published>
+    <updated>2020-08-18T03:53:20.371Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;【笔记三】字节码层面分析-class-文件结构&quot;&gt;&lt;a href=&quot;#【笔记三】字节码层面分析-class-文件结构&quot; class=&quot;headerlink&quot; title=&quot;【笔记三】字节码层面分析 class 文件结构&quot;&gt;&lt;/a&gt;【笔记三】字节码层面分析
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</title>
+    <link href="https://blog.onestravel.cn/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"/>
+    <id>https://blog.onestravel.cn/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/</id>
+    <published>2020-07-19T10:18:47.870Z</published>
+    <updated>2020-08-17T03:10:13.716Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;【笔记二】GC-回收机制和分代回收策略&quot;&gt;&lt;a href=&quot;#【笔记二】GC-回收机制和分代回收策略&quot; class=&quot;headerlink&quot; title=&quot;【笔记二】GC 回收机制和分代回收策略&quot;&gt;&lt;/a&gt;【笔记二】GC
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</title>
+    <link href="https://blog.onestravel.cn/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"/>
+    <id>https://blog.onestravel.cn/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/</id>
+    <published>2020-07-18T01:59:38.950Z</published>
+    <updated>2020-07-19T10:18:39.580Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;【笔记一】Java程序运行时，内存是如何分配的&quot;&gt;&lt;a href=&quot;#【笔记一】Java程序运行时，内存是如何分配的&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java/并发编程/笔记一【并发编程】线程基础</title>
+    <link href="https://blog.onestravel.cn/20200626/java/bing-fa-bian-cheng/bi-ji-yi-bing-fa-bian-cheng-xian-cheng-ji-chu/"/>
+    <id>https://blog.onestravel.cn/20200626/java/bing-fa-bian-cheng/bi-ji-yi-bing-fa-bian-cheng-xian-cheng-ji-chu/</id>
+    <published>2020-06-26T14:56:23.285Z</published>
+    <updated>2020-07-04T13:22:12.275Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;【并发编程】线程基础&quot;&gt;&lt;a href=&quot;#【并发编程】线程基础&quot; class=&quot;headerlink&quot; title=&quot;【并发编程】线程基础&quot;&gt;&lt;/a&gt;【并发编程】线程基础&lt;/h1&gt;&lt;h2 id=&quot;一-实现线程的方式&quot;&gt;&lt;a href=&quot;#一-实现线程的方式&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Glide-4.11.0 浅析</title>
     <link href="https://blog.onestravel.cn/20200403/android-ndk/glide-4.11.0-qian-xi/"/>
     <id>https://blog.onestravel.cn/20200403/android-ndk/glide-4.11.0-qian-xi/</id>
     <published>2020-04-03T05:00:00.000Z</published>
-    <updated>2020-04-22T02:50:40.009Z</updated>
+    <updated>2020-11-27T02:24:04.904Z</updated>
     
     <summary type="html">
     
@@ -35,10 +145,10 @@
     
     </summary>
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+      <category term="Android" scheme="https://blog.onestravel.cn/categories/Android/"/>
     
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+      <category term="Android" scheme="https://blog.onestravel.cn/tags/Android/"/>
     
       <category term="glide" scheme="https://blog.onestravel.cn/tags/glide/"/>
     
@@ -51,7 +161,7 @@
     <link href="https://blog.onestravel.cn/20200320/android-ndk/fivefivevideoplayer-shi-yi-ge-ke-yi-gao-du-zi-ding-yi-de-shi-pin-bo-fang-qi/"/>
     <id>https://blog.onestravel.cn/20200320/android-ndk/fivefivevideoplayer-shi-yi-ge-ke-yi-gao-du-zi-ding-yi-de-shi-pin-bo-fang-qi/</id>
     <published>2020-03-20T00:00:00.000Z</published>
-    <updated>2020-04-22T02:59:47.989Z</updated>
+    <updated>2020-11-27T02:23:56.880Z</updated>
     
     <summary type="html">
     
@@ -65,10 +175,10 @@
     
     </summary>
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+      <category term="Android" scheme="https://blog.onestravel.cn/categories/Android/"/>
     
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+      <category term="Android" scheme="https://blog.onestravel.cn/tags/Android/"/>
     
       <category term="FiveFiveVideoPlayer" scheme="https://blog.onestravel.cn/tags/FiveFiveVideoPlayer/"/>
     
@@ -79,7 +189,7 @@
     <link href="https://blog.onestravel.cn/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/"/>
     <id>https://blog.onestravel.cn/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar/</id>
     <published>2019-08-25T02:00:00.000Z</published>
-    <updated>2020-04-22T03:59:27.893Z</updated>
+    <updated>2020-11-27T02:24:24.136Z</updated>
     
     <summary type="html">
     
@@ -93,10 +203,10 @@
     
     </summary>
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+      <category term="Android" scheme="https://blog.onestravel.cn/categories/Android/"/>
     
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+      <category term="Android" scheme="https://blog.onestravel.cn/tags/Android/"/>
     
       <category term="one-extend-lib" scheme="https://blog.onestravel.cn/tags/one-extend-lib/"/>
     
@@ -159,7 +269,7 @@
     <link href="https://blog.onestravel.cn/20190401/android-ndk/ffmpeg-er-shi-pin-jie-ma-xiang-su-ge-shi-zhuan-huan-yu-native-yuan-sheng-hui-zhi/"/>
     <id>https://blog.onestravel.cn/20190401/android-ndk/ffmpeg-er-shi-pin-jie-ma-xiang-su-ge-shi-zhuan-huan-yu-native-yuan-sheng-hui-zhi/</id>
     <published>2019-04-01T10:36:00.000Z</published>
-    <updated>2020-03-30T03:14:16.735Z</updated>
+    <updated>2020-11-27T02:23:03.811Z</updated>
     
     <summary type="html">
     
@@ -173,10 +283,12 @@
     
     </summary>
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+      <category term="NDK" scheme="https://blog.onestravel.cn/categories/NDK/"/>
     
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+      <category term="Android" scheme="https://blog.onestravel.cn/tags/Android/"/>
+    
+      <category term="NDK" scheme="https://blog.onestravel.cn/tags/NDK/"/>
     
       <category term="FFmpeg" scheme="https://blog.onestravel.cn/tags/FFmpeg/"/>
     
@@ -268,7 +380,7 @@
     <link href="https://blog.onestravel.cn/20190325/algorithm/10.ju-zhen-zhong-de-lu-jing/"/>
     <id>https://blog.onestravel.cn/20190325/algorithm/10.ju-zhen-zhong-de-lu-jing/</id>
     <published>2019-03-25T03:45:00.000Z</published>
-    <updated>2020-04-26T15:02:28.118Z</updated>
+    <updated>2020-11-27T02:29:09.622Z</updated>
     
     <summary type="html">
     
@@ -295,7 +407,7 @@
     <link href="https://blog.onestravel.cn/20190325/android-ndk/ffmpeg-yi-yin-shi-pin-xiang-guan-ji-chu-zhi-shi-yi-ji-ffmpeg-jie-shao-yu-bian-yi/"/>
     <id>https://blog.onestravel.cn/20190325/android-ndk/ffmpeg-yi-yin-shi-pin-xiang-guan-ji-chu-zhi-shi-yi-ji-ffmpeg-jie-shao-yu-bian-yi/</id>
     <published>2019-03-25T02:15:00.000Z</published>
-    <updated>2020-03-30T03:14:16.735Z</updated>
+    <updated>2020-11-27T02:22:53.086Z</updated>
     
     <summary type="html">
     
@@ -309,10 +421,12 @@
     
     </summary>
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+      <category term="NDK" scheme="https://blog.onestravel.cn/categories/NDK/"/>
     
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+      <category term="Android" scheme="https://blog.onestravel.cn/tags/Android/"/>
+    
+      <category term="NDK" scheme="https://blog.onestravel.cn/tags/NDK/"/>
     
       <category term="FFmpeg" scheme="https://blog.onestravel.cn/tags/FFmpeg/"/>
     
@@ -349,7 +463,7 @@
     <link href="https://blog.onestravel.cn/20190318/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-er/"/>
     <id>https://blog.onestravel.cn/20190318/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-er/</id>
     <published>2019-03-18T07:01:00.000Z</published>
-    <updated>2020-04-22T03:58:37.445Z</updated>
+    <updated>2020-11-27T02:23:19.178Z</updated>
     
     <summary type="html">
     
@@ -363,10 +477,12 @@
     
     </summary>
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
+      <category term="NDK" scheme="https://blog.onestravel.cn/categories/NDK/"/>
     
     
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
+      <category term="Android" scheme="https://blog.onestravel.cn/tags/Android/"/>
+    
+      <category term="NDK" scheme="https://blog.onestravel.cn/tags/NDK/"/>
     
       <category term="Fmod" scheme="https://blog.onestravel.cn/tags/Fmod/"/>
     
@@ -421,140 +537,6 @@
     
     
       <category term="斐波那契数列" scheme="https://blog.onestravel.cn/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>跳台阶</title>
-    <link href="https://blog.onestravel.cn/20190317/algorithm/8.1-tiao-tai-jie/"/>
-    <id>https://blog.onestravel.cn/20190317/algorithm/8.1-tiao-tai-jie/</id>
-    <published>2019-03-17T03:36:00.000Z</published>
-    <updated>2020-04-26T15:01:17.143Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;8-1-跳台阶&quot;&gt;&lt;a href=&quot;#8-1-跳台阶&quot; class=&quot;headerlink&quot; title=&quot;8.1 跳台阶&quot;&gt;&lt;/a&gt;8.1 跳台阶&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://blog.onestravel.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="斐波那契数列" scheme="https://blog.onestravel.cn/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>斐波那契数列</title>
-    <link href="https://blog.onestravel.cn/20190316/algorithm/8.fei-bo-na-qi-shu-lie/"/>
-    <id>https://blog.onestravel.cn/20190316/algorithm/8.fei-bo-na-qi-shu-lie/</id>
-    <published>2019-03-16T10:00:00.000Z</published>
-    <updated>2020-04-26T15:01:04.862Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;8-斐波那契数列&quot;&gt;&lt;a href=&quot;#8-斐波那契数列&quot; class=&quot;headerlink&quot; title=&quot;8.斐波那契数列&quot;&gt;&lt;/a&gt;8.斐波那契数列&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://blog.onestravel.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="斐波那契数列" scheme="https://blog.onestravel.cn/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用两个栈实现一个队列</title>
-    <link href="https://blog.onestravel.cn/20190315/algorithm/7.yong-liang-ge-zhan-shi-xian-yi-ge-dui-lie/"/>
-    <id>https://blog.onestravel.cn/20190315/algorithm/7.yong-liang-ge-zhan-shi-xian-yi-ge-dui-lie/</id>
-    <published>2019-03-15T08:09:00.000Z</published>
-    <updated>2020-04-26T14:59:41.583Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;7-用两个栈实现一个队列&quot;&gt;&lt;a href=&quot;#7-用两个栈实现一个队列&quot; class=&quot;headerlink&quot; title=&quot;7. 用两个栈实现一个队列&quot;&gt;&lt;/a&gt;7. 用两个栈实现一个队列&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://blog.onestravel.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="栈" scheme="https://blog.onestravel.cn/tags/%E6%A0%88/"/>
-    
-      <category term="队列" scheme="https://blog.onestravel.cn/tags/%E9%98%9F%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二叉树的下一个节点</title>
-    <link href="https://blog.onestravel.cn/20190310/algorithm/6.er-cha-shu-de-xia-yi-ge-jie-dian/"/>
-    <id>https://blog.onestravel.cn/20190310/algorithm/6.er-cha-shu-de-xia-yi-ge-jie-dian/</id>
-    <published>2019-03-10T04:38:00.000Z</published>
-    <updated>2020-04-28T08:39:07.090Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;6-二叉树的下一个节点&quot;&gt;&lt;a href=&quot;#6-二叉树的下一个节点&quot; class=&quot;headerlink&quot; title=&quot;6. 二叉树的下一个节点&quot;&gt;&lt;/a&gt;6. 二叉树的下一个节点&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://blog.onestravel.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="二叉树" scheme="https://blog.onestravel.cn/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AndroidStudio下集成Fmod，实现仿QQ变声效果（一）</title>
-    <link href="https://blog.onestravel.cn/20190310/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-yi/"/>
-    <id>https://blog.onestravel.cn/20190310/android-ndk/androidstudio-xia-ji-cheng-fmod-shi-xian-fang-qq-bian-sheng-xiao-guo-yi/</id>
-    <published>2019-03-10T00:25:00.000Z</published>
-    <updated>2020-03-30T03:14:16.733Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;AndroidStudio下集成Fmod，实现仿QQ变声效果&quot;&gt;&lt;a href=&quot;#AndroidStudio下集成Fmod，实现仿QQ变声效果&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/categories/Android-NDK/"/>
-    
-    
-      <category term="Android/NDK" scheme="https://blog.onestravel.cn/tags/Android-NDK/"/>
-    
-      <category term="Fmod" scheme="https://blog.onestravel.cn/tags/Fmod/"/>
     
   </entry>
   
