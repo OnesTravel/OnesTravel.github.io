@@ -131,7 +131,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -251,43 +264,68 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="Html5利用AppCache和LocalStorage实现缓存h5页面数据"><a href="#Html5利用AppCache和LocalStorage实现缓存h5页面数据" class="headerlink" title="Html5利用AppCache和LocalStorage实现缓存h5页面数据"></a>Html5利用AppCache和LocalStorage实现缓存h5页面数据</h1><hr>
+    <h1 id="html5利用appcache和localstorage实现缓存h5页面数据"><a class="markdownIt-Anchor" href="#html5利用appcache和localstorage实现缓存h5页面数据"></a> Html5利用AppCache和LocalStorage实现缓存h5页面数据</h1>
+<hr />
 <p>最近在开发的过程中遇到了一个问题，就是在Android上通过WebView加载Html5页面时发现页面加载速度慢，再加上网络速度慢，每次请求需要5s左右的时间，严重影响用户体验，所以查询资料，最终找到一个可以解决加载缓慢的方法，现在介绍给大家：1、使用AppCache机制实现缓存html，css，js文件和一些本地图片，这种缓存方法使用manifest文件进行缓存数据，一般manifest文件默认后缀名为 .appcache，在设置缓存以后，第一次加载页面时会根据manifest文件中列出的缓存文件路径，将文件进行缓存到浏览器，在再次打开的时候，不会再次从服务器请求，而是加载缓存数据。但是如果manifest文件没有发生改变，那么服务器上的相关页面发生改动，加载时也是只会加载缓存的数据，不会进行更新；如果需要更新，必须改动manifest文件，哪怕只是一个空格或者换行。开启缓存机制需要两步:</p>
 <p>(1). 需要在服务器端做AppCache缓存处理：在每个需要缓存的html页面增加manifest属性，设置AppCache文件，进行缓存。</p>
 <p>创建manifest文件**manifest文件（manifest.appcache）</p>
 <blockquote>
 <p>CACHE MANIFEST#VERSION 2016-09-28 14:44</p>
 <p># 直接缓存的文件</p>
-<p>CACHE:<br>../index.html</p>
-<p>../css/index.css</p>
-<p>../js/jquery-2.2.4.min.js<br>../js/index.js</p>
-<p>../images/loading.gif<br>../images/index_one.jpg<br>../images/index_one_icon.png<br>../images/index_two.jpg<br>../images/index_two_icon.png<br>../images/index_three.jpg<br>../images/index_three_icon.png<br>../images/index_four.jpg<br>../images/index_four_icon.png</p>
-<p>#需要在线请求的文件路径，*代表除CACHE以外的文件都进行在线请求<br>NETWORK:<br>*</p>
-<p># 替代方案 ，当请求失败时需要跳转的页面<br>FALLBACK:<br>../error.html</p>
+<p>CACHE:<br />
+…/index.html</p>
+<p>…/css/index.css</p>
+<p>…/js/jquery-2.2.4.min.js<br />
+…/js/index.js</p>
+<p>…/images/loading.gif<br />
+…/images/index_one.jpg<br />
+…/images/index_one_icon.png<br />
+…/images/index_two.jpg<br />
+…/images/index_two_icon.png<br />
+…/images/index_three.jpg<br />
+…/images/index_three_icon.png<br />
+…/images/index_four.jpg<br />
+…/images/index_four_icon.png</p>
+<p>#需要在线请求的文件路径，*代表除CACHE以外的文件都进行在线请求<br />
+NETWORK:<br />
+*</p>
+<p># 替代方案 ，当请求失败时需要跳转的页面<br />
+FALLBACK:<br />
+…/error.html</p>
 </blockquote>
 <p><strong>manifest文件分为三个部分：CACHE，NETWORK 和 FALLBACK；</strong></p>
-<p><strong>CACHE</strong>：是所需要缓存文件的路径可以是绝对路径或者相对路径，一般相对路径比较好。<strong>NETWORK</strong> ：是需要即时从服务器请求的文件，一般默认<em>号，表示除CACHE所列所见以外的文件都是需要即时请求更新的。<br>*</em>FALLBACK**：这个页面时当缓存请求失败时所需展示的页面，一般默认一个错误页面。</p>
+<p><strong>CACHE</strong>：是所需要缓存文件的路径可以是绝对路径或者相对路径，一般相对路径比较好。<strong>NETWORK</strong> ：是需要即时从服务器请求的文件，一般默认*号，表示除CACHE所列所见以外的文件都是需要即时请求更新的。<br />
+<strong>FALLBACK</strong>：这个页面时当缓存请求失败时所需展示的页面，一般默认一个错误页面。</p>
 <p><strong>VERSION</strong>：版本号，这是一个附加属性，可有可无，加这个是为了在页面改动时，可以进行改动此版本号，使得manifest文件发生改动，从而浏览器再次请求html页面时，发现页面manifest文件进行改动，浏览器会从服务器重新拉取更新的内容。</p>
 <p>manifest文件有了，现在所需做的就是把manifest文件和Html文件进行关联，这个非常简单：在Html标签中标签有一个属性manifest，就是用来关联manifest文件的，所以只需要在缓存的html文件中的html标签上声明manifest属性，就可以进行AppCache缓存。</p>
 <blockquote>
 <html manifest="manifest/manifest.appcache">
-
 </html>
 </blockquote>
 <p>（2）这样服务器端的缓存就处理好了，可以在浏览器上进行测试，是完全可以缓存的，但是用在Android上使用WebView加载H5页面时，则需要在Android端进行设置：</p>
 <blockquote>
 <p>WebSettings webseting = webview.getSettings();</p>
-<p>webseting.setDomStorageEnabled(true);<br>webseting.setAppCacheMaxSize(1024<em>1024</em>8);//设置缓冲大小，我设的是8M<br>String appCacheDir = this.getApplicationContext().getDir(“cache”, Context.MODE_PRIVATE).getPath();<br>webseting.setAppCachePath(appCacheDir);<br>webseting.setAllowFileAccess(true);<br>webseting.setAppCacheEnabled(true);<br>webseting.setCacheMode(WebSettings.LOAD_DEFAULT);//可以在加载前对网络进行判断，如果有网络，则设置缓存模式为  WebSettings.LOAD_DEFAULT，从服务器请求数据， 如果没有网络测设置缓存模式为WebSettings.LOAD_CACHE_ELSE_NETWORK</p>
+<p>webseting.setDomStorageEnabled(true);<br />
+webseting.setAppCacheMaxSize(1024<em>1024</em>8);//设置缓冲大小，我设的是8M<br />
+String appCacheDir = this.getApplicationContext().getDir(“cache”, Context.MODE_PRIVATE).getPath();<br />
+webseting.setAppCachePath(appCacheDir);<br />
+webseting.setAllowFileAccess(true);<br />
+webseting.setAppCacheEnabled(true);<br />
+webseting.setCacheMode(WebSettings.LOAD_DEFAULT);//可以在加载前对网络进行判断，如果有网络，则设置缓存模式为  WebSettings.LOAD_DEFAULT，从服务器请求数据， 如果没有网络测设置缓存模式为WebSettings.LOAD_CACHE_ELSE_NETWORK</p>
 </blockquote>
 <p><strong>缓存模式(5种)</strong></p>
-<p><strong>LOAD_CACHE_ONLY:</strong>  不使用网络，只读取本地缓存数据<br><strong>LOAD_DEFAULT:</strong>  根据cache-control决定是否从网络上取数据。<br><strong>LOAD_CACHE_NORMAL:</strong>API level 17中已经废弃, 从API level 11开始作用同LOAD_DEFAULT模式<br><strong>LOAD_NO_CACHE:</strong>不使用缓存，只从网络获取数据.<br><strong>LOAD_CACHE_ELSE_NETWORK:</strong> 只要本地有，无论是否过期，或者no-cache，都使用缓存中的数据。</p>
-<p>如：<a href="http://www.taobao.com的cache-control为no-cache，在模式LOAD_DEFAULT下，无论如何都会从网络上取数据，如果没有网络，就会出现错误页面；在LOAD_CACHE_ELSE_NETWORK模式下，无论是否有网络，只要本地有缓存，都使用缓存。本地没有缓存时才从网络上获取。www.360.com.cn的cache-control为max-age=60，在两种模式下都使用本地缓存数据。" target="_blank" rel="noopener">www.taobao.com的cache-control为no-cache，在模式LOAD_DEFAULT下，无论如何都会从网络上取数据，如果没有网络，就会出现错误页面；在LOAD_CACHE_ELSE_NETWORK模式下，无论是否有网络，只要本地有缓存，都使用缓存。本地没有缓存时才从网络上获取。www.360.com.cn的cache-control为max-age=60，在两种模式下都使用本地缓存数据。</a></p>
+<p><strong>LOAD_CACHE_ONLY:</strong>  不使用网络，只读取本地缓存数据<br />
+<strong>LOAD_DEFAULT:</strong>  根据cache-control决定是否从网络上取数据。<br />
+**LOAD_CACHE_NORMAL:**API level 17中已经废弃, 从API level 11开始作用同LOAD_DEFAULT模式<br />
+**LOAD_NO_CACHE:**不使用缓存，只从网络获取数据.<br />
+<strong>LOAD_CACHE_ELSE_NETWORK:</strong> 只要本地有，无论是否过期，或者no-cache，都使用缓存中的数据。</p>
+<p>如：www.taobao.com的cache-control为no-cache，在模式LOAD_DEFAULT下，无论如何都会从网络上取数据，如果没有网络，就会出现错误页面；在LOAD_CACHE_ELSE_NETWORK模式下，无论是否有网络，只要本地有缓存，都使用缓存。本地没有缓存时才从网络上获取。www.360.com.cn的cache-control为max-age=60，在两种模式下都使用本地缓存数据。</p>
 <p>a、缓存构成根据setAppCachePath(String appCachePath)提供的路径，在H5使用缓存过程中生成的缓存文件。</p>
 <p>b、缓存模式无模式选择，通过setAppCacheEnabled(boolean flag)设置是否打开。默认关闭，即，H5的缓存无法使用。</p>
 <p>c、清除缓存找到调用setAppCachePath(String appCachePath)设置缓存的路径，把它下面的文件全部删除就OK了。clearCache(boolean)CacheManager.clear高版本中需要调用隐藏API。</p>
 <p>d、控制大小通过setAppCacheMaxSize(long appCacheMaxSize)设置缓存最大容量，默认为Max Integer。同时，可能通过覆盖WebChromeClient.onReachedMaxAppCacheSize(long requiredStorage, long quota, WebStorage.QuotaUpdater quotaUpdater)来设置缓存超过先前设置的最大容量时的策略。</p>
 <p>这样一来，通过设置服务器端的缓存，与Android前端的缓存，就可以有效解决Html5的加载缓慢问题，该方法虽然解决了缓存问题，但是会发现只是在第二次打开是速度会明显提升，但是在首次进行加载时，页面加载还是非常缓慢的，目前还没想到方案进行解决，后面如果找到方法，则会继续更新！-</p>
-<hr>
+<hr />
 <p>发表博客是为了做个笔记，并且和各位读者进行交流，互相学习，如果哪位读者有更好地解决方案，请麻烦留言告知，万分谢谢！</p>
 
   </div>
@@ -361,7 +399,7 @@
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Html5利用AppCache和LocalStorage实现缓存h5页面数据"><span class="toc-text">Html5利用AppCache和LocalStorage实现缓存h5页面数据</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#html5%E5%88%A9%E7%94%A8appcache%E5%92%8Clocalstorage%E5%AE%9E%E7%8E%B0%E7%BC%93%E5%AD%98h5%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE"><span class="toc-text"> Html5利用AppCache和LocalStorage实现缓存h5页面数据</span></a></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -377,7 +415,7 @@
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -394,7 +432,7 @@
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Html5利用AppCache和LocalStorage实现缓存h5页面数据"><span class="toc-text">Html5利用AppCache和LocalStorage实现缓存h5页面数据</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#html5%E5%88%A9%E7%94%A8appcache%E5%92%8Clocalstorage%E5%AE%9E%E7%8E%B0%E7%BC%93%E5%AD%98h5%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE"><span class="toc-text"> Html5利用AppCache和LocalStorage实现缓存h5页面数据</span></a></li></ol>
     </div>
   </article>
   
@@ -415,13 +453,6 @@
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -467,9 +498,9 @@
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -477,14 +508,21 @@
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -492,6 +530,13 @@
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -528,13 +573,13 @@
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -549,7 +594,7 @@
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Html5利用AppCache和LocalStorage实现缓存h5页面数据"><span class="toc-text">Html5利用AppCache和LocalStorage实现缓存h5页面数据</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#html5%E5%88%A9%E7%94%A8appcache%E5%92%8Clocalstorage%E5%AE%9E%E7%8E%B0%E7%BC%93%E5%AD%98h5%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE"><span class="toc-text"> Html5利用AppCache和LocalStorage实现缓存h5页面数据</span></a></li></ol>
   </article>
   
   
@@ -560,22 +605,22 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -624,7 +669,7 @@
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

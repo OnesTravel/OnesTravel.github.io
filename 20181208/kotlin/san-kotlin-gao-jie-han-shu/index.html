@@ -129,7 +129,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -223,7 +236,7 @@
     
     
     <span class="dot"></span>
-    <span>1.6k 字</span>
+    <span>1.8k 字</span>
     
   </div>
   
@@ -244,306 +257,329 @@
   
   </header>
   <div id="section" class="post-content">
-    <h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><ul>
+    <h3 id="一-基本概念"><a class="markdownIt-Anchor" href="#一-基本概念"></a> 一、基本概念</h3>
+<ul>
 <li>传入或者返回函数的函数</li>
 <li>函数引用  ::println</li>
 <li>带有 Receiver 的引用 pdfPrinter::println</li>
 </ul>
-<h3 id="二、常见高阶函数（forEach-map-flatMap）"><a href="#二、常见高阶函数（forEach-map-flatMap）" class="headerlink" title="二、常见高阶函数（forEach/map/flatMap）"></a>二、常见高阶函数（forEach/map/flatMap）</h3><ul>
+<h3 id="二-常见高阶函数foreachmapflatmap"><a class="markdownIt-Anchor" href="#二-常见高阶函数foreachmapflatmap"></a> 二、常见高阶函数（forEach/map/flatMap）</h3>
+<ul>
 <li>forEach : 迭代/遍历数组/list</li>
 </ul>
-<pre><code>//forEach函数使用的一般结构
-object.forEach{
-    //todo
-}
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;forEach函数使用的一般结构
+object.forEach&#123;
+    &#x2F;&#x2F;todo
+&#125;
 
 例：
-val list = listOf(1,3,5,10,18,36,2,9)
-list.forEach(::println)</code></pre><ul>
+val list &#x3D; listOf(1,3,5,10,18,36,2,9)
+list.forEach(::println)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>map : 接受一个lambda表达式，并且有返回值，形成一个新的list</li>
 </ul>
-<pre><code>//map函数使用的一般结构
-object.map{
-    //todo
-}
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;map函数使用的一般结构
+object.map&#123;
+    &#x2F;&#x2F;todo
+&#125;
 
 例：
-val newList = list.map{
-    it * 2 + 3//相当于返回值
-}
+val newList &#x3D; list.map&#123;
+    it * 2 + 3&#x2F;&#x2F;相当于返回值
+&#125;
 
-val newList2 = list.map(Int::toDouble)</code></pre><ul>
+val newList2 &#x3D; list.map(Int::toDouble)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>flatMap : 集合数据进行合并成一个集合</li>
 </ul>
-<pre><code>//map函数使用的一般结构
-object.flatMap {
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;map函数使用的一般结构
+object.flatMap &#123;
     it
-    //todo
-}
+    &#x2F;&#x2F;todo
+&#125;
 或
-object.flatMap {
-    it.map {
-        //todo
-    }
-}
+object.flatMap &#123;
+    it.map &#123;
+        &#x2F;&#x2F;todo
+    &#125;
+&#125;
 
 
 例：
-val list = listOf(
+val list &#x3D; listOf(
     1..20,
     2..15,
     100..166)
- val flatList = list.flatMap{
+ val flatList &#x3D; list.flatMap&#123;
      it
- }   
+ &#125;   
 
-  val flatList = list.flatMap{
-     it.map{
+  val flatList &#x3D; list.flatMap&#123;
+     it.map&#123;
          &quot;No.$it&quot;
-     }
- }
-</code></pre><ul>
+     &#125;
+ &#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>reduce : 使用reduce对集合进行计算操作</li>
 </ul>
-<pre><code>//reduce函数使用的一般结构
-object.reduce{acc,i -&gt;
-    //acc 为累计的结果
-    //acc todo
-}
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;reduce函数使用的一般结构
+object.reduce&#123;acc,i -&gt;
+    &#x2F;&#x2F;acc 为累计的结果
+    &#x2F;&#x2F;acc todo
+&#125;
 
 例：
-list.reduce{acc,i -&gt; acc + i}
+list.reduce&#123;acc,i -&gt; acc + i&#125;
 
-fun factorial(n: Int):Int{
-if(n==0) return 1
-return (1..n)reduce{acc,i -&gt; acc * i}
-}
+fun factorial(n: Int):Int&#123;
+if(n&#x3D;&#x3D;0) return 1
+return (1..n)reduce&#123;acc,i -&gt; acc * i&#125;
+&#125;
 
-//对0-6的数分别求阶乘，并且打印出来
+&#x2F;&#x2F;对0-6的数分别求阶乘，并且打印出来
 (0..6).map(::factorial).forEach(::println)
-</code></pre><ul>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>fold : 使用fold对集合进行自定义计算</li>
 </ul>
-<pre><code>//fold函数使用的一般结构
-object.fold([初始值]){acc,i -&gt;
-    //todo
-}
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;fold函数使用的一般结构
+object.fold([初始值])&#123;acc,i -&gt;
+    &#x2F;&#x2F;todo
+&#125;
 
 例：
-// 对0-6 的阶乘进行求和并加上初始值 5
-println((0..6).map(::factorial).fold(5){acc,i -&gt;
+&#x2F;&#x2F; 对0-6 的阶乘进行求和并加上初始值 5
+println((0..6).map(::factorial).fold(5)&#123;acc,i -&gt;
  acc + i
-})
+&#125;)
 
-//字符串拼接
-println((0..6).map(::factorial).fold(StringBuilder()){acc,i -&gt;
+&#x2F;&#x2F;字符串拼接
+println((0..6).map(::factorial).fold(StringBuilder())&#123;acc,i -&gt;
  acc.append(i).append(&quot;,&quot;)
-})
+&#125;)
 
-// 字符串连接
+&#x2F;&#x2F; 字符串连接
 println((0..6).joinToString(&quot;,&quot;))
-</code></pre><ul>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>foldRight : 与fold不同的是顺序相反</li>
 </ul>
-<pre><code>//foldRight函数使用的一般结构
-object.foldRight([初始值]){i,acc -&gt;
-    //todo
-}
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;foldRight函数使用的一般结构
+object.foldRight([初始值])&#123;i,acc -&gt;
+    &#x2F;&#x2F;todo
+&#125;
 
 例：
 
-//字符串拼接
-println((0..6).map(::factorial).foldRight(StringBuilder()){i,acc -&gt;
+&#x2F;&#x2F;字符串拼接
+println((0..6).map(::factorial).foldRight(StringBuilder())&#123;i,acc -&gt;
  acc.append(i).append(&quot;,&quot;)
-})</code></pre><ul>
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>filter : 传入Lambda 表达式为true是，保留该元素；使用filter对集合进行按条件过滤</li>
 </ul>
-<pre><code>//filter函数使用的一般结构
-object.filter{
-    //todo
-}
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;filter函数使用的一般结构
+object.filter&#123;
+    &#x2F;&#x2F;todo
+&#125;
 
 例：
-//给一个长度为 n 的数组，每个元素都在 [1,n] 之间，要求找出 [1,n] 中没有在数组里出现的元素。
-fun findDisappearNumbers(nums: IntArray): List&lt;Int&gt; {
-    val ifAppear = BooleanArray(nums.size + 1)
-    nums.forEach { ifAppear[it] = true }
-    return ifAppear.mapIndexed {
+&#x2F;&#x2F;给一个长度为 n 的数组，每个元素都在 [1,n] 之间，要求找出 [1,n] 中没有在数组里出现的元素。
+fun findDisappearNumbers(nums: IntArray): List&lt;Int&gt; &#123;
+    val ifAppear &#x3D; BooleanArray(nums.size + 1)
+    nums.forEach &#123; ifAppear[it] &#x3D; true &#125;
+    return ifAppear.mapIndexed &#123;
         index, boolean -&gt;
-        if (boolean || index == 0) -1 else index
-    }.filter { it != -1 }
-}</code></pre><ul>
+        if (boolean || index &#x3D;&#x3D; 0) -1 else index
+    &#125;.filter &#123; it !&#x3D; -1 &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>takeWhile : 循环遍历集合，直到第一个不满足条件的数据时，停止循环</li>
 </ul>
-<pre><code>//takeWhile函数使用的一般结构
-object.takeWhile{
-    //todo
-}</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;takeWhile函数使用的一般结构
+object.takeWhile&#123;
+    &#x2F;&#x2F;todo
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>let : let扩展函数的实际上是一个作用域函数，当你需要去定义一个变量在一个特定的作用域范围内，let函数的是一个不错的选择；let函数另一个作用就是可以避免写一些判断null的操作。</li>
 </ul>
-<pre><code>//let函数使用的一般结构
-object.let{
-it.todo()//在函数体内使用it替代object对象去访问其公有的属性和方法
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;let函数使用的一般结构
+object.let&#123;
+it.todo()&#x2F;&#x2F;在函数体内使用it替代object对象去访问其公有的属性和方法
 ...
-}
+&#125;
 
-//另一种用途 判断object为null的操作
-object?.let{//表示object不为null的条件下，才会去执行let函数体
+&#x2F;&#x2F;另一种用途 判断object为null的操作
+object?.let&#123;&#x2F;&#x2F;表示object不为null的条件下，才会去执行let函数体
 it.todo()
-}
+&#125;
 
 例：
-data class Person(val name: String,val age:Int){
-    fun work(){
+data class Person(val name: String,val age:Int)&#123;
+    fun work()&#123;
         println(&quot;$name is working!!!&quot;)
-    }
-}
+    &#125;
+&#125;
 
-fun findPerson():Person?{
+fun findPerson():Person?&#123;
     return null
-}
+&#125;
 
-fun main(args: Array&lt;String&gt;){
-    findPerson()?.let{person -&gt;
+fun main(args: Array&lt;String&gt;)&#123;
+    findPerson()?.let&#123;person -&gt;
         person.work()
         println(person.age)
-    }
-}
-</code></pre><ul>
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>apply : apply一般用于一个对象实例初始化的时候，需要对对象中的属性进行赋值;一般可用于多个扩展函数链式调用 ;数据model多层级包裹判空处理的问题</li>
 </ul>
-<pre><code>//apply函数使用的一般结构
-object.apply{
-//todo
-}
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;apply函数使用的一般结构
+object.apply&#123;
+&#x2F;&#x2F;todo
+&#125;
 
-//例：
-//1、
-data class Person(val name: String,val age:Int){
-    fun work(){
+&#x2F;&#x2F;例：
+&#x2F;&#x2F;1、
+data class Person(val name: String,val age:Int)&#123;
+    fun work()&#123;
         println(&quot;$name is working!!!&quot;)
-    }
-}
+    &#125;
+&#125;
 
-fun findPerson():Person?{
+fun findPerson():Person?&#123;
     return null
-}
+&#125;
 
-fun main(args: Array&lt;String&gt;){
-    findPerson()?.apply{
+fun main(args: Array&lt;String&gt;)&#123;
+    findPerson()?.apply&#123;
         work()
         println(age)
-    }
-}
+    &#125;
+&#125;
 
-//2、
-mSectionMetaData?.apply{
+&#x2F;&#x2F;2、
+mSectionMetaData?.apply&#123;
 
-//mSectionMetaData不为空的时候操作mSectionMetaData
+&#x2F;&#x2F;mSectionMetaData不为空的时候操作mSectionMetaData
 
-}?.questionnaire?.apply{
+&#125;?.questionnaire?.apply&#123;
 
-//questionnaire不为空的时候操作questionnaire
+&#x2F;&#x2F;questionnaire不为空的时候操作questionnaire
 
-}?.section?.apply{
+&#125;?.section?.apply&#123;
 
-//section不为空的时候操作section
+&#x2F;&#x2F;section不为空的时候操作section
 
-}?.sectionArticle?.apply{
+&#125;?.sectionArticle?.apply&#123;
 
-//sectionArticle不为空的时候操作sectionArticle
+&#x2F;&#x2F;sectionArticle不为空的时候操作sectionArticle
 
-}
-</code></pre><ul>
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>with : 适用于调用同一个类的多个方法时，可以省去类名重复，直接调用类的方法即可</li>
 </ul>
-<pre><code>//with函数使用的一般结构
-with(object){
-   //todo
- }
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;with函数使用的一般结构
+with(object)&#123;
+   &#x2F;&#x2F;todo
+ &#125;
 
  例：
- val br = Buffered</code></pre><ul>
+ val br &#x3D; Buffered<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>run ： run函数是let,with两个函数结合体，准确来说它弥补了let函数在函数体内必须使用it参数替代对象，在run函数中可以像with函数一样可以省略，直接访问实例的公有属性和方法，另一方面它弥补了with函数传入对象判空问题，在run函数中可以像let函数一样做判空处理</li>
 </ul>
-<pre><code>//run函数使用的一般结构
-object.run{
-//todo
-}</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;run函数使用的一般结构
+object.run&#123;
+&#x2F;&#x2F;todo
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>also : 适用于let函数的任何场景，also函数和let很像，只是唯一的不同点就是let函数最后的返回值是最后一行的返回值而also函数的返回值是返回当前的这个对象。一般可用于多个扩展函数链式调用</li>
 </ul>
-<pre><code>//also函数使用的一般结构
-object.also{
-//todo
-}</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;also函数使用的一般结构
+object.also&#123;
+&#x2F;&#x2F;todo
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>use : use函数作用于现实了Closeable接口的类，比如文件io操作</li>
 </ul>
-<pre><code>//use函数使用的一般结构
-object.use{
-    //todo
-}
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;use函数使用的一般结构
+object.use&#123;
+    &#x2F;&#x2F;todo
+&#125;
 
 例：
-var l = BufferedReader(FileReader(&quot;123.txt&quot;)).use {
-    var line: String = &quot;&quot;
-    while (true){
-        line += it.readLine()?: break
-    }
+var l &#x3D; BufferedReader(FileReader(&quot;123.txt&quot;)).use &#123;
+    var line: String &#x3D; &quot;&quot;
+    while (true)&#123;
+        line +&#x3D; it.readLine()?: break
+    &#125;
     line
-}
+&#125;
 println(l)
-</code></pre><h3 id="三、尾递归优化"><a href="#三、尾递归优化" class="headerlink" title="三、尾递归优化"></a>三、尾递归优化</h3><ul>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="三-尾递归优化"><a class="markdownIt-Anchor" href="#三-尾递归优化"></a> 三、尾递归优化</h3>
+<ul>
 <li>递归的一种特殊形式</li>
 <li>调用自身后无其他操作</li>
 <li>tailrec 关键字提示编译器尾递归优化</li>
 <li>尾递归与迭代的关系，尾递归一般情况下可以直接转换为迭代</li>
 </ul>
-<h3 id="四、闭包"><a href="#四、闭包" class="headerlink" title="四、闭包"></a>四、闭包</h3><ul>
+<h3 id="四-闭包"><a class="markdownIt-Anchor" href="#四-闭包"></a> 四、闭包</h3>
+<ul>
 <li>闭包就是函数的运行环境</li>
 <li>持有函数运行状态</li>
 <li>函数内部可以定义函数</li>
 <li>函数内部也可以定义类</li>
 </ul>
-<h3 id="五、函数复合"><a href="#五、函数复合" class="headerlink" title="五、函数复合"></a>五、函数复合</h3><ul>
+<h3 id="五-函数复合"><a class="markdownIt-Anchor" href="#五-函数复合"></a> 五、函数复合</h3>
+<ul>
 <li>函数复合就是f(g(x))的形式的函数</li>
 </ul>
-<h3 id="六、Currying-科理化"><a href="#六、Currying-科理化" class="headerlink" title="六、Currying (科理化)"></a>六、Currying (科理化)</h3><ul>
+<h3 id="六-currying-科理化"><a class="markdownIt-Anchor" href="#六-currying-科理化"></a> 六、Currying (科理化)</h3>
+<ul>
 <li>就是多元函数变成一元函数调用链</li>
 </ul>
-<pre><code>fun log(tag:String,target:OutputStream,message:Any?){
+<pre class="line-numbers language-none"><code class="language-none">fun log(tag:String,target:OutputStream,message:Any?)&#123;
     target.write(&quot;[$tag]: $message\n&quot;.toByteArray())
-}
+&#125;
 
-fun curriedLog(tag:String):(target:OutputStream) -&gt; (message:Any?){
-    //todo
-}
-//fun log(tag:String)
-//    =fun (target:OutputStream)
-//    =(message:Any?)
-//    =target.write(&quot;[$tag]: $message\n&quot;.toByteArray())
+fun curriedLog(tag:String):(target:OutputStream) -&gt; (message:Any?)&#123;
+    &#x2F;&#x2F;todo
+&#125;
+&#x2F;&#x2F;fun log(tag:String)
+&#x2F;&#x2F;    &#x3D;fun (target:OutputStream)
+&#x2F;&#x2F;    &#x3D;(message:Any?)
+&#x2F;&#x2F;    &#x3D;target.write(&quot;[$tag]: $message\n&quot;.toByteArray())
 
 fun&lt;P1,P2,P3,R&gt; Function3&lt;P1,P2,P3,R&gt;.curried()
-    =fun(p1:P1)=fun(p2:P2)=fun(p3:P3)=this(p1,p2,p3)
+    &#x3D;fun(p1:P1)&#x3D;fun(p2:P2)&#x3D;fun(p3:P3)&#x3D;this(p1,p2,p3)
 
-fun main(args: Array&lt;String&gt;){
+fun main(args: Array&lt;String&gt;)&#123;
     log(&quot;Test&quot;,System.out,&quot;Hello World！&quot;)
-   // log(&quot;Test&quot;)(System.out)(&quot;Hello World Currying&quot;)
+   &#x2F;&#x2F; log(&quot;Test&quot;)(System.out)(&quot;Hello World Currying&quot;)
     ::log.curried()(&quot;Test&quot;)(System.out)(&quot;Hello World Currying&quot;)
-}</code></pre><h3 id="七、偏函数"><a href="#七、偏函数" class="headerlink" title="七、偏函数"></a>七、偏函数</h3><ul>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="七-偏函数"><a class="markdownIt-Anchor" href="#七-偏函数"></a> 七、偏函数</h3>
+<ul>
 <li>传入部分参数之后得到的新函数就是偏函数</li>
 </ul>
-<pre><code>fun log(tag:String,target:OutputStream,message:Any?){
+<pre class="line-numbers language-none"><code class="language-none">fun log(tag:String,target:OutputStream,message:Any?)&#123;
     target.write(&quot;[$tag]: $message\n&quot;.toByteArray())
-}
+&#125;
 
 fun&lt;P1,P2,P3,R&gt; Function3&lt;P1,P2,P3,R&gt;.curried()
-    =fun(p1:P1)=fun(p2:P2)=fun(p3:P3)=this(p1,p2,p3)
+    &#x3D;fun(p1:P1)&#x3D;fun(p2:P2)&#x3D;fun(p3:P3)&#x3D;this(p1,p2,p3)
 
-fun main(args: Array&lt;String&gt;){
-    val consoleLog = (::log.cueried())(&quot;Test out&quot;)(System.out)
+fun main(args: Array&lt;String&gt;)&#123;
+    val consoleLog &#x3D; (::log.cueried())(&quot;Test out&quot;)(System.out)
     consoleLog(&quot;Hello 偏函数！&quot;)
-}
-</code></pre>
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
   </div>
   <div>
   
@@ -615,7 +651,7 @@ fun main(args: Array&lt;String&gt;){
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本概念"><span class="toc-text">一、基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、常见高阶函数（forEach-map-flatMap）"><span class="toc-text">二、常见高阶函数（forEach&#x2F;map&#x2F;flatMap）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、尾递归优化"><span class="toc-text">三、尾递归优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、闭包"><span class="toc-text">四、闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、函数复合"><span class="toc-text">五、函数复合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、Currying-科理化"><span class="toc-text">六、Currying (科理化)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、偏函数"><span class="toc-text">七、偏函数</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text"> 一、基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E5%B8%B8%E8%A7%81%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0foreachmapflatmap"><span class="toc-text"> 二、常见高阶函数（forEach&#x2F;map&#x2F;flatMap）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E5%B0%BE%E9%80%92%E5%BD%92%E4%BC%98%E5%8C%96"><span class="toc-text"> 三、尾递归优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E9%97%AD%E5%8C%85"><span class="toc-text"> 四、闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-%E5%87%BD%E6%95%B0%E5%A4%8D%E5%90%88"><span class="toc-text"> 五、函数复合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-currying-%E7%A7%91%E7%90%86%E5%8C%96"><span class="toc-text"> 六、Currying (科理化)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83-%E5%81%8F%E5%87%BD%E6%95%B0"><span class="toc-text"> 七、偏函数</span></a></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -631,7 +667,7 @@ fun main(args: Array&lt;String&gt;){
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -648,7 +684,7 @@ fun main(args: Array&lt;String&gt;){
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本概念"><span class="toc-text">一、基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、常见高阶函数（forEach-map-flatMap）"><span class="toc-text">二、常见高阶函数（forEach&#x2F;map&#x2F;flatMap）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、尾递归优化"><span class="toc-text">三、尾递归优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、闭包"><span class="toc-text">四、闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、函数复合"><span class="toc-text">五、函数复合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、Currying-科理化"><span class="toc-text">六、Currying (科理化)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、偏函数"><span class="toc-text">七、偏函数</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text"> 一、基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E5%B8%B8%E8%A7%81%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0foreachmapflatmap"><span class="toc-text"> 二、常见高阶函数（forEach&#x2F;map&#x2F;flatMap）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E5%B0%BE%E9%80%92%E5%BD%92%E4%BC%98%E5%8C%96"><span class="toc-text"> 三、尾递归优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E9%97%AD%E5%8C%85"><span class="toc-text"> 四、闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-%E5%87%BD%E6%95%B0%E5%A4%8D%E5%90%88"><span class="toc-text"> 五、函数复合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-currying-%E7%A7%91%E7%90%86%E5%8C%96"><span class="toc-text"> 六、Currying (科理化)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83-%E5%81%8F%E5%87%BD%E6%95%B0"><span class="toc-text"> 七、偏函数</span></a></li></ol>
     </div>
   </article>
   
@@ -669,13 +705,6 @@ fun main(args: Array&lt;String&gt;){
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -721,9 +750,9 @@ fun main(args: Array&lt;String&gt;){
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -731,14 +760,21 @@ fun main(args: Array&lt;String&gt;){
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -746,6 +782,13 @@ fun main(args: Array&lt;String&gt;){
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -782,13 +825,13 @@ fun main(args: Array&lt;String&gt;){
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -803,7 +846,7 @@ fun main(args: Array&lt;String&gt;){
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本概念"><span class="toc-text">一、基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、常见高阶函数（forEach-map-flatMap）"><span class="toc-text">二、常见高阶函数（forEach&#x2F;map&#x2F;flatMap）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、尾递归优化"><span class="toc-text">三、尾递归优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、闭包"><span class="toc-text">四、闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、函数复合"><span class="toc-text">五、函数复合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、Currying-科理化"><span class="toc-text">六、Currying (科理化)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、偏函数"><span class="toc-text">七、偏函数</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text"> 一、基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E5%B8%B8%E8%A7%81%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0foreachmapflatmap"><span class="toc-text"> 二、常见高阶函数（forEach&#x2F;map&#x2F;flatMap）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E5%B0%BE%E9%80%92%E5%BD%92%E4%BC%98%E5%8C%96"><span class="toc-text"> 三、尾递归优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E9%97%AD%E5%8C%85"><span class="toc-text"> 四、闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-%E5%87%BD%E6%95%B0%E5%A4%8D%E5%90%88"><span class="toc-text"> 五、函数复合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-currying-%E7%A7%91%E7%90%86%E5%8C%96"><span class="toc-text"> 六、Currying (科理化)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83-%E5%81%8F%E5%87%BD%E6%95%B0"><span class="toc-text"> 七、偏函数</span></a></li></ol>
   </article>
   
   
@@ -814,22 +857,22 @@ fun main(args: Array&lt;String&gt;){
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -878,7 +921,7 @@ fun main(args: Array&lt;String&gt;){
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

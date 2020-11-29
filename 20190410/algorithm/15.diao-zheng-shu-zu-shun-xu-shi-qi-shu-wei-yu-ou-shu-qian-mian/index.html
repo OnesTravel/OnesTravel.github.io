@@ -127,7 +127,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -213,7 +226,7 @@
     
     
     <span class="dot"></span>
-    <span>521 字</span>
+    <span>543 字</span>
     
   </div>
   
@@ -229,65 +242,73 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="15-调整数组顺序使奇数位于偶数前面"><a href="#15-调整数组顺序使奇数位于偶数前面" class="headerlink" title="15.调整数组顺序使奇数位于偶数前面"></a>15.调整数组顺序使奇数位于偶数前面</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>运用插入思想</p>
+    <h1 id="15调整数组顺序使奇数位于偶数前面"><a class="markdownIt-Anchor" href="#15调整数组顺序使奇数位于偶数前面"></a> 15.调整数组顺序使奇数位于偶数前面</h1>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。</p>
+<h2 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h2>
+<p>运用插入思想</p>
 <ol>
 <li>要想让相对位置不变，则需要相邻位置交换</li>
 <li>引入标志位k 表示前半部分最后一个奇数位置</li>
 <li>寻找到下一个奇数时，将标志位 k 之后到当前奇数位置上的数按照顺序从后向前相邻移动奇数到k位置</li>
 </ol>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="java-代码"><a href="#java-代码" class="headerlink" title="java 代码"></a>java 代码</h3><pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">reOrderArray</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> k<span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">int</span> temp <span class="token operator">=</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                    array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                    array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                k<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h2>
+<h3 id="java-代码"><a class="markdownIt-Anchor" href="#java-代码"></a> java 代码</h3>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">reOrderArray</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> k<span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">int</span> temp <span class="token operator">=</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            k<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-        <span class="token function">reOrderArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code></pre>
-<h3 id="Kotlin-代码"><a href="#Kotlin-代码" class="headerlink" title="Kotlin 代码"></a>Kotlin 代码</h3><pre class=" language-kotlin"><code class="language-kotlin">    <span class="token comment" spellcheck="true">/**
-     * 输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。
-     * 运用插入思想
-     * 1. 要想让相对位置不变，则需要相邻位置交换
-     * 2. 引入标志位k 表示前半部分最后一个奇数位置
-     * 3. 寻找到下一个奇数时，将标志位 k 之后到当前奇数位置上的数按照顺序从后向前相邻移动奇数到k位置
-     * @param array
-     */</span>
-    <span class="token keyword">fun</span> <span class="token function">reOrderArray</span><span class="token punctuation">(</span>array<span class="token operator">:</span> IntArray<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">var</span> k <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> array<span class="token punctuation">.</span>indices<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token keyword">in</span> i downTo k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">val</span> temp <span class="token operator">=</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
-                    array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
-                    array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> temp
-                <span class="token punctuation">}</span>
-                k<span class="token operator">++</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    <span class="token function">reOrderArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="kotlin-代码"><a class="markdownIt-Anchor" href="#kotlin-代码"></a> Kotlin 代码</h3>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">/**
+ * 输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。
+ * 运用插入思想
+ * 1. 要想让相对位置不变，则需要相邻位置交换
+ * 2. 引入标志位k 表示前半部分最后一个奇数位置
+ * 3. 寻找到下一个奇数时，将标志位 k 之后到当前奇数位置上的数按照顺序从后向前相邻移动奇数到k位置
+ * @param array
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">reOrderArray</span><span class="token punctuation">(</span>array<span class="token operator">:</span> IntArray<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> k <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> array<span class="token punctuation">.</span>indices<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token keyword">in</span> i downTo k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">val</span> temp <span class="token operator">=</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
+                array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+                array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> temp
+            <span class="token punctuation">&#125;</span>
+            k<span class="token operator">++</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
 
-    <span class="token comment" spellcheck="true">/**
-     * 入口函数
-     */</span>
-    <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> arr <span class="token operator">=</span> <span class="token function">intArrayOf</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
-        <span class="token function">reOrderArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
-        <span class="token function">println</span><span class="token punctuation">(</span>arr<span class="token punctuation">.</span><span class="token function">contentToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h2 id="引用声明"><a href="#引用声明" class="headerlink" title="引用声明"></a>引用声明</h2><p>该题目引用自<br><a href="https://www.nowcoder.com/practice/beb5aa231adc45b2a5dcc5b62c93f593?tpId=13&tqId=11166&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking&from=onestravel" target="_blank" rel="noopener">牛客网</a></p>
+<span class="token comment">/**
+ * 入口函数
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> arr <span class="token operator">=</span> <span class="token function">intArrayOf</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token function">reOrderArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
+    <span class="token function">println</span><span class="token punctuation">(</span>arr<span class="token punctuation">.</span><span class="token function">contentToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="引用声明"><a class="markdownIt-Anchor" href="#引用声明"></a> 引用声明</h2>
+<p>该题目引用自<br />
+<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/beb5aa231adc45b2a5dcc5b62c93f593?tpId=13&amp;tqId=11166&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking&amp;from=onestravel">牛客网</a></p>
 
   </div>
   <div>
@@ -360,7 +381,7 @@
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#15-调整数组顺序使奇数位于偶数前面"><span class="toc-text">15.调整数组顺序使奇数位于偶数前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#15%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2"><span class="toc-text"> 15.调整数组顺序使奇数位于偶数前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -376,7 +397,7 @@
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -393,7 +414,7 @@
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#15-调整数组顺序使奇数位于偶数前面"><span class="toc-text">15.调整数组顺序使奇数位于偶数前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#15%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2"><span class="toc-text"> 15.调整数组顺序使奇数位于偶数前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -414,13 +435,6 @@
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -466,9 +480,9 @@
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -476,14 +490,21 @@
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -491,6 +512,13 @@
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -527,13 +555,13 @@
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -548,7 +576,7 @@
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#15-调整数组顺序使奇数位于偶数前面"><span class="toc-text">15.调整数组顺序使奇数位于偶数前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#15%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2"><span class="toc-text"> 15.调整数组顺序使奇数位于偶数前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
   </article>
   
   
@@ -559,22 +587,22 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -623,7 +651,7 @@
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

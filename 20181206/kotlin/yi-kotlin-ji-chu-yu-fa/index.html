@@ -129,7 +129,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -223,7 +236,7 @@
     
     
     <span class="dot"></span>
-    <span>2.1k 字</span>
+    <span>2.3k 字</span>
     
   </div>
   
@@ -244,114 +257,135 @@
   
   </header>
   <div id="section" class="post-content">
-    <h3 id="一、-Kotlin语法"><a href="#一、-Kotlin语法" class="headerlink" title="一、 Kotlin语法"></a>一、 Kotlin语法</h3><h4 id="1-变量与常量"><a href="#1-变量与常量" class="headerlink" title="1. 变量与常量"></a>1. 变量与常量</h4><pre><code> &lt;修饰符&gt; &lt;变量/常量名&gt;[:类型] = [值]</code></pre><p>在一般情况下:[类型]可省略，编译器进行类型推导</p>
-<h5 id="常量："><a href="#常量：" class="headerlink" title="常量："></a>常量：</h5><pre><code>//val 修饰的为常量，不可再次赋值
-val FINAL_HELLO_WORLD :String = &quot;Hello World&quot;
+    <h3 id="一-kotlin语法"><a class="markdownIt-Anchor" href="#一-kotlin语法"></a> 一、 Kotlin语法</h3>
+<h4 id="1-变量与常量"><a class="markdownIt-Anchor" href="#1-变量与常量"></a> 1. 变量与常量</h4>
+<pre class="line-numbers language-none"><code class="language-none">&lt;修饰符&gt; &lt;变量&#x2F;常量名&gt;[:类型] &#x3D; [值]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在一般情况下:[类型]可省略，编译器进行类型推导</p>
+<h5 id="常量"><a class="markdownIt-Anchor" href="#常量"></a> 常量：</h5>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;val 修饰的为常量，不可再次赋值
+val FINAL_HELLO_WORLD :String &#x3D; &quot;Hello World&quot;
 
-val USER_TYPE = &quot;Admin&quot;</code></pre><h5 id="变量："><a href="#变量：" class="headerlink" title="变量："></a>变量：</h5><pre><code>//var 修饰的为变量，值可变化
-var index:Int =1
-//index 自增
+val USER_TYPE &#x3D; &quot;Admin&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="变量"><a class="markdownIt-Anchor" href="#变量"></a> 变量：</h5>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;var 修饰的为变量，值可变化
+var index:Int &#x3D;1
+&#x2F;&#x2F;index 自增
 index++
 
-var username=&quot;ZhangSan&quot;</code></pre><h5 id="字符串模板："><a href="#字符串模板：" class="headerlink" title="字符串模板："></a>字符串模板：</h5><p>在Kotlin中可使用字符串模板来实现字符串中输出变量/常量值</p>
-<pre><code>var username=&quot;ZhangSan&quot;
-fun main(args:Array&lt;String&gt;){
-    username = args[0]
-    println(&quot;欢迎 ${username} 登录系统！&quot;)
-}</code></pre><h4 id="2-函数（得函数者得天下）"><a href="#2-函数（得函数者得天下）" class="headerlink" title="2. 函数（得函数者得天下）"></a>2. 函数（得函数者得天下）</h4><ul>
-<li><p>[函数修饰符] <fun><em>[函数名称]</em>([参数列表])[:返回值类型]{[函数体]}</p>
+var username&#x3D;&quot;ZhangSan&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="字符串模板"><a class="markdownIt-Anchor" href="#字符串模板"></a> 字符串模板：</h5>
+<p>在Kotlin中可使用字符串模板来实现字符串中输出变量/常量值</p>
+<pre class="line-numbers language-none"><code class="language-none">var username&#x3D;&quot;ZhangSan&quot;
+fun main(args:Array&lt;String&gt;)&#123;
+    username &#x3D; args[0]
+    println(&quot;欢迎 $&#123;username&#125; 登录系统！&quot;)
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-函数得函数者得天下"><a class="markdownIt-Anchor" href="#2-函数得函数者得天下"></a> 2. 函数（得函数者得天下）</h4>
+<ul>
+<li>
+<p>[函数修饰符] <fun><em>[函数名称]</em>([参数列表])[:返回值类型]{[函数体]}</p>
 </li>
-<li><p>[函数修饰符] <fun><em>[函数名称]</em>([参数列表])=[表达式]</p>
+<li>
+<p>[函数修饰符] <fun><em>[函数名称]</em>([参数列表])=[表达式]</p>
 </li>
-<li><p>注：[]中的内容可省略，编译器可进行类型推导得出</p>
+<li>
+<p>注：[]中的内容可省略，编译器可进行类型推导得出</p>
 </li>
 </ul>
-<pre><code>
- // 根据时间字符串返回日期
-private fun getDate(dateStr:String): Date {
-    val sdf = SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;)
+<pre class="line-numbers language-none"><code class="language-none">
+ &#x2F;&#x2F; 根据时间字符串返回日期
+private fun getDate(dateStr:String): Date &#123;
+    val sdf &#x3D; SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;)
     return sdf.parse(dateStr)
-}
+&#125;
 
 
-// 传入两个整形数，计算他们的和并输出
-fun add(num1:Int,num2:Int){
-    println(&quot;$num1 + $num2 = ${num1+num2}&quot;)
-}
+&#x2F;&#x2F; 传入两个整形数，计算他们的和并输出
+fun add(num1:Int,num2:Int)&#123;
+    println(&quot;$num1 + $num2 &#x3D; $&#123;num1+num2&#125;&quot;)
+&#125;
 
-// 传入姓名，输出 Hi [传入的姓名]
-fun sayHi(name:String)=println(&quot;Hi $name&quot;)
+&#x2F;&#x2F; 传入姓名，输出 Hi [传入的姓名]
+fun sayHi(name:String)&#x3D;println(&quot;Hi $name&quot;)
 
-</code></pre><ul>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>匿名函数</li>
 </ul>
 <p>匿名函数就是没有函数名称的函数，但是匿名函数必须赋值给一个变量/常量</p>
-<pre><code>// 匿名函数
-val sayHi = fun(name:String)=println(&quot;Hi $name&quot;)</code></pre><h4 id="3-Lambda-表达式"><a href="#3-Lambda-表达式" class="headerlink" title="3. Lambda 表达式"></a>3. Lambda 表达式</h4><p>Lambda 表达式 就是匿名函数</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 匿名函数
+val sayHi &#x3D; fun(name:String)&#x3D;println(&quot;Hi $name&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="3-lambda-表达式"><a class="markdownIt-Anchor" href="#3-lambda-表达式"></a> 3. Lambda 表达式</h4>
+<p>Lambda 表达式 就是匿名函数</p>
 <ul>
 <li>语法：{[参数列表] -&gt; [函数体，最后一行是返回值]}</li>
 </ul>
-<pre><code>例如：
-val sum = {a:Int,b:Int -&gt; a+b}</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">例如：
+val sum &#x3D; &#123;a:Int,b:Int -&gt; a+b&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
 <li>Lambda 表达式类型表示</li>
 </ul>
-<pre><code>// 无参，返回值为Unit
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 无参，返回值为Unit
 () -&gt; Unit
 
-// 传入整型，返回一个整型
+&#x2F;&#x2F; 传入整型，返回一个整型
 (Int) -&gt; Int
 
-// 传入字符串、Lambda表达式，返回Boolean
-(String,(String) -&gt; String) -&gt; Boolean</code></pre><ul>
+&#x2F;&#x2F; 传入字符串、Lambda表达式，返回Boolean
+(String,(String) -&gt; String) -&gt; Boolean<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>Lambda 表达式的调用</li>
 </ul>
 <p>用()进行调用</p>
 <p>等价于 invoke()</p>
-<pre><code>val sum = {a:Int,b:Int -&gt; a+b}
+<pre class="line-numbers language-none"><code class="language-none">val sum &#x3D; &#123;a:Int,b:Int -&gt; a+b&#125;
 sum(2,3)
-sum.invoke(2,3)</code></pre><ul>
+sum.invoke(2,3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>Lambda 表达式的简化</li>
 </ul>
 <p>函数参数调用时最后一个Lambda可以移出去</p>
 <p>函数参数只有一个Lambda，调用时小括号可以省略</p>
 <p>Lambda只有一个参数可以默认为it</p>
 <p>入参、返回值与形参一致的函数可以用函数的引用的方式作为实参传入</p>
-<pre><code>val arr: Array&lt;String&gt; = arrayOf(&quot;1&quot;,&quot;s&quot;,&quot;sd&quot;,&quot;rer&quot;,&quot;54&quot;,&quot;65&quot;)
+<pre class="line-numbers language-none"><code class="language-none">val arr: Array&lt;String&gt; &#x3D; arrayOf(&quot;1&quot;,&quot;s&quot;,&quot;sd&quot;,&quot;rer&quot;,&quot;54&quot;,&quot;65&quot;)
 
-// Lambda 表达式 ，传入it ,并且打印it
-// Lambda只有一个参数可以默认为it
-arr.forEach({it -&gt; println(it)})
+&#x2F;&#x2F; Lambda 表达式 ，传入it ,并且打印it
+&#x2F;&#x2F; Lambda只有一个参数可以默认为it
+arr.forEach(&#123;it -&gt; println(it)&#125;)
 
-// 上面的Lambda 表达式简化后
-// Lambda只有一个参数可以默认为it
-// 函数参数调用时最后一个Lambda可以移出去
-arr.forEach(){println(it)}
+&#x2F;&#x2F; 上面的Lambda 表达式简化后
+&#x2F;&#x2F; Lambda只有一个参数可以默认为it
+&#x2F;&#x2F; 函数参数调用时最后一个Lambda可以移出去
+arr.forEach()&#123;println(it)&#125;
 
-// 上面的Lambda 表达式简化后
-// Lambda只有一个参数可以默认为it
-// 函数参数只有一个Lambda，调用时小括号可以省略
-arr.forEach{println(it)}
+&#x2F;&#x2F; 上面的Lambda 表达式简化后
+&#x2F;&#x2F; Lambda只有一个参数可以默认为it
+&#x2F;&#x2F; 函数参数只有一个Lambda，调用时小括号可以省略
+arr.forEach&#123;println(it)&#125;
 
-// 上面的Lambda 表达式简化后
-// Lambda只有一个参数可以默认为it
-// 入参、返回值与形参一致的函数可以用函数的引用的方式作为实参传入
+&#x2F;&#x2F; 上面的Lambda 表达式简化后
+&#x2F;&#x2F; Lambda只有一个参数可以默认为it
+&#x2F;&#x2F; 入参、返回值与形参一致的函数可以用函数的引用的方式作为实参传入
 arr.forEach(::println)
 
 
 
-// 判断数组中值为rer 是跳出本次循环，继续下次循环，相当于continue
+&#x2F;&#x2F; 判断数组中值为rer 是跳出本次循环，继续下次循环，相当于continue
 
- arr.forEach ForEach@{
-     if(it == &quot;rer&quot;) return@ForEach
+ arr.forEach ForEach@&#123;
+     if(it &#x3D;&#x3D; &quot;rer&quot;) return@ForEach
      println(it)
- }
+ &#125;
 
-// 判断数组中值为rer 是跳出循环，不再进行下面的循环，继续制作该循环后面的代码
- run breaking@ {
-     arr.forEach {
-        if(it == &quot;rer&quot;) return@breaking
+&#x2F;&#x2F; 判断数组中值为rer 是跳出循环，不再进行下面的循环，继续制作该循环后面的代码
+ run breaking@ &#123;
+     arr.forEach &#123;
+        if(it &#x3D;&#x3D; &quot;rer&quot;) return@breaking
         println(it)
-    }}</code></pre><h4 id="3-类成员"><a href="#3-类成员" class="headerlink" title="3. 类成员"></a>3. 类成员</h4><ul>
+    &#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3-类成员"><a class="markdownIt-Anchor" href="#3-类成员"></a> 3. 类成员</h4>
+<ul>
 <li>属性：或者说成员变量，类范围内的变量</li>
 <li>方法：或者说成员函数，类范围内的函数</li>
 </ul>
@@ -364,27 +398,30 @@ arr.forEach(::println)
 </ul>
 <p>构造方法参数中val/var 修饰的都是属性</p>
 <p>类内部也可以定义属性</p>
-<pre><code>class Hello(val aFiled:Int,notAField:Int){
-    var anotherField:Float = 3f
-}</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">class Hello(val aFiled:Int,notAField:Int)&#123;
+    var anotherField:Float &#x3D; 3f
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>属性访问控制</li>
 </ul>
 <p>属性可以定义getter/setter</p>
-<pre><code>val a: Int=0
-    get()=field
+<pre class="line-numbers language-none"><code class="language-none">val a: Int&#x3D;0
+    get()&#x3D;field
 
-var b: Float = 0f
-    get(){
-        return field / 3;
-    }
-    set(value){field = value}</code></pre><ul>
+var b: Float &#x3D; 0f
+    get()&#123;
+        return field &#x2F; 3;
+    &#125;
+    set(value)&#123;field &#x3D; value&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>属性初始化</li>
 </ul>
 <p>属性的初始化尽量在构造方法中完成</p>
 <p>无法在构造方法中初始化，尝试降级为局部变量</p>
 <p>var 用 lateinit 延迟初始化，val 用 lazy 延迟初始化</p>
 <p>可空类型谨慎用 null 直接初始化</p>
-<h4 id="4-运算符"><a href="#4-运算符" class="headerlink" title="4. 运算符( +-*/%^? )"></a>4. 运算符( +-*/%^? )</h4><p>官网定义</p>
+<h4 id="4-运算符"><a class="markdownIt-Anchor" href="#4-运算符"></a> 4. 运算符( ±*/%^? )</h4>
+<p>官网定义</p>
 <table>
 <thead>
 <tr>
@@ -392,7 +429,8 @@ var b: Float = 0f
 <th>Translated to</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>+a</td>
 <td>a.unaryPlus()</td>
 </tr>
@@ -441,7 +479,7 @@ var b: Float = 0f
 <td>a.rem(b),a.mod(b)(deprecated)</td>
 </tr>
 <tr>
-<td>a..b</td>
+<td>a…b</td>
 <td>a.rangeTo(b)</td>
 </tr>
 <tr>
@@ -478,7 +516,7 @@ var b: Float = 0f
 </tr>
 <tr>
 <td>a[i,j] = b</td>
-<td>a.set(i,,j,b)</td>
+<td>a.set(i,j,b)</td>
 </tr>
 <tr>
 <td>a[i_1,…,i_n] =b</td>
@@ -524,7 +562,8 @@ var b: Float = 0f
 <td>a %= b</td>
 <td>a.modAssign(b)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <ul>
 <li>基本运算符</li>
 </ul>
@@ -532,39 +571,46 @@ var b: Float = 0f
 <p>通过运算符对应的具名函数来定义</p>
 <p>对参数的个数做要求，对参数和返回值类型不做要求</p>
 <p>不能像 Scala 一样定义人与运算符</p>
-<pre><code>// 定义一个复数，实部与实部相加，虚部与虚部相加
-class Complex(var real: Double,var imaginary: Double){
-    operator fun plus(other: Complex):Complex{
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 定义一个复数，实部与实部相加，虚部与虚部相加
+class Complex(var real: Double,var imaginary: Double)&#123;
+    operator fun plus(other: Complex):Complex&#123;
         return Complex(real+other.real,imaginary + other.imaginary)
-    }
-    override fun toString():String{
-        return &quot;$real + ${imaginary}i&quot;
-    }
-}
+    &#125;
+    override fun toString():String&#123;
+        return &quot;$real + $&#123;imaginary&#125;i&quot;
+    &#125;
+&#125;
 
 
-fun main(args: Array&lt;String&gt;){
-    val c1 = Complex(3.0,4.0)//3.0+4.0i
-    val c2 = Cpmplex(2.0,7.5)//2.0+7.5i
+fun main(args: Array&lt;String&gt;)&#123;
+    val c1 &#x3D; Complex(3.0,4.0)&#x2F;&#x2F;3.0+4.0i
+    val c2 &#x3D; Cpmplex(2.0,7.5)&#x2F;&#x2F;2.0+7.5i
     println(c1 + c2)
-}</code></pre><ul>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>中缀表达式</li>
 </ul>
 <p>只有一个参数，且用infix 修饰的函数</p>
-<pre><code>class Book {
-    infix fun on(place:String){...}
-}
+<pre class="line-numbers language-none"><code class="language-none">class Book &#123;
+    infix fun on(place:String)&#123;...&#125;
+&#125;
 
-Book() on &quot;My Desk&quot;</code></pre><ul>
-<li><p>分支表达式</p>
+Book() on &quot;My Desk&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p>分支表达式</p>
 </li>
-<li><p>if 表达式<br>if … else</p>
-<pre><code>if(a == b) ... else if(a == c) ... else ...</code></pre><p>表达式与完备性</p>
+<li>
+<p>if 表达式<br />
+if … else</p>
 </li>
 </ul>
-<pre><code>val x = if(b&lt;0) 0 else b
+ <pre class="line-numbers language-none"><code class="language-none">if(a &#x3D;&#x3D; b) ... else if(a &#x3D;&#x3D; c) ... else ...<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>表达式与完备性</p>
+<pre class="line-numbers language-none"><code class="language-none">val x &#x3D; if(b&lt;0) 0 else b
 
-val x = if(b&lt;0)0 //错误，赋值时，分支必须完备</code></pre><ul>
+val x &#x3D; if(b&lt;0)0 &#x2F;&#x2F;错误，赋值时，分支必须完备<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>when 表达式</li>
 </ul>
 <p>加强版的 switch ，支持任意类型</p>
@@ -573,131 +619,146 @@ val x = if(b&lt;0)0 //错误，赋值时，分支必须完备</code></pre><ul>
 <ul>
 <li>循环语句</li>
 </ul>
-<p>基本写法:<br>for(element in elements) …</p>
+<p>基本写法:<br />
+for(element in elements) …</p>
 <p>给任意类实现 Iterator 方法</p>
-<pre><code>val arr: Array&lt;String&gt; = arrayOf(&quot;1&quot;,&quot;s&quot;,&quot;sd&quot;,&quot;rer&quot;,&quot;54&quot;,&quot;65&quot;)
+<pre class="line-numbers language-none"><code class="language-none">val arr: Array&lt;String&gt; &#x3D; arrayOf(&quot;1&quot;,&quot;s&quot;,&quot;sd&quot;,&quot;rer&quot;,&quot;54&quot;,&quot;65&quot;)
 
-for(a in arr){
+for(a in arr)&#123;
     println(a)
-}
+&#125;
 
 
-for((index,value) in arr.withIndex()){
+for((index,value) in arr.withIndex())&#123;
     println(&quot;$index -&gt; $value&quot;)
-}
+&#125;
 
-for(indexedValue in arr.withIndex()){
-    println(&quot;${indexedValue.index} -&gt; ${indexedValue.value}&quot;)
-}
+for(indexedValue in arr.withIndex())&#123;
+    println(&quot;$&#123;indexedValue.index&#125; -&gt; $&#123;indexedValue.value&#125;&quot;)
+&#125;
 
 
-class MyIterator(val iterator: Iterator&lt;Int&gt;){
-    operator fun next():Int{
+class MyIterator(val iterator: Iterator&lt;Int&gt;)&#123;
+    operator fun next():Int&#123;
         return iterator.next
-    }
+    &#125;
 
-     operator fun hasNext():Boolean{
+     operator fun hasNext():Boolean&#123;
         return iterator.hasNext()
-    }
-}
+    &#125;
+&#125;
 
-cal MyIntList{
-    private val list = ArrayList&lt;Int&gt;()
+cal MyIntList&#123;
+    private val list &#x3D; ArrayList&lt;Int&gt;()
 
-    fun add(int: Int){
+    fun add(int: Int)&#123;
         list.add(int)
-    }
+    &#125;
 
-    fun remove(int: Int){
+    fun remove(int: Int)&#123;
         list.remove(int)
-    }
+    &#125;
 
-    operator fun iterator():MyIterator{
+    operator fun iterator():MyIterator&#123;
         return MyIterator(list.iterator())
-    }
-}
+    &#125;
+&#125;
 
 
-fun main(args: Array&lt;String&gt;){
-    val list = MyIntList()
+fun main(args: Array&lt;String&gt;)&#123;
+    val list &#x3D; MyIntList()
     list.add(1)
     list.add(2)
     list.add(3)
 
-    for(i in list){
+    for(i in list)&#123;
         println(i)
-    }
+    &#125;
 
-}
+&#125;
 
-// while
-var x=5
-while(x&gt;0){
+&#x2F;&#x2F; while
+var x&#x3D;5
+while(x&gt;0)&#123;
     println(x)
     x--
-}
+&#125;
 
 
-do{
+do&#123;
    println(x)
     x--
-}while(x&gt;0)
-</code></pre><ul>
+&#125;while(x&gt;0)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>跳出或跳过循环</li>
 </ul>
-<p>跳出，终止循环  break  </p>
-<p>跳过当前循环  continue  </p>
+<p>跳出，终止循环  break</p>
+<p>跳过当前循环  continue</p>
 <p>多层循环嵌套的终止结合标签使用</p>
-<pre><code>Outter@for(...){
-    Inner@while(i&lt;0){
+<pre class="line-numbers language-none"><code class="language-none">Outter@for(...)&#123;
+    Inner@while(i&lt;0)&#123;
         if(...) break@Outter
-    }
-}</code></pre><h4 id="5-异常捕获"><a href="#5-异常捕获" class="headerlink" title="5. 异常捕获"></a>5. 异常捕获</h4><p>使用 try{}catch(e: Exception){} 进行异常捕获</p>
-<pre><code>try{  
-    //程序正常执行
-}catch(e: Exception){
-    //程序出现异常，可根据异常类型捕获相应的异常
-}finally{
-    //无论执行成功还是出现异常都会执行
-}</code></pre><h4 id="6-具名参数"><a href="#6-具名参数" class="headerlink" title="6. 具名参数"></a>6. 具名参数</h4><p>给函数的实参附上形参</p>
-<pre><code>fun sum(arg1:Int,arg2:Int) = arg1 + arg2
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="5-异常捕获"><a class="markdownIt-Anchor" href="#5-异常捕获"></a> 5. 异常捕获</h4>
+<p>使用 try{}catch(e: Exception){} 进行异常捕获</p>
+<pre class="line-numbers language-none"><code class="language-none">try&#123;  
+    &#x2F;&#x2F;程序正常执行
+&#125;catch(e: Exception)&#123;
+    &#x2F;&#x2F;程序出现异常，可根据异常类型捕获相应的异常
+&#125;finally&#123;
+    &#x2F;&#x2F;无论执行成功还是出现异常都会执行
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="6-具名参数"><a class="markdownIt-Anchor" href="#6-具名参数"></a> 6. 具名参数</h4>
+<p>给函数的实参附上形参</p>
+<pre class="line-numbers language-none"><code class="language-none">fun sum(arg1:Int,arg2:Int) &#x3D; arg1 + arg2
 
-sun(arg2=3,arg1=2)</code></pre><h4 id="7-变长参数"><a href="#7-变长参数" class="headerlink" title="7. 变长参数"></a>7. 变长参数</h4><p>使用 vararg 修饰</p>
+sun(arg2&#x3D;3,arg1&#x3D;2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="7-变长参数"><a class="markdownIt-Anchor" href="#7-变长参数"></a> 7. 变长参数</h4>
+<p>使用 vararg 修饰</p>
 <p>某个参数可以接受多个值</p>
 <p>可以不为最后一个参数</p>
 <p>如果传参是由歧义，需要使用具名参数</p>
-<h4 id="8-Spread-Operator"><a href="#8-Spread-Operator" class="headerlink" title="8. Spread Operator"></a>8. Spread Operator</h4><p>使用 * 来展开</p>
+<h4 id="8-spread-operator"><a class="markdownIt-Anchor" href="#8-spread-operator"></a> 8. Spread Operator</h4>
+<p>使用 * 来展开</p>
 <p>只支持展开Array</p>
 <p>只用于变长列表的实参</p>
-<pre><code>val arr=intArrayOf(1,2,3,4,5)
+<pre class="line-numbers language-none"><code class="language-none">val arr&#x3D;intArrayOf(1,2,3,4,5)
 
-fun printMethod(vararg arrs:Int){
+fun printMethod(vararg arrs:Int)&#123;
     arrs.forEach(::println)
-}
+&#125;
 
 printMethod(*arr)
-</code></pre><h4 id="9-默认参数"><a href="#9-默认参数" class="headerlink" title="9.默认参数"></a>9.默认参数</h4><p>为函数参数指定默认值</p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="9默认参数"><a class="markdownIt-Anchor" href="#9默认参数"></a> 9.默认参数</h4>
+<p>为函数参数指定默认值</p>
 <p>可以为任意位置的参数指定默认值</p>
 <p>传参时，如果有歧义，需要使用具名参数</p>
-<pre><code>val arr=intArrayOf(1,2,3,4,5)
+<pre class="line-numbers language-none"><code class="language-none">val arr&#x3D;intArrayOf(1,2,3,4,5)
 
-fun printMethod(name:String = &quot;admin&quot;,vararg arrs:Int){
+fun printMethod(name:String &#x3D; &quot;admin&quot;,vararg arrs:Int)&#123;
     arrs.forEach(::println)
-}
+&#125;
 
-printMethod(arrs=*arr)</code></pre><h4 id="10-导出可执行程序"><a href="#10-导出可执行程序" class="headerlink" title="10. 导出可执行程序"></a>10. 导出可执行程序</h4><ul>
+printMethod(arrs&#x3D;*arr)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="10-导出可执行程序"><a class="markdownIt-Anchor" href="#10-导出可执行程序"></a> 10. 导出可执行程序</h4>
+<ul>
 <li>在build.gradle 中增加</li>
 </ul>
-<pre><code>apply plugin: &#39;application&#39;
-mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">apply plugin: &#39;application&#39;
+mainClassName &#x3D; &quot;&quot;&#x2F;&#x2F;程序入口类路径，Kotlin文件名后加 Kt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
 <li>gradle 刷新/同步</li>
 <li>gradle 中的distribution 中点击installDist得到可执行的文件</li>
 <li>在项目目录下的build文件夹下的install文件夹下</li>
 </ul>
-<pre><code>//命令行输入：
-# cd build/install/[项目名称]
-# chmod 755 bin/[项目名称]
-# bin/[项目名称]</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;命令行输入：
+# cd build&#x2F;install&#x2F;[项目名称]
+# chmod 755 bin&#x2F;[项目名称]
+# bin&#x2F;[项目名称]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
   </div>
   <div>
   
@@ -769,7 +830,7 @@ mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、-Kotlin语法"><span class="toc-text">一、 Kotlin语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-变量与常量"><span class="toc-text">1. 变量与常量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常量："><span class="toc-text">常量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#变量："><span class="toc-text">变量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串模板："><span class="toc-text">字符串模板：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-函数（得函数者得天下）"><span class="toc-text">2. 函数（得函数者得天下）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Lambda-表达式"><span class="toc-text">3. Lambda 表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-类成员"><span class="toc-text">3. 类成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-运算符"><span class="toc-text">4. 运算符( +-*&#x2F;%^? )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-异常捕获"><span class="toc-text">5. 异常捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-具名参数"><span class="toc-text">6. 具名参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-变长参数"><span class="toc-text">7. 变长参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Spread-Operator"><span class="toc-text">8. Spread Operator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-默认参数"><span class="toc-text">9.默认参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-导出可执行程序"><span class="toc-text">10. 导出可执行程序</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-kotlin%E8%AF%AD%E6%B3%95"><span class="toc-text"> 一、 Kotlin语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="toc-text"> 1. 变量与常量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text"> 常量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text"> 变量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%9D%BF"><span class="toc-text"> 字符串模板：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%87%BD%E6%95%B0%E5%BE%97%E5%87%BD%E6%95%B0%E8%80%85%E5%BE%97%E5%A4%A9%E4%B8%8B"><span class="toc-text"> 2. 函数（得函数者得天下）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text"> 3. Lambda 表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%B1%BB%E6%88%90%E5%91%98"><span class="toc-text"> 3. 类成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 4. 运算符( ±*&#x2F;%^? )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7"><span class="toc-text"> 5. 异常捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%85%B7%E5%90%8D%E5%8F%82%E6%95%B0"><span class="toc-text"> 6. 具名参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%8F%98%E9%95%BF%E5%8F%82%E6%95%B0"><span class="toc-text"> 7. 变长参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-spread-operator"><span class="toc-text"> 8. Spread Operator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 9.默认参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E5%AF%BC%E5%87%BA%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="toc-text"> 10. 导出可执行程序</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -785,7 +846,7 @@ mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -802,7 +863,7 @@ mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、-Kotlin语法"><span class="toc-text">一、 Kotlin语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-变量与常量"><span class="toc-text">1. 变量与常量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常量："><span class="toc-text">常量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#变量："><span class="toc-text">变量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串模板："><span class="toc-text">字符串模板：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-函数（得函数者得天下）"><span class="toc-text">2. 函数（得函数者得天下）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Lambda-表达式"><span class="toc-text">3. Lambda 表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-类成员"><span class="toc-text">3. 类成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-运算符"><span class="toc-text">4. 运算符( +-*&#x2F;%^? )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-异常捕获"><span class="toc-text">5. 异常捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-具名参数"><span class="toc-text">6. 具名参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-变长参数"><span class="toc-text">7. 变长参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Spread-Operator"><span class="toc-text">8. Spread Operator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-默认参数"><span class="toc-text">9.默认参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-导出可执行程序"><span class="toc-text">10. 导出可执行程序</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-kotlin%E8%AF%AD%E6%B3%95"><span class="toc-text"> 一、 Kotlin语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="toc-text"> 1. 变量与常量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text"> 常量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text"> 变量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%9D%BF"><span class="toc-text"> 字符串模板：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%87%BD%E6%95%B0%E5%BE%97%E5%87%BD%E6%95%B0%E8%80%85%E5%BE%97%E5%A4%A9%E4%B8%8B"><span class="toc-text"> 2. 函数（得函数者得天下）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text"> 3. Lambda 表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%B1%BB%E6%88%90%E5%91%98"><span class="toc-text"> 3. 类成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 4. 运算符( ±*&#x2F;%^? )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7"><span class="toc-text"> 5. 异常捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%85%B7%E5%90%8D%E5%8F%82%E6%95%B0"><span class="toc-text"> 6. 具名参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%8F%98%E9%95%BF%E5%8F%82%E6%95%B0"><span class="toc-text"> 7. 变长参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-spread-operator"><span class="toc-text"> 8. Spread Operator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 9.默认参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E5%AF%BC%E5%87%BA%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="toc-text"> 10. 导出可执行程序</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -823,13 +884,6 @@ mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -875,9 +929,9 @@ mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -885,14 +939,21 @@ mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -900,6 +961,13 @@ mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -936,13 +1004,13 @@ mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -957,7 +1025,7 @@ mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、-Kotlin语法"><span class="toc-text">一、 Kotlin语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-变量与常量"><span class="toc-text">1. 变量与常量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常量："><span class="toc-text">常量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#变量："><span class="toc-text">变量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串模板："><span class="toc-text">字符串模板：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-函数（得函数者得天下）"><span class="toc-text">2. 函数（得函数者得天下）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Lambda-表达式"><span class="toc-text">3. Lambda 表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-类成员"><span class="toc-text">3. 类成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-运算符"><span class="toc-text">4. 运算符( +-*&#x2F;%^? )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-异常捕获"><span class="toc-text">5. 异常捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-具名参数"><span class="toc-text">6. 具名参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-变长参数"><span class="toc-text">7. 变长参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Spread-Operator"><span class="toc-text">8. Spread Operator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-默认参数"><span class="toc-text">9.默认参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-导出可执行程序"><span class="toc-text">10. 导出可执行程序</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-kotlin%E8%AF%AD%E6%B3%95"><span class="toc-text"> 一、 Kotlin语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="toc-text"> 1. 变量与常量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text"> 常量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text"> 变量：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%9D%BF"><span class="toc-text"> 字符串模板：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%87%BD%E6%95%B0%E5%BE%97%E5%87%BD%E6%95%B0%E8%80%85%E5%BE%97%E5%A4%A9%E4%B8%8B"><span class="toc-text"> 2. 函数（得函数者得天下）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text"> 3. Lambda 表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%B1%BB%E6%88%90%E5%91%98"><span class="toc-text"> 3. 类成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 4. 运算符( ±*&#x2F;%^? )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7"><span class="toc-text"> 5. 异常捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%85%B7%E5%90%8D%E5%8F%82%E6%95%B0"><span class="toc-text"> 6. 具名参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%8F%98%E9%95%BF%E5%8F%82%E6%95%B0"><span class="toc-text"> 7. 变长参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-spread-operator"><span class="toc-text"> 8. Spread Operator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 9.默认参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E5%AF%BC%E5%87%BA%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="toc-text"> 10. 导出可执行程序</span></a></li></ol></li></ol>
   </article>
   
   
@@ -968,22 +1036,22 @@ mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -1032,7 +1100,7 @@ mainClassName = &quot;&quot;//程序入口类路径，Kotlin文件名后加 Kt</
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

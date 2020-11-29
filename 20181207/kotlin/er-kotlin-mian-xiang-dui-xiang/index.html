@@ -129,7 +129,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -223,7 +236,7 @@
     
     
     <span class="dot"></span>
-    <span>1.3k 字</span>
+    <span>1.4k 字</span>
     
   </div>
   
@@ -244,40 +257,48 @@
   
   </header>
   <div id="section" class="post-content">
-    <h3 id="一、面向对象的概念"><a href="#一、面向对象的概念" class="headerlink" title="一、面向对象的概念"></a>一、面向对象的概念</h3><ul>
+    <h3 id="一-面向对象的概念"><a class="markdownIt-Anchor" href="#一-面向对象的概念"></a> 一、面向对象的概念</h3>
+<ul>
 <li>本质上就是解决如何用程序描述世界的问题</li>
 <li>讨论如何把实际存在的东西映射成程序的类和对象</li>
 <li>一种程序设计的思路,思想,方法</li>
 <li>程序设计层面的概念</li>
 <li>设计模式：前人的程序设计经验</li>
 </ul>
-<h3 id="二、抽象类与接口"><a href="#二、抽象类与接口" class="headerlink" title="二、抽象类与接口"></a>二、抽象类与接口</h3><p>相当于半成品与协议</p>
-<h4 id="1、接口"><a href="#1、接口" class="headerlink" title="1、接口"></a>1、接口</h4><ul>
+<h3 id="二-抽象类与接口"><a class="markdownIt-Anchor" href="#二-抽象类与接口"></a> 二、抽象类与接口</h3>
+<p>相当于半成品与协议</p>
+<h4 id="1-接口"><a class="markdownIt-Anchor" href="#1-接口"></a> 1、接口</h4>
+<ul>
 <li>接口，直观理解就是一种约定</li>
 </ul>
-<pre><code>interface InputDevice{
+<pre class="line-numbers language-none"><code class="language-none">interface InputDevice&#123;
     fun input(event: Any)
-}</code></pre><ul>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>接口不能有状态</li>
 <li>必须由类对其进行实现后使用</li>
 </ul>
-<h4 id="2、抽象类"><a href="#2、抽象类" class="headerlink" title="2、抽象类"></a>2、抽象类</h4><ul>
+<h4 id="2-抽象类"><a class="markdownIt-Anchor" href="#2-抽象类"></a> 2、抽象类</h4>
+<ul>
 <li>实现了一部分协议的半成品</li>
 <li>可以有状态，可以有方法实现</li>
 <li>必须由子类继承后使用</li>
 </ul>
-<h4 id="3、抽象类和接口的共性"><a href="#3、抽象类和接口的共性" class="headerlink" title="3、抽象类和接口的共性"></a>3、抽象类和接口的共性</h4><ul>
+<h4 id="3-抽象类和接口的共性"><a class="markdownIt-Anchor" href="#3-抽象类和接口的共性"></a> 3、抽象类和接口的共性</h4>
+<ul>
 <li>比较抽象，不能直接实例化</li>
 <li>需要有子类（实现类）实现的方法</li>
 <li>父类（接口）变量可以接受子类（实现类）的赋值</li>
 </ul>
-<h4 id="3、抽象类和接口的区别"><a href="#3、抽象类和接口的区别" class="headerlink" title="3、抽象类和接口的区别"></a>3、抽象类和接口的区别</h4><ul>
+<h4 id="3-抽象类和接口的区别"><a class="markdownIt-Anchor" href="#3-抽象类和接口的区别"></a> 3、抽象类和接口的区别</h4>
+<ul>
 <li>抽象类有状态，接口没有状态</li>
 <li>抽象类有方法实现，接口只能有无状态的默认实现</li>
 <li>抽象类只能单继承，接口可以多实现</li>
 <li>抽象类反应本质，接口体现能力</li>
 </ul>
-<h3 id="三、类的继承与接口的实现"><a href="#三、类的继承与接口的实现" class="headerlink" title="三、类的继承与接口的实现"></a>三、类的继承与接口的实现</h3><ul>
+<h3 id="三-类的继承与接口的实现"><a class="markdownIt-Anchor" href="#三-类的继承与接口的实现"></a> 三、类的继承与接口的实现</h3>
+<ul>
 <li>父类需要 open 才可以被继承</li>
 <li>父类方法、属性需要 open 才可以倍复写</li>
 <li>接口、接口方法、抽象类默认为 open</li>
@@ -286,21 +307,26 @@
 <li>注意继承类时实际上调用了父类构造方法</li>
 <li>类只能单继承，接口可以多实现</li>
 </ul>
-<h4 id="接口代理"><a href="#接口代理" class="headerlink" title="接口代理"></a>接口代理</h4><ul>
+<h4 id="接口代理"><a class="markdownIt-Anchor" href="#接口代理"></a> 接口代理</h4>
+<ul>
 <li>class Manager(driver: Driver):Driver by driver</li>
 <li>接口方法实现交给代理类实现</li>
 </ul>
-<h4 id="接口方法冲突"><a href="#接口方法冲突" class="headerlink" title="接口方法冲突"></a>接口方法冲突</h4><pre><code>- 接口方法可以有默认实现
+<h4 id="接口方法冲突"><a class="markdownIt-Anchor" href="#接口方法冲突"></a> 接口方法冲突</h4>
+<pre class="line-numbers language-none"><code class="language-none">- 接口方法可以有默认实现
 - 签名一致且返回值相同的冲突
 - 子类（实现类）必须复写冲突方法
-- super&lt;[父类（接口）名]&gt;.[方法名]([参数列表])</code></pre><h3 id="四、类及其成员的可见性"><a href="#四、类及其成员的可见性" class="headerlink" title="四、类及其成员的可见性"></a>四、类及其成员的可见性</h3><table>
+- super&lt;[父类（接口）名]&gt;.[方法名]([参数列表])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="四-类及其成员的可见性"><a class="markdownIt-Anchor" href="#四-类及其成员的可见性"></a> 四、类及其成员的可见性</h3>
+<table>
 <thead>
 <tr>
 <th>Kotlin</th>
 <th>Java</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>private</td>
 <td>private</td>
 </tr>
@@ -320,102 +346,119 @@
 <td>public</td>
 <td>public</td>
 </tr>
-</tbody></table>
-<h3 id="五、object"><a href="#五、object" class="headerlink" title="五、object"></a>五、object</h3><ul>
+</tbody>
+</table>
+<h3 id="五-object"><a class="markdownIt-Anchor" href="#五-object"></a> 五、object</h3>
+<ul>
 <li>只有一个实例的类（单例）</li>
 <li>不能自定义构造方法</li>
 <li>可以实现接口、继承父类</li>
 <li>本质上就是单例模式最基本的实现</li>
 </ul>
-<h3 id="六、伴生对象与静态成员"><a href="#六、伴生对象与静态成员" class="headerlink" title="六、伴生对象与静态成员"></a>六、伴生对象与静态成员</h3><ul>
+<h3 id="六-伴生对象与静态成员"><a class="markdownIt-Anchor" href="#六-伴生对象与静态成员"></a> 六、伴生对象与静态成员</h3>
+<ul>
 <li>每个类可以对应一个伴生对象</li>
 <li>伴生对象的成员全局独一份</li>
 <li>伴生对象的成员类似Java的静态成员</li>
 <li>静态成员考虑用包级函数、变量代替</li>
 <li>使用JvmField和JvmStatic，可以让伴生对象在Java中使用时看起来像静态成员和静态方法</li>
 </ul>
-<h3 id="七、方法重载-Overloads-和默认参数"><a href="#七、方法重载-Overloads-和默认参数" class="headerlink" title="七、方法重载(Overloads)和默认参数"></a>七、方法重载(Overloads)和默认参数</h3><h5 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h5><ul>
+<h3 id="七-方法重载overloads和默认参数"><a class="markdownIt-Anchor" href="#七-方法重载overloads和默认参数"></a> 七、方法重载(Overloads)和默认参数</h3>
+<h5 id="重载"><a class="markdownIt-Anchor" href="#重载"></a> 重载</h5>
+<ul>
 <li>写了一个方法和已经存在的方法重名，参数不相同</li>
 <li>Jvm函数签名的概念：函数名、参数列表</li>
 <li>跟返回值没有关系</li>
 </ul>
-<h5 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h5><ul>
+<h5 id="默认参数"><a class="markdownIt-Anchor" href="#默认参数"></a> 默认参数</h5>
+<ul>
 <li>为函数参数设定一个默认值</li>
 <li>可以为任意位置的参数设置默认值</li>
 <li>函数调用产生混淆时用具名参数</li>
 </ul>
-<h5 id="方法重载与默认参数"><a href="#方法重载与默认参数" class="headerlink" title="方法重载与默认参数"></a>方法重载与默认参数</h5><ul>
+<h5 id="方法重载与默认参数"><a class="markdownIt-Anchor" href="#方法重载与默认参数"></a> 方法重载与默认参数</h5>
+<ul>
 <li>方法重载与默认参数可以互相转换，在Java中调用有默认参数的方法时，该方法需要使用注解@JvmOverloads</li>
 <li>避免定义关系不大的重载方法</li>
 </ul>
-<h3 id="八、扩展成员（二次加工）"><a href="#八、扩展成员（二次加工）" class="headerlink" title="八、扩展成员（二次加工）"></a>八、扩展成员（二次加工）</h3><ul>
-<li><p>为现有类添加方法、属性</p>
-</li>
-<li><pre><code>fun X.y():Z{...}
+<h3 id="八-扩展成员二次加工"><a class="markdownIt-Anchor" href="#八-扩展成员二次加工"></a> 八、扩展成员（二次加工）</h3>
+<ul>
+<li>为现有类添加方法、属性</li>
+<li></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">fun X.y():Z&#123;...&#125;
 val X.m
-//注意扩展属性不能初始化，类似接口属性</code></pre></li>
-<li><p>Java 调用扩展成员类似调用静态方法</p>
-</li>
+&#x2F;&#x2F;注意扩展属性不能初始化，类似接口属性<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>Java 调用扩展成员类似调用静态方法</li>
 </ul>
-<h3 id="九、属性代理"><a href="#九、属性代理" class="headerlink" title="九、属性代理"></a>九、属性代理</h3><ul>
-<li><p>定义方法</p>
-</li>
-<li><pre><code>val/var &lt;property name&gt;: &lt;Type&gt; by &lt;expression&gt;</code></pre></li>
-<li><p>代理者需要实现相应的setValue/getValue方法</p>
-</li>
-<li><p>by lazy 就是在第一次使用的时候才去实例化对象</p>
-</li>
+<h3 id="九-属性代理"><a class="markdownIt-Anchor" href="#九-属性代理"></a> 九、属性代理</h3>
+<ul>
+<li>定义方法</li>
+<li></li>
 </ul>
-<h3 id="十、数据类（data-class）"><a href="#十、数据类（data-class）" class="headerlink" title="十、数据类（data class）"></a>十、数据类（data class）</h3><ul>
+<pre class="line-numbers language-none"><code class="language-none">val&#x2F;var &lt;property name&gt;: &lt;Type&gt; by &lt;expression&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>代理者需要实现相应的setValue/getValue方法</li>
+<li>by lazy 就是在第一次使用的时候才去实例化对象</li>
+</ul>
+<h3 id="十-数据类data-class"><a class="markdownIt-Anchor" href="#十-数据类data-class"></a> 十、数据类（data class）</h3>
+<ul>
 <li>默认实现 copy()、toString()、equals()等方法</li>
 <li>编译器默认生成component[1-N]方法，可以自己复写</li>
 </ul>
-<pre><code>data class China(val code:Int,name: String)
-val (a,b) = China(0,&quot;中国&quot;)
-pringln(&quot;$a -&gt; $b&quot;)</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">data class China(val code:Int,name: String)
+val (a,b) &#x3D; China(0,&quot;中国&quot;)
+pringln(&quot;$a -&gt; $b&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>allOpen和noArg 插件解决data class 的类被解析成final类，并且无空构造方法的问题</li>
 </ul>
-<pre><code>//build.gradle 中的 dependencies 中添加
-dependencies{
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;build.gradle 中的 dependencies 中添加
+dependencies&#123;
     classpath &quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;
     classpath &quot;org.jetbrains.kotlin:kotlin-noarg:$kotlin_version&quot;
     classpath &quot;org.jetbrains.kotlin:kotlin-allopen:$kotlin_version&quot;
-}
+&#125;
 
-//build.gradle 中 添加插件的应用
+&#x2F;&#x2F;build.gradle 中 添加插件的应用
 apply plugin: &#39;kotlin-noarg&#39;
 apply plugin: &#39;kotlin-allopen&#39;
 
-// 插件的配置
+&#x2F;&#x2F; 插件的配置
 
-noArg{
+noArg&#123;
     annotation(&quot;注解类名&quot;)
-}
+&#125;
 
-allOpen{
+allOpen&#123;
     annotation(&quot;注解类名&quot;)
-}</code></pre><ul>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>属性需要写到构造方法，初始化时需要传入参数</li>
 </ul>
-<h3 id="十一、内部类"><a href="#十一、内部类" class="headerlink" title="十一、内部类"></a>十一、内部类</h3><ul>
+<h3 id="十一-内部类"><a class="markdownIt-Anchor" href="#十一-内部类"></a> 十一、内部类</h3>
+<ul>
 <li>定义在类内部的类</li>
 <li>与类成员有相似的访问控制</li>
 <li>默认是静态内部类，非静态用 inner 关键字</li>
 <li>this@Outter 与 this@Inner</li>
 </ul>
-<h5 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h5><ul>
+<h5 id="匿名内部类"><a class="markdownIt-Anchor" href="#匿名内部类"></a> 匿名内部类</h5>
+<ul>
 <li>没有定义名字的类</li>
 <li>类名编译时生成，类似Outter$1.class</li>
 <li>可继承父类、实现多个接口，与Java 不一样</li>
 </ul>
-<h3 id="十二、枚举类"><a href="#十二、枚举类" class="headerlink" title="十二、枚举类"></a>十二、枚举类</h3><ul>
+<h3 id="十二-枚举类"><a class="markdownIt-Anchor" href="#十二-枚举类"></a> 十二、枚举类</h3>
+<ul>
 <li>实例可数的类，注意枚举也是类</li>
 <li>可以修改构造方法，添加成员</li>
 <li>可以提升代码的表现力，也有一定的性能开销</li>
 </ul>
-<h3 id="十二、密封类（sealed-class）"><a href="#十二、密封类（sealed-class）" class="headerlink" title="十二、密封类（sealed class）"></a>十二、密封类（sealed class）</h3><ul>
-<li>子类可数的类  </li>
-<li>&lt;V1.1,子类必须定义为密封类的内部类   </li>
+<h3 id="十二-密封类sealed-class"><a class="markdownIt-Anchor" href="#十二-密封类sealed-class"></a> 十二、密封类（sealed class）</h3>
+<ul>
+<li>子类可数的类</li>
+<li>&lt;V1.1,子类必须定义为密封类的内部类</li>
 <li>v1.1开始,子类只需要与密封类在同一个文件中</li>
 <li>子类可以有多个构造参数</li>
 <li>表示状态适合使用枚举，需要传输指令时适合使用密封类</li>
@@ -492,7 +535,7 @@ allOpen{
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、面向对象的概念"><span class="toc-text">一、面向对象的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、抽象类与接口"><span class="toc-text">二、抽象类与接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、接口"><span class="toc-text">1、接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、抽象类"><span class="toc-text">2、抽象类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、抽象类和接口的共性"><span class="toc-text">3、抽象类和接口的共性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、抽象类和接口的区别"><span class="toc-text">3、抽象类和接口的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、类的继承与接口的实现"><span class="toc-text">三、类的继承与接口的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#接口代理"><span class="toc-text">接口代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接口方法冲突"><span class="toc-text">接口方法冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、类及其成员的可见性"><span class="toc-text">四、类及其成员的可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、object"><span class="toc-text">五、object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、伴生对象与静态成员"><span class="toc-text">六、伴生对象与静态成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、方法重载-Overloads-和默认参数"><span class="toc-text">七、方法重载(Overloads)和默认参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#重载"><span class="toc-text">重载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#默认参数"><span class="toc-text">默认参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方法重载与默认参数"><span class="toc-text">方法重载与默认参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八、扩展成员（二次加工）"><span class="toc-text">八、扩展成员（二次加工）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九、属性代理"><span class="toc-text">九、属性代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十、数据类（data-class）"><span class="toc-text">十、数据类（data class）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十一、内部类"><span class="toc-text">十一、内部类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#匿名内部类"><span class="toc-text">匿名内部类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十二、枚举类"><span class="toc-text">十二、枚举类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十二、密封类（sealed-class）"><span class="toc-text">十二、密封类（sealed class）</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text"> 一、面向对象的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3"><span class="toc-text"> 二、抽象类与接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8E%A5%E5%8F%A3"><span class="toc-text"> 1、接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-text"> 2、抽象类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%85%B1%E6%80%A7"><span class="toc-text"> 3、抽象类和接口的共性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text"> 3、抽象类和接口的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 三、类的继承与接口的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86"><span class="toc-text"> 接口代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%96%B9%E6%B3%95%E5%86%B2%E7%AA%81"><span class="toc-text"> 接口方法冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E7%B1%BB%E5%8F%8A%E5%85%B6%E6%88%90%E5%91%98%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-text"> 四、类及其成员的可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-object"><span class="toc-text"> 五、object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-%E4%BC%B4%E7%94%9F%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%99%E6%80%81%E6%88%90%E5%91%98"><span class="toc-text"> 六、伴生对象与静态成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83-%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BDoverloads%E5%92%8C%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 七、方法重载(Overloads)和默认参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD"><span class="toc-text"> 重载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 默认参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 方法重载与默认参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB-%E6%89%A9%E5%B1%95%E6%88%90%E5%91%98%E4%BA%8C%E6%AC%A1%E5%8A%A0%E5%B7%A5"><span class="toc-text"> 八、扩展成员（二次加工）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D-%E5%B1%9E%E6%80%A7%E4%BB%A3%E7%90%86"><span class="toc-text"> 九、属性代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81-%E6%95%B0%E6%8D%AE%E7%B1%BBdata-class"><span class="toc-text"> 十、数据类（data class）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%B8%80-%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-text"> 十一、内部类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-text"> 匿名内部类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C-%E6%9E%9A%E4%B8%BE%E7%B1%BB"><span class="toc-text"> 十二、枚举类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C-%E5%AF%86%E5%B0%81%E7%B1%BBsealed-class"><span class="toc-text"> 十二、密封类（sealed class）</span></a></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -508,7 +551,7 @@ allOpen{
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -525,7 +568,7 @@ allOpen{
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、面向对象的概念"><span class="toc-text">一、面向对象的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、抽象类与接口"><span class="toc-text">二、抽象类与接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、接口"><span class="toc-text">1、接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、抽象类"><span class="toc-text">2、抽象类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、抽象类和接口的共性"><span class="toc-text">3、抽象类和接口的共性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、抽象类和接口的区别"><span class="toc-text">3、抽象类和接口的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、类的继承与接口的实现"><span class="toc-text">三、类的继承与接口的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#接口代理"><span class="toc-text">接口代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接口方法冲突"><span class="toc-text">接口方法冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、类及其成员的可见性"><span class="toc-text">四、类及其成员的可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、object"><span class="toc-text">五、object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、伴生对象与静态成员"><span class="toc-text">六、伴生对象与静态成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、方法重载-Overloads-和默认参数"><span class="toc-text">七、方法重载(Overloads)和默认参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#重载"><span class="toc-text">重载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#默认参数"><span class="toc-text">默认参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方法重载与默认参数"><span class="toc-text">方法重载与默认参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八、扩展成员（二次加工）"><span class="toc-text">八、扩展成员（二次加工）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九、属性代理"><span class="toc-text">九、属性代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十、数据类（data-class）"><span class="toc-text">十、数据类（data class）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十一、内部类"><span class="toc-text">十一、内部类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#匿名内部类"><span class="toc-text">匿名内部类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十二、枚举类"><span class="toc-text">十二、枚举类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十二、密封类（sealed-class）"><span class="toc-text">十二、密封类（sealed class）</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text"> 一、面向对象的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3"><span class="toc-text"> 二、抽象类与接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8E%A5%E5%8F%A3"><span class="toc-text"> 1、接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-text"> 2、抽象类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%85%B1%E6%80%A7"><span class="toc-text"> 3、抽象类和接口的共性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text"> 3、抽象类和接口的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 三、类的继承与接口的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86"><span class="toc-text"> 接口代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%96%B9%E6%B3%95%E5%86%B2%E7%AA%81"><span class="toc-text"> 接口方法冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E7%B1%BB%E5%8F%8A%E5%85%B6%E6%88%90%E5%91%98%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-text"> 四、类及其成员的可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-object"><span class="toc-text"> 五、object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-%E4%BC%B4%E7%94%9F%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%99%E6%80%81%E6%88%90%E5%91%98"><span class="toc-text"> 六、伴生对象与静态成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83-%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BDoverloads%E5%92%8C%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 七、方法重载(Overloads)和默认参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD"><span class="toc-text"> 重载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 默认参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 方法重载与默认参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB-%E6%89%A9%E5%B1%95%E6%88%90%E5%91%98%E4%BA%8C%E6%AC%A1%E5%8A%A0%E5%B7%A5"><span class="toc-text"> 八、扩展成员（二次加工）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D-%E5%B1%9E%E6%80%A7%E4%BB%A3%E7%90%86"><span class="toc-text"> 九、属性代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81-%E6%95%B0%E6%8D%AE%E7%B1%BBdata-class"><span class="toc-text"> 十、数据类（data class）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%B8%80-%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-text"> 十一、内部类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-text"> 匿名内部类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C-%E6%9E%9A%E4%B8%BE%E7%B1%BB"><span class="toc-text"> 十二、枚举类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C-%E5%AF%86%E5%B0%81%E7%B1%BBsealed-class"><span class="toc-text"> 十二、密封类（sealed class）</span></a></li></ol>
     </div>
   </article>
   
@@ -546,13 +589,6 @@ allOpen{
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -598,9 +634,9 @@ allOpen{
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -608,14 +644,21 @@ allOpen{
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -623,6 +666,13 @@ allOpen{
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -659,13 +709,13 @@ allOpen{
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -680,7 +730,7 @@ allOpen{
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、面向对象的概念"><span class="toc-text">一、面向对象的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、抽象类与接口"><span class="toc-text">二、抽象类与接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、接口"><span class="toc-text">1、接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、抽象类"><span class="toc-text">2、抽象类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、抽象类和接口的共性"><span class="toc-text">3、抽象类和接口的共性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、抽象类和接口的区别"><span class="toc-text">3、抽象类和接口的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、类的继承与接口的实现"><span class="toc-text">三、类的继承与接口的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#接口代理"><span class="toc-text">接口代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接口方法冲突"><span class="toc-text">接口方法冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、类及其成员的可见性"><span class="toc-text">四、类及其成员的可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、object"><span class="toc-text">五、object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、伴生对象与静态成员"><span class="toc-text">六、伴生对象与静态成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、方法重载-Overloads-和默认参数"><span class="toc-text">七、方法重载(Overloads)和默认参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#重载"><span class="toc-text">重载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#默认参数"><span class="toc-text">默认参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方法重载与默认参数"><span class="toc-text">方法重载与默认参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八、扩展成员（二次加工）"><span class="toc-text">八、扩展成员（二次加工）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九、属性代理"><span class="toc-text">九、属性代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十、数据类（data-class）"><span class="toc-text">十、数据类（data class）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十一、内部类"><span class="toc-text">十一、内部类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#匿名内部类"><span class="toc-text">匿名内部类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十二、枚举类"><span class="toc-text">十二、枚举类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十二、密封类（sealed-class）"><span class="toc-text">十二、密封类（sealed class）</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text"> 一、面向对象的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3"><span class="toc-text"> 二、抽象类与接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8E%A5%E5%8F%A3"><span class="toc-text"> 1、接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-text"> 2、抽象类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%85%B1%E6%80%A7"><span class="toc-text"> 3、抽象类和接口的共性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text"> 3、抽象类和接口的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 三、类的继承与接口的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86"><span class="toc-text"> 接口代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%96%B9%E6%B3%95%E5%86%B2%E7%AA%81"><span class="toc-text"> 接口方法冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E7%B1%BB%E5%8F%8A%E5%85%B6%E6%88%90%E5%91%98%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-text"> 四、类及其成员的可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-object"><span class="toc-text"> 五、object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-%E4%BC%B4%E7%94%9F%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%99%E6%80%81%E6%88%90%E5%91%98"><span class="toc-text"> 六、伴生对象与静态成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83-%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BDoverloads%E5%92%8C%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 七、方法重载(Overloads)和默认参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD"><span class="toc-text"> 重载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 默认参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text"> 方法重载与默认参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB-%E6%89%A9%E5%B1%95%E6%88%90%E5%91%98%E4%BA%8C%E6%AC%A1%E5%8A%A0%E5%B7%A5"><span class="toc-text"> 八、扩展成员（二次加工）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D-%E5%B1%9E%E6%80%A7%E4%BB%A3%E7%90%86"><span class="toc-text"> 九、属性代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81-%E6%95%B0%E6%8D%AE%E7%B1%BBdata-class"><span class="toc-text"> 十、数据类（data class）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%B8%80-%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-text"> 十一、内部类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-text"> 匿名内部类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C-%E6%9E%9A%E4%B8%BE%E7%B1%BB"><span class="toc-text"> 十二、枚举类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C-%E5%AF%86%E5%B0%81%E7%B1%BBsealed-class"><span class="toc-text"> 十二、密封类（sealed class）</span></a></li></ol>
   </article>
   
   
@@ -691,22 +741,22 @@ allOpen{
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -755,7 +805,7 @@ allOpen{
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

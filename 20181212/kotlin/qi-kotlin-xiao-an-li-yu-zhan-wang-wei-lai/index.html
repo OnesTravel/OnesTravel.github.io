@@ -129,7 +129,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -223,7 +236,7 @@
     
     
     <span class="dot"></span>
-    <span>1k 字</span>
+    <span>1.1k 字</span>
     
   </div>
   
@@ -244,29 +257,39 @@
   
   </header>
   <div id="section" class="post-content">
-    <h3 id="一、Kotlin-的应用场景"><a href="#一、Kotlin-的应用场景" class="headerlink" title="一、Kotlin 的应用场景"></a>一、Kotlin 的应用场景</h3><h4 id="1、Kotlin-Script"><a href="#1、Kotlin-Script" class="headerlink" title="1、Kotlin Script"></a>1、Kotlin Script</h4><ul>
+    <h3 id="一-kotlin-的应用场景"><a class="markdownIt-Anchor" href="#一-kotlin-的应用场景"></a> 一、Kotlin 的应用场景</h3>
+<h4 id="1-kotlin-script"><a class="markdownIt-Anchor" href="#1-kotlin-script"></a> 1、Kotlin Script</h4>
+<ul>
 <li>Gradle 脚本，Gradle3.0 开始部分支出，尚在完善中</li>
 </ul>
-<h4 id="2、Java-虚拟机应用"><a href="#2、Java-虚拟机应用" class="headerlink" title="2、Java 虚拟机应用"></a>2、Java 虚拟机应用</h4><ul>
+<h4 id="2-java-虚拟机应用"><a class="markdownIt-Anchor" href="#2-java-虚拟机应用"></a> 2、Java 虚拟机应用</h4>
+<ul>
 <li>Web 应用，完美支持</li>
 <li>JavaFx,jdk8开始完美支持</li>
 </ul>
-<h4 id="3、前端开发"><a href="#3、前端开发" class="headerlink" title="3、前端开发"></a>3、前端开发</h4><ul>
+<h4 id="3-前端开发"><a class="markdownIt-Anchor" href="#3-前端开发"></a> 3、前端开发</h4>
+<ul>
 <li>1.1 开始正式支持 Kotlin-JavaScript</li>
 </ul>
-<h4 id="4、Android-应用开发"><a href="#4、Android-应用开发" class="headerlink" title="4、Android 应用开发"></a>4、Android 应用开发</h4><ul>
+<h4 id="4-android-应用开发"><a class="markdownIt-Anchor" href="#4-android-应用开发"></a> 4、Android 应用开发</h4>
+<ul>
 <li>Kotlin 目前的主要战场</li>
 </ul>
-<h4 id="5、Native-程序"><a href="#5、Native-程序" class="headerlink" title="5、Native 程序"></a>5、Native 程序</h4><ul>
+<h4 id="5-native-程序"><a class="markdownIt-Anchor" href="#5-native-程序"></a> 5、Native 程序</h4>
+<ul>
 <li>直接编译 Kotlin 代码为机器码，不依赖Jvm</li>
 <li>支持与 C 代码交互</li>
 <li>技术预览版功能有限，前途无量</li>
 </ul>
-<h3 id="二、Kotlin-Script-实例"><a href="#二、Kotlin-Script-实例" class="headerlink" title="二、Kotlin Script 实例"></a>二、Kotlin Script 实例</h3><h4 id="1、安装-Kotlin-编译库"><a href="#1、安装-Kotlin-编译库" class="headerlink" title="1、安装 Kotlin 编译库"></a>1、安装 Kotlin 编译库</h4><h5 id="Windows下Kotlin命令行开发环境安装"><a href="#Windows下Kotlin命令行开发环境安装" class="headerlink" title="Windows下Kotlin命令行开发环境安装"></a>Windows下Kotlin命令行开发环境安装</h5><ul>
+<h3 id="二-kotlin-script-实例"><a class="markdownIt-Anchor" href="#二-kotlin-script-实例"></a> 二、Kotlin Script 实例</h3>
+<h4 id="1-安装-kotlin-编译库"><a class="markdownIt-Anchor" href="#1-安装-kotlin-编译库"></a> 1、安装 Kotlin 编译库</h4>
+<h5 id="windows下kotlin命令行开发环境安装"><a class="markdownIt-Anchor" href="#windows下kotlin命令行开发环境安装"></a> Windows下Kotlin命令行开发环境安装</h5>
+<ul>
 <li>安装环境准备</li>
 </ul>
-<p>Kotlin编译器：从GitHub下载，截止2017-9-5 最新版本是1.1.4，<br><a href="https://github.com/JetBrains/kotlin" target="_blank" rel="noopener">GitHub主页</a></p>
-<p>Java JDK 8，可以从Oracle官网下载，<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html/" target="_blank" rel="noopener">下载JDK8</a></p>
+<p>Kotlin编译器：从GitHub下载，截止2017-9-5 最新版本是1.1.4，<br />
+<a target="_blank" rel="noopener" href="https://github.com/JetBrains/kotlin">GitHub主页</a></p>
+<p>Java JDK 8，可以从Oracle官网下载，<a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html/">下载JDK8</a></p>
 <ul>
 <li>安装</li>
 </ul>
@@ -277,104 +300,132 @@
 <ul>
 <li>验证安装是否成功</li>
 </ul>
-<p>打开windows的命令行窗口<br>输入命令：kotlinc -version，如果提示Kotlin 1.1.4版本号，安装成功</p>
-<h5 id="其它可选的安装平台"><a href="#其它可选的安装平台" class="headerlink" title="其它可选的安装平台"></a>其它可选的安装平台</h5><p>在Windows和Linux、OS X上通用的安装方法：</p>
+<p>打开windows的命令行窗口<br />
+输入命令：kotlinc -version，如果提示Kotlin 1.1.4版本号，安装成功</p>
+<h5 id="其它可选的安装平台"><a class="markdownIt-Anchor" href="#其它可选的安装平台"></a> 其它可选的安装平台</h5>
+<p>在Windows和Linux、OS X上通用的安装方法：</p>
 <ul>
-<li>Kotlin编译器，从GitHub下载，截止2017-9-5 最新版本是1.1.4，<a href="https://github.com/JetBrains/kotlin" target="_blank" rel="noopener">GitHub  - Kotlin主页</a></li>
-<li>下载Java JDK 环境安装</li>
+<li>Kotlin编译器，从GitHub下载，截止2017-9-5 最新版本是1.1.4，<a target="_blank" rel="noopener" href="https://github.com/JetBrains/kotlin">GitHub  - Kotlin主页</a></li>
+<li></li>
 </ul>
+<p>下载Java JDK 环境安装</p>
 <p>Linux，OS X，FreeBSB，Solaris等*Unix系统支持以下方法：</p>
-<pre><code>    // sdkman 包管理工具
-    $ curl -s https://get.sdkman.io | bash
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; sdkman 包管理工具
+$ curl -s https:&#x2F;&#x2F;get.sdkman.io | bash
 
-    // 一定要新开终端窗口执行以下命令
-    $ sdk install kotlin</code></pre><p>Max OS X 还支持以下方式：</p>
-<pre><code>    // homebrew工具安装
-    $ brew update
-    $ brew install kotlin</code></pre><h4 id="2、编译执行Kotlin-Script-kts-文件"><a href="#2、编译执行Kotlin-Script-kts-文件" class="headerlink" title="2、编译执行Kotlin Script(.kts) 文件"></a>2、编译执行Kotlin Script(.kts) 文件</h4><pre><code>    // 编译.kts 脚本文件
-    kotlinc -script *.kts
+&#x2F;&#x2F; 一定要新开终端窗口执行以下命令
+$ sdk install kotlin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Max OS X 还支持以下方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; homebrew工具安装
+$ brew update
+$ brew install kotlin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-编译执行kotlin-scriptkts-文件"><a class="markdownIt-Anchor" href="#2-编译执行kotlin-scriptkts-文件"></a> 2、编译执行Kotlin Script(.kts) 文件</h4>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 编译.kts 脚本文件
+kotlinc -script *.kts
 
-    // 编译源码为可运行的jar包
-    kotlinc D:\kotlin_code\hello.kt -include-runtime -d hello.jar
+&#x2F;&#x2F; 编译源码为可运行的jar包
+kotlinc D:\kotlin_code\hello.kt -include-runtime -d hello.jar
 
-    // 使用java执行hello.jar
-    java -jar D:\kotlin_code\hello.jar
+&#x2F;&#x2F; 使用java执行hello.jar
+java -jar D:\kotlin_code\hello.jar
 
-    // 使用java执行类名运行
-    java -cp D:\kotlin_code\hello.jar  HelloKt
+&#x2F;&#x2F; 使用java执行类名运行
+java -cp D:\kotlin_code\hello.jar  HelloKt
 
-    // 使用kotlin执行，需要指明main类，执行类名
-    kotlin -cp D:\kotlin_code HelloKt
+&#x2F;&#x2F; 使用kotlin执行，需要指明main类，执行类名
+kotlin -cp D:\kotlin_code HelloKt
 
-    // 或者直接运行jar包
-    kotlin D:\kotlin_code\hello.jar</code></pre><h3 id="三、Kotlin-Android-实例"><a href="#三、Kotlin-Android-实例" class="headerlink" title="三、Kotlin Android 实例"></a>三、Kotlin Android 实例</h3><h4 id="1、Kotlin-Android-插件"><a href="#1、Kotlin-Android-插件" class="headerlink" title="1、Kotlin Android 插件"></a>1、Kotlin Android 插件</h4><h5 id="kotlin-android-extensions"><a href="#kotlin-android-extensions" class="headerlink" title="- kotlin.android.extensions"></a>- kotlin.android.extensions</h5><pre><code>apply plugin &quot;kotlin.android.extensions&quot;</code></pre><p>使用该插件可以在代码中省去 findViewById ，可直接使用对应 xml 布局文件中对应 View 的 id 属性定义的名称来进行相应的操作<br>如：</p>
+&#x2F;&#x2F; 或者直接运行jar包
+kotlin D:\kotlin_code\hello.jar<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="三-kotlin-android-实例"><a class="markdownIt-Anchor" href="#三-kotlin-android-实例"></a> 三、Kotlin Android 实例</h3>
+<h4 id="1-kotlin-android-插件"><a class="markdownIt-Anchor" href="#1-kotlin-android-插件"></a> 1、Kotlin Android 插件</h4>
+<h5 id="-kotlinandroidextensions"><a class="markdownIt-Anchor" href="#-kotlinandroidextensions"></a> - kotlin.android.extensions</h5>
+<pre class="line-numbers language-none"><code class="language-none">apply plugin &quot;kotlin.android.extensions&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用该插件可以在代码中省去 findViewById ，可直接使用对应 xml 布局文件中对应 View 的 id 属性定义的名称来进行相应的操作<br />
+如：</p>
 <p>main_layout.xml</p>
-<pre><code>&lt;TextView
-android:layout_width=&quot;wrap_content&quot;
-android:layout_height=&quot;wrap_content&quot;
-android:id=&quot;@+id/tvName&quot;/&gt;</code></pre><p>MainActivity.kt</p>
-<pre><code>tvName.text=&quot;Hello World&quot;</code></pre><h5 id="anko-库"><a href="#anko-库" class="headerlink" title="- anko 库"></a>- anko 库</h5><ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;TextView
+android:layout_width&#x3D;&quot;wrap_content&quot;
+android:layout_height&#x3D;&quot;wrap_content&quot;
+android:id&#x3D;&quot;@+id&#x2F;tvName&quot;&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>MainActivity.kt</p>
+<pre class="line-numbers language-none"><code class="language-none">tvName.text&#x3D;&quot;Hello World&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="-anko-库"><a class="markdownIt-Anchor" href="#-anko-库"></a> - anko 库</h5>
+<ul>
 <li>添加 anko 库</li>
 </ul>
-<pre><code>compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
 <li>改变 View 的setOnClickListener</li>
 </ul>
-<pre><code>tvName.onClick{view -&gt;
-    (view!! as TextView).text=&quot;${System.currentTimeMilles()}&quot;
-}</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">tvName.onClick&#123;view -&gt;
+    (view!! as TextView).text&#x3D;&quot;$&#123;System.currentTimeMilles()&#125;&quot;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>改变 startActivity</li>
 </ul>
-<pre><code>val intent = Intent(this@MainAvtivity,Main2Activity::class.java)
+<pre class="line-numbers language-none"><code class="language-none">val intent &#x3D; Intent(this@MainAvtivity,Main2Activity::class.java)
 intent.putExtra(&quot;key&quot;,&quot;From MainActivity&quot;)
-this@MainAvtivity.startActivity(intent)</code></pre><p>更改后为</p>
-<pre><code>startActivity&lt;Main2Activity&gt;(&quot;key&quot; to &quot;From MainActivity&quot;)</code></pre><ul>
+this@MainAvtivity.startActivity(intent)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>更改后为</p>
+<pre class="line-numbers language-none"><code class="language-none">startActivity&lt;Main2Activity&gt;(&quot;key&quot; to &quot;From MainActivity&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
 <li>代码中定义View,可无需布局文件</li>
 </ul>
 <p>Main2Activity.kt</p>
-<pre><code>override fun onCreate(savedInstanceState: Bundle?){
+<pre class="line-numbers language-none"><code class="language-none">override fun onCreate(savedInstanceState: Bundle?)&#123;
     super.onCreate(savedInstanceState)
-    relativeLayout{
-        textView(intent.extras[&quot;key&quot;]?.toString()?: &quot;Hello&quot;){
+    relativeLayout&#123;
+        textView(intent.extras[&quot;key&quot;]?.toString()?: &quot;Hello&quot;)&#123;
 
-        }.lparams(matchParent,matchParent){
-            gravity = Gravity.CENTER
-        }
-    }.lparams(matchParent,matchParent){
-        gravity = Gravity.CENTER
-    }
-}</code></pre><h3 id="四、Kotlin-javascript-实例"><a href="#四、Kotlin-javascript-实例" class="headerlink" title="四、Kotlin javascript 实例"></a>四、Kotlin javascript 实例</h3><p>创建一个kotlin (javascript) 的项目</p>
+        &#125;.lparams(matchParent,matchParent)&#123;
+            gravity &#x3D; Gravity.CENTER
+        &#125;
+    &#125;.lparams(matchParent,matchParent)&#123;
+        gravity &#x3D; Gravity.CENTER
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="四-kotlin-javascript-实例"><a class="markdownIt-Anchor" href="#四-kotlin-javascript-实例"></a> 四、Kotlin javascript 实例</h3>
+<p>创建一个kotlin (javascript) 的项目</p>
 <p>新建 Main.kt 文件</p>
-<pre><code>fun main(args:Array&lt;String&gt;){
+<pre class="line-numbers language-none"><code class="language-none">fun main(args:Array&lt;String&gt;)&#123;
     document.write(&quot;Hello World!&quot;)
-}</code></pre><p>build 该项目，会在out 下生成对应的js 文件<br>；页面引入对应的js文件，就可以在浏览器访问该页面了</p>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>build 该项目，会在out 下生成对应的js 文件<br />
+；页面引入对应的js文件，就可以在浏览器访问该页面了</p>
 <p>index.html</p>
-<pre><code>&lt;html&gt;
+<pre class="line-numbers language-none"><code class="language-none">&lt;html&gt;
     &lt;head&gt;
-        &lt;title&gt;Hello Kotlin javasicrpt&lt;/title&gt;
-    &lt;script src=&quot;${kotlin.js文件所在路径}/kotlin.js&quot;/&gt;
-    &lt;script src=&quot;${kotlin-javascript.js文件所在路径}/kotlin-javascript.js&quot;/&gt;
-    &lt;/head&gt;
+        &lt;title&gt;Hello Kotlin javasicrpt&lt;&#x2F;title&gt;
+    &lt;script src&#x3D;&quot;$&#123;kotlin.js文件所在路径&#125;&#x2F;kotlin.js&quot;&#x2F;&gt;
+    &lt;script src&#x3D;&quot;$&#123;kotlin-javascript.js文件所在路径&#125;&#x2F;kotlin-javascript.js&quot;&#x2F;&gt;
+    &lt;&#x2F;head&gt;
 
     &lt;body&gt;
 
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre><h3 id="五、Kotlin-SpringBoot-实例"><a href="#五、Kotlin-SpringBoot-实例" class="headerlink" title="五、Kotlin SpringBoot 实例"></a>五、Kotlin SpringBoot 实例</h3><h4 id="1、配置插件"><a href="#1、配置插件" class="headerlink" title="1、配置插件"></a>1、配置插件</h4><pre><code>buildscript{
-    ext.springBootVersion = &quot;1.5.9.RELEASE&quot;
-    dependencies{
+    &lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="五-kotlin-springboot-实例"><a class="markdownIt-Anchor" href="#五-kotlin-springboot-实例"></a> 五、Kotlin SpringBoot 实例</h3>
+<h4 id="1-配置插件"><a class="markdownIt-Anchor" href="#1-配置插件"></a> 1、配置插件</h4>
+<pre class="line-numbers language-none"><code class="language-none">buildscript&#123;
+    ext.springBootVersion &#x3D; &quot;1.5.9.RELEASE&quot;
+    dependencies&#123;
         classpath &quot;org.jetbrains.kotlin:kotlin-noarg:@kotlin_version&quot;
         classpath &quot;org.jetbrains.kotlin:kotlin-allopen:@kotlin_version&quot;
         classpath &quot;org.springframework.boot:Spring-boot-gradle-plugin:@springBootVersion&quot;
-    }
-}
+    &#125;
+&#125;
 apply plugin: &#39;kotlin-spring&#39;
 apply plugin: &#39;kotlin-jpa&#39;
 apply plugin: &#39;org.springframework.boot&#39;
-dependencies{
+dependencies&#123;
     compile &quot;org.springframework.boot:spring-boot-starter-web&quot;
     compile &quot;org.springframework.boot:spring-boot-starter-data-jpa&quot;
     compile &quot;com.h2database:h2&quot;
     compile &quot;com.fasterxml.jackson.module:jackson-module-kotlin:2.8.4&quot;
-}</code></pre><h3 id="五、Kotlin-Native-实例"><a href="#五、Kotlin-Native-实例" class="headerlink" title="五、Kotlin Native 实例"></a>五、Kotlin Native 实例</h3>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="五-kotlin-native-实例"><a class="markdownIt-Anchor" href="#五-kotlin-native-实例"></a> 五、Kotlin Native 实例</h3>
+
   </div>
   <div>
   
@@ -446,7 +497,7 @@ dependencies{
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Kotlin-的应用场景"><span class="toc-text">一、Kotlin 的应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、Kotlin-Script"><span class="toc-text">1、Kotlin Script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、Java-虚拟机应用"><span class="toc-text">2、Java 虚拟机应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、前端开发"><span class="toc-text">3、前端开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、Android-应用开发"><span class="toc-text">4、Android 应用开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、Native-程序"><span class="toc-text">5、Native 程序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、Kotlin-Script-实例"><span class="toc-text">二、Kotlin Script 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、安装-Kotlin-编译库"><span class="toc-text">1、安装 Kotlin 编译库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows下Kotlin命令行开发环境安装"><span class="toc-text">Windows下Kotlin命令行开发环境安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#其它可选的安装平台"><span class="toc-text">其它可选的安装平台</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、编译执行Kotlin-Script-kts-文件"><span class="toc-text">2、编译执行Kotlin Script(.kts) 文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、Kotlin-Android-实例"><span class="toc-text">三、Kotlin Android 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、Kotlin-Android-插件"><span class="toc-text">1、Kotlin Android 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-android-extensions"><span class="toc-text">- kotlin.android.extensions</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#anko-库"><span class="toc-text">- anko 库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、Kotlin-javascript-实例"><span class="toc-text">四、Kotlin javascript 实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、Kotlin-SpringBoot-实例"><span class="toc-text">五、Kotlin SpringBoot 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、配置插件"><span class="toc-text">1、配置插件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、Kotlin-Native-实例"><span class="toc-text">五、Kotlin Native 实例</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-kotlin-%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text"> 一、Kotlin 的应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-kotlin-script"><span class="toc-text"> 1、Kotlin Script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BA%94%E7%94%A8"><span class="toc-text"> 2、Java 虚拟机应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91"><span class="toc-text"> 3、前端开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-android-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91"><span class="toc-text"> 4、Android 应用开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-native-%E7%A8%8B%E5%BA%8F"><span class="toc-text"> 5、Native 程序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-kotlin-script-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 二、Kotlin Script 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85-kotlin-%E7%BC%96%E8%AF%91%E5%BA%93"><span class="toc-text"> 1、安装 Kotlin 编译库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#windows%E4%B8%8Bkotlin%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-text"> Windows下Kotlin命令行开发环境安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E5%8F%AF%E9%80%89%E7%9A%84%E5%AE%89%E8%A3%85%E5%B9%B3%E5%8F%B0"><span class="toc-text"> 其它可选的安装平台</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8Ckotlin-scriptkts-%E6%96%87%E4%BB%B6"><span class="toc-text"> 2、编译执行Kotlin Script(.kts) 文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-kotlin-android-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 三、Kotlin Android 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-kotlin-android-%E6%8F%92%E4%BB%B6"><span class="toc-text"> 1、Kotlin Android 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#-kotlinandroidextensions"><span class="toc-text"> - kotlin.android.extensions</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#-anko-%E5%BA%93"><span class="toc-text"> - anko 库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-kotlin-javascript-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 四、Kotlin javascript 实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-kotlin-springboot-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 五、Kotlin SpringBoot 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE%E6%8F%92%E4%BB%B6"><span class="toc-text"> 1、配置插件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-kotlin-native-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 五、Kotlin Native 实例</span></a></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -462,7 +513,7 @@ dependencies{
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -479,7 +530,7 @@ dependencies{
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Kotlin-的应用场景"><span class="toc-text">一、Kotlin 的应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、Kotlin-Script"><span class="toc-text">1、Kotlin Script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、Java-虚拟机应用"><span class="toc-text">2、Java 虚拟机应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、前端开发"><span class="toc-text">3、前端开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、Android-应用开发"><span class="toc-text">4、Android 应用开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、Native-程序"><span class="toc-text">5、Native 程序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、Kotlin-Script-实例"><span class="toc-text">二、Kotlin Script 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、安装-Kotlin-编译库"><span class="toc-text">1、安装 Kotlin 编译库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows下Kotlin命令行开发环境安装"><span class="toc-text">Windows下Kotlin命令行开发环境安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#其它可选的安装平台"><span class="toc-text">其它可选的安装平台</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、编译执行Kotlin-Script-kts-文件"><span class="toc-text">2、编译执行Kotlin Script(.kts) 文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、Kotlin-Android-实例"><span class="toc-text">三、Kotlin Android 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、Kotlin-Android-插件"><span class="toc-text">1、Kotlin Android 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-android-extensions"><span class="toc-text">- kotlin.android.extensions</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#anko-库"><span class="toc-text">- anko 库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、Kotlin-javascript-实例"><span class="toc-text">四、Kotlin javascript 实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、Kotlin-SpringBoot-实例"><span class="toc-text">五、Kotlin SpringBoot 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、配置插件"><span class="toc-text">1、配置插件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、Kotlin-Native-实例"><span class="toc-text">五、Kotlin Native 实例</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-kotlin-%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text"> 一、Kotlin 的应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-kotlin-script"><span class="toc-text"> 1、Kotlin Script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BA%94%E7%94%A8"><span class="toc-text"> 2、Java 虚拟机应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91"><span class="toc-text"> 3、前端开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-android-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91"><span class="toc-text"> 4、Android 应用开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-native-%E7%A8%8B%E5%BA%8F"><span class="toc-text"> 5、Native 程序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-kotlin-script-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 二、Kotlin Script 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85-kotlin-%E7%BC%96%E8%AF%91%E5%BA%93"><span class="toc-text"> 1、安装 Kotlin 编译库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#windows%E4%B8%8Bkotlin%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-text"> Windows下Kotlin命令行开发环境安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E5%8F%AF%E9%80%89%E7%9A%84%E5%AE%89%E8%A3%85%E5%B9%B3%E5%8F%B0"><span class="toc-text"> 其它可选的安装平台</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8Ckotlin-scriptkts-%E6%96%87%E4%BB%B6"><span class="toc-text"> 2、编译执行Kotlin Script(.kts) 文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-kotlin-android-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 三、Kotlin Android 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-kotlin-android-%E6%8F%92%E4%BB%B6"><span class="toc-text"> 1、Kotlin Android 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#-kotlinandroidextensions"><span class="toc-text"> - kotlin.android.extensions</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#-anko-%E5%BA%93"><span class="toc-text"> - anko 库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-kotlin-javascript-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 四、Kotlin javascript 实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-kotlin-springboot-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 五、Kotlin SpringBoot 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE%E6%8F%92%E4%BB%B6"><span class="toc-text"> 1、配置插件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-kotlin-native-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 五、Kotlin Native 实例</span></a></li></ol>
     </div>
   </article>
   
@@ -500,13 +551,6 @@ dependencies{
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -552,9 +596,9 @@ dependencies{
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -562,14 +606,21 @@ dependencies{
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -577,6 +628,13 @@ dependencies{
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -613,13 +671,13 @@ dependencies{
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -634,7 +692,7 @@ dependencies{
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Kotlin-的应用场景"><span class="toc-text">一、Kotlin 的应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、Kotlin-Script"><span class="toc-text">1、Kotlin Script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、Java-虚拟机应用"><span class="toc-text">2、Java 虚拟机应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、前端开发"><span class="toc-text">3、前端开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、Android-应用开发"><span class="toc-text">4、Android 应用开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、Native-程序"><span class="toc-text">5、Native 程序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、Kotlin-Script-实例"><span class="toc-text">二、Kotlin Script 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、安装-Kotlin-编译库"><span class="toc-text">1、安装 Kotlin 编译库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows下Kotlin命令行开发环境安装"><span class="toc-text">Windows下Kotlin命令行开发环境安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#其它可选的安装平台"><span class="toc-text">其它可选的安装平台</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、编译执行Kotlin-Script-kts-文件"><span class="toc-text">2、编译执行Kotlin Script(.kts) 文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、Kotlin-Android-实例"><span class="toc-text">三、Kotlin Android 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、Kotlin-Android-插件"><span class="toc-text">1、Kotlin Android 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-android-extensions"><span class="toc-text">- kotlin.android.extensions</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#anko-库"><span class="toc-text">- anko 库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、Kotlin-javascript-实例"><span class="toc-text">四、Kotlin javascript 实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、Kotlin-SpringBoot-实例"><span class="toc-text">五、Kotlin SpringBoot 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、配置插件"><span class="toc-text">1、配置插件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、Kotlin-Native-实例"><span class="toc-text">五、Kotlin Native 实例</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-kotlin-%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text"> 一、Kotlin 的应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-kotlin-script"><span class="toc-text"> 1、Kotlin Script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BA%94%E7%94%A8"><span class="toc-text"> 2、Java 虚拟机应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91"><span class="toc-text"> 3、前端开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-android-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91"><span class="toc-text"> 4、Android 应用开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-native-%E7%A8%8B%E5%BA%8F"><span class="toc-text"> 5、Native 程序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-kotlin-script-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 二、Kotlin Script 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85-kotlin-%E7%BC%96%E8%AF%91%E5%BA%93"><span class="toc-text"> 1、安装 Kotlin 编译库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#windows%E4%B8%8Bkotlin%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-text"> Windows下Kotlin命令行开发环境安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E5%8F%AF%E9%80%89%E7%9A%84%E5%AE%89%E8%A3%85%E5%B9%B3%E5%8F%B0"><span class="toc-text"> 其它可选的安装平台</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8Ckotlin-scriptkts-%E6%96%87%E4%BB%B6"><span class="toc-text"> 2、编译执行Kotlin Script(.kts) 文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-kotlin-android-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 三、Kotlin Android 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-kotlin-android-%E6%8F%92%E4%BB%B6"><span class="toc-text"> 1、Kotlin Android 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#-kotlinandroidextensions"><span class="toc-text"> - kotlin.android.extensions</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#-anko-%E5%BA%93"><span class="toc-text"> - anko 库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-kotlin-javascript-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 四、Kotlin javascript 实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-kotlin-springboot-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 五、Kotlin SpringBoot 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE%E6%8F%92%E4%BB%B6"><span class="toc-text"> 1、配置插件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-kotlin-native-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 五、Kotlin Native 实例</span></a></li></ol>
   </article>
   
   
@@ -645,22 +703,22 @@ dependencies{
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -709,7 +767,7 @@ dependencies{
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

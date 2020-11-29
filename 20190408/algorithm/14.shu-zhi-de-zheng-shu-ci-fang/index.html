@@ -127,7 +127,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -213,7 +226,7 @@
     
     
     <span class="dot"></span>
-    <span>489 字</span>
+    <span>513 字</span>
     
   </div>
   
@@ -229,93 +242,101 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="14-数值的整数次方"><a href="#14-数值的整数次方" class="headerlink" title="14.数值的整数次方"></a>14.数值的整数次方</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。</p>
+    <h1 id="14数值的整数次方"><a class="markdownIt-Anchor" href="#14数值的整数次方"></a> 14.数值的整数次方</h1>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。</p>
 <p>保证base和exponent不同时为0</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><ol>
+<h2 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h2>
+<ol>
 <li>base = 0 时，返回0</li>
 <li>exponent = 0 时，任何数的0次方都为1;返回1</li>
 <li>exponent &lt; 0 时，base^exponent 为 1 除以 base的exponent的绝对值次方（base绝对值的exponent绝对值次方分之一）</li>
 <li>exponent &gt; 0 时，base^exponent 为 base的exponent的绝对值次方</li>
 </ol>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="java-代码"><a href="#java-代码" class="headerlink" title="java 代码"></a>java 代码</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
-     *
-     * 保证base和exponent不同时为0
-     *
-     * 1. base = 0 时，返回0
-     * 2. exponent = 0 时，任何数的0次方都为1;返回1
-     * 3. exponent &lt; 0 时，base^exponent 为 1 除以 base的exponent的绝对值次方（base绝对值的exponent绝对值次方分之一）
-     * 4. exponent > 0 时，base^exponent 为 base的exponent的绝对值次方
-     * @param base 基数浮点数
-     * @param exponent 次幂
-     * @return
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">power</span><span class="token punctuation">(</span><span class="token keyword">double</span> base<span class="token punctuation">,</span> <span class="token keyword">int</span> exponent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>base <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">double</span> res <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            base <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> base<span class="token punctuation">;</span>
-            exponent <span class="token operator">=</span> exponent <span class="token operator">*</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> exponent<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            res <span class="token operator">*=</span> base<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h2>
+<h3 id="java-代码"><a class="markdownIt-Anchor" href="#java-代码"></a> java 代码</h3>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
+ *
+ * 保证base和exponent不同时为0
+ *
+ * 1. base = 0 时，返回0
+ * 2. exponent = 0 时，任何数的0次方都为1;返回1
+ * 3. exponent &lt; 0 时，base^exponent 为 1 除以 base的exponent的绝对值次方（base绝对值的exponent绝对值次方分之一）
+ * 4. exponent > 0 时，base^exponent 为 base的exponent的绝对值次方
+ * @param base 基数浮点数
+ * @param exponent 次幂
+ * @return
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">power</span><span class="token punctuation">(</span><span class="token keyword">double</span> base<span class="token punctuation">,</span> <span class="token keyword">int</span> exponent<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>base <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">double</span> res <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        base <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> base<span class="token punctuation">;</span>
+        exponent <span class="token operator">=</span> exponent <span class="token operator">*</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> exponent<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        res <span class="token operator">*=</span> base<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">power</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">power</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code></pre>
-<h3 id="Kotlin-代码"><a href="#Kotlin-代码" class="headerlink" title="Kotlin 代码"></a>Kotlin 代码</h3><pre class=" language-kotlin"><code class="language-kotlin">    <span class="token comment" spellcheck="true">/**
-     * 给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
-     *
-     * 保证base和exponent不同时为0
-     *
-     * 1. base = 0 时，返回0
-     * 2. exponent = 0 时，任何数的0次方都为1;返回1
-     * 3. exponent &lt; 0 时，base^exponent 为 1 除以 base的exponent的绝对值次方（base绝对值的exponent绝对值次方分之一）
-     * 4. exponent > 0 时，base^exponent 为 base的exponent的绝对值次方
-     * @param base 基数浮点数
-     * @param exponent 次幂
-     * @return
-     */</span>
-    <span class="token keyword">fun</span> <span class="token function">power</span><span class="token punctuation">(</span>base<span class="token operator">:</span> Double<span class="token punctuation">,</span> exponent<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> Double <span class="token punctuation">{</span>
-        <span class="token keyword">var</span> base <span class="token operator">=</span> base
-        <span class="token keyword">var</span> exponent <span class="token operator">=</span> exponent
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>base <span class="token operator">==</span> <span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token number">0.0</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token number">1.0</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">var</span> res <span class="token operator">=</span> <span class="token number">1.0</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            base <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> base
-            exponent <span class="token operator">*=</span> <span class="token operator">-</span><span class="token number">1</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token number">0</span> until exponent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            res <span class="token operator">*=</span> base
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> res
-    <span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">power</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">power</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="kotlin-代码"><a class="markdownIt-Anchor" href="#kotlin-代码"></a> Kotlin 代码</h3>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">/**
+ * 给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
+ *
+ * 保证base和exponent不同时为0
+ *
+ * 1. base = 0 时，返回0
+ * 2. exponent = 0 时，任何数的0次方都为1;返回1
+ * 3. exponent &lt; 0 时，base^exponent 为 1 除以 base的exponent的绝对值次方（base绝对值的exponent绝对值次方分之一）
+ * 4. exponent > 0 时，base^exponent 为 base的exponent的绝对值次方
+ * @param base 基数浮点数
+ * @param exponent 次幂
+ * @return
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">power</span><span class="token punctuation">(</span>base<span class="token operator">:</span> Double<span class="token punctuation">,</span> exponent<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> Double <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> base <span class="token operator">=</span> base
+    <span class="token keyword">var</span> exponent <span class="token operator">=</span> exponent
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>base <span class="token operator">==</span> <span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token number">0.0</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token number">1.0</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">var</span> res <span class="token operator">=</span> <span class="token number">1.0</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        base <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> base
+        exponent <span class="token operator">*=</span> <span class="token operator">-</span><span class="token number">1</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token number">0</span> until exponent<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        res <span class="token operator">*=</span> base
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> res
+<span class="token punctuation">&#125;</span>
 
 
 
-    <span class="token comment" spellcheck="true">/**
-     * 入口函数
-     */</span>
-    <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">power</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">power</span><span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h2 id="引用声明"><a href="#引用声明" class="headerlink" title="引用声明"></a>引用声明</h2><p>该题目引用自<br><a href="https://www.nowcoder.com/practice/1a834e5e3e1a4b7ba251417554e07c00?tpId=13&tqId=11165&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking&from=onestravel" target="_blank" rel="noopener">牛客网</a></p>
+<span class="token comment">/**
+ * 入口函数
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">power</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">power</span><span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="引用声明"><a class="markdownIt-Anchor" href="#引用声明"></a> 引用声明</h2>
+<p>该题目引用自<br />
+<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/1a834e5e3e1a4b7ba251417554e07c00?tpId=13&amp;tqId=11165&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking&amp;from=onestravel">牛客网</a></p>
 
   </div>
   <div>
@@ -388,7 +409,7 @@
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#14-数值的整数次方"><span class="toc-text">14.数值的整数次方</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#14%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9"><span class="toc-text"> 14.数值的整数次方</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -404,7 +425,7 @@
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -421,7 +442,7 @@
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#14-数值的整数次方"><span class="toc-text">14.数值的整数次方</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#14%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9"><span class="toc-text"> 14.数值的整数次方</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -442,13 +463,6 @@
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -494,9 +508,9 @@
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -504,14 +518,21 @@
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -519,6 +540,13 @@
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -555,13 +583,13 @@
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -576,7 +604,7 @@
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#14-数值的整数次方"><span class="toc-text">14.数值的整数次方</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#14%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9"><span class="toc-text"> 14.数值的整数次方</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
   </article>
   
   
@@ -587,22 +615,22 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -651,7 +679,7 @@
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

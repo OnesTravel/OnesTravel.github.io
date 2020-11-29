@@ -25,7 +25,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:article:published_time" content="2019-03-06">
-  <meta property="og:article:modified_time" content="2020-04-26">
+  <meta property="og:article:modified_time" content="2020-11-27">
   <meta property="og:article:author" content="一个人的旅行">
   
   
@@ -127,7 +127,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -213,7 +226,7 @@
     
     
     <span class="dot"></span>
-    <span>1.1k 字</span>
+    <span>1.2k 字</span>
     
   </div>
   
@@ -229,241 +242,267 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="4-从尾到头打印链表"><a href="#4-从尾到头打印链表" class="headerlink" title="4.从尾到头打印链表"></a>4.从尾到头打印链表</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>从尾到头反过来打印出每个结点的值。</p>
-<p>如：<br>input:</p>
-<pre><code>graph LR
+    <h1 id="4从尾到头打印链表"><a class="markdownIt-Anchor" href="#4从尾到头打印链表"></a> 4.从尾到头打印链表</h1>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>从尾到头反过来打印出每个结点的值。</p>
+<p>如：<br />
+input:</p>
+<pre class="line-numbers language-none"><code class="language-none">graph LR
 1--&gt;2
-2--&gt;3</code></pre><p>output:</p>
-<pre><code>3,2,1</code></pre><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="1-递归实现"><a href="#1-递归实现" class="headerlink" title="1. 递归实现"></a>1. 递归实现</h3><p>要实现逆序打印链表 1-&gt;2-&gt;3;可以使用使用递归，先将链表看做当前节点和右侧节点两部分；如：1-&gt;(2-&gt;3),先打印右侧节点,再打印当前节点：右侧节点也可以看做两部分如：(2)-&gt;(3),也是先打印当前节点的右侧节点，在打印当前节点；如此递归，可实现逆序打印。</p>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="java-代码"><a href="#java-代码" class="headerlink" title="java 代码"></a>java 代码</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 单向链表节点
-     * @param &lt;T>
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">LinkedNode</span><span class="token operator">&lt;</span>T <span class="token keyword">extends</span> <span class="token class-name">Object</span><span class="token operator">></span><span class="token punctuation">{</span>
-        <span class="token keyword">private</span> T value<span class="token punctuation">;</span>
-        <span class="token keyword">private</span> LinkedNode<span class="token operator">&lt;</span>T<span class="token operator">></span> next<span class="token punctuation">;</span>
+2--&gt;3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>output:</p>
+<pre class="line-numbers language-none"><code class="language-none">3,2,1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h2>
+<h3 id="1-递归实现"><a class="markdownIt-Anchor" href="#1-递归实现"></a> 1. 递归实现</h3>
+<p>要实现逆序打印链表 1-&gt;2-&gt;3;可以使用使用递归，先将链表看做当前节点和右侧节点两部分；如：1-&gt;(2-&gt;3),先打印右侧节点,再打印当前节点：右侧节点也可以看做两部分如：(2)-&gt;(3),也是先打印当前节点的右侧节点，在打印当前节点；如此递归，可实现逆序打印。</p>
+<h4 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h4>
+<h5 id="java-代码"><a class="markdownIt-Anchor" href="#java-代码"></a> java 代码</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 单向链表节点
+ * @param &lt;T>
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span> <span class="token keyword">extends</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">T</span> value<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> next<span class="token punctuation">;</span>
 
-        <span class="token keyword">public</span> T <span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> value<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token class-name">T</span> <span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setValue</span><span class="token punctuation">(</span>T value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> value<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setValue</span><span class="token punctuation">(</span><span class="token class-name">T</span> value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-        <span class="token keyword">public</span> LinkedNode<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">getNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> next<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token function">getNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> next<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setNext</span><span class="token punctuation">(</span>LinkedNode<span class="token operator">&lt;</span>T<span class="token operator">></span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>next <span class="token operator">=</span> next<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">/**
-     * 反向打印链表
-     * @param node 链表首节点
-     * @return
-     */</span>
-    <span class="token keyword">private</span> ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span> <span class="token function">printReverseLink</span><span class="token punctuation">(</span> LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span>  list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            list<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span><span class="token function">printReverseLink</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>next<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> list<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setNext</span><span class="token punctuation">(</span><span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> next<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>next <span class="token operator">=</span> next<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">/**
+ * 反向打印链表
+ * @param node 链表首节点
+ * @return
+ */</span>
+<span class="token keyword">private</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token function">printReverseLink</span><span class="token punctuation">(</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> node<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span>  list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        list<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span><span class="token function">printReverseLink</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>next<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> list<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> first <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        first<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> two <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        two<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> three <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        three<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        two<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>three<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        first<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>two<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">printReverseLink</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code></pre>
-<h5 id="Kotlin-代码"><a href="#Kotlin-代码" class="headerlink" title="Kotlin 代码"></a>Kotlin 代码</h5><pre class=" language-kotlin"><code class="language-kotlin">    <span class="token comment" spellcheck="true">/**
-     * 单向链表节点
-     */</span>
-    <span class="token keyword">data</span> <span class="token keyword">class</span> LinkedNode<span class="token operator">&lt;</span>T <span class="token operator">:</span> Any<span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">var</span> value<span class="token operator">:</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">var</span> next<span class="token operator">:</span> LinkedNode<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span>
-    <span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> first <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    first<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> two <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    two<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> three <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    three<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    two<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>three<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    first<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>two<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">printReverseLink</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="kotlin-代码"><a class="markdownIt-Anchor" href="#kotlin-代码"></a> Kotlin 代码</h5>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">/**
+ * 单向链表节点
+ */</span>
+<span class="token keyword">data</span> <span class="token keyword">class</span> LinkedNode<span class="token operator">&lt;</span>T <span class="token operator">:</span> Any<span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">var</span> value<span class="token operator">:</span> T<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> next<span class="token operator">:</span> LinkedNode<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token comment" spellcheck="true">/**
-     * 反向打印链表
-     * @param node 链表首节点
-     * @return
-     */</span>
-    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">printReverseLink</span><span class="token punctuation">(</span>node<span class="token operator">:</span> LinkedNode<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span>ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> list <span class="token operator">=</span> ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            list<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span><span class="token function">printReverseLink</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>next<span class="token punctuation">)</span><span class="token punctuation">)</span>
-            list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> list
-    <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">/**
-     * 入口函数
-     */</span>
-    <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> first <span class="token operator">=</span> <span class="token function">LinkedNode</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-        first<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">LinkedNode</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-        first<span class="token punctuation">.</span>next<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">LinkedNode</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-        <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">printReverseLink</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h3 id="2-使用头插法"><a href="#2-使用头插法" class="headerlink" title="2. 使用头插法"></a>2. 使用头插法</h3><p>头插法顾名思义是将节点插入到头部：在遍历原始链表时，将当前节点插入新链表的头部，使其成为第一个节点。</p>
+<span class="token comment">/**
+ * 反向打印链表
+ * @param node 链表首节点
+ * @return
+ */</span>
+<span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">printReverseLink</span><span class="token punctuation">(</span>node<span class="token operator">:</span> LinkedNode<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span>ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> list <span class="token operator">=</span> ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        list<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span><span class="token function">printReverseLink</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>next<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> list
+<span class="token punctuation">&#125;</span>
+<span class="token comment">/**
+ * 入口函数
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> first <span class="token operator">=</span> <span class="token function">LinkedNode</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    first<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">LinkedNode</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    first<span class="token punctuation">.</span>next<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">LinkedNode</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">printReverseLink</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-使用头插法"><a class="markdownIt-Anchor" href="#2-使用头插法"></a> 2. 使用头插法</h3>
+<p>头插法顾名思义是将节点插入到头部：在遍历原始链表时，将当前节点插入新链表的头部，使其成为第一个节点。</p>
 <p>链表的操作需要维护后继关系，例如在某个节点 node1 之后插入一个节点 node2，我们可以通过修改后继关系来实现：</p>
-<pre><code>node3 = node1.next;
-node2.next = node3;
-node1.next = node2;</code></pre><p>为了能将一个节点插入头部，我们引入了一个叫头结点的辅助节点，该节点不存储值，只是为了方便进行插入操作。不要将头结点与第一个节点混起来，第一个节点是链表中第一个真正存储值的节点。</p>
-<pre><code>graph LR
+<pre class="line-numbers language-none"><code class="language-none">node3 &#x3D; node1.next;
+node2.next &#x3D; node3;
+node1.next &#x3D; node2;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>为了能将一个节点插入头部，我们引入了一个叫头结点的辅助节点，该节点不存储值，只是为了方便进行插入操作。不要将头结点与第一个节点混起来，第一个节点是链表中第一个真正存储值的节点。</p>
+<pre class="line-numbers language-none"><code class="language-none">graph LR
 1--&gt;2
-2--&gt;3</code></pre><p>引入head节点</p>
-<pre><code>graph LR
-head</code></pre><p>循环遍历链接，插入头结点后</p>
+2--&gt;3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>引入head节点</p>
+<pre class="line-numbers language-none"><code class="language-none">graph LR
+head<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>循环遍历链接，插入头结点后</p>
 <p>node=1</p>
-<pre><code>graph LR
-head--&gt;1</code></pre><p>node=2</p>
-<pre><code>graph LR
+<pre class="line-numbers language-none"><code class="language-none">graph LR
+head--&gt;1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>node=2</p>
+<pre class="line-numbers language-none"><code class="language-none">graph LR
 head--&gt;2
-2--&gt;1</code></pre><p>node=3</p>
-<pre><code>graph LR
+2--&gt;1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>node=3</p>
+<pre class="line-numbers language-none"><code class="language-none">graph LR
 head--&gt;3
 3--&gt;2
-2--&gt;1</code></pre><h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="java-代码-1"><a href="#java-代码-1" class="headerlink" title="java 代码"></a>java 代码</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 头插法实现反向打印链表
-     * 
-     * @param node 链表首节点
-     * @return
-     */</span>
-    <span class="token keyword">private</span> ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span> <span class="token function">printReverseLinkToHead</span><span class="token punctuation">(</span>LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> head <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        head<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>node <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> next <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token function">getNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            node<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span><span class="token function">getNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            head<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            node <span class="token operator">=</span> next<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+2--&gt;1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="代码实现-2"><a class="markdownIt-Anchor" href="#代码实现-2"></a> 代码实现</h4>
+<h5 id="java-代码-2"><a class="markdownIt-Anchor" href="#java-代码-2"></a> java 代码</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 头插法实现反向打印链表
+ * 
+ * @param node 链表首节点
+ * @return
+ */</span>
+<span class="token keyword">private</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token function">printReverseLinkToHead</span><span class="token punctuation">(</span><span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> node<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> head <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    head<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>node <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> next <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token function">getNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        node<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span><span class="token function">getNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        head<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        node <span class="token operator">=</span> next<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    head <span class="token operator">=</span> head<span class="token punctuation">.</span><span class="token function">getNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>head <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         head <span class="token operator">=</span> head<span class="token punctuation">.</span><span class="token function">getNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>head <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            head <span class="token operator">=</span> head<span class="token punctuation">.</span><span class="token function">getNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> list<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> list<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> first <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        first<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> two <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        two<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> three <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        three<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        two<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>three<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        first<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>two<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> first <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    first<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> two <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    two<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> three <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    three<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    two<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>three<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    first<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>two<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">printReverseLinkToHead</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="kotlin-代码-2"><a class="markdownIt-Anchor" href="#kotlin-代码-2"></a> Kotlin 代码</h5>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">/**
+ * 使用头插法反向打印链表
+ * @param node 链表首节点
+ * @return
+ */</span>
+<span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">printReverseLinkToHead</span><span class="token punctuation">(</span>node<span class="token operator">:</span> LinkedNode<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span>ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> currentNode <span class="token operator">=</span> node
+    <span class="token keyword">var</span> head<span class="token operator">:</span>LinkedNode<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token function">LinkedNode</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>currentNode<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">val</span> next <span class="token operator">=</span> currentNode<span class="token punctuation">.</span>next
+        currentNode<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> head<span class="token operator">!!</span><span class="token punctuation">.</span>next
+        head<span class="token operator">!!</span><span class="token punctuation">.</span>next <span class="token operator">=</span> currentNode
+        currentNode <span class="token operator">=</span> next
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">val</span> list <span class="token operator">=</span> ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    head <span class="token operator">=</span> head<span class="token operator">!!</span><span class="token punctuation">.</span>next
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>head<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+        head <span class="token operator">=</span> head<span class="token punctuation">.</span>next
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> list
+<span class="token punctuation">&#125;</span>
 
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">printReverseLinkToHead</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code></pre>
-<h5 id="Kotlin-代码-1"><a href="#Kotlin-代码-1" class="headerlink" title="Kotlin 代码"></a>Kotlin 代码</h5><pre class=" language-kotlin"><code class="language-kotlin">    <span class="token comment" spellcheck="true">/**
-     * 使用头插法反向打印链表
-     * @param node 链表首节点
-     * @return
-     */</span>
-    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">printReverseLinkToHead</span><span class="token punctuation">(</span>node<span class="token operator">:</span> LinkedNode<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span>ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span> <span class="token punctuation">{</span>
-        <span class="token keyword">var</span> currentNode <span class="token operator">=</span> node
-        <span class="token keyword">var</span> head<span class="token operator">:</span>LinkedNode<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token function">LinkedNode</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>currentNode<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">val</span> next <span class="token operator">=</span> currentNode<span class="token punctuation">.</span>next
-            currentNode<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> head<span class="token operator">!!</span><span class="token punctuation">.</span>next
-            head<span class="token operator">!!</span><span class="token punctuation">.</span>next <span class="token operator">=</span> currentNode
-            currentNode <span class="token operator">=</span> next
-        <span class="token punctuation">}</span>
-        <span class="token keyword">val</span> list <span class="token operator">=</span> ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        head <span class="token operator">=</span> head<span class="token operator">!!</span><span class="token punctuation">.</span>next
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>head<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
-            head <span class="token operator">=</span> head<span class="token punctuation">.</span>next
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> list
-    <span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 入口函数
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> first <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    first<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    first<span class="token punctuation">.</span>next<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">printReverseLinkToHead</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-使用栈来实现"><a class="markdownIt-Anchor" href="#3-使用栈来实现"></a> 3. 使用栈来实现</h3>
+<p>栈的规则时后进先出，则可以将链表遍历存放到栈中，然后在出栈则出栈顺序就是反向打印链表</p>
+<h4 id="代码实现-3"><a class="markdownIt-Anchor" href="#代码实现-3"></a> 代码实现</h4>
+<h5 id="java-代码-3"><a class="markdownIt-Anchor" href="#java-代码-3"></a> java 代码</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 使用栈实现反向打印链表
+ *
+ * @param node 链表首节点
+ * @return
+ */</span>
+<span class="token keyword">private</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token function">printReverseLinkToHeadWithStack</span><span class="token punctuation">(</span><span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> node<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>node <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        stack<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        node <span class="token operator">=</span> node<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>stack<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> list<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token comment" spellcheck="true">/**
-     * 入口函数
-     */</span>
-    <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> first <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-        first<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-        first<span class="token punctuation">.</span>next<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-        <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">printReverseLinkToHead</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h3 id="3-使用栈来实现"><a href="#3-使用栈来实现" class="headerlink" title="3. 使用栈来实现"></a>3. 使用栈来实现</h3><p>栈的规则时后进先出，则可以将链表遍历存放到栈中，然后在出栈则出栈顺序就是反向打印链表</p>
-<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="java-代码-2"><a href="#java-代码-2" class="headerlink" title="java 代码"></a>java 代码</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 使用栈实现反向打印链表
-     *
-     * @param node 链表首节点
-     * @return
-     */</span>
-    <span class="token keyword">private</span> ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span> <span class="token function">printReverseLinkToHeadWithStack</span><span class="token punctuation">(</span>LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> node<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        Stack<span class="token operator">&lt;</span>Integer<span class="token operator">></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>node <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            stack<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            node <span class="token operator">=</span> node<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>stack<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> list<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> first <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    first<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> two <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    two<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> three <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    three<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    two<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>three<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    first<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>two<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">printReverseLinkToHeadWithStack</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="kotlin-代码-3"><a class="markdownIt-Anchor" href="#kotlin-代码-3"></a> Kotlin 代码</h5>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">/**
+ * 使用栈反向打印链表
+ * @param node 链表首节点
+ * @return
+ */</span>
+<span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">printReverseLinkToHeadWithStack</span><span class="token punctuation">(</span>node<span class="token operator">:</span> LinkedNode<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> stack <span class="token operator">=</span> Stack<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> current <span class="token operator">=</span> node
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>current <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+        current <span class="token operator">=</span> current<span class="token punctuation">.</span>next
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">val</span> list <span class="token operator">=</span> ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>stack<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> list
+<span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> first <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        first<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> two <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        two<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LinkedNode<span class="token operator">&lt;</span>Integer<span class="token operator">></span> three <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedNode</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        three<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        two<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>three<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        first<span class="token punctuation">.</span><span class="token function">setNext</span><span class="token punctuation">(</span>two<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">printReverseLinkToHeadWithStack</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code></pre>
-<h5 id="Kotlin-代码-2"><a href="#Kotlin-代码-2" class="headerlink" title="Kotlin 代码"></a>Kotlin 代码</h5><pre class=" language-kotlin"><code class="language-kotlin">    <span class="token comment" spellcheck="true">/**
-     * 使用栈反向打印链表
-     * @param node 链表首节点
-     * @return
-     */</span>
-    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">printReverseLinkToHeadWithStack</span><span class="token punctuation">(</span>node<span class="token operator">:</span> LinkedNode<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> stack <span class="token operator">=</span> Stack<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">var</span> current <span class="token operator">=</span> node
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>current <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
-            current <span class="token operator">=</span> current<span class="token punctuation">.</span>next
-        <span class="token punctuation">}</span>
-        <span class="token keyword">val</span> list <span class="token operator">=</span> ArrayList<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>stack<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> list
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 入口函数
-     */</span>
-    <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> first <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-        first<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-        first<span class="token punctuation">.</span>next<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-        <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">printReverseLinkToHeadWithStack</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h2 id="引用声明"><a href="#引用声明" class="headerlink" title="引用声明"></a>引用声明</h2><p>该题目引用自<br><a href="https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&tqId=11156&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&tPage=1&from=onestravel" target="_blank" rel="noopener">牛客网</a></p>
+<span class="token comment">/**
+ * 入口函数
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> first <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    first<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    first<span class="token punctuation">.</span>next<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">printReverseLinkToHeadWithStack</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="引用声明"><a class="markdownIt-Anchor" href="#引用声明"></a> 引用声明</h2>
+<p>该题目引用自<br />
+<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&amp;tqId=11156&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1&amp;from=onestravel">牛客网</a></p>
 
   </div>
   <div>
@@ -536,7 +575,7 @@ head--&gt;3
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-从尾到头打印链表"><span class="toc-text">4.从尾到头打印链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-递归实现"><span class="toc-text">1. 递归实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-使用头插法"><span class="toc-text">2. 使用头插法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-1"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-代码-1"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Kotlin-代码-1"><span class="toc-text">Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用栈来实现"><span class="toc-text">3. 使用栈来实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-2"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-代码-2"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Kotlin-代码-2"><span class="toc-text">Kotlin 代码</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8"><span class="toc-text"> 4.从尾到头打印链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 1. 递归实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E5%A4%B4%E6%8F%92%E6%B3%95"><span class="toc-text"> 2. 使用头插法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-2"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81-2"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81-2"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E6%A0%88%E6%9D%A5%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 3. 使用栈来实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-3"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81-3"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81-3"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -552,7 +591,7 @@ head--&gt;3
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -569,7 +608,7 @@ head--&gt;3
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-从尾到头打印链表"><span class="toc-text">4.从尾到头打印链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-递归实现"><span class="toc-text">1. 递归实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-使用头插法"><span class="toc-text">2. 使用头插法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-1"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-代码-1"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Kotlin-代码-1"><span class="toc-text">Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用栈来实现"><span class="toc-text">3. 使用栈来实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-2"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-代码-2"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Kotlin-代码-2"><span class="toc-text">Kotlin 代码</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8"><span class="toc-text"> 4.从尾到头打印链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 1. 递归实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E5%A4%B4%E6%8F%92%E6%B3%95"><span class="toc-text"> 2. 使用头插法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-2"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81-2"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81-2"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E6%A0%88%E6%9D%A5%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 3. 使用栈来实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-3"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81-3"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81-3"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -590,13 +629,6 @@ head--&gt;3
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -642,9 +674,9 @@ head--&gt;3
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -652,14 +684,21 @@ head--&gt;3
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -667,6 +706,13 @@ head--&gt;3
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -703,13 +749,13 @@ head--&gt;3
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -724,7 +770,7 @@ head--&gt;3
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-从尾到头打印链表"><span class="toc-text">4.从尾到头打印链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-递归实现"><span class="toc-text">1. 递归实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-使用头插法"><span class="toc-text">2. 使用头插法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-1"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-代码-1"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Kotlin-代码-1"><span class="toc-text">Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用栈来实现"><span class="toc-text">3. 使用栈来实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-2"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-代码-2"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Kotlin-代码-2"><span class="toc-text">Kotlin 代码</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8"><span class="toc-text"> 4.从尾到头打印链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 1. 递归实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E5%A4%B4%E6%8F%92%E6%B3%95"><span class="toc-text"> 2. 使用头插法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-2"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81-2"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81-2"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E6%A0%88%E6%9D%A5%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 3. 使用栈来实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-3"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81-3"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81-3"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
   </article>
   
   
@@ -735,22 +781,22 @@ head--&gt;3
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -799,7 +845,7 @@ head--&gt;3
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

@@ -131,7 +131,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -225,7 +238,7 @@
     
     
     <span class="dot"></span>
-    <span>1.4k 字</span>
+    <span>1.6k 字</span>
     
   </div>
   
@@ -251,7 +264,10 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="视频解码、像素格式转换与Native原生绘制"><a href="#视频解码、像素格式转换与Native原生绘制" class="headerlink" title="视频解码、像素格式转换与Native原生绘制"></a>视频解码、像素格式转换与Native原生绘制</h1><h2 id="一、视频解码"><a href="#一、视频解码" class="headerlink" title="一、视频解码"></a>一、视频解码</h2><h3 id="1、FFmpeg-库简介"><a href="#1、FFmpeg-库简介" class="headerlink" title="1、FFmpeg 库简介"></a>1、FFmpeg 库简介</h3><p><strong>FFmpeg 一共包含8个库</strong></p>
+    <h1 id="视频解码-像素格式转换与native原生绘制"><a class="markdownIt-Anchor" href="#视频解码-像素格式转换与native原生绘制"></a> 视频解码、像素格式转换与Native原生绘制</h1>
+<h2 id="一-视频解码"><a class="markdownIt-Anchor" href="#一-视频解码"></a> 一、视频解码</h2>
+<h3 id="1-ffmpeg-库简介"><a class="markdownIt-Anchor" href="#1-ffmpeg-库简介"></a> 1、FFmpeg 库简介</h3>
+<p><strong>FFmpeg 一共包含8个库</strong></p>
 <ul>
 <li><strong>avcodec</strong>：编解码（最重要的库）</li>
 <li><strong>avformat</strong>：封装格式处理</li>
@@ -262,8 +278,10 @@
 <li><strong>swresample</strong>：音频采样数据格式转换</li>
 <li><strong>swscale</strong>：视频像素数据格式转换</li>
 </ul>
-<h3 id="2、FFmpeg-解码的流程图"><a href="#2、FFmpeg-解码的流程图" class="headerlink" title="2、FFmpeg 解码的流程图"></a>2、FFmpeg 解码的流程图</h3><p>/<img src="/images/20190401/ffmpeg_decode.png" alt="FFmpeg 解码的流程图" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190401/ffmpeg_decode.png" class="lozad post-image"></p>
-<h3 id="3、FFmpeg-数据格式简介"><a href="#3、FFmpeg-数据格式简介" class="headerlink" title="3、FFmpeg 数据格式简介"></a>3、FFmpeg 数据格式简介</h3><ul>
+<h3 id="2-ffmpeg-解码的流程图"><a class="markdownIt-Anchor" href="#2-ffmpeg-解码的流程图"></a> 2、FFmpeg 解码的流程图</h3>
+<p>/<img src="/images/20190401/ffmpeg_decode.png" alt="FFmpeg 解码的流程图" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190401/ffmpeg_decode.png" class="lozad post-image"></p>
+<h3 id="3-ffmpeg-数据格式简介"><a class="markdownIt-Anchor" href="#3-ffmpeg-数据格式简介"></a> 3、FFmpeg 数据格式简介</h3>
+<ul>
 <li><strong>AVFormatContext</strong>：封装格式上下文结构体，也是统领全局的结构体，保存了视频文件封装格式相关信息</li>
 <li><strong>AVInputFormat</strong>：每种封装格式（例如FLV、MKV、MP4、AVI）对应一个该结构体。</li>
 <li><strong>AVStream</strong>：视频文件中每个视频（音频）流对应一个该结构体</li>
@@ -272,46 +290,119 @@
 <li><strong>AVPacket</strong>：存储一帧压缩编码数据</li>
 <li><strong>AVFrame</strong>：存储一帧解码后的像素（采样）数据</li>
 </ul>
-<h2 id="二、像素格式转换"><a href="#二、像素格式转换" class="headerlink" title="二、像素格式转换"></a>二、像素格式转换</h2><p><strong>像素格式转换就是将yuv420p 的转成ARGB,可以使用 C/C++ 库 libyuv 来进行转换</strong></p>
-<h3 id="I420ToARGB"><a href="#I420ToARGB" class="headerlink" title="I420ToARGB"></a>I420ToARGB</h3><p><strong>参数按顺序如下：</strong><br>参数 | 类型　| 说明<br>— | — | —<br>src_y|  uint8_t*  | 来源的frame的 y 帧数据 yuv_frame-&gt;data<br>src_stride_y|  int  | 来源的frame的y大小数据 yuv_frame-&gt;linesize<br>src_u|  uint8_t*  | 来源的frame的 u 帧数据yuv_frame-&gt;data<br>src_stride_u|  int  | 来源的frame的u大小数据 yuv_frame-&gt;linesize<br>src_v|  uint8_t*  | 来源的frame的 v 帧数据yuv_frame-&gt;data<br>src_stride_v|  int | 来源的frame的v大小数据 yuv_frame-&gt;linesize<br>dst_argb|  uint8_t*  | 转换后的 rgb 的frame数据<br>dst_stride_argb|  int  | 转换后的 rgb 的frame的大小数据<br>width|  int  | 像素数据宽度<br>height|  int  | 像素数据高度</p>
-<h2 id="三、Native-原生绘制"><a href="#三、Native-原生绘制" class="headerlink" title="三、Native 原生绘制"></a>三、Native 原生绘制</h2><p><strong>Native 原生绘制是使用ANativeWindow 将surface 和 缓冲区buffer绑定，进而去更新缓冲区的数据，并刷新到 surface 就可以实现原生绘制</strong></p>
-<h3 id="1、获取ANativeWindow指针-定义缓冲区"><a href="#1、获取ANativeWindow指针-定义缓冲区" class="headerlink" title="1、获取ANativeWindow指针,定义缓冲区"></a>1、获取ANativeWindow指针,定义缓冲区</h3><pre><code>    //Native 绘制
-    ANativeWindow *nativeWindow = ANativeWindow_fromSurface(env, surface);
-    //缓冲区buffer
-    ANativeWindow_Buffer windowBuffer;</code></pre><h3 id="2、设置缓冲区参数"><a href="#2、设置缓冲区参数" class="headerlink" title="2、设置缓冲区参数"></a>2、设置缓冲区参数</h3><pre><code>//设置缓冲区参数
+<h2 id="二-像素格式转换"><a class="markdownIt-Anchor" href="#二-像素格式转换"></a> 二、像素格式转换</h2>
+<p><strong>像素格式转换就是将yuv420p 的转成ARGB,可以使用 C/C++ 库 libyuv 来进行转换</strong></p>
+<h3 id="i420toargb"><a class="markdownIt-Anchor" href="#i420toargb"></a> I420ToARGB</h3>
+<p><strong>参数按顺序如下：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src_y</td>
+<td>uint8_t*</td>
+<td>来源的frame的 y 帧数据 yuv_frame-&gt;data</td>
+</tr>
+<tr>
+<td>src_stride_y</td>
+<td>int</td>
+<td>来源的frame的y大小数据 yuv_frame-&gt;linesize</td>
+</tr>
+<tr>
+<td>src_u</td>
+<td>uint8_t*</td>
+<td>来源的frame的 u 帧数据yuv_frame-&gt;data</td>
+</tr>
+<tr>
+<td>src_stride_u</td>
+<td>int</td>
+<td>来源的frame的u大小数据 yuv_frame-&gt;linesize</td>
+</tr>
+<tr>
+<td>src_v</td>
+<td>uint8_t*</td>
+<td>来源的frame的 v 帧数据yuv_frame-&gt;data</td>
+</tr>
+<tr>
+<td>src_stride_v</td>
+<td>int</td>
+<td>来源的frame的v大小数据 yuv_frame-&gt;linesize</td>
+</tr>
+<tr>
+<td>dst_argb</td>
+<td>uint8_t*</td>
+<td>转换后的 rgb 的frame数据</td>
+</tr>
+<tr>
+<td>dst_stride_argb</td>
+<td>int</td>
+<td>转换后的 rgb 的frame的大小数据</td>
+</tr>
+<tr>
+<td>width</td>
+<td>int</td>
+<td>像素数据宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>int</td>
+<td>像素数据高度</td>
+</tr>
+</tbody>
+</table>
+<h2 id="三-native-原生绘制"><a class="markdownIt-Anchor" href="#三-native-原生绘制"></a> 三、Native 原生绘制</h2>
+<p><strong>Native 原生绘制是使用ANativeWindow 将surface 和 缓冲区buffer绑定，进而去更新缓冲区的数据，并刷新到 surface 就可以实现原生绘制</strong></p>
+<h3 id="1-获取anativewindow指针定义缓冲区"><a class="markdownIt-Anchor" href="#1-获取anativewindow指针定义缓冲区"></a> 1、获取ANativeWindow指针,定义缓冲区</h3>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;Native 绘制
+ANativeWindow *nativeWindow &#x3D; ANativeWindow_fromSurface(env, surface);
+&#x2F;&#x2F;缓冲区buffer
+ANativeWindow_Buffer windowBuffer;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-设置缓冲区参数"><a class="markdownIt-Anchor" href="#2-设置缓冲区参数"></a> 2、设置缓冲区参数</h3>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;设置缓冲区参数
 ANativeWindow_setBuffersGeometry(nativeWindow, avCodecContext-&gt;width,
-                                             avCodecContext-&gt;height, WINDOW_FORMAT_RGBA_8888);</code></pre><h3 id="3、刷新数据到缓冲区"><a href="#3、刷新数据到缓冲区" class="headerlink" title="3、刷新数据到缓冲区"></a>3、刷新数据到缓冲区</h3><ul>
+                                             avCodecContext-&gt;height, WINDOW_FORMAT_RGBA_8888);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-刷新数据到缓冲区"><a class="markdownIt-Anchor" href="#3-刷新数据到缓冲区"></a> 3、刷新数据到缓冲区</h3>
+<ul>
 <li>对缓冲区进行加锁</li>
 <li>刷新转换后的数据到缓冲区</li>
 <li>对缓冲区数据进行解锁</li>
 </ul>
-<pre><code>//LOCK
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;LOCK
 ANativeWindow_lock(nativeWindo&amp;windowBuffer, NULL
 avpicture_fill((AVPicture rgba_frame, windowBuffer.bitPIX_FMT_RGBA,
             avCodecContext-&gt;width,
             avCodecContext-&gt;height
-//fix buffer
+&#x2F;&#x2F;fix buffer
 I420ToARGB(
         yuv_frame-&gt;data[0yuv_frame-&gt;linesize[0],
         yuv_frame-&gt;data[2yuv_frame-&gt;linesize[2],
         yuv_frame-&gt;data[1yuv_frame-&gt;linesize[1],
         rgba_frame-&gt;data[0rgba_frame-&gt;linesize[0],
         avCodecContext-&gt;widtavCodecContext-&gt;height
-//UNLOCK
-ANativeWindow_unlockAndPost(natiindow);</code></pre><h3 id="4、释放nativeWindow"><a href="#4、释放nativeWindow" class="headerlink" title="4、释放nativeWindow"></a>4、释放nativeWindow</h3><pre><code>ANativeWindow_release(nativeWindow);</code></pre><h2 id="四、使用FFmpeg实现native原生绘制，显示视频图像"><a href="#四、使用FFmpeg实现native原生绘制，显示视频图像" class="headerlink" title="四、使用FFmpeg实现native原生绘制，显示视频图像"></a>四、使用FFmpeg实现native原生绘制，显示视频图像</h2><p><strong>之前说明了Android Studio 使用 CMake 来配置FFmpeg 的方法，这里就省略项目配置与Java代码部分，主要来实现C/C++代码部分,将像素数据会知道 Surface 上</strong></p>
-<pre><code>#include &quot;cn_onestravel_ndk_ffmpeg_render_VideoPlayer.h&quot;
-#include &lt;android/log.h&gt;
+&#x2F;&#x2F;UNLOCK
+ANativeWindow_unlockAndPost(natiindow);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-释放nativewindow"><a class="markdownIt-Anchor" href="#4-释放nativewindow"></a> 4、释放nativeWindow</h3>
+<pre class="line-numbers language-none"><code class="language-none">ANativeWindow_release(nativeWindow);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="四-使用ffmpeg实现native原生绘制显示视频图像"><a class="markdownIt-Anchor" href="#四-使用ffmpeg实现native原生绘制显示视频图像"></a> 四、使用FFmpeg实现native原生绘制，显示视频图像</h2>
+<p><strong>之前说明了Android Studio 使用 CMake 来配置FFmpeg 的方法，这里就省略项目配置与Java代码部分，主要来实现C/C++代码部分,将像素数据会知道 Surface 上</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">#include &quot;cn_onestravel_ndk_ffmpeg_render_VideoPlayer.h&quot;
+#include &lt;android&#x2F;log.h&gt;
 #include &lt;unistd.h&gt;
-//编码
-#include &quot;include/libavcodec/avcodec.h&quot;
-//封装格式处理
-#include &quot;include/libavformat/avformat.h&quot;
-//像素处理
-#include &quot;include/libswscale/swscale.h&quot;
-#include &quot;include/libavutil/avutil.h&quot;
-#include &quot;include/libavutil/frame.h&quot;
-#include &lt;android/native_window.h&gt;
-#include &lt;android/native_window_jni.h&gt;
+&#x2F;&#x2F;编码
+#include &quot;include&#x2F;libavcodec&#x2F;avcodec.h&quot;
+&#x2F;&#x2F;封装格式处理
+#include &quot;include&#x2F;libavformat&#x2F;avformat.h&quot;
+&#x2F;&#x2F;像素处理
+#include &quot;include&#x2F;libswscale&#x2F;swscale.h&quot;
+#include &quot;include&#x2F;libavutil&#x2F;avutil.h&quot;
+#include &quot;include&#x2F;libavutil&#x2F;frame.h&quot;
+#include &lt;android&#x2F;native_window.h&gt;
+#include &lt;android&#x2F;native_window_jni.h&gt;
 #include &lt;libyuv.h&gt;
 #include &lt;pthread.h&gt;
 
@@ -320,91 +411,91 @@ ANativeWindow_unlockAndPost(natiindow);</code></pre><h3 id="4、释放nativeWind
 #define LOGE(FORMAT, ...) __android_log_print(ANDROID_LOG_ERROR,&quot;FFMPEG&quot;,FORMAT,##__VA_ARGS__);
 
 
-/*
+&#x2F;*
  * Class:     cn_onestravel_ndk_ffmpeg_render_VideoPlayer
  * Method:    render
- * Signature: (Ljava/lang/String;Landroid/view/Surface;)V
- */
+ * Signature: (Ljava&#x2F;lang&#x2F;String;Landroid&#x2F;view&#x2F;Surface;)V
+ *&#x2F;
 JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
-        (JNIEnv *env, jclass jcls, jstring jstr_input, jobject surface) {
-    const char *cstr_input = (*env)-&gt;GetStringUTFChars(env, jstr_input, NULL);
-    //注册ffmpeg 所有组件
+        (JNIEnv *env, jclass jcls, jstring jstr_input, jobject surface) &#123;
+    const char *cstr_input &#x3D; (*env)-&gt;GetStringUTFChars(env, jstr_input, NULL);
+    &#x2F;&#x2F;注册ffmpeg 所有组件
     av_register_all();
-    //封装格式上下文
-    AVFormatContext *formatContext = avformat_alloc_context();
-    //打开输入视频文件
-    if (avformat_open_input(&amp;formatContext, cstr_input, NULL, NULL) != 0) {
+    &#x2F;&#x2F;封装格式上下文
+    AVFormatContext *formatContext &#x3D; avformat_alloc_context();
+    &#x2F;&#x2F;打开输入视频文件
+    if (avformat_open_input(&amp;formatContext, cstr_input, NULL, NULL) !&#x3D; 0) &#123;
         LOGE(&quot;无法打开视频文件&quot;);
         return;
-    }
-    //获取视频文件信息
-    if (avformat_find_stream_info(formatContext, NULL) &lt; 0) {
+    &#125;
+    &#x2F;&#x2F;获取视频文件信息
+    if (avformat_find_stream_info(formatContext, NULL) &lt; 0) &#123;
         LOGE(&quot;获取视频文件信息失败&quot;);
         return;
-    }
-    //获取视频流的索引位置
-    //遍历所有类型的流（音频流，视频流、字幕流）
-    int i = 0;
-    int v_stream_index = -1;
-    for (; i &lt; formatContext-&gt;nb_streams; i++) {
-        if (formatContext-&gt;streams[i]-&gt;codec-&gt;codec_type == AVMEDIA_TYPE_VIDEO) {
-            v_stream_index = i;
+    &#125;
+    &#x2F;&#x2F;获取视频流的索引位置
+    &#x2F;&#x2F;遍历所有类型的流（音频流，视频流、字幕流）
+    int i &#x3D; 0;
+    int v_stream_index &#x3D; -1;
+    for (; i &lt; formatContext-&gt;nb_streams; i++) &#123;
+        if (formatContext-&gt;streams[i]-&gt;codec-&gt;codec_type &#x3D;&#x3D; AVMEDIA_TYPE_VIDEO) &#123;
+            v_stream_index &#x3D; i;
             break;
-        }
-    }
-    if (v_stream_index &lt; 0) {
+        &#125;
+    &#125;
+    if (v_stream_index &lt; 0) &#123;
         LOGE(&quot;%s&quot;, &quot;找不到视频流\n&quot;);
         return;
-    }
-    //获取视频流中的编解码的上下文
-    AVCodecContext *avCodecContext = formatContext-&gt;streams[v_stream_index]-&gt;codec;
-    //根据视频编解码上下文的id得到对应的编解码器
+    &#125;
+    &#x2F;&#x2F;获取视频流中的编解码的上下文
+    AVCodecContext *avCodecContext &#x3D; formatContext-&gt;streams[v_stream_index]-&gt;codec;
+    &#x2F;&#x2F;根据视频编解码上下文的id得到对应的编解码器
 
-    AVCodec *avCodec = avcodec_find_decoder(avCodecContext-&gt;codec_id);
-    if (avCodec == NULL) {
+    AVCodec *avCodec &#x3D; avcodec_find_decoder(avCodecContext-&gt;codec_id);
+    if (avCodec &#x3D;&#x3D; NULL) &#123;
         LOGE(&quot;未找到解码器&quot;);
         return;
-    }
-    //打开解码器
-    if (avcodec_open2(avCodecContext, avCodec, NULL) &lt; 0) {
+    &#125;
+    &#x2F;&#x2F;打开解码器
+    if (avcodec_open2(avCodecContext, avCodec, NULL) &lt; 0) &#123;
         LOGE(&quot;打开解码器失败&quot;);
         return;
-    }
-    //输出视频信息
+    &#125;
+    &#x2F;&#x2F;输出视频信息
     LOGI(&quot;视频文件格式：%s&quot;, formatContext-&gt;iformat-&gt;name);
-    //formatContext-&gt;duration单位为微妙
-    LOGI(&quot;视频时长：%lld&quot;, (formatContext-&gt;duration) / 1000000);
+    &#x2F;&#x2F;formatContext-&gt;duration单位为微妙
+    LOGI(&quot;视频时长：%lld&quot;, (formatContext-&gt;duration) &#x2F; 1000000);
     LOGI(&quot;视频的宽度和高度 W：%d ,H：%d&quot;, avCodecContext-&gt;width, avCodecContext-&gt;height);
     LOGI(&quot;视频解码器名称：%s&quot;, avCodec-&gt;name);
-    //准备读取
-    //AVPacket用于存储一帧一帧的压缩数据（H264）
-    //缓冲区，开辟空间
-    AVPacket *packet = (AVPacket *) av_malloc(sizeof(AVPacket));
-    AVFrame *yuv_frame = av_frame_alloc();
-    AVFrame *yuv_scale_frame = av_frame_alloc();
-    AVFrame *rgba_frame = av_frame_alloc();
-    //Native 绘制
-    ANativeWindow *nativeWindow = ANativeWindow_fromSurface(env, surface);
-    //缓冲区buffer
+    &#x2F;&#x2F;准备读取
+    &#x2F;&#x2F;AVPacket用于存储一帧一帧的压缩数据（H264）
+    &#x2F;&#x2F;缓冲区，开辟空间
+    AVPacket *packet &#x3D; (AVPacket *) av_malloc(sizeof(AVPacket));
+    AVFrame *yuv_frame &#x3D; av_frame_alloc();
+    AVFrame *yuv_scale_frame &#x3D; av_frame_alloc();
+    AVFrame *rgba_frame &#x3D; av_frame_alloc();
+    &#x2F;&#x2F;Native 绘制
+    ANativeWindow *nativeWindow &#x3D; ANativeWindow_fromSurface(env, surface);
+    &#x2F;&#x2F;缓冲区buffer
     ANativeWindow_Buffer windowBuffer;
 
-    int len, got_frame, frame_count = 0;
-    while (av_read_frame(formatContext, packet) &gt;= 0) {
-        len = avcodec_decode_video2(avCodecContext, yuv_frame, &amp;got_frame, packet);
-        //不为0,正在解码
-        if (got_frame) {
-            int i = frame_count++;
+    int len, got_frame, frame_count &#x3D; 0;
+    while (av_read_frame(formatContext, packet) &gt;&#x3D; 0) &#123;
+        len &#x3D; avcodec_decode_video2(avCodecContext, yuv_frame, &amp;got_frame, packet);
+        &#x2F;&#x2F;不为0,正在解码
+        if (got_frame) &#123;
+            int i &#x3D; frame_count++;
             LOGI(&quot;解码%d帧&quot;, i);
             ANativeWindow_setBuffersGeometry(nativeWindow, avCodecContext-&gt;width,
                                              avCodecContext-&gt;height, WINDOW_FORMAT_RGBA_8888);
-            //LOCK
+            &#x2F;&#x2F;LOCK
             ANativeWindow_lock(nativeWindow, &amp;windowBuffer, NULL);
 
             avpicture_fill((AVPicture *) rgba_frame, windowBuffer.bits, PIX_FMT_RGBA,
                            avCodecContext-&gt;width,
                            avCodecContext-&gt;height);
 
-            //fix buffer
+            &#x2F;&#x2F;fix buffer
             I420ToARGB(
                     yuv_frame-&gt;data[0], yuv_frame-&gt;linesize[0],
                     yuv_frame-&gt;data[2], yuv_frame-&gt;linesize[2],
@@ -412,13 +503,13 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
                     rgba_frame-&gt;data[0], rgba_frame-&gt;linesize[0],
                     avCodecContext-&gt;width, avCodecContext-&gt;height);
 
-            //UNLOCK
+            &#x2F;&#x2F;UNLOCK
             ANativeWindow_unlockAndPost(nativeWindow);
-//            ANativeWindow_release(nativeWindow);
+&#x2F;&#x2F;            ANativeWindow_release(nativeWindow);
             usleep(16 * 1000);
-        }
+        &#125;
         av_free_packet(packet);
-    }
+    &#125;
     ANativeWindow_release(nativeWindow);
     av_frame_free(yuv_frame);
     av_frame_free(rgba_frame);
@@ -427,30 +518,31 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
     avformat_free_context(formatContext);
     (*env)-&gt;ReleaseStringUTFChars(env, jstr_input, cstr_input);
 
-}</code></pre><p><strong>自定义 VideoView 继承自 SurfaceView</strong></p>
-<pre><code>public class VideoView extends SurfaceView {
-    public VideoView(Context context) {
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>自定义 VideoView 继承自 SurfaceView</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">public class VideoView extends SurfaceView &#123;
+    public VideoView(Context context) &#123;
         super(context);
         init();
-    }
+    &#125;
 
-    public VideoView(Context context, AttributeSet attrs) {
+    public VideoView(Context context, AttributeSet attrs) &#123;
         super(context, attrs);
         init();
-    }
+    &#125;
 
-    public VideoView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public VideoView(Context context, AttributeSet attrs, int defStyleAttr) &#123;
         super(context, attrs, defStyleAttr);
         init();
-    }
+    &#125;
 
-    public void init(){
-        //初始化SurfaceView的像素格式
-        SurfaceHolder holder = getHolder();
+    public void init()&#123;
+        &#x2F;&#x2F;初始化SurfaceView的像素格式
+        SurfaceHolder holder &#x3D; getHolder();
         holder.setFormat(PixelFormat.RGBA_8888);
-    }
-}
-</code></pre>
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
   </div>
   <div>
   
@@ -522,7 +614,7 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#视频解码、像素格式转换与Native原生绘制"><span class="toc-text">视频解码、像素格式转换与Native原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、视频解码"><span class="toc-text">一、视频解码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、FFmpeg-库简介"><span class="toc-text">1、FFmpeg 库简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、FFmpeg-解码的流程图"><span class="toc-text">2、FFmpeg 解码的流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、FFmpeg-数据格式简介"><span class="toc-text">3、FFmpeg 数据格式简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、像素格式转换"><span class="toc-text">二、像素格式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#I420ToARGB"><span class="toc-text">I420ToARGB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Native-原生绘制"><span class="toc-text">三、Native 原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、获取ANativeWindow指针-定义缓冲区"><span class="toc-text">1、获取ANativeWindow指针,定义缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、设置缓冲区参数"><span class="toc-text">2、设置缓冲区参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、刷新数据到缓冲区"><span class="toc-text">3、刷新数据到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、释放nativeWindow"><span class="toc-text">4、释放nativeWindow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、使用FFmpeg实现native原生绘制，显示视频图像"><span class="toc-text">四、使用FFmpeg实现native原生绘制，显示视频图像</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E8%A7%A3%E7%A0%81-%E5%83%8F%E7%B4%A0%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%B8%8Enative%E5%8E%9F%E7%94%9F%E7%BB%98%E5%88%B6"><span class="toc-text"> 视频解码、像素格式转换与Native原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%A7%86%E9%A2%91%E8%A7%A3%E7%A0%81"><span class="toc-text"> 一、视频解码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ffmpeg-%E5%BA%93%E7%AE%80%E4%BB%8B"><span class="toc-text"> 1、FFmpeg 库简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ffmpeg-%E8%A7%A3%E7%A0%81%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text"> 2、FFmpeg 解码的流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ffmpeg-%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E7%AE%80%E4%BB%8B"><span class="toc-text"> 3、FFmpeg 数据格式简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%83%8F%E7%B4%A0%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 二、像素格式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i420toargb"><span class="toc-text"> I420ToARGB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-native-%E5%8E%9F%E7%94%9F%E7%BB%98%E5%88%B6"><span class="toc-text"> 三、Native 原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%8E%B7%E5%8F%96anativewindow%E6%8C%87%E9%92%88%E5%AE%9A%E4%B9%89%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text"> 1、获取ANativeWindow指针,定义缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E7%BC%93%E5%86%B2%E5%8C%BA%E5%8F%82%E6%95%B0"><span class="toc-text"> 2、设置缓冲区参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%B7%E6%96%B0%E6%95%B0%E6%8D%AE%E5%88%B0%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text"> 3、刷新数据到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%87%8A%E6%94%BEnativewindow"><span class="toc-text"> 4、释放nativeWindow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%BD%BF%E7%94%A8ffmpeg%E5%AE%9E%E7%8E%B0native%E5%8E%9F%E7%94%9F%E7%BB%98%E5%88%B6%E6%98%BE%E7%A4%BA%E8%A7%86%E9%A2%91%E5%9B%BE%E5%83%8F"><span class="toc-text"> 四、使用FFmpeg实现native原生绘制，显示视频图像</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -538,7 +630,7 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -555,7 +647,7 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#视频解码、像素格式转换与Native原生绘制"><span class="toc-text">视频解码、像素格式转换与Native原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、视频解码"><span class="toc-text">一、视频解码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、FFmpeg-库简介"><span class="toc-text">1、FFmpeg 库简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、FFmpeg-解码的流程图"><span class="toc-text">2、FFmpeg 解码的流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、FFmpeg-数据格式简介"><span class="toc-text">3、FFmpeg 数据格式简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、像素格式转换"><span class="toc-text">二、像素格式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#I420ToARGB"><span class="toc-text">I420ToARGB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Native-原生绘制"><span class="toc-text">三、Native 原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、获取ANativeWindow指针-定义缓冲区"><span class="toc-text">1、获取ANativeWindow指针,定义缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、设置缓冲区参数"><span class="toc-text">2、设置缓冲区参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、刷新数据到缓冲区"><span class="toc-text">3、刷新数据到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、释放nativeWindow"><span class="toc-text">4、释放nativeWindow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、使用FFmpeg实现native原生绘制，显示视频图像"><span class="toc-text">四、使用FFmpeg实现native原生绘制，显示视频图像</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E8%A7%A3%E7%A0%81-%E5%83%8F%E7%B4%A0%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%B8%8Enative%E5%8E%9F%E7%94%9F%E7%BB%98%E5%88%B6"><span class="toc-text"> 视频解码、像素格式转换与Native原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%A7%86%E9%A2%91%E8%A7%A3%E7%A0%81"><span class="toc-text"> 一、视频解码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ffmpeg-%E5%BA%93%E7%AE%80%E4%BB%8B"><span class="toc-text"> 1、FFmpeg 库简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ffmpeg-%E8%A7%A3%E7%A0%81%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text"> 2、FFmpeg 解码的流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ffmpeg-%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E7%AE%80%E4%BB%8B"><span class="toc-text"> 3、FFmpeg 数据格式简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%83%8F%E7%B4%A0%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 二、像素格式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i420toargb"><span class="toc-text"> I420ToARGB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-native-%E5%8E%9F%E7%94%9F%E7%BB%98%E5%88%B6"><span class="toc-text"> 三、Native 原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%8E%B7%E5%8F%96anativewindow%E6%8C%87%E9%92%88%E5%AE%9A%E4%B9%89%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text"> 1、获取ANativeWindow指针,定义缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E7%BC%93%E5%86%B2%E5%8C%BA%E5%8F%82%E6%95%B0"><span class="toc-text"> 2、设置缓冲区参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%B7%E6%96%B0%E6%95%B0%E6%8D%AE%E5%88%B0%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text"> 3、刷新数据到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%87%8A%E6%94%BEnativewindow"><span class="toc-text"> 4、释放nativeWindow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%BD%BF%E7%94%A8ffmpeg%E5%AE%9E%E7%8E%B0native%E5%8E%9F%E7%94%9F%E7%BB%98%E5%88%B6%E6%98%BE%E7%A4%BA%E8%A7%86%E9%A2%91%E5%9B%BE%E5%83%8F"><span class="toc-text"> 四、使用FFmpeg实现native原生绘制，显示视频图像</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -576,13 +668,6 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -628,9 +713,9 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -638,14 +723,21 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -653,6 +745,13 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -689,13 +788,13 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -710,7 +809,7 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#视频解码、像素格式转换与Native原生绘制"><span class="toc-text">视频解码、像素格式转换与Native原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、视频解码"><span class="toc-text">一、视频解码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、FFmpeg-库简介"><span class="toc-text">1、FFmpeg 库简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、FFmpeg-解码的流程图"><span class="toc-text">2、FFmpeg 解码的流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、FFmpeg-数据格式简介"><span class="toc-text">3、FFmpeg 数据格式简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、像素格式转换"><span class="toc-text">二、像素格式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#I420ToARGB"><span class="toc-text">I420ToARGB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Native-原生绘制"><span class="toc-text">三、Native 原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、获取ANativeWindow指针-定义缓冲区"><span class="toc-text">1、获取ANativeWindow指针,定义缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、设置缓冲区参数"><span class="toc-text">2、设置缓冲区参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、刷新数据到缓冲区"><span class="toc-text">3、刷新数据到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、释放nativeWindow"><span class="toc-text">4、释放nativeWindow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、使用FFmpeg实现native原生绘制，显示视频图像"><span class="toc-text">四、使用FFmpeg实现native原生绘制，显示视频图像</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E8%A7%A3%E7%A0%81-%E5%83%8F%E7%B4%A0%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%B8%8Enative%E5%8E%9F%E7%94%9F%E7%BB%98%E5%88%B6"><span class="toc-text"> 视频解码、像素格式转换与Native原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%A7%86%E9%A2%91%E8%A7%A3%E7%A0%81"><span class="toc-text"> 一、视频解码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ffmpeg-%E5%BA%93%E7%AE%80%E4%BB%8B"><span class="toc-text"> 1、FFmpeg 库简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ffmpeg-%E8%A7%A3%E7%A0%81%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text"> 2、FFmpeg 解码的流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ffmpeg-%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E7%AE%80%E4%BB%8B"><span class="toc-text"> 3、FFmpeg 数据格式简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%83%8F%E7%B4%A0%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 二、像素格式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i420toargb"><span class="toc-text"> I420ToARGB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-native-%E5%8E%9F%E7%94%9F%E7%BB%98%E5%88%B6"><span class="toc-text"> 三、Native 原生绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%8E%B7%E5%8F%96anativewindow%E6%8C%87%E9%92%88%E5%AE%9A%E4%B9%89%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text"> 1、获取ANativeWindow指针,定义缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E7%BC%93%E5%86%B2%E5%8C%BA%E5%8F%82%E6%95%B0"><span class="toc-text"> 2、设置缓冲区参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%B7%E6%96%B0%E6%95%B0%E6%8D%AE%E5%88%B0%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text"> 3、刷新数据到缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%87%8A%E6%94%BEnativewindow"><span class="toc-text"> 4、释放nativeWindow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%BD%BF%E7%94%A8ffmpeg%E5%AE%9E%E7%8E%B0native%E5%8E%9F%E7%94%9F%E7%BB%98%E5%88%B6%E6%98%BE%E7%A4%BA%E8%A7%86%E9%A2%91%E5%9B%BE%E5%83%8F"><span class="toc-text"> 四、使用FFmpeg实现native原生绘制，显示视频图像</span></a></li></ol></li></ol>
   </article>
   
   
@@ -721,22 +820,22 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -785,7 +884,7 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpeg_render_VideoPlayer_render
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

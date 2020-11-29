@@ -127,7 +127,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -213,7 +226,7 @@
     
     
     <span class="dot"></span>
-    <span>431 字</span>
+    <span>457 字</span>
     
   </div>
   
@@ -229,81 +242,92 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="3-替换空格"><a href="#3-替换空格" class="headerlink" title="3.替换空格"></a>3.替换空格</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>将一个字符串中的空格替换成 “%20”。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><ul>
-<li><p>在字符串尾部填充任意字符，使得字符串的长度等于替换之后的长度。因为一个空格要替换成三个字符（%20），所以当遍历到一个空格时，需要在尾部填充两个任意字符。</p>
+    <h1 id="3替换空格"><a class="markdownIt-Anchor" href="#3替换空格"></a> 3.替换空格</h1>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>将一个字符串中的空格替换成 “%20”。</p>
+<h2 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h2>
+<ul>
+<li>
+<p>在字符串尾部填充任意字符，使得字符串的长度等于替换之后的长度。因为一个空格要替换成三个字符（%20），所以当遍历到一个空格时，需要在尾部填充两个任意字符。</p>
 </li>
-<li><p>令 P1 指向字符串原来的末尾位置，P2 指向字符串现在的末尾位置。P1 和 P2 从后向前遍历，当 P1 遍历到一个空格时，就需要令 P2 指向的位置依次填充 02%（注意是逆序的），否则就填充上 P1 指向字符的值。从后向前遍是为了在改变 P2 所指向的内容时，不会影响到 P1 遍历原来字符串的内容。</p>
+<li>
+<p>令 P1 指向字符串原来的末尾位置，P2 指向字符串现在的末尾位置。P1 和 P2 从后向前遍历，当 P1 遍历到一个空格时，就需要令 P2 指向的位置依次填充 02%（注意是逆序的），否则就填充上 P1 指向字符的值。从后向前遍是为了在改变 P2 所指向的内容时，不会影响到 P1 遍历原来字符串的内容。</p>
 </li>
-<li><p>当 P2 遇到 P1 时（P2 &lt;= P1），或者遍历结束（P1 &lt; 0），退出。</p>
+<li>
+<p>当 P2 遇到 P1 时（P2 &lt;= P1），或者遍历结束（P1 &lt; 0），退出。</p>
 </li>
 </ul>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="java-代码"><a href="#java-代码" class="headerlink" title="java 代码"></a>java 代码</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 替换空格
-     * @param str 需要替换空格的字符串
-     * @return
-     */</span>
-    <span class="token keyword">private</span> String <span class="token function">replaceSpace</span><span class="token punctuation">(</span>String str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        StringBuffer sb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuffer</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> P1 <span class="token operator">=</span> sb<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> P1<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>sb<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">' '</span><span class="token punctuation">)</span>
-                sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h2>
+<h3 id="java-代码"><a class="markdownIt-Anchor" href="#java-代码"></a> java 代码</h3>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 替换空格
+ * @param str 需要替换空格的字符串
+ * @return
+ */</span>
+<span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">replaceSpace</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">StringBuffer</span> sb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuffer</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> P1 <span class="token operator">=</span> sb<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> P1<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>sb<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">' '</span><span class="token punctuation">)</span>
+            sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">int</span> P2 <span class="token operator">=</span> sb<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>P1 <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> P2 <span class="token operator">></span> P1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">char</span> c <span class="token operator">=</span> sb<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>P1<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">' '</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                sb<span class="token punctuation">.</span><span class="token function">setCharAt</span><span class="token punctuation">(</span>P2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                sb<span class="token punctuation">.</span><span class="token function">setCharAt</span><span class="token punctuation">(</span>P2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                sb<span class="token punctuation">.</span><span class="token function">setCharAt</span><span class="token punctuation">(</span>P2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'%'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                sb<span class="token punctuation">.</span><span class="token function">setCharAt</span><span class="token punctuation">(</span>P2<span class="token operator">--</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token keyword">int</span> P2 <span class="token operator">=</span> sb<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>P1 <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> P2 <span class="token operator">></span> P1<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">char</span> c <span class="token operator">=</span> sb<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>P1<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">' '</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            sb<span class="token punctuation">.</span><span class="token function">setCharAt</span><span class="token punctuation">(</span>P2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sb<span class="token punctuation">.</span><span class="token function">setCharAt</span><span class="token punctuation">(</span>P2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sb<span class="token punctuation">.</span><span class="token function">setCharAt</span><span class="token punctuation">(</span>P2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'%'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            sb<span class="token punctuation">.</span><span class="token function">setCharAt</span><span class="token punctuation">(</span>P2<span class="token operator">--</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token comment" spellcheck="true">/**
-     * 入口函数
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        String string <span class="token operator">=</span> <span class="token string">"A B"</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">replaceSpace</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code></pre>
-<h3 id="Kotlin-代码"><a href="#Kotlin-代码" class="headerlink" title="Kotlin 代码"></a>Kotlin 代码</h3><pre class=" language-kotlin"><code class="language-kotlin">    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">replaceSpace</span><span class="token punctuation">(</span>string<span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> sb <span class="token operator">=</span> <span class="token function">StringBuffer</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span>
-        <span class="token keyword">var</span> p1 <span class="token operator">=</span> sb<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
-        sb<span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span>c <span class="token keyword">in</span> sb<span class="token punctuation">.</span>indices<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>sb<span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">' '</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"  "</span><span class="token punctuation">)</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">var</span> p2 <span class="token operator">=</span> sb<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>p1 <span class="token keyword">in</span> <span class="token number">0</span> until p2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">val</span> char <span class="token operator">=</span> <span class="token keyword">get</span><span class="token punctuation">(</span>p1<span class="token operator">--</span><span class="token punctuation">)</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>char <span class="token operator">==</span> <span class="token string">' '</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token function">setCharAt</span><span class="token punctuation">(</span>p2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span>
-                    <span class="token function">setCharAt</span><span class="token punctuation">(</span>p2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">)</span>
-                    <span class="token function">setCharAt</span><span class="token punctuation">(</span>p2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'%'</span><span class="token punctuation">)</span>
-                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                    <span class="token function">setCharAt</span><span class="token punctuation">(</span>p2<span class="token operator">--</span><span class="token punctuation">,</span> char<span class="token punctuation">)</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 入口函数
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span> string <span class="token operator">=</span> <span class="token string">"A B"</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">replaceSpace</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="kotlin-代码"><a class="markdownIt-Anchor" href="#kotlin-代码"></a> Kotlin 代码</h3>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">replaceSpace</span><span class="token punctuation">(</span>string<span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> sb <span class="token operator">=</span> <span class="token function">StringBuffer</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span>
+    <span class="token keyword">var</span> p1 <span class="token operator">=</span> sb<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
+    sb<span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>c <span class="token keyword">in</span> sb<span class="token punctuation">.</span>indices<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>sb<span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">' '</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"  "</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">var</span> p2 <span class="token operator">=</span> sb<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>p1 <span class="token keyword">in</span> <span class="token number">0</span> until p2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">val</span> char <span class="token operator">=</span> <span class="token keyword">get</span><span class="token punctuation">(</span>p1<span class="token operator">--</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>char <span class="token operator">==</span> <span class="token string">' '</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token function">setCharAt</span><span class="token punctuation">(</span>p2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span>
+                <span class="token function">setCharAt</span><span class="token punctuation">(</span>p2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">)</span>
+                <span class="token function">setCharAt</span><span class="token punctuation">(</span>p2<span class="token operator">--</span><span class="token punctuation">,</span> <span class="token string">'%'</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                <span class="token function">setCharAt</span><span class="token punctuation">(</span>p2<span class="token operator">--</span><span class="token punctuation">,</span> char<span class="token punctuation">)</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token comment" spellcheck="true">/**
-     * 入口函数
-     */</span>
-    <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> input <span class="token operator">=</span> <span class="token string">"A B"</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">replaceSpace</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h2 id="引用声明"><a href="#引用声明" class="headerlink" title="引用声明"></a>引用声明</h2><p>该题目引用自<br><a href="https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&tqId=11155&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking&from=onestravel" target="_blank" rel="noopener">牛客网</a></p>
+<span class="token comment">/**
+ * 入口函数
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> input <span class="token operator">=</span> <span class="token string">"A B"</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">replaceSpace</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="引用声明"><a class="markdownIt-Anchor" href="#引用声明"></a> 引用声明</h2>
+<p>该题目引用自<br />
+<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&amp;tqId=11155&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking&amp;from=onestravel">牛客网</a></p>
 
   </div>
   <div>
@@ -376,7 +400,7 @@
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3-替换空格"><span class="toc-text">3.替换空格</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC"><span class="toc-text"> 3.替换空格</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -392,7 +416,7 @@
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -409,7 +433,7 @@
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3-替换空格"><span class="toc-text">3.替换空格</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC"><span class="toc-text"> 3.替换空格</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -430,13 +454,6 @@
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -482,9 +499,9 @@
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -492,14 +509,21 @@
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -507,6 +531,13 @@
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -543,13 +574,13 @@
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -564,7 +595,7 @@
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3-替换空格"><span class="toc-text">3.替换空格</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC"><span class="toc-text"> 3.替换空格</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
   </article>
   
   
@@ -575,22 +606,22 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -639,7 +670,7 @@
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

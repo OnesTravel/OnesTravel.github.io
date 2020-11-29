@@ -127,7 +127,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -221,7 +234,7 @@
     
     
     <span class="dot"></span>
-    <span>1k 字</span>
+    <span>1.1k 字</span>
     
   </div>
   
@@ -237,15 +250,22 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="（一）C语言之基本数据类型、输入输出、指针"><a href="#（一）C语言之基本数据类型、输入输出、指针" class="headerlink" title="（一）C语言之基本数据类型、输入输出、指针"></a>（一）C语言之基本数据类型、输入输出、指针</h1><h3 id="一、基本数据类型"><a href="#一、基本数据类型" class="headerlink" title="一、基本数据类型"></a>一、基本数据类型</h3><h4 id="1、头文件"><a href="#1、头文件" class="headerlink" title="1、头文件"></a>1、头文件</h4><p>引入头文件,在头文件中只有函数的声明，在编译的时候会去找到函数的实现</p>
-<pre><code>#include &lt;stdio.h&gt;</code></pre><h4 id="2、基本数据类型"><a href="#2、基本数据类型" class="headerlink" title="2、基本数据类型"></a>2、基本数据类型</h4><h5 id="1-、基本数据类型所使用的输出占位符"><a href="#1-、基本数据类型所使用的输出占位符" class="headerlink" title="(1)、基本数据类型所使用的输出占位符"></a>(1)、基本数据类型所使用的输出占位符</h5><table>
+    <h1 id="一c语言之基本数据类型-输入输出-指针"><a class="markdownIt-Anchor" href="#一c语言之基本数据类型-输入输出-指针"></a> （一）C语言之基本数据类型、输入输出、指针</h1>
+<h3 id="一-基本数据类型"><a class="markdownIt-Anchor" href="#一-基本数据类型"></a> 一、基本数据类型</h3>
+<h4 id="1-头文件"><a class="markdownIt-Anchor" href="#1-头文件"></a> 1、头文件</h4>
+<p>引入头文件,在头文件中只有函数的声明，在编译的时候会去找到函数的实现</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;stdio.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="2-基本数据类型"><a class="markdownIt-Anchor" href="#2-基本数据类型"></a> 2、基本数据类型</h4>
+<h5 id="1-基本数据类型所使用的输出占位符"><a class="markdownIt-Anchor" href="#1-基本数据类型所使用的输出占位符"></a> (1)、基本数据类型所使用的输出占位符</h5>
+<table>
 <thead>
 <tr>
 <th>数据类型</th>
 <th>占位符</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>short</td>
 <td>%d</td>
 </tr>
@@ -281,18 +301,17 @@
 <td>字符串</td>
 <td>%s</td>
 </tr>
+</tbody>
+</table>
+<h5 id="2-基本数据类型所占字节数"><a class="markdownIt-Anchor" href="#2-基本数据类型所占字节数"></a> (2)、基本数据类型所占字节数</h5>
+<table>
+<thead>
 <tr>
-<td>##### (2)、基本数据类型所占字节数</td>
-<td></td>
+<th>数据类型</th>
+<th>字节数</th>
 </tr>
-<tr>
-<td>数据类型</td>
-<td>字节数</td>
-</tr>
-<tr>
-<td>—</td>
-<td>—</td>
-</tr>
+</thead>
+<tbody>
 <tr>
 <td>short</td>
 <td>2</td>
@@ -317,117 +336,154 @@
 <td>char</td>
 <td>1</td>
 </tr>
-</tbody></table>
-<h3 id="二、输入输出函数"><a href="#二、输入输出函数" class="headerlink" title="二、输入输出函数"></a>二、输入输出函数</h3><h4 id="1、输入函数"><a href="#1、输入函数" class="headerlink" title="1、输入函数"></a>1、输入函数</h4><p>scanf(“%d”,&amp;i);<br>控制台输入，&amp; 为取地址符</p>
-<h4 id="2、输出函数"><a href="#2、输出函数" class="headerlink" title="2、输出函数"></a>2、输出函数</h4><p>printf(“i的值为：%d\n”,i);<br>控制台输输出函数</p>
-<pre><code>#include &lt;stdio.h&gt;
+</tbody>
+</table>
+<h3 id="二-输入输出函数"><a class="markdownIt-Anchor" href="#二-输入输出函数"></a> 二、输入输出函数</h3>
+<h4 id="1-输入函数"><a class="markdownIt-Anchor" href="#1-输入函数"></a> 1、输入函数</h4>
+<p>scanf(&quot;%d&quot;,&amp;i);<br />
+控制台输入，&amp; 为取地址符</p>
+<h4 id="2-输出函数"><a class="markdownIt-Anchor" href="#2-输出函数"></a> 2、输出函数</h4>
+<p>printf(“i的值为：%d\n”,i);<br />
+控制台输输出函数</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;stdio.h&gt;
 
-void main(){
+void main()&#123;
     int i;
     printf(&quot;请输入一个整数：&quot;);
-    //赋值
+    &#x2F;&#x2F;赋值
     scanf(&quot;%d&quot;,&amp;i);
-    //打印
+    &#x2F;&#x2F;打印
     printf(&quot;i的值为：%d\n&quot;,i);
     system(&quot;pause&quot;);
-}</code></pre><h3 id="三、指针"><a href="#三、指针" class="headerlink" title="三、指针"></a>三、指针</h3><h4 id="1、指针的定义"><a href="#1、指针的定义" class="headerlink" title="1、指针的定义"></a>1、指针的定义</h4><h5 id="指针存储的是变量的内存地址"><a href="#指针存储的是变量的内存地址" class="headerlink" title="指针存储的是变量的内存地址"></a>指针存储的是变量的内存地址</h5><h5 id="变量名就是对内存空间中一段数据的抽象"><a href="#变量名就是对内存空间中一段数据的抽象" class="headerlink" title="变量名就是对内存空间中一段数据的抽象"></a>变量名就是对内存空间中一段数据的抽象</h5><h5 id="内存地址就是系统给数据分配的编号"><a href="#内存地址就是系统给数据分配的编号" class="headerlink" title="内存地址就是系统给数据分配的编号"></a>内存地址就是系统给数据分配的编号</h5><pre><code>#include &lt;stdio.h&gt;
-void main(){
-    int i = 0;
-    //指针变量,p 的值就是 i 这个变量的内存地址
-    int* p = &amp;i;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="三-指针"><a class="markdownIt-Anchor" href="#三-指针"></a> 三、指针</h3>
+<h4 id="1-指针的定义"><a class="markdownIt-Anchor" href="#1-指针的定义"></a> 1、指针的定义</h4>
+<h5 id="指针存储的是变量的内存地址"><a class="markdownIt-Anchor" href="#指针存储的是变量的内存地址"></a> 指针存储的是变量的内存地址</h5>
+<h5 id="变量名就是对内存空间中一段数据的抽象"><a class="markdownIt-Anchor" href="#变量名就是对内存空间中一段数据的抽象"></a> 变量名就是对内存空间中一段数据的抽象</h5>
+<h5 id="内存地址就是系统给数据分配的编号"><a class="markdownIt-Anchor" href="#内存地址就是系统给数据分配的编号"></a> 内存地址就是系统给数据分配的编号</h5>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;stdio.h&gt;
+void main()&#123;
+    int i &#x3D; 0;
+    &#x2F;&#x2F;指针变量,p 的值就是 i 这个变量的内存地址
+    int* p &#x3D; &amp;i;
     printf(&quot;内存地址为：%#X\n&quot;,p);
     system(&quot;pause&quot;);
-}</code></pre><p>控制台输出</p>
-<pre><code>内存地址为：0X8FF764</code></pre><h5 id="指针类型的定义：在基本数据类型后加"><a href="#指针类型的定义：在基本数据类型后加" class="headerlink" title="指针类型的定义：在基本数据类型后加*"></a>指针类型的定义：在基本数据类型后加*</h5><p>如：</p>
-<pre><code>    float f = 88.6;
-    //创建一个float类型的指针
-    float* fp = &amp;f;    </code></pre><p>或</p>
-<pre><code>    float f = 88.6;
-    //创建一个float类型的指针
-    float *fp = &amp;f;    </code></pre><h5 id="通过指针修改变量的值"><a href="#通过指针修改变量的值" class="headerlink" title="通过指针修改变量的值"></a>通过指针修改变量的值</h5><pre><code>void main(){
-    int i = 90;
-    //创建一个int类型的指针变量
-    int *p = &amp;i;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>控制台输出</p>
+<pre class="line-numbers language-none"><code class="language-none">内存地址为：0X8FF764<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="指针类型的定义在基本数据类型后加"><a class="markdownIt-Anchor" href="#指针类型的定义在基本数据类型后加"></a> 指针类型的定义：在基本数据类型后加*</h5>
+<p>如：</p>
+<pre class="line-numbers language-none"><code class="language-none">float f &#x3D; 88.6;
+&#x2F;&#x2F;创建一个float类型的指针
+float* fp &#x3D; &amp;f;    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>或</p>
+<pre class="line-numbers language-none"><code class="language-none">float f &#x3D; 88.6;
+&#x2F;&#x2F;创建一个float类型的指针
+float *fp &#x3D; &amp;f;    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h5 id="通过指针修改变量的值"><a class="markdownIt-Anchor" href="#通过指针修改变量的值"></a> 通过指针修改变量的值</h5>
+<pre class="line-numbers language-none"><code class="language-none">void main()&#123;
+    int i &#x3D; 90;
+    &#x2F;&#x2F;创建一个int类型的指针变量
+    int *p &#x3D; &amp;i;
     printf(&quot;i的值为：%d\n&quot;,i);
-    // p 代表变量 i 的内存地址
-    // *p 代表 p 这个内存地址上的数据
-    *p = 210;
+    &#x2F;&#x2F; p 代表变量 i 的内存地址
+    &#x2F;&#x2F; *p 代表 p 这个内存地址上的数据
+    *p &#x3D; 210;
     printf(&quot;i的值为：%d\n&quot;,i);
     system(&quot;pause&quot;);
-}</code></pre><p>控制台输出：</p>
-<pre><code>i的值为：90
-i的值为：210</code></pre><h5 id="指针变量的内存地址说明："><a href="#指针变量的内存地址说明：" class="headerlink" title="指针变量的内存地址说明："></a>指针变量的内存地址说明：</h5><p><img src="/images/20180825/tu-01.png" alt="指针变量的内存地址说明" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20180825/tu-01.png" class="lozad post-image"></p>
-<h4 id="2、指针的类型"><a href="#2、指针的类型" class="headerlink" title="2、指针的类型"></a>2、指针的类型</h4><h5 id="指针有类型，地址没有类型；"><a href="#指针有类型，地址没有类型；" class="headerlink" title="指针有类型，地址没有类型；"></a>指针有类型，地址没有类型；</h5><p>地址只是开始的位置，类型是指明读取到什么位置结束</p>
-<h4 id="3、NULL空指针"><a href="#3、NULL空指针" class="headerlink" title="3、NULL空指针"></a>3、NULL空指针</h4><p>指针为NULL的指针，默认值为0,默认内存地址访问0x000000操作系统不允许</p>
-<pre><code>void main(){
-    int i = 9;
-    int *p = NULL;
-
-    //空指针的默认值为0
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>控制台输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">i的值为：90
+i的值为：210<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h5 id="指针变量的内存地址说明"><a class="markdownIt-Anchor" href="#指针变量的内存地址说明"></a> 指针变量的内存地址说明：</h5>
+<p><img src="/images/20180825/tu-01.png" alt="指针变量的内存地址说明" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20180825/tu-01.png" class="lozad post-image"></p>
+<h4 id="2-指针的类型"><a class="markdownIt-Anchor" href="#2-指针的类型"></a> 2、指针的类型</h4>
+<h5 id="指针有类型地址没有类型"><a class="markdownIt-Anchor" href="#指针有类型地址没有类型"></a> 指针有类型，地址没有类型；</h5>
+<p>地址只是开始的位置，类型是指明读取到什么位置结束</p>
+<h4 id="3-null空指针"><a class="markdownIt-Anchor" href="#3-null空指针"></a> 3、NULL空指针</h4>
+<p>指针为NULL的指针，默认值为0,默认内存地址访问0x000000操作系统不允许</p>
+<pre class="line-numbers language-none"><code class="language-none">void main()&#123;
+    int i &#x3D; 9;
+    int *p &#x3D; NULL;
+    
+    &#x2F;&#x2F;空指针的默认值为0
     printf(&quot;%#X\n&quot;,p);
-    //访问内存地址0x000000操作系统不允许
+    &#x2F;&#x2F;访问内存地址0x000000操作系统不允许
     printf(&quot;%d\n&quot;,*p);
     getchar();
-}</code></pre><h4 id="4、多级指针"><a href="#4、多级指针" class="headerlink" title="4、多级指针"></a>4、多级指针</h4><h5 id="指针保存的是变量的地址，保存的这个变量还可以是一个指针变量"><a href="#指针保存的是变量的地址，保存的这个变量还可以是一个指针变量" class="headerlink" title="指针保存的是变量的地址，保存的这个变量还可以是一个指针变量"></a>指针保存的是变量的地址，保存的这个变量还可以是一个指针变量</h5><pre><code>void main(){
-    int a = 50;
-    //p1上保存的是 a 的地址
-    int* p1 = &amp;a;
-    //p2上保存的是 p1 的地址
-    int** p2 = &amp;p1;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="4-多级指针"><a class="markdownIt-Anchor" href="#4-多级指针"></a> 4、多级指针</h4>
+<h5 id="指针保存的是变量的地址保存的这个变量还可以是一个指针变量"><a class="markdownIt-Anchor" href="#指针保存的是变量的地址保存的这个变量还可以是一个指针变量"></a> 指针保存的是变量的地址，保存的这个变量还可以是一个指针变量</h5>
+<pre class="line-numbers language-none"><code class="language-none">void main()&#123;
+    int a &#x3D; 50;
+    &#x2F;&#x2F;p1上保存的是 a 的地址
+    int* p1 &#x3D; &amp;a;
+    &#x2F;&#x2F;p2上保存的是 p1 的地址
+    int** p2 &#x3D; &amp;p1;
     printf(&quot;p1d的值为：%#x,p2的值为：%#x\n&quot;,p1,p2);
-    //通过p2 改变a的值
-    **p2 = 90;
+    &#x2F;&#x2F;通过p2 改变a的值
+    **p2 &#x3D; 90;
     printf(&quot;a的值为：%d\n&quot;,a);
     getchar();
-}</code></pre><p>输出结果为：</p>
-<pre><code>p1d的值为：0xcffa9c,p2的值为：0xcffa90
-a的值为：90</code></pre><h4 id="5、指针运算"><a href="#5、指针运算" class="headerlink" title="5、指针运算"></a>5、指针运算</h4><h5 id="指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式"><a href="#指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式" class="headerlink" title="指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式"></a>指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式</h5><pre><code>void main(){
-    //数组在内存中连续存储
-    int ids[] = {78,90,23,65,19};
-    //数组的变量名：ids就是数组的首地址
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">p1d的值为：0xcffa9c,p2的值为：0xcffa90
+a的值为：90<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="5-指针运算"><a class="markdownIt-Anchor" href="#5-指针运算"></a> 5、指针运算</h4>
+<h5 id="指针的运算一般在数组遍历时才有意义基于数据在内存中线性排列的方式"><a class="markdownIt-Anchor" href="#指针的运算一般在数组遍历时才有意义基于数据在内存中线性排列的方式"></a> 指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式</h5>
+<pre class="line-numbers language-none"><code class="language-none">void main()&#123;
+    &#x2F;&#x2F;数组在内存中连续存储
+    int ids[] &#x3D; &#123;78,90,23,65,19&#125;;
+    &#x2F;&#x2F;数组的变量名：ids就是数组的首地址
     printf(&quot;%#x\n&quot;,ids);
     printf(&quot;%#x\n&quot;,&amp;ids);
     printf(&quot;%#x\n&quot;,&amp;ids[0]);
-    //指针变量
-    int *p = ids;
+    &#x2F;&#x2F;指针变量
+    int *p &#x3D; ids;
     printf(&quot;%d\n&quot;,*p);
-    //指针的加法
-    p++;//指针向前移动sizeof(数据类型)个字节
+    &#x2F;&#x2F;指针的加法
+    p++;&#x2F;&#x2F;指针向前移动sizeof(数据类型)个字节
     printf(&quot;%d\n&quot;,*p);
     getchar();
-}</code></pre><p>输出结果为：</p>
-<pre><code>0x7dfaa0
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">0x7dfaa0
 0x7dfaa0
 0x7dfaa0
 78
-90</code></pre><h5 id="通过指针给数组赋值"><a href="#通过指针给数组赋值" class="headerlink" title="通过指针给数组赋值"></a>通过指针给数组赋值</h5><pre><code>void main(){
+90<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="通过指针给数组赋值"><a class="markdownIt-Anchor" href="#通过指针给数组赋值"></a> 通过指针给数组赋值</h5>
+<pre class="line-numbers language-none"><code class="language-none">void main()&#123;
     int uids[5];
-    int* p = uids;
-    ////高级写法
-    //int i = 0;
-    //for (;i &lt; 5; i++){
-    //    uids[i] = i;
-    //}
-    //早些版本的写法
-    int i = 0;
-    for(; p &lt; uids + 5 ; p++){
-        *p = i;
+    int* p &#x3D; uids;
+    &#x2F;&#x2F;&#x2F;&#x2F;高级写法
+    &#x2F;&#x2F;int i &#x3D; 0;
+    &#x2F;&#x2F;for (;i &lt; 5; i++)&#123;
+    &#x2F;&#x2F;    uids[i] &#x3D; i;
+    &#x2F;&#x2F;&#125;
+    &#x2F;&#x2F;早些版本的写法
+    int i &#x3D; 0;
+    for(; p &lt; uids + 5 ; p++)&#123;
+        *p &#x3D; i;
         i++;
-    }
-
-}</code></pre><h4 id="6、函数指针"><a href="#6、函数指针" class="headerlink" title="6、函数指针"></a>6、函数指针</h4><p>函数指针的定义：</p>
-<pre><code>[函数返回值类型]([函数指针的名称])([函数的参数列表])</code></pre><pre><code>#include &lt;Windows.h&gt;
-void msg(char* title,char* content){
+    &#125;
+    
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="6-函数指针"><a class="markdownIt-Anchor" href="#6-函数指针"></a> 6、函数指针</h4>
+<p>函数指针的定义：</p>
+<pre class="line-numbers language-none"><code class="language-none">[函数返回值类型]([函数指针的名称])([函数的参数列表])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;Windows.h&gt;
+void msg(char* title,char* content)&#123;
     MessageBox(0,content,title,0);
-}
+&#125;
 
-void main(){
-    //msg();
-    //函数指针
-    void(*fun_p)(char* title,char* content) = msg;
+void main()&#123;
+    &#x2F;&#x2F;msg();
+    &#x2F;&#x2F;函数指针
+    void(*fun_p)(char* title,char* content) &#x3D; msg;
     fun_p(&quot;消息标题&quot;,&quot;消息内容&quot;);
     getchar();
-}</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
   </div>
   <div>
   
@@ -499,7 +555,7 @@ void main(){
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#（一）C语言之基本数据类型、输入输出、指针"><span class="toc-text">（一）C语言之基本数据类型、输入输出、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本数据类型"><span class="toc-text">一、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、头文件"><span class="toc-text">1、头文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、基本数据类型"><span class="toc-text">2、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-、基本数据类型所使用的输出占位符"><span class="toc-text">(1)、基本数据类型所使用的输出占位符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、输入输出函数"><span class="toc-text">二、输入输出函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、输入函数"><span class="toc-text">1、输入函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、输出函数"><span class="toc-text">2、输出函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、指针"><span class="toc-text">三、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、指针的定义"><span class="toc-text">1、指针的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针存储的是变量的内存地址"><span class="toc-text">指针存储的是变量的内存地址</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#变量名就是对内存空间中一段数据的抽象"><span class="toc-text">变量名就是对内存空间中一段数据的抽象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#内存地址就是系统给数据分配的编号"><span class="toc-text">内存地址就是系统给数据分配的编号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指针类型的定义：在基本数据类型后加"><span class="toc-text">指针类型的定义：在基本数据类型后加*</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#通过指针修改变量的值"><span class="toc-text">通过指针修改变量的值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指针变量的内存地址说明："><span class="toc-text">指针变量的内存地址说明：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、指针的类型"><span class="toc-text">2、指针的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针有类型，地址没有类型；"><span class="toc-text">指针有类型，地址没有类型；</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、NULL空指针"><span class="toc-text">3、NULL空指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、多级指针"><span class="toc-text">4、多级指针</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针保存的是变量的地址，保存的这个变量还可以是一个指针变量"><span class="toc-text">指针保存的是变量的地址，保存的这个变量还可以是一个指针变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、指针运算"><span class="toc-text">5、指针运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式"><span class="toc-text">指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#通过指针给数组赋值"><span class="toc-text">通过指针给数组赋值</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、函数指针"><span class="toc-text">6、函数指针</span></a></li></ol></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80c%E8%AF%AD%E8%A8%80%E4%B9%8B%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA-%E6%8C%87%E9%92%88"><span class="toc-text"> （一）C语言之基本数据类型、输入输出、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 一、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text"> 1、头文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 2、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BE%93%E5%87%BA%E5%8D%A0%E4%BD%8D%E7%AC%A6"><span class="toc-text"> (1)、基本数据类型所使用的输出占位符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%80%E5%8D%A0%E5%AD%97%E8%8A%82%E6%95%B0"><span class="toc-text"> (2)、基本数据类型所占字节数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0"><span class="toc-text"> 二、输入输出函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%BE%93%E5%85%A5%E5%87%BD%E6%95%B0"><span class="toc-text"> 1、输入函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0"><span class="toc-text"> 2、输出函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E6%8C%87%E9%92%88"><span class="toc-text"> 三、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8C%87%E9%92%88%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、指针的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%AD%98%E5%82%A8%E7%9A%84%E6%98%AF%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80"><span class="toc-text"> 指针存储的是变量的内存地址</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%90%8D%E5%B0%B1%E6%98%AF%E5%AF%B9%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%E4%B8%AD%E4%B8%80%E6%AE%B5%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8A%BD%E8%B1%A1"><span class="toc-text"> 变量名就是对内存空间中一段数据的抽象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E5%B0%B1%E6%98%AF%E7%B3%BB%E7%BB%9F%E7%BB%99%E6%95%B0%E6%8D%AE%E5%88%86%E9%85%8D%E7%9A%84%E7%BC%96%E5%8F%B7"><span class="toc-text"> 内存地址就是系统给数据分配的编号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%9C%A8%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%90%8E%E5%8A%A0"><span class="toc-text"> 指针类型的定义：在基本数据类型后加*</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%8C%87%E9%92%88%E4%BF%AE%E6%94%B9%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC"><span class="toc-text"> 通过指针修改变量的值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E8%AF%B4%E6%98%8E"><span class="toc-text"> 指针变量的内存地址说明：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%87%E9%92%88%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 2、指针的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E6%9C%89%E7%B1%BB%E5%9E%8B%E5%9C%B0%E5%9D%80%E6%B2%A1%E6%9C%89%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 指针有类型，地址没有类型；</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-null%E7%A9%BA%E6%8C%87%E9%92%88"><span class="toc-text"> 3、NULL空指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%A4%9A%E7%BA%A7%E6%8C%87%E9%92%88"><span class="toc-text"> 4、多级指针</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E4%BF%9D%E5%AD%98%E7%9A%84%E6%98%AF%E5%8F%98%E9%87%8F%E7%9A%84%E5%9C%B0%E5%9D%80%E4%BF%9D%E5%AD%98%E7%9A%84%E8%BF%99%E4%B8%AA%E5%8F%98%E9%87%8F%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%98%AF%E4%B8%80%E4%B8%AA%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F"><span class="toc-text"> 指针保存的是变量的地址，保存的这个变量还可以是一个指针变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97"><span class="toc-text"> 5、指针运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E7%9A%84%E8%BF%90%E7%AE%97%E4%B8%80%E8%88%AC%E5%9C%A8%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86%E6%97%B6%E6%89%8D%E6%9C%89%E6%84%8F%E4%B9%89%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%BA%BF%E6%80%A7%E6%8E%92%E5%88%97%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text"> 指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%8C%87%E9%92%88%E7%BB%99%E6%95%B0%E7%BB%84%E8%B5%8B%E5%80%BC"><span class="toc-text"> 通过指针给数组赋值</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text"> 6、函数指针</span></a></li></ol></li></ol></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -515,7 +571,7 @@ void main(){
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -532,7 +588,7 @@ void main(){
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#（一）C语言之基本数据类型、输入输出、指针"><span class="toc-text">（一）C语言之基本数据类型、输入输出、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本数据类型"><span class="toc-text">一、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、头文件"><span class="toc-text">1、头文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、基本数据类型"><span class="toc-text">2、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-、基本数据类型所使用的输出占位符"><span class="toc-text">(1)、基本数据类型所使用的输出占位符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、输入输出函数"><span class="toc-text">二、输入输出函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、输入函数"><span class="toc-text">1、输入函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、输出函数"><span class="toc-text">2、输出函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、指针"><span class="toc-text">三、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、指针的定义"><span class="toc-text">1、指针的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针存储的是变量的内存地址"><span class="toc-text">指针存储的是变量的内存地址</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#变量名就是对内存空间中一段数据的抽象"><span class="toc-text">变量名就是对内存空间中一段数据的抽象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#内存地址就是系统给数据分配的编号"><span class="toc-text">内存地址就是系统给数据分配的编号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指针类型的定义：在基本数据类型后加"><span class="toc-text">指针类型的定义：在基本数据类型后加*</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#通过指针修改变量的值"><span class="toc-text">通过指针修改变量的值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指针变量的内存地址说明："><span class="toc-text">指针变量的内存地址说明：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、指针的类型"><span class="toc-text">2、指针的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针有类型，地址没有类型；"><span class="toc-text">指针有类型，地址没有类型；</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、NULL空指针"><span class="toc-text">3、NULL空指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、多级指针"><span class="toc-text">4、多级指针</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针保存的是变量的地址，保存的这个变量还可以是一个指针变量"><span class="toc-text">指针保存的是变量的地址，保存的这个变量还可以是一个指针变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、指针运算"><span class="toc-text">5、指针运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式"><span class="toc-text">指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#通过指针给数组赋值"><span class="toc-text">通过指针给数组赋值</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、函数指针"><span class="toc-text">6、函数指针</span></a></li></ol></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80c%E8%AF%AD%E8%A8%80%E4%B9%8B%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA-%E6%8C%87%E9%92%88"><span class="toc-text"> （一）C语言之基本数据类型、输入输出、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 一、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text"> 1、头文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 2、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BE%93%E5%87%BA%E5%8D%A0%E4%BD%8D%E7%AC%A6"><span class="toc-text"> (1)、基本数据类型所使用的输出占位符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%80%E5%8D%A0%E5%AD%97%E8%8A%82%E6%95%B0"><span class="toc-text"> (2)、基本数据类型所占字节数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0"><span class="toc-text"> 二、输入输出函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%BE%93%E5%85%A5%E5%87%BD%E6%95%B0"><span class="toc-text"> 1、输入函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0"><span class="toc-text"> 2、输出函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E6%8C%87%E9%92%88"><span class="toc-text"> 三、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8C%87%E9%92%88%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、指针的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%AD%98%E5%82%A8%E7%9A%84%E6%98%AF%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80"><span class="toc-text"> 指针存储的是变量的内存地址</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%90%8D%E5%B0%B1%E6%98%AF%E5%AF%B9%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%E4%B8%AD%E4%B8%80%E6%AE%B5%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8A%BD%E8%B1%A1"><span class="toc-text"> 变量名就是对内存空间中一段数据的抽象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E5%B0%B1%E6%98%AF%E7%B3%BB%E7%BB%9F%E7%BB%99%E6%95%B0%E6%8D%AE%E5%88%86%E9%85%8D%E7%9A%84%E7%BC%96%E5%8F%B7"><span class="toc-text"> 内存地址就是系统给数据分配的编号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%9C%A8%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%90%8E%E5%8A%A0"><span class="toc-text"> 指针类型的定义：在基本数据类型后加*</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%8C%87%E9%92%88%E4%BF%AE%E6%94%B9%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC"><span class="toc-text"> 通过指针修改变量的值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E8%AF%B4%E6%98%8E"><span class="toc-text"> 指针变量的内存地址说明：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%87%E9%92%88%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 2、指针的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E6%9C%89%E7%B1%BB%E5%9E%8B%E5%9C%B0%E5%9D%80%E6%B2%A1%E6%9C%89%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 指针有类型，地址没有类型；</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-null%E7%A9%BA%E6%8C%87%E9%92%88"><span class="toc-text"> 3、NULL空指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%A4%9A%E7%BA%A7%E6%8C%87%E9%92%88"><span class="toc-text"> 4、多级指针</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E4%BF%9D%E5%AD%98%E7%9A%84%E6%98%AF%E5%8F%98%E9%87%8F%E7%9A%84%E5%9C%B0%E5%9D%80%E4%BF%9D%E5%AD%98%E7%9A%84%E8%BF%99%E4%B8%AA%E5%8F%98%E9%87%8F%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%98%AF%E4%B8%80%E4%B8%AA%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F"><span class="toc-text"> 指针保存的是变量的地址，保存的这个变量还可以是一个指针变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97"><span class="toc-text"> 5、指针运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E7%9A%84%E8%BF%90%E7%AE%97%E4%B8%80%E8%88%AC%E5%9C%A8%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86%E6%97%B6%E6%89%8D%E6%9C%89%E6%84%8F%E4%B9%89%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%BA%BF%E6%80%A7%E6%8E%92%E5%88%97%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text"> 指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%8C%87%E9%92%88%E7%BB%99%E6%95%B0%E7%BB%84%E8%B5%8B%E5%80%BC"><span class="toc-text"> 通过指针给数组赋值</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text"> 6、函数指针</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
   </article>
   
@@ -553,13 +609,6 @@ void main(){
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -605,9 +654,9 @@ void main(){
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -615,14 +664,21 @@ void main(){
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -630,6 +686,13 @@ void main(){
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -666,13 +729,13 @@ void main(){
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -687,7 +750,7 @@ void main(){
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#（一）C语言之基本数据类型、输入输出、指针"><span class="toc-text">（一）C语言之基本数据类型、输入输出、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本数据类型"><span class="toc-text">一、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、头文件"><span class="toc-text">1、头文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、基本数据类型"><span class="toc-text">2、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-、基本数据类型所使用的输出占位符"><span class="toc-text">(1)、基本数据类型所使用的输出占位符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、输入输出函数"><span class="toc-text">二、输入输出函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、输入函数"><span class="toc-text">1、输入函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、输出函数"><span class="toc-text">2、输出函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、指针"><span class="toc-text">三、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、指针的定义"><span class="toc-text">1、指针的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针存储的是变量的内存地址"><span class="toc-text">指针存储的是变量的内存地址</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#变量名就是对内存空间中一段数据的抽象"><span class="toc-text">变量名就是对内存空间中一段数据的抽象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#内存地址就是系统给数据分配的编号"><span class="toc-text">内存地址就是系统给数据分配的编号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指针类型的定义：在基本数据类型后加"><span class="toc-text">指针类型的定义：在基本数据类型后加*</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#通过指针修改变量的值"><span class="toc-text">通过指针修改变量的值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指针变量的内存地址说明："><span class="toc-text">指针变量的内存地址说明：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、指针的类型"><span class="toc-text">2、指针的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针有类型，地址没有类型；"><span class="toc-text">指针有类型，地址没有类型；</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、NULL空指针"><span class="toc-text">3、NULL空指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、多级指针"><span class="toc-text">4、多级指针</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针保存的是变量的地址，保存的这个变量还可以是一个指针变量"><span class="toc-text">指针保存的是变量的地址，保存的这个变量还可以是一个指针变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、指针运算"><span class="toc-text">5、指针运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式"><span class="toc-text">指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#通过指针给数组赋值"><span class="toc-text">通过指针给数组赋值</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、函数指针"><span class="toc-text">6、函数指针</span></a></li></ol></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80c%E8%AF%AD%E8%A8%80%E4%B9%8B%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA-%E6%8C%87%E9%92%88"><span class="toc-text"> （一）C语言之基本数据类型、输入输出、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 一、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text"> 1、头文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 2、基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BE%93%E5%87%BA%E5%8D%A0%E4%BD%8D%E7%AC%A6"><span class="toc-text"> (1)、基本数据类型所使用的输出占位符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%80%E5%8D%A0%E5%AD%97%E8%8A%82%E6%95%B0"><span class="toc-text"> (2)、基本数据类型所占字节数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0"><span class="toc-text"> 二、输入输出函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%BE%93%E5%85%A5%E5%87%BD%E6%95%B0"><span class="toc-text"> 1、输入函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0"><span class="toc-text"> 2、输出函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E6%8C%87%E9%92%88"><span class="toc-text"> 三、指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8C%87%E9%92%88%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、指针的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%AD%98%E5%82%A8%E7%9A%84%E6%98%AF%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80"><span class="toc-text"> 指针存储的是变量的内存地址</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%90%8D%E5%B0%B1%E6%98%AF%E5%AF%B9%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%E4%B8%AD%E4%B8%80%E6%AE%B5%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8A%BD%E8%B1%A1"><span class="toc-text"> 变量名就是对内存空间中一段数据的抽象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E5%B0%B1%E6%98%AF%E7%B3%BB%E7%BB%9F%E7%BB%99%E6%95%B0%E6%8D%AE%E5%88%86%E9%85%8D%E7%9A%84%E7%BC%96%E5%8F%B7"><span class="toc-text"> 内存地址就是系统给数据分配的编号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%9C%A8%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%90%8E%E5%8A%A0"><span class="toc-text"> 指针类型的定义：在基本数据类型后加*</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%8C%87%E9%92%88%E4%BF%AE%E6%94%B9%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC"><span class="toc-text"> 通过指针修改变量的值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E8%AF%B4%E6%98%8E"><span class="toc-text"> 指针变量的内存地址说明：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%87%E9%92%88%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 2、指针的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E6%9C%89%E7%B1%BB%E5%9E%8B%E5%9C%B0%E5%9D%80%E6%B2%A1%E6%9C%89%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 指针有类型，地址没有类型；</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-null%E7%A9%BA%E6%8C%87%E9%92%88"><span class="toc-text"> 3、NULL空指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%A4%9A%E7%BA%A7%E6%8C%87%E9%92%88"><span class="toc-text"> 4、多级指针</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E4%BF%9D%E5%AD%98%E7%9A%84%E6%98%AF%E5%8F%98%E9%87%8F%E7%9A%84%E5%9C%B0%E5%9D%80%E4%BF%9D%E5%AD%98%E7%9A%84%E8%BF%99%E4%B8%AA%E5%8F%98%E9%87%8F%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%98%AF%E4%B8%80%E4%B8%AA%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F"><span class="toc-text"> 指针保存的是变量的地址，保存的这个变量还可以是一个指针变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97"><span class="toc-text"> 5、指针运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E7%9A%84%E8%BF%90%E7%AE%97%E4%B8%80%E8%88%AC%E5%9C%A8%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86%E6%97%B6%E6%89%8D%E6%9C%89%E6%84%8F%E4%B9%89%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%BA%BF%E6%80%A7%E6%8E%92%E5%88%97%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text"> 指针的运算，一般在数组遍历时才有意义，基于数据在内存中线性排列的方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%8C%87%E9%92%88%E7%BB%99%E6%95%B0%E7%BB%84%E8%B5%8B%E5%80%BC"><span class="toc-text"> 通过指针给数组赋值</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text"> 6、函数指针</span></a></li></ol></li></ol></li></ol></li></ol>
   </article>
   
   
@@ -698,22 +761,22 @@ void main(){
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -762,7 +825,7 @@ void main(){
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

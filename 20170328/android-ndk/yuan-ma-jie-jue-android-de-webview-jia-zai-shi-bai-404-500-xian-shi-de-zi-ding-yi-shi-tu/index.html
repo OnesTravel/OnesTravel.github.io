@@ -131,7 +131,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -225,7 +238,7 @@
     
     
     <span class="dot"></span>
-    <span>1k 字</span>
+    <span>1.1k 字</span>
     
   </div>
   
@@ -251,9 +264,14 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="（源码）解决Android的WebView加载失败（404，500），显示的自定义视图"><a href="#（源码）解决Android的WebView加载失败（404，500），显示的自定义视图" class="headerlink" title="（源码）解决Android的WebView加载失败（404，500），显示的自定义视图"></a>（源码）解决Android的WebView加载失败（404，500），显示的自定义视图</h1><p>好多朋友会在Android开发过程中遇到使用WebView加载html页面出现404,500等错误页面，也有好多人想自定义这个错误页面，但是在6.0之前，大家觉得自定义错误页面就不好处理了；<br>之前一直使用在WebView加载时，根据onReceivedError() 判断网页是否加载成功，然后做相应的操作，但是最后发现，在一些情况下，html页面加载失败了，onReceivedError()方法却并没有执行。<br>最后进过努力，想出了一个比较笨，但是我又觉得比较有效的方法。下面来给大家简单说一说：<br>不知道大家发现没有，在所有的加载错误的html页面中，html的标题title可能都会包含错误信息，比如说“error”，这样的话我们就可以在这个html的标题title上做文章了。 </p>
-<p>#1.先给大家说说怎么获取这个html的标题title </p>
-<p>###(1).Android应用开发的时候使用WebView这个组件的过程中可能会接触到WebViewClient与WebChromeClient，那么这两个类到底有什么不同呢<br>WebViewClient主要帮助WebView处理各种通知、请求事件的，比如：</p>
+    <h1 id="源码解决android的webview加载失败404500显示的自定义视图"><a class="markdownIt-Anchor" href="#源码解决android的webview加载失败404500显示的自定义视图"></a> （源码）解决Android的WebView加载失败（404，500），显示的自定义视图</h1>
+<p>好多朋友会在Android开发过程中遇到使用WebView加载html页面出现404,500等错误页面，也有好多人想自定义这个错误页面，但是在6.0之前，大家觉得自定义错误页面就不好处理了；<br />
+之前一直使用在WebView加载时，根据onReceivedError() 判断网页是否加载成功，然后做相应的操作，但是最后发现，在一些情况下，html页面加载失败了，onReceivedError()方法却并没有执行。<br />
+最后进过努力，想出了一个比较笨，但是我又觉得比较有效的方法。下面来给大家简单说一说：<br />
+不知道大家发现没有，在所有的加载错误的html页面中，html的标题title可能都会包含错误信息，比如说“error”，这样的话我们就可以在这个html的标题title上做文章了。<br />
+#1.先给大家说说怎么获取这个html的标题title<br />
+###(1).Android应用开发的时候使用WebView这个组件的过程中可能会接触到WebViewClient与WebChromeClient，那么这两个类到底有什么不同呢<br />
+WebViewClient主要帮助WebView处理各种通知、请求事件的，比如：</p>
 <pre><code>    onLoadResource
     onPageStart
     onPageFinish
@@ -268,96 +286,101 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
     onJsConfirm
     onProgressChanged
     onReceivedIcon
-    onReceivedTitle</code></pre><p>看上去他们有很多不同，实际使用的话，如果你的WebView只是用来处理一些html的页面内容，只用WebViewClient就行了，如果需要更丰富的处理效果，<br>比如JS、进度条等，就要用到WebChromeClient。</p>
-<p>###(2).我们可以看到在 WebChromeClient 中有一个方法 onReceivedTitle() ，这个方法就是用来获取html页面的标题title的回调。</p>
-<p>#2.我们在 WebChromeClient 中的 onReceivedTitle() 方法里判断html页面的标题中是否含有 “error” ，如果有，则证明html加载失败，设置加载失败的标记，让在 WebViewClient 的完成是回<br>调的 onPageFinish() 方法里显示自定义的加载失败的页面**</p>
+    onReceivedTitle
+</code></pre>
+<p>看上去他们有很多不同，实际使用的话，如果你的WebView只是用来处理一些html的页面内容，只用WebViewClient就行了，如果需要更丰富的处理效果，<br />
+比如JS、进度条等，就要用到WebChromeClient。<br />
+###(2).我们可以看到在 WebChromeClient 中有一个方法 onReceivedTitle() ，这个方法就是用来获取html页面的标题title的回调。<br />
+#2.我们在 WebChromeClient 中的 onReceivedTitle() 方法里判断html页面的标题中是否含有 “error” ，如果有，则证明html加载失败，设置加载失败的标记，让在 WebViewClient 的完成是回<br />
+调的 onPageFinish() 方法里显示自定义的加载失败的页面**</p>
 <p>代码如下：</p>
-<pre><code>WebSettings webSettings = webView.getSettings();
-    //设置WebView属性，能够执行Javascript脚本
+   <pre class="line-numbers language-none"><code class="language-none">WebSettings webSettings &#x3D; webView.getSettings();
+    &#x2F;&#x2F;设置WebView属性，能够执行Javascript脚本
     webSettings.setJavaScriptEnabled(true);
-    //设置可以访问文件
+    &#x2F;&#x2F;设置可以访问文件
     webSettings.setAllowFileAccess(true);
     webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 
 
-    webView.setWebViewClient(new WebViewClient() {
+    webView.setWebViewClient(new WebViewClient() &#123;
         @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        public boolean shouldOverrideUrlLoading(WebView view, String url) &#123;
             view.loadUrl(url);
             return true;
-        }
+        &#125;
 
-        /**
+        &#x2F;**
          * 网页页面开始加载的时候，执行的回调方法
          * @param view
          * @param url
          * @param favicon
-         */
+         *&#x2F;
         @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {//网页页面开始加载的时候
-            emptyView.setEmptyView(EmptyView.EMPTY_LOADING);//初始化一个显示正在加载的视图
+        public void onPageStarted(WebView view, String url, Bitmap favicon) &#123;&#x2F;&#x2F;网页页面开始加载的时候
+            emptyView.setEmptyView(EmptyView.EMPTY_LOADING);&#x2F;&#x2F;初始化一个显示正在加载的视图
             rl_detail.setVisibility(View.VISIBLE);
             rl_detail.removeAllViews();
-            rl_detail.addView(emptyView);//在加载页面开始的时候显示一个正在加载的视图，
-            webView.setEnabled(false);// 当加载网页的时候将网页进行隐藏
+            rl_detail.addView(emptyView);&#x2F;&#x2F;在加载页面开始的时候显示一个正在加载的视图，
+            webView.setEnabled(false);&#x2F;&#x2F; 当加载网页的时候将网页进行隐藏
             ll_container_btn.setVisibility(View.GONE);
             btn_collect.setVisibility(View.GONE);
             super.onPageStarted(view, url, favicon);
-        }
+        &#125;
 
-        /**
+        &#x2F;**
          * 网页加载结束的时候执行的回调方法
          * @param view
          * @param url
-         */
+         *&#x2F;
         @Override
-        public void onPageFinished(WebView view, String url) {//网页加载结束的时候
-            if (!loadError) {//当网页加载成功的时候判断是否加载成功
-                rl_detail.setVisibility(View.GONE);//加载成功的话，则隐藏掉显示正在加载的视图，显示加载了网页内容的WebView
+        public void onPageFinished(WebView view, String url) &#123;&#x2F;&#x2F;网页加载结束的时候
+            if (!loadError) &#123;&#x2F;&#x2F;当网页加载成功的时候判断是否加载成功
+                rl_detail.setVisibility(View.GONE);&#x2F;&#x2F;加载成功的话，则隐藏掉显示正在加载的视图，显示加载了网页内容的WebView
                 webView.setEnabled(true);
                 ll_container_btn.setVisibility(View.VISIBLE);
                 btn_collect.setVisibility(View.VISIBLE);
-            } else { //加载失败的话，初始化页面加载失败的图，然后替换正在加载的视图页面
+            &#125; else &#123; &#x2F;&#x2F;加载失败的话，初始化页面加载失败的图，然后替换正在加载的视图页面
                 rl_detail.removeAllViews();
                 emptyView.setEmptyView(EmptyView.EMPTY_EMPTY, &quot;您找的页面暂时走丢了...&quot;);
                 rl_detail.addView(emptyView);
-            }
+            &#125;
 
-        }
+        &#125;
 
 
-        /**
+        &#x2F;**
          * 页面加载错误时执行的方法，但是在6.0以下，有时候会不执行这个方法
          * @param view
          * @param errorCode
          * @param description
          * @param failingUrl
-         */
+         *&#x2F;
         @Override
-        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) &#123;
             super.onReceivedError(view, errorCode, description, failingUrl);
-            loadError = true;
-        }
+            loadError &#x3D; true;
+        &#125;
 
 
-    });
+    &#125;);
 
-    webView.setWebChromeClient(new WebChromeClient(){
-        /**
+    webView.setWebChromeClient(new WebChromeClient()&#123;
+        &#x2F;**
          * 当WebView加载之后，返回 HTML 页面的标题 Title
          * @param view
          * @param title
-         */
+         *&#x2F;
         @Override
-        public void onReceivedTitle(WebView view, String title) {
-            //判断标题 title 中是否包含有“error”字段，如果包含“error”字段，则设置加载失败，显示加载失败的视图
-          if(!TextUtils.isEmpty(title)&amp;&amp;title.toLowerCase().contains(&quot;error&quot;)){
-              loadError = true;
-          }
-        }
-    });
+        public void onReceivedTitle(WebView view, String title) &#123;
+            &#x2F;&#x2F;判断标题 title 中是否包含有“error”字段，如果包含“error”字段，则设置加载失败，显示加载失败的视图
+          if(!TextUtils.isEmpty(title)&amp;&amp;title.toLowerCase().contains(&quot;error&quot;))&#123;
+              loadError &#x3D; true;
+          &#125;
+        &#125;
+    &#125;);
     webView.loadUrl(url);
-</code></pre><p>源码下载  <a href="https://github.com/onestravel/WebView404Example" target="_blank" rel="noopener">源码下载</a></p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>源码下载  <a target="_blank" rel="noopener" href="https://github.com/onestravel/WebView404Example">源码下载</a></p>
 
   </div>
   <div>
@@ -430,7 +453,7 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#（源码）解决Android的WebView加载失败（404，500），显示的自定义视图"><span class="toc-text">（源码）解决Android的WebView加载失败（404，500），显示的自定义视图</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E8%A7%A3%E5%86%B3android%E7%9A%84webview%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5404500%E6%98%BE%E7%A4%BA%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%86%E5%9B%BE"><span class="toc-text"> （源码）解决Android的WebView加载失败（404，500），显示的自定义视图</span></a></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -446,7 +469,7 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -463,7 +486,7 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#（源码）解决Android的WebView加载失败（404，500），显示的自定义视图"><span class="toc-text">（源码）解决Android的WebView加载失败（404，500），显示的自定义视图</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E8%A7%A3%E5%86%B3android%E7%9A%84webview%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5404500%E6%98%BE%E7%A4%BA%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%86%E5%9B%BE"><span class="toc-text"> （源码）解决Android的WebView加载失败（404，500），显示的自定义视图</span></a></li></ol>
     </div>
   </article>
   
@@ -484,13 +507,6 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -536,9 +552,9 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -546,14 +562,21 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -561,6 +584,13 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -597,13 +627,13 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -618,7 +648,7 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#（源码）解决Android的WebView加载失败（404，500），显示的自定义视图"><span class="toc-text">（源码）解决Android的WebView加载失败（404，500），显示的自定义视图</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E8%A7%A3%E5%86%B3android%E7%9A%84webview%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5404500%E6%98%BE%E7%A4%BA%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%86%E5%9B%BE"><span class="toc-text"> （源码）解决Android的WebView加载失败（404，500），显示的自定义视图</span></a></li></ol>
   </article>
   
   
@@ -629,22 +659,22 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -693,7 +723,7 @@ WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

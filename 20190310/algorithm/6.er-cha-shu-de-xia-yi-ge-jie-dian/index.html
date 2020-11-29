@@ -127,7 +127,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -213,7 +226,7 @@
     
     
     <span class="dot"></span>
-    <span>965 字</span>
+    <span>999 字</span>
     
   </div>
   
@@ -229,142 +242,151 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="6-二叉树的下一个节点"><a href="#6-二叉树的下一个节点" class="headerlink" title="6. 二叉树的下一个节点"></a>6. 二叉树的下一个节点</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>二叉树中序遍历顺序为 左中右</p>
+    <h1 id="6-二叉树的下一个节点"><a class="markdownIt-Anchor" href="#6-二叉树的下一个节点"></a> 6. 二叉树的下一个节点</h1>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。</p>
+<h2 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h2>
+<p>二叉树中序遍历顺序为 左中右</p>
 <p>把传入的当前结点看做中结点，则：下一个节点为有两种况</p>
 <ol>
-<li>当前结点的右结点为空，则下一个结点是当前节的父结点/祖先结点；<ul>
+<li>当前结点的右结点为空，则下一个结点是当前节的父结点/祖先结点；
+<ul>
 <li>当父结点的左结点等于当前结点时，当前结点的一个结点为父结点；</li>
 <li>当父结点的左结点不等于当前结点时，继续找父点的父结点；</li>
 </ul>
 </li>
 <li>当前结点的右结点不为空，则当前节点有右子树则下一个结点为右子树的最左结点</li>
 </ol>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="java-代码"><a href="#java-代码" class="headerlink" title="java 代码"></a>java 代码</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 二叉树结点
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TreeLinkNode</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> val<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//当前结点值</span>
-        TreeLinkNode left <span class="token operator">=</span> null<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//当前结点的左结点</span>
-        TreeLinkNode right <span class="token operator">=</span> null<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//当前结点的右结点</span>
-        TreeLinkNode next <span class="token operator">=</span> null<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//当前结点的父结点</span>
+<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h2>
+<h3 id="java-代码"><a class="markdownIt-Anchor" href="#java-代码"></a> java 代码</h3>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 二叉树结点
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TreeLinkNode</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> val<span class="token punctuation">;</span> <span class="token comment">//当前结点值</span>
+    <span class="token class-name">TreeLinkNode</span> left <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span><span class="token comment">//当前结点的左结点</span>
+    <span class="token class-name">TreeLinkNode</span> right <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span><span class="token comment">//当前结点的右结点</span>
+    <span class="token class-name">TreeLinkNode</span> next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span><span class="token comment">//当前结点的父结点</span>
 
-        <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> val<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+    <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> val<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token comment" spellcheck="true">/**
-     * 给定一个二叉树和其中的一个结点，找出中序遍历顺序的下一个结点并且返回
-     * 二叉树中序遍历顺序为 左中右
-     * 把传入的当前结点看做中，则：下一个节点为有两种情况
-     * 1. 当前结点的右结点为空，则下一个结点是当前节点的父结点/祖先结点；
-     *  - 当父结点的左结点等于当前结点时，当前结点的下一个结点为父结点；
-     *  - 当父结点的左结点不等于当前结点时，继续找父结点的父结点；
-     * 2. 当前结点的右结点不为空，则当前节点有右子树，则下一个结点为右子树的最左结点
-     *
-     * @param pNode
-     * @return
-     */</span>
-    <span class="token keyword">public</span> TreeLinkNode <span class="token function">getNext</span><span class="token punctuation">(</span>TreeLinkNode pNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>pNode<span class="token punctuation">.</span>right <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>pNode<span class="token punctuation">.</span>next <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>pNode <span class="token operator">==</span> pNode<span class="token punctuation">.</span>next<span class="token punctuation">.</span>left<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">return</span> pNode<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                pNode <span class="token operator">=</span> pNode<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            TreeLinkNode node <span class="token operator">=</span> pNode<span class="token punctuation">.</span>right<span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                node <span class="token operator">=</span> node<span class="token punctuation">.</span>left<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">return</span> node<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 给定一个二叉树和其中的一个结点，找出中序遍历顺序的下一个结点并且返回
+ * 二叉树中序遍历顺序为 左中右
+ * 把传入的当前结点看做中，则：下一个节点为有两种情况
+ * 1. 当前结点的右结点为空，则下一个结点是当前节点的父结点/祖先结点；
+ *  - 当父结点的左结点等于当前结点时，当前结点的下一个结点为父结点；
+ *  - 当父结点的左结点不等于当前结点时，继续找父结点的父结点；
+ * 2. 当前结点的右结点不为空，则当前节点有右子树，则下一个结点为右子树的最左结点
+ *
+ * @param pNode
+ * @return
+ */</span>
+<span class="token keyword">public</span> <span class="token class-name">TreeLinkNode</span> <span class="token function">getNext</span><span class="token punctuation">(</span><span class="token class-name">TreeLinkNode</span> pNode<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pNode<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>pNode<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>pNode <span class="token operator">==</span> pNode<span class="token punctuation">.</span>next<span class="token punctuation">.</span>left<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> pNode<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            pNode <span class="token operator">=</span> pNode<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">TreeLinkNode</span> node <span class="token operator">=</span> pNode<span class="token punctuation">.</span>right<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            node <span class="token operator">=</span> node<span class="token punctuation">.</span>left<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> node<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        TreeLinkNode root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        TreeLinkNode node2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        TreeLinkNode node3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        TreeLinkNode node4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        TreeLinkNode node5 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        TreeLinkNode node6 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        TreeLinkNode node7 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        TreeLinkNode node8 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        node4<span class="token punctuation">.</span>right <span class="token operator">=</span> node7<span class="token punctuation">;</span>
-        node2<span class="token punctuation">.</span>left <span class="token operator">=</span> node4<span class="token punctuation">;</span>
-        root<span class="token punctuation">.</span>left <span class="token operator">=</span> node2<span class="token punctuation">;</span>
-        node6<span class="token punctuation">.</span>left <span class="token operator">=</span> node8<span class="token punctuation">;</span>
-        node3<span class="token punctuation">.</span>left <span class="token operator">=</span> node5<span class="token punctuation">;</span>
-        node3<span class="token punctuation">.</span>right <span class="token operator">=</span> node6<span class="token punctuation">;</span>
-        root<span class="token punctuation">.</span>right <span class="token operator">=</span> node3<span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">getNext</span><span class="token punctuation">(</span>node4<span class="token punctuation">)</span><span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code></pre>
-<h3 id="Kotlin-代码"><a href="#Kotlin-代码" class="headerlink" title="Kotlin 代码"></a>Kotlin 代码</h3><pre class=" language-kotlin"><code class="language-kotlin">    <span class="token comment" spellcheck="true">/**
-     * 二叉树结点
-     */</span>
-    <span class="token keyword">class</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token keyword">val</span> value<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">var</span> left<span class="token operator">:</span> TreeLinkNode<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span> <span class="token comment" spellcheck="true">//当前结点的左结点</span>
-        <span class="token keyword">var</span> right<span class="token operator">:</span> TreeLinkNode<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span> <span class="token comment" spellcheck="true">//当前结点的右结点</span>
-        <span class="token keyword">var</span> next<span class="token operator">:</span> TreeLinkNode<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span> <span class="token comment" spellcheck="true">//当前结点的父结点</span>
-    <span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">TreeLinkNode</span> root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">TreeLinkNode</span> node2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">TreeLinkNode</span> node3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">TreeLinkNode</span> node4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">TreeLinkNode</span> node5 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">TreeLinkNode</span> node6 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">TreeLinkNode</span> node7 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">TreeLinkNode</span> node8 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    node4<span class="token punctuation">.</span>right <span class="token operator">=</span> node7<span class="token punctuation">;</span>
+    node2<span class="token punctuation">.</span>left <span class="token operator">=</span> node4<span class="token punctuation">;</span>
+    root<span class="token punctuation">.</span>left <span class="token operator">=</span> node2<span class="token punctuation">;</span>
+    node6<span class="token punctuation">.</span>left <span class="token operator">=</span> node8<span class="token punctuation">;</span>
+    node3<span class="token punctuation">.</span>left <span class="token operator">=</span> node5<span class="token punctuation">;</span>
+    node3<span class="token punctuation">.</span>right <span class="token operator">=</span> node6<span class="token punctuation">;</span>
+    root<span class="token punctuation">.</span>right <span class="token operator">=</span> node3<span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">getNext</span><span class="token punctuation">(</span>node4<span class="token punctuation">)</span><span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="kotlin-代码"><a class="markdownIt-Anchor" href="#kotlin-代码"></a> Kotlin 代码</h3>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">/**
+ * 二叉树结点
+ */</span>
+<span class="token keyword">class</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token keyword">val</span> value<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> left<span class="token operator">:</span> TreeLinkNode<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span> <span class="token comment">//当前结点的左结点</span>
+    <span class="token keyword">var</span> right<span class="token operator">:</span> TreeLinkNode<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span> <span class="token comment">//当前结点的右结点</span>
+    <span class="token keyword">var</span> next<span class="token operator">:</span> TreeLinkNode<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span> <span class="token comment">//当前结点的父结点</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token comment" spellcheck="true">/**
-     * 给定一个二叉树和其中的一个结点，找出中序遍历顺序的下一个结点并且返回
-     * 二叉树中序遍历顺序为 左中右
-     * 把传入的当前结点看做中，则：下一个节点为有两种情况
-     * 1. 当前结点的右结点为空，则下一个结点是当前节点的父结点/祖先结点；
-     * - 当父结点的左结点等于当前结点时，当前结点的下一个结点为父结点；
-     * - 当父结点的左结点不等于当前结点时，继续找父结点的父结点；
-     * 2. 当前结点的右结点不为空，则当前节点有右子树，则下一个结点为右子树的最左结点
-     *
-     * @param pNode
-     * @return
-     */</span>
-    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">getNext</span><span class="token punctuation">(</span>pNode<span class="token operator">:</span> TreeLinkNode<span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> TreeLinkNode<span class="token operator">?</span> <span class="token punctuation">{</span>
-        <span class="token keyword">var</span> pNode <span class="token operator">=</span> pNode
-        <span class="token keyword">return</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>pNode<span class="token operator">!!</span><span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>pNode<span class="token operator">!!</span><span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>pNode <span class="token operator">===</span> pNode<span class="token punctuation">.</span>next<span class="token operator">!!</span><span class="token punctuation">.</span>left<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">return</span> pNode<span class="token punctuation">.</span>next
-                <span class="token punctuation">}</span>
-                pNode <span class="token operator">=</span> pNode<span class="token punctuation">.</span>next
-            <span class="token punctuation">}</span>
-            <span class="token keyword">null</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token keyword">var</span> node <span class="token operator">=</span> pNode<span class="token punctuation">.</span>right
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>node<span class="token operator">!!</span><span class="token punctuation">.</span>left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                node <span class="token operator">=</span> node<span class="token punctuation">.</span>left
-            <span class="token punctuation">}</span>
-            node
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 给定一个二叉树和其中的一个结点，找出中序遍历顺序的下一个结点并且返回
+ * 二叉树中序遍历顺序为 左中右
+ * 把传入的当前结点看做中，则：下一个节点为有两种情况
+ * 1. 当前结点的右结点为空，则下一个结点是当前节点的父结点/祖先结点；
+ * - 当父结点的左结点等于当前结点时，当前结点的下一个结点为父结点；
+ * - 当父结点的左结点不等于当前结点时，继续找父结点的父结点；
+ * 2. 当前结点的右结点不为空，则当前节点有右子树，则下一个结点为右子树的最左结点
+ *
+ * @param pNode
+ * @return
+ */</span>
+<span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">getNext</span><span class="token punctuation">(</span>pNode<span class="token operator">:</span> TreeLinkNode<span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> TreeLinkNode<span class="token operator">?</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> pNode <span class="token operator">=</span> pNode
+    <span class="token keyword">return</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>pNode<span class="token operator">!!</span><span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>pNode<span class="token operator">!!</span><span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>pNode <span class="token operator">===</span> pNode<span class="token punctuation">.</span>next<span class="token operator">!!</span><span class="token punctuation">.</span>left<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> pNode<span class="token punctuation">.</span>next
+            <span class="token punctuation">&#125;</span>
+            pNode <span class="token operator">=</span> pNode<span class="token punctuation">.</span>next
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">null</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">var</span> node <span class="token operator">=</span> pNode<span class="token punctuation">.</span>right
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>node<span class="token operator">!!</span><span class="token punctuation">.</span>left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            node <span class="token operator">=</span> node<span class="token punctuation">.</span>left
+        <span class="token punctuation">&#125;</span>
+        node
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token comment" spellcheck="true">/**
-     * 入口函数
-     */</span>
-    <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> root <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-        <span class="token keyword">val</span> node2 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-        <span class="token keyword">val</span> node3 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-        <span class="token keyword">val</span> node4 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
-        <span class="token keyword">val</span> node5 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
-        <span class="token keyword">val</span> node6 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
-        <span class="token keyword">val</span> node7 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span>
-        <span class="token keyword">val</span> node8 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
-        node4<span class="token punctuation">.</span>right <span class="token operator">=</span> node7
-        node2<span class="token punctuation">.</span>left <span class="token operator">=</span> node4
-        root<span class="token punctuation">.</span>left <span class="token operator">=</span> node2
-        node6<span class="token punctuation">.</span>left <span class="token operator">=</span> node8
-        node3<span class="token punctuation">.</span>left <span class="token operator">=</span> node5
-        node3<span class="token punctuation">.</span>right <span class="token operator">=</span> node6
-        root<span class="token punctuation">.</span>right <span class="token operator">=</span> node3
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">getNext</span><span class="token punctuation">(</span>node4<span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h2 id="引用声明"><a href="#引用声明" class="headerlink" title="引用声明"></a>引用声明</h2><p>该题目引用自<br><a href="https://www.nowcoder.com/practice/9023a0c988684a53960365b889ceaf5e?tpId=13&tqId=11210&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=onestravel" target="_blank" rel="noopener">牛客网</a></p>
+<span class="token comment">/**
+ * 入口函数
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> root <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">val</span> node2 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">val</span> node3 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">val</span> node4 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+    <span class="token keyword">val</span> node5 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    <span class="token keyword">val</span> node6 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+    <span class="token keyword">val</span> node7 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span>
+    <span class="token keyword">val</span> node8 <span class="token operator">=</span> <span class="token function">TreeLinkNode</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
+    node4<span class="token punctuation">.</span>right <span class="token operator">=</span> node7
+    node2<span class="token punctuation">.</span>left <span class="token operator">=</span> node4
+    root<span class="token punctuation">.</span>left <span class="token operator">=</span> node2
+    node6<span class="token punctuation">.</span>left <span class="token operator">=</span> node8
+    node3<span class="token punctuation">.</span>left <span class="token operator">=</span> node5
+    node3<span class="token punctuation">.</span>right <span class="token operator">=</span> node6
+    root<span class="token punctuation">.</span>right <span class="token operator">=</span> node3
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">getNext</span><span class="token punctuation">(</span>node4<span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="引用声明"><a class="markdownIt-Anchor" href="#引用声明"></a> 引用声明</h2>
+<p>该题目引用自<br />
+<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/9023a0c988684a53960365b889ceaf5e?tpId=13&amp;tqId=11210&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;from=onestravel">牛客网</a></p>
 
   </div>
   <div>
@@ -437,7 +459,7 @@
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-二叉树的下一个节点"><span class="toc-text">6. 二叉树的下一个节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="toc-text"> 6. 二叉树的下一个节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -453,7 +475,7 @@
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -470,7 +492,7 @@
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-二叉树的下一个节点"><span class="toc-text">6. 二叉树的下一个节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="toc-text"> 6. 二叉树的下一个节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -491,13 +513,6 @@
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -543,9 +558,9 @@
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -553,14 +568,21 @@
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -568,6 +590,13 @@
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -604,13 +633,13 @@
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -625,7 +654,7 @@
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-二叉树的下一个节点"><span class="toc-text">6. 二叉树的下一个节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="toc-text"> 6. 二叉树的下一个节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
   </article>
   
   
@@ -636,22 +665,22 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -700,7 +729,7 @@
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

@@ -129,7 +129,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -218,12 +231,12 @@
     
     <span class="dot"></span>
     
-    <a href="/categories/Jenkins/" class="post-meta-link">Jenkins</a>
+    <a href="/categories/文-Jenkins/" class="post-meta-link">文 - Jenkins</a>
     
     
     
     <span class="dot"></span>
-    <span>1.2k 字</span>
+    <span>1.3k 字</span>
     
   </div>
   
@@ -244,50 +257,86 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="在Linux上配置Jenkins自动化构建Android项目的环境"><a href="#在Linux上配置Jenkins自动化构建Android项目的环境" class="headerlink" title="在Linux上配置Jenkins自动化构建Android项目的环境"></a>在Linux上配置Jenkins自动化构建Android项目的环境</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&emsp;&emsp;之前写了一些在 Windows 系统上安装配置 Jenkins 环境，创建自动化构建项目的一些博客，今天来跟大家介绍一下在 Linux 系统下配置Jenkins自动化构建Android项目的环境，下面就来具体操作一下吧：</p>
-<h2 id="一-、sdk安装"><a href="#一-、sdk安装" class="headerlink" title="一 、sdk安装"></a>一 、sdk安装</h2><h3 id="1-下载sdk-for-linux"><a href="#1-下载sdk-for-linux" class="headerlink" title="1. 下载sdk for linux"></a>1. 下载sdk for linux</h3><pre><code>$ wget https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz</code></pre><h3 id="2-解压Android-SDK"><a href="#2-解压Android-SDK" class="headerlink" title="2. 解压Android SDK"></a>2. 解压Android SDK</h3><pre><code>$ tar -zvxf android-sdk_r24.4.1-linux.tgz</code></pre><h3 id="3-配置环境变量"><a href="#3-配置环境变量" class="headerlink" title="3. 配置环境变量"></a>3. 配置环境变量</h3><p>在文件/etc/profile末端添加如下两行：</p>
-<pre><code>export ANDROID_HOME=/usr/local/android-sdk-linux
-export PATH=$ANDROID_HOME/tools:$PATH</code></pre><p>android-sdk-linux是你解压后的文件名，tools一定要这样写，是里面文件夹的名称</p>
+    <h1 id="在linux上配置jenkins自动化构建android项目的环境"><a class="markdownIt-Anchor" href="#在linux上配置jenkins自动化构建android项目的环境"></a> 在Linux上配置Jenkins自动化构建Android项目的环境</h1>
+<h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+<p>  之前写了一些在 Windows 系统上安装配置 Jenkins 环境，创建自动化构建项目的一些博客，今天来跟大家介绍一下在 Linux 系统下配置Jenkins自动化构建Android项目的环境，下面就来具体操作一下吧：</p>
+<h2 id="一-sdk安装"><a class="markdownIt-Anchor" href="#一-sdk安装"></a> 一 、sdk安装</h2>
+<h3 id="1-下载sdk-for-linux"><a class="markdownIt-Anchor" href="#1-下载sdk-for-linux"></a> 1. 下载sdk for linux</h3>
+<pre class="line-numbers language-none"><code class="language-none">$ wget https:&#x2F;&#x2F;dl.google.com&#x2F;android&#x2F;android-sdk_r24.4.1-linux.tgz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="2-解压android-sdk"><a class="markdownIt-Anchor" href="#2-解压android-sdk"></a> 2. 解压Android SDK</h3>
+<pre class="line-numbers language-none"><code class="language-none">$ tar -zvxf android-sdk_r24.4.1-linux.tgz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="3-配置环境变量"><a class="markdownIt-Anchor" href="#3-配置环境变量"></a> 3. 配置环境变量</h3>
+<p>在文件/etc/profile末端添加如下两行：</p>
+<pre class="line-numbers language-none"><code class="language-none">export ANDROID_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;android-sdk-linux
+export PATH&#x3D;$ANDROID_HOME&#x2F;tools:$PATH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>android-sdk-linux是你解压后的文件名，tools一定要这样写，是里面文件夹的名称</p>
 <p>执行命令文件立马生效</p>
-<pre><code>$ source /etc/profile</code></pre><h3 id="4-安装所有包"><a href="#4-安装所有包" class="headerlink" title="4.安装所有包"></a>4.安装所有包</h3><pre><code>$ android update sdk --no-ui</code></pre><p>或者查看序列号</p>
-<pre><code>$ android list sdk --all</code></pre><p>结果:</p>
-<pre><code>   1- Android SDK Tools, revision 24.1.2
-   2- Android SDK Platform-tools, revision 22
-   3- Android SDK Build-tools, revision 22.0.1
-   4- Android SDK Build-tools, revision 22 (Obsolete)
-   5- Android SDK Build-tools, revision 21.1.2
-   6- Android SDK Build-tools, revision 21.1.1 (Obsolete)
-   7- Android SDK Build-tools, revision 21.1 (Obsolete)
-   8- Android SDK Build-tools, revision 21.0.2 (Obsolete)
-   9- Android SDK Build-tools, revision 21.0.1 (Obsolete)
-  10- Android SDK Build-tools, revision 21 (Obsolete)
-  11- Android SDK Build-tools, revision 20
-  12- Android SDK Build-tools, revision 19.1
-  13- Android SDK Build-tools, revision 19.0.3 (Obsolete)
-  14- Android SDK Build-tools, revision 19.0.2 (Obsolete)
-  15- Android SDK Build-tools, revision 19.0.1 (Obsolete)
-  16- Android SDK Build-tools, revision 19 (Obsolete)
-  17- Android SDK Build-tools, revision 18.1.1 (Obsolete)
-  18- Android SDK Build-tools, revision 18.1 (Obsolete)
-  19- Android SDK Build-tools, revision 18.0.1 (Obsolete)
-  20- Android SDK Build-tools, revision 17 (Obsolete)
-  21- Documentation for Android SDK, API 22, revision 1
-  22- SDK Platform Android 5.1.1, API 22, revision 2
-  23- SDK Platform Android 5.0.1, API 21, revision 2
-  24- SDK Platform Android 4.4W.2, API 20, revision 2
-  25- SDK Platform Android 4.4.2, API 19, revision 4
-  26- SDK Platform Android 4.3.1, API 18, revision 3
-  27- SDK Platform Android 4.2.2, API 17, revision 3</code></pre><p>按序列号安装</p>
-<pre><code>$ android update sdk -u --all --filter 1,2,3,5,11,12,22,23,24,25,26,27,28,29,88,89</code></pre><h2 id="二-、gradle安装"><a href="#二-、gradle安装" class="headerlink" title="二 、gradle安装"></a>二 、gradle安装</h2><h3 id="1-下载gradle"><a href="#1-下载gradle" class="headerlink" title="1. 下载gradle"></a>1. 下载gradle</h3><pre><code>$ wget https://downloads.gradle.org/distributions/gradle-4.4.1-all.zip</code></pre><h3 id="2-解压gradle"><a href="#2-解压gradle" class="headerlink" title="2. 解压gradle"></a>2. 解压gradle</h3><pre><code>$ unzp gradle-4.4.1-all.zip</code></pre><h3 id="3-设置环境变量"><a href="#3-设置环境变量" class="headerlink" title="3. 设置环境变量"></a>3. 设置环境变量</h3><h4 id="3-1-简要配置"><a href="#3-1-简要配置" class="headerlink" title="3.1.简要配置"></a>3.1.简要配置</h4><pre><code>export GRADLE_HOME=/usr/gradle/gradle-4.4.1
-export PATH=$PATH:$GRADLE_HOME</code></pre><pre><code>$ echo $GRADLE_HOME</code></pre><p>输出：</p>
-<pre><code>/usr/gradle/gradle-4.4.1</code></pre><pre><code>$ echo $PATH</code></pre><p>输出：</p>
-<pre><code>/usr/lib64/qt-3.3/bin:/usr/java/jdk1.8.0_151/bin:/usr/gradle/gradle-4.4.1/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin</code></pre><p>这种设置环境变量虽方便，但安装路径会在机器重启以后会消失。需进行以下步骤设置：</p>
-<h4 id="3-2-持久配置"><a href="#3-2-持久配置" class="headerlink" title="3.2.持久配置"></a>3.2.持久配置</h4><h5 id="3-2-1-添加执行配置文件"><a href="#3-2-1-添加执行配置文件" class="headerlink" title="3.2.1.添加执行配置文件"></a>3.2.1.添加执行配置文件</h5><pre><code>$ vi /etc/profile.d/gradle.sh</code></pre><p>添加以下内容：</p>
-<pre><code>GRADLE_HOME=/usr/gradle/gradle-4.4.1
-PATH=$GRADLE_HOME/bin:$PATH
-export PATH GRADLE_HOME</code></pre><h5 id="3-2-2-添加权限"><a href="#3-2-2-添加权限" class="headerlink" title="3.2.2.添加权限"></a>3.2.2.添加权限</h5><pre><code>$ chmod +x /etc/profile.d/gradle.sh</code></pre><h5 id="3-2-3-设置环境变量永久有效"><a href="#3-2-3-设置环境变量永久有效" class="headerlink" title="3.2.3.设置环境变量永久有效"></a>3.2.3.设置环境变量永久有效</h5><pre><code>$ source /etc/profile.d/gradle.sh</code></pre><p>检测版本：</p>
-<pre><code>$ gradle -v</code></pre><p>输出：</p>
-<pre><code>
+<pre class="line-numbers language-none"><code class="language-none">$ source &#x2F;etc&#x2F;profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="4安装所有包"><a class="markdownIt-Anchor" href="#4安装所有包"></a> 4.安装所有包</h3>
+<pre class="line-numbers language-none"><code class="language-none">$ android update sdk --no-ui<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>或者查看序列号</p>
+<pre class="line-numbers language-none"><code class="language-none">$ android list sdk --all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>结果:</p>
+<pre class="line-numbers language-none"><code class="language-none"> 1- Android SDK Tools, revision 24.1.2
+ 2- Android SDK Platform-tools, revision 22
+ 3- Android SDK Build-tools, revision 22.0.1
+ 4- Android SDK Build-tools, revision 22 (Obsolete)
+ 5- Android SDK Build-tools, revision 21.1.2
+ 6- Android SDK Build-tools, revision 21.1.1 (Obsolete)
+ 7- Android SDK Build-tools, revision 21.1 (Obsolete)
+ 8- Android SDK Build-tools, revision 21.0.2 (Obsolete)
+ 9- Android SDK Build-tools, revision 21.0.1 (Obsolete)
+10- Android SDK Build-tools, revision 21 (Obsolete)
+11- Android SDK Build-tools, revision 20
+12- Android SDK Build-tools, revision 19.1
+13- Android SDK Build-tools, revision 19.0.3 (Obsolete)
+14- Android SDK Build-tools, revision 19.0.2 (Obsolete)
+15- Android SDK Build-tools, revision 19.0.1 (Obsolete)
+16- Android SDK Build-tools, revision 19 (Obsolete)
+17- Android SDK Build-tools, revision 18.1.1 (Obsolete)
+18- Android SDK Build-tools, revision 18.1 (Obsolete)
+19- Android SDK Build-tools, revision 18.0.1 (Obsolete)
+20- Android SDK Build-tools, revision 17 (Obsolete)
+21- Documentation for Android SDK, API 22, revision 1
+22- SDK Platform Android 5.1.1, API 22, revision 2
+23- SDK Platform Android 5.0.1, API 21, revision 2
+24- SDK Platform Android 4.4W.2, API 20, revision 2
+25- SDK Platform Android 4.4.2, API 19, revision 4
+26- SDK Platform Android 4.3.1, API 18, revision 3
+27- SDK Platform Android 4.2.2, API 17, revision 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>按序列号安装</p>
+<pre class="line-numbers language-none"><code class="language-none">$ android update sdk -u --all --filter 1,2,3,5,11,12,22,23,24,25,26,27,28,29,88,89<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="二-gradle安装"><a class="markdownIt-Anchor" href="#二-gradle安装"></a> 二 、gradle安装</h2>
+<h3 id="1-下载gradle"><a class="markdownIt-Anchor" href="#1-下载gradle"></a> 1. 下载gradle</h3>
+<pre class="line-numbers language-none"><code class="language-none">$ wget https:&#x2F;&#x2F;downloads.gradle.org&#x2F;distributions&#x2F;gradle-4.4.1-all.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="2-解压gradle"><a class="markdownIt-Anchor" href="#2-解压gradle"></a> 2. 解压gradle</h3>
+<pre class="line-numbers language-none"><code class="language-none">$ unzp gradle-4.4.1-all.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="3-设置环境变量"><a class="markdownIt-Anchor" href="#3-设置环境变量"></a> 3. 设置环境变量</h3>
+<h4 id="31简要配置"><a class="markdownIt-Anchor" href="#31简要配置"></a> 3.1.简要配置</h4>
+<pre class="line-numbers language-none"><code class="language-none">export GRADLE_HOME&#x3D;&#x2F;usr&#x2F;gradle&#x2F;gradle-4.4.1
+export PATH&#x3D;$PATH:$GRADLE_HOME<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">$ echo $GRADLE_HOME<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;usr&#x2F;gradle&#x2F;gradle-4.4.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">$ echo $PATH<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;usr&#x2F;lib64&#x2F;qt-3.3&#x2F;bin:&#x2F;usr&#x2F;java&#x2F;jdk1.8.0_151&#x2F;bin:&#x2F;usr&#x2F;gradle&#x2F;gradle-4.4.1&#x2F;bin:&#x2F;usr&#x2F;local&#x2F;sbin:&#x2F;usr&#x2F;local&#x2F;bin:&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin:&#x2F;root&#x2F;bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这种设置环境变量虽方便，但安装路径会在机器重启以后会消失。需进行以下步骤设置：</p>
+<h4 id="32持久配置"><a class="markdownIt-Anchor" href="#32持久配置"></a> 3.2.持久配置</h4>
+<h5 id="321添加执行配置文件"><a class="markdownIt-Anchor" href="#321添加执行配置文件"></a> 3.2.1.添加执行配置文件</h5>
+<pre class="line-numbers language-none"><code class="language-none">$ vi &#x2F;etc&#x2F;profile.d&#x2F;gradle.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>添加以下内容：</p>
+<pre class="line-numbers language-none"><code class="language-none">GRADLE_HOME&#x3D;&#x2F;usr&#x2F;gradle&#x2F;gradle-4.4.1
+PATH&#x3D;$GRADLE_HOME&#x2F;bin:$PATH
+export PATH GRADLE_HOME<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h5 id="322添加权限"><a class="markdownIt-Anchor" href="#322添加权限"></a> 3.2.2.添加权限</h5>
+<pre class="line-numbers language-none"><code class="language-none">$ chmod +x &#x2F;etc&#x2F;profile.d&#x2F;gradle.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="323设置环境变量永久有效"><a class="markdownIt-Anchor" href="#323设置环境变量永久有效"></a> 3.2.3.设置环境变量永久有效</h5>
+<pre class="line-numbers language-none"><code class="language-none">$ source &#x2F;etc&#x2F;profile.d&#x2F;gradle.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>检测版本：</p>
+<pre class="line-numbers language-none"><code class="language-none">$ gradle -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">
 ------------------------------------------------------------
 Gradle 4.4.1
 ------------------------------------------------------------
@@ -299,28 +348,31 @@ Groovy:       2.4.12
 Ant:          Apache Ant(TM) version 1.9.9 compiled on February 2 2017
 JVM:          1.8.0_151 (Oracle Corporation 25.151-b12)
 OS:           Linux 2.6.32-573.el6.x86_64 amd64
-</code></pre><h2 id="三-、新建项目"><a href="#三-、新建项目" class="headerlink" title="三 、新建项目"></a>三 、新建项目</h2><p> 在Linux上新建项目与在windows系统上搭建的Jenkins 创建项目的方法是一样的，只需要将对应的 windows 系统路径更改为 Linux 系统路径即可。</p>
-<h3 id="附：Linux-系统下移动文件命令"><a href="#附：Linux-系统下移动文件命令" class="headerlink" title="附：Linux 系统下移动文件命令"></a>附：Linux 系统下移动文件命令</h3><pre><code> # 定义当前时间
-# today=`date &quot;+%Y%m%d%H%M%S&quot;` 
-today=`date +&quot;%Y%m%d&quot;`
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="三-新建项目"><a class="markdownIt-Anchor" href="#三-新建项目"></a> 三 、新建项目</h2>
+<p>在Linux上新建项目与在windows系统上搭建的Jenkins 创建项目的方法是一样的，只需要将对应的 windows 系统路径更改为 Linux 系统路径即可。</p>
+<h3 id="附linux-系统下移动文件命令"><a class="markdownIt-Anchor" href="#附linux-系统下移动文件命令"></a> 附：Linux 系统下移动文件命令</h3>
+ <pre class="line-numbers language-none"><code class="language-none"> # 定义当前时间
+# today&#x3D;&#96;date &quot;+%Y%m%d%H%M%S&quot;&#96; 
+today&#x3D;&#96;date +&quot;%Y%m%d&quot;&#96;
 # 工作空间目录
-space=/opt/datas/android/newEcoClinic
+space&#x3D;&#x2F;opt&#x2F;datas&#x2F;android&#x2F;newEcoClinic
 # apk文件目录
-apkDir=$space/app/build/outputs/apk
+apkDir&#x3D;$space&#x2F;app&#x2F;build&#x2F;outputs&#x2F;apk
 # 共享文件夹挂载的文件目录
-shareDir=./windows
+shareDir&#x3D;.&#x2F;windows
 # apk要放置的目标文件夹
-targetDir=AndroidApk/jenkinsBuildApks/newEcoClinic
+targetDir&#x3D;AndroidApk&#x2F;jenkinsBuildApks&#x2F;newEcoClinic
 # 定义开发apk文件路径
-devPath=$shareDir/$targetDir/dev/$today
+devPath&#x3D;$shareDir&#x2F;$targetDir&#x2F;dev&#x2F;$today
 # 定义测试apk文件路径
-testPath=$shareDir/$targetDir/test/$today
+testPath&#x3D;$shareDir&#x2F;$targetDir&#x2F;test&#x2F;$today
 # 定义正式apk文件路径
-releasePath=$shareDir/$targetDir/release/$today
+releasePath&#x3D;$shareDir&#x2F;$targetDir&#x2F;release&#x2F;$today
 # 创建文件夹
 mkdir -p $shareDir
 # 将共享文件夹挂载到创建好的文件夹上
-sudo mount -t cifs -o username=&#39;tech&#39;,password=&#39;!qaz2wsx3edc&#39; //192.168.22.156/tech $shareDir
+sudo mount -t cifs -o username&#x3D;&#39;tech&#39;,password&#x3D;&#39;!qaz2wsx3edc&#39; &#x2F;&#x2F;192.168.22.156&#x2F;tech $shareDir
 # 创建开发APK文件夹
 mkdir -p  $devPath
 # 创建测试APK文件夹
@@ -328,18 +380,20 @@ mkdir -p  $testPath
 # 创建正式APK文件夹
 mkdir -p  $releasePath
 # 复制开发apk到开发APK文件夹
-cp $apkDir/*dev*.apk $devPath
+cp $apkDir&#x2F;*dev*.apk $devPath
 # 复制测试apk到测试APK文件夹
-cp $apkDir/*test*.apk $testPath
+cp $apkDir&#x2F;*test*.apk $testPath
 # 复制正式apk到正式APK文件夹
-cp $apkDir/*release*.apk $releasePath
+cp $apkDir&#x2F;*release*.apk $releasePath
 # 取消挂载
 sudo umount $shareDir
 # 删除源目录的jar文件
-# find $space/app/build/outputs/apk/* -name &#39;*.jar&#39;|xargs rm -rf
+# find $space&#x2F;app&#x2F;build&#x2F;outputs&#x2F;apk&#x2F;* -name &#39;*.jar&#39;|xargs rm -rf
 # 删除无用的文件
-rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-、邮件通知" class="headerlink" title="四 、邮件通知"></a>四 、邮件通知</h2><p><strong>邮件通知配置与Windows 环境下的Jenkins系统配置方法一样。</strong></p>
-<p><strong>请参考 :  配置项目构建完成后邮件通知—- Jenkins自动化部署学习笔记（四）</strong></p>
+rm -rf  $space&#x2F;app&#x2F;build<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="四-邮件通知"><a class="markdownIt-Anchor" href="#四-邮件通知"></a> 四 、邮件通知</h2>
+<p><strong>邮件通知配置与Windows 环境下的Jenkins系统配置方法一样。</strong></p>
+<p><strong>请参考 :  配置项目构建完成后邮件通知---- Jenkins自动化部署学习笔记（四）</strong></p>
 
   </div>
   <div>
@@ -412,7 +466,7 @@ rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在Linux上配置Jenkins自动化构建Android项目的环境"><span class="toc-text">在Linux上配置Jenkins自动化构建Android项目的环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-、sdk安装"><span class="toc-text">一 、sdk安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载sdk-for-linux"><span class="toc-text">1. 下载sdk for linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-解压Android-SDK"><span class="toc-text">2. 解压Android SDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-配置环境变量"><span class="toc-text">3. 配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-安装所有包"><span class="toc-text">4.安装所有包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-、gradle安装"><span class="toc-text">二 、gradle安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载gradle"><span class="toc-text">1. 下载gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-解压gradle"><span class="toc-text">2. 解压gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置环境变量"><span class="toc-text">3. 设置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-简要配置"><span class="toc-text">3.1.简要配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-持久配置"><span class="toc-text">3.2.持久配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-添加执行配置文件"><span class="toc-text">3.2.1.添加执行配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-2-添加权限"><span class="toc-text">3.2.2.添加权限</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-3-设置环境变量永久有效"><span class="toc-text">3.2.3.设置环境变量永久有效</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-、新建项目"><span class="toc-text">三 、新建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#附：Linux-系统下移动文件命令"><span class="toc-text">附：Linux 系统下移动文件命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-、邮件通知"><span class="toc-text">四 、邮件通知</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8linux%E4%B8%8A%E9%85%8D%E7%BD%AEjenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BAandroid%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="toc-text"> 在Linux上配置Jenkins自动化构建Android项目的环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-sdk%E5%AE%89%E8%A3%85"><span class="toc-text"> 一 、sdk安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BDsdk-for-linux"><span class="toc-text"> 1. 下载sdk for linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%A7%A3%E5%8E%8Bandroid-sdk"><span class="toc-text"> 2. 解压Android SDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 3. 配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E5%AE%89%E8%A3%85%E6%89%80%E6%9C%89%E5%8C%85"><span class="toc-text"> 4.安装所有包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-gradle%E5%AE%89%E8%A3%85"><span class="toc-text"> 二 、gradle安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BDgradle"><span class="toc-text"> 1. 下载gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%A7%A3%E5%8E%8Bgradle"><span class="toc-text"> 2. 解压gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 3. 设置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#31%E7%AE%80%E8%A6%81%E9%85%8D%E7%BD%AE"><span class="toc-text"> 3.1.简要配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32%E6%8C%81%E4%B9%85%E9%85%8D%E7%BD%AE"><span class="toc-text"> 3.2.持久配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#321%E6%B7%BB%E5%8A%A0%E6%89%A7%E8%A1%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text"> 3.2.1.添加执行配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#322%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90"><span class="toc-text"> 3.2.2.添加权限</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#323%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%B0%B8%E4%B9%85%E6%9C%89%E6%95%88"><span class="toc-text"> 3.2.3.设置环境变量永久有效</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text"> 三 、新建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%84linux-%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4"><span class="toc-text"> 附：Linux 系统下移动文件命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5"><span class="toc-text"> 四 、邮件通知</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -428,7 +482,7 @@ rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -445,7 +499,7 @@ rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在Linux上配置Jenkins自动化构建Android项目的环境"><span class="toc-text">在Linux上配置Jenkins自动化构建Android项目的环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-、sdk安装"><span class="toc-text">一 、sdk安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载sdk-for-linux"><span class="toc-text">1. 下载sdk for linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-解压Android-SDK"><span class="toc-text">2. 解压Android SDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-配置环境变量"><span class="toc-text">3. 配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-安装所有包"><span class="toc-text">4.安装所有包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-、gradle安装"><span class="toc-text">二 、gradle安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载gradle"><span class="toc-text">1. 下载gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-解压gradle"><span class="toc-text">2. 解压gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置环境变量"><span class="toc-text">3. 设置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-简要配置"><span class="toc-text">3.1.简要配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-持久配置"><span class="toc-text">3.2.持久配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-添加执行配置文件"><span class="toc-text">3.2.1.添加执行配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-2-添加权限"><span class="toc-text">3.2.2.添加权限</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-3-设置环境变量永久有效"><span class="toc-text">3.2.3.设置环境变量永久有效</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-、新建项目"><span class="toc-text">三 、新建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#附：Linux-系统下移动文件命令"><span class="toc-text">附：Linux 系统下移动文件命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-、邮件通知"><span class="toc-text">四 、邮件通知</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8linux%E4%B8%8A%E9%85%8D%E7%BD%AEjenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BAandroid%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="toc-text"> 在Linux上配置Jenkins自动化构建Android项目的环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-sdk%E5%AE%89%E8%A3%85"><span class="toc-text"> 一 、sdk安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BDsdk-for-linux"><span class="toc-text"> 1. 下载sdk for linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%A7%A3%E5%8E%8Bandroid-sdk"><span class="toc-text"> 2. 解压Android SDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 3. 配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E5%AE%89%E8%A3%85%E6%89%80%E6%9C%89%E5%8C%85"><span class="toc-text"> 4.安装所有包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-gradle%E5%AE%89%E8%A3%85"><span class="toc-text"> 二 、gradle安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BDgradle"><span class="toc-text"> 1. 下载gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%A7%A3%E5%8E%8Bgradle"><span class="toc-text"> 2. 解压gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 3. 设置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#31%E7%AE%80%E8%A6%81%E9%85%8D%E7%BD%AE"><span class="toc-text"> 3.1.简要配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32%E6%8C%81%E4%B9%85%E9%85%8D%E7%BD%AE"><span class="toc-text"> 3.2.持久配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#321%E6%B7%BB%E5%8A%A0%E6%89%A7%E8%A1%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text"> 3.2.1.添加执行配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#322%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90"><span class="toc-text"> 3.2.2.添加权限</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#323%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%B0%B8%E4%B9%85%E6%9C%89%E6%95%88"><span class="toc-text"> 3.2.3.设置环境变量永久有效</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text"> 三 、新建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%84linux-%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4"><span class="toc-text"> 附：Linux 系统下移动文件命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5"><span class="toc-text"> 四 、邮件通知</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -466,13 +520,6 @@ rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -518,9 +565,9 @@ rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -528,14 +575,21 @@ rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -543,6 +597,13 @@ rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -579,13 +640,13 @@ rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -600,7 +661,7 @@ rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在Linux上配置Jenkins自动化构建Android项目的环境"><span class="toc-text">在Linux上配置Jenkins自动化构建Android项目的环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-、sdk安装"><span class="toc-text">一 、sdk安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载sdk-for-linux"><span class="toc-text">1. 下载sdk for linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-解压Android-SDK"><span class="toc-text">2. 解压Android SDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-配置环境变量"><span class="toc-text">3. 配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-安装所有包"><span class="toc-text">4.安装所有包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-、gradle安装"><span class="toc-text">二 、gradle安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载gradle"><span class="toc-text">1. 下载gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-解压gradle"><span class="toc-text">2. 解压gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置环境变量"><span class="toc-text">3. 设置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-简要配置"><span class="toc-text">3.1.简要配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-持久配置"><span class="toc-text">3.2.持久配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-添加执行配置文件"><span class="toc-text">3.2.1.添加执行配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-2-添加权限"><span class="toc-text">3.2.2.添加权限</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-3-设置环境变量永久有效"><span class="toc-text">3.2.3.设置环境变量永久有效</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-、新建项目"><span class="toc-text">三 、新建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#附：Linux-系统下移动文件命令"><span class="toc-text">附：Linux 系统下移动文件命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-、邮件通知"><span class="toc-text">四 、邮件通知</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8linux%E4%B8%8A%E9%85%8D%E7%BD%AEjenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BAandroid%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="toc-text"> 在Linux上配置Jenkins自动化构建Android项目的环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-sdk%E5%AE%89%E8%A3%85"><span class="toc-text"> 一 、sdk安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BDsdk-for-linux"><span class="toc-text"> 1. 下载sdk for linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%A7%A3%E5%8E%8Bandroid-sdk"><span class="toc-text"> 2. 解压Android SDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 3. 配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E5%AE%89%E8%A3%85%E6%89%80%E6%9C%89%E5%8C%85"><span class="toc-text"> 4.安装所有包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-gradle%E5%AE%89%E8%A3%85"><span class="toc-text"> 二 、gradle安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BDgradle"><span class="toc-text"> 1. 下载gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%A7%A3%E5%8E%8Bgradle"><span class="toc-text"> 2. 解压gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 3. 设置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#31%E7%AE%80%E8%A6%81%E9%85%8D%E7%BD%AE"><span class="toc-text"> 3.1.简要配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32%E6%8C%81%E4%B9%85%E9%85%8D%E7%BD%AE"><span class="toc-text"> 3.2.持久配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#321%E6%B7%BB%E5%8A%A0%E6%89%A7%E8%A1%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text"> 3.2.1.添加执行配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#322%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90"><span class="toc-text"> 3.2.2.添加权限</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#323%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%B0%B8%E4%B9%85%E6%9C%89%E6%95%88"><span class="toc-text"> 3.2.3.设置环境变量永久有效</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text"> 三 、新建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%84linux-%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4"><span class="toc-text"> 附：Linux 系统下移动文件命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5"><span class="toc-text"> 四 、邮件通知</span></a></li></ol></li></ol>
   </article>
   
   
@@ -611,22 +672,22 @@ rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -675,7 +736,7 @@ rm -rf  $space/app/build</code></pre><h2 id="四-、邮件通知"><a href="#四-
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

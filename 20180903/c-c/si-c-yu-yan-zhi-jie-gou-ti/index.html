@@ -127,7 +127,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -221,7 +234,7 @@
     
     
     <span class="dot"></span>
-    <span>1.3k 字</span>
+    <span>1.5k 字</span>
     
   </div>
   
@@ -237,255 +250,288 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="（四）C语言之结构体"><a href="#（四）C语言之结构体" class="headerlink" title="（四）C语言之结构体"></a>（四）C语言之结构体</h1><h2 id="一、什么是结构体"><a href="#一、什么是结构体" class="headerlink" title="一、什么是结构体"></a>一、什么是结构体</h2><p>结构体是一种构造数据类型，就是把不同的数据类型整合起来成为一个自定义的数据类型</p>
-<h2 id="二、初始化结构体的变量"><a href="#二、初始化结构体的变量" class="headerlink" title="二、初始化结构体的变量"></a>二、初始化结构体的变量</h2><h3 id="1-第一种初始化方式"><a href="#1-第一种初始化方式" class="headerlink" title="1. 第一种初始化方式"></a>1. 第一种初始化方式</h3><p>struct [结构体类型] [结构体变量名] = {[结构体内参数实例化值]</p>
-<h3 id="2-第二种初始化方式"><a href="#2-第二种初始化方式" class="headerlink" title="2. 第二种初始化方式"></a>2. 第二种初始化方式</h3><p>struct [结构体类型] [结构体变量名] ;</p>
+    <h1 id="四c语言之结构体"><a class="markdownIt-Anchor" href="#四c语言之结构体"></a> （四）C语言之结构体</h1>
+<h2 id="一-什么是结构体"><a class="markdownIt-Anchor" href="#一-什么是结构体"></a> 一、什么是结构体</h2>
+<p>结构体是一种构造数据类型，就是把不同的数据类型整合起来成为一个自定义的数据类型</p>
+<h2 id="二-初始化结构体的变量"><a class="markdownIt-Anchor" href="#二-初始化结构体的变量"></a> 二、初始化结构体的变量</h2>
+<h3 id="1-第一种初始化方式"><a class="markdownIt-Anchor" href="#1-第一种初始化方式"></a> 1. 第一种初始化方式</h3>
+<p>struct [结构体类型] [结构体变量名] = {[结构体内参数实例化值]</p>
+<h3 id="2-第二种初始化方式"><a class="markdownIt-Anchor" href="#2-第二种初始化方式"></a> 2. 第二种初始化方式</h3>
+<p>struct [结构体类型] [结构体变量名] ;</p>
 <p>[结构体变量名].[结构体参数名] = [实例化值];</p>
 <p>例如：</p>
-<pre><code>struct Man
-{
-    char name[20];
-    int age;
-    char* mobile;
-
-};
-void main() {
-    struct Man m1 = { &quot;Jack&quot;,20 ,&quot;18800008888&quot;};
-    printf(&quot;%s,%d,%s\n&quot;, m1.name, m1.age,m1.mobile);
-    //或
-    struct Man m2 ;
-    //m2.name 数组类型不能直接复制
-    strcpy(m2.name, &quot;Rose&quot;);
-    m2.age = 23;
-    m2.mobile = &quot;16600001111&quot;;
-    printf(&quot;%s,%d,%s\n&quot;, m2.name, m2.age,m2.mobile);
-    getchar();
-}</code></pre><p>输出：</p>
-<pre><code>Jack,20,18800008888
-Rose,23,16600001111</code></pre><h2 id="三、结构体的几种写法"><a href="#三、结构体的几种写法" class="headerlink" title="三、结构体的几种写法"></a>三、结构体的几种写法</h2><h3 id="1、第一种写法"><a href="#1、第一种写法" class="headerlink" title="1、第一种写法"></a>1、第一种写法</h3><p>例如：</p>
-<pre><code>struct Man{
-    char name[20];
-    int age;
-};
-void main() {
-    struct Man m1 = { &quot;Jack&quot;,20};
-    printf(&quot;%s,%d\n&quot;, m1.name, m1.age);
-    getchar();
-}</code></pre><h3 id="2、第二种写法，可以在结构体类型的-后，定义结构体变量名，也可以对结构体变量名进行初始化。"><a href="#2、第二种写法，可以在结构体类型的-后，定义结构体变量名，也可以对结构体变量名进行初始化。" class="headerlink" title="2、第二种写法，可以在结构体类型的}后，定义结构体变量名，也可以对结构体变量名进行初始化。"></a>2、第二种写法，可以在结构体类型的}后，定义结构体变量名，也可以对结构体变量名进行初始化。</h3><p>例如：</p>
-<pre><code>struct Man {
-    char* name;
-    int age;
-} Man,m2={&quot;jack&quot;,20};
-
-void main() {
-    Man.name = &quot;Tom&quot;;
-    Man.age = 19;
-    printf(&quot;%s,%d\n&quot;, Man.name,Man
-    .age);
-    getchar();
-}</code></pre><h3 id="3、第三种写法-匿名结构体-控制结构体变量的个数（限量版），相当于单例"><a href="#3、第三种写法-匿名结构体-控制结构体变量的个数（限量版），相当于单例" class="headerlink" title="3、第三种写法:匿名结构体,控制结构体变量的个数（限量版），相当于单例"></a>3、第三种写法:匿名结构体,控制结构体变量的个数（限量版），相当于单例</h3><p>例如：</p>
-<pre><code>struct  {
-    char* name;
-    int age;
-} Woman;
-
-void main() {
-    Woman.name = &quot;Lili&quot;;
-    Woman.age = 19;
-    printf(&quot;%s,%d\n&quot;, Woman.name,Woman
-    .age);
-    getchar();
-}</code></pre><h2 id="四、结构体嵌套"><a href="#四、结构体嵌套" class="headerlink" title="四、结构体嵌套"></a>四、结构体嵌套</h2><p>结构体是可以进行嵌套使用的,可以分别定义使用，或者在一个结构体中定义另一个结构体</p>
-<h3 id="1、分别定义结构体嵌套"><a href="#1、分别定义结构体嵌套" class="headerlink" title="1、分别定义结构体嵌套"></a>1、分别定义结构体嵌套</h3><p>例如：</p>
-<pre><code>// 老师的结构体
-struct Teacher {
-    char name[20];
-};
-
-// 学生的结构体
-struct Student {
-    char name[20];
-    int age;
-    struct Teacher t;
-};
-
-void main() {
-    struct Student s1 = { &quot;jack&quot;,21,{&quot;Jason&quot;} };
-    struct Student s2;
-    strcpy(s2.name, &quot;Tom&quot;);
-    s2.age = 23;
-    strcpy(s2.t.name, &quot;Jason&quot;);
-    getchar();
-}
-</code></pre><h3 id="2、结构体内定义结构体嵌套"><a href="#2、结构体内定义结构体嵌套" class="headerlink" title="2、结构体内定义结构体嵌套"></a>2、结构体内定义结构体嵌套</h3><p>例如：</p>
-<pre><code>// 学生的结构体
-struct Student {
-    char name[20];
-    int age;
-    // 老师的结构体
-    struct Teacher {
-        char name[20];
-    } t;
-};
-
-void main() {
-    struct Student s1 = { &quot;jack&quot;,21,{&quot;Jason&quot;} };
-    struct Student s2;
-    strcpy(s2.name, &quot;Tom&quot;);
-    s2.age = 23;
-    strcpy(s2.t.name, &quot;Jason&quot;);
-    getchar();
-}
-</code></pre><h2 id="五、结构体与指针"><a href="#五、结构体与指针" class="headerlink" title="五、结构体与指针"></a>五、结构体与指针</h2><p>结构体变量也可以使用指针进行操作，”p-&gt;”是”(*p).”的简写形式</p>
+<pre class="line-numbers language-none"><code class="language-none">struct Man
+&#123;
+	char name[20];
+	int age;
+	char* mobile;
+	
+&#125;;
+void main() &#123;
+	struct Man m1 &#x3D; &#123; &quot;Jack&quot;,20 ,&quot;18800008888&quot;&#125;;
+	printf(&quot;%s,%d,%s\n&quot;, m1.name, m1.age,m1.mobile);
+	&#x2F;&#x2F;或
+	struct Man m2 ;
+	&#x2F;&#x2F;m2.name 数组类型不能直接复制
+	strcpy(m2.name, &quot;Rose&quot;);
+	m2.age &#x3D; 23;
+	m2.mobile &#x3D; &quot;16600001111&quot;;
+	printf(&quot;%s,%d,%s\n&quot;, m2.name, m2.age,m2.mobile);
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">Jack,20,18800008888
+Rose,23,16600001111<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="三-结构体的几种写法"><a class="markdownIt-Anchor" href="#三-结构体的几种写法"></a> 三、结构体的几种写法</h2>
+<h3 id="1-第一种写法"><a class="markdownIt-Anchor" href="#1-第一种写法"></a> 1、第一种写法</h3>
 <p>例如：</p>
-<pre><code>struct Man{
+<pre class="line-numbers language-none"><code class="language-none">struct Man&#123;
+	char name[20];
+	int age;
+&#125;;
+void main() &#123;
+	struct Man m1 &#x3D; &#123; &quot;Jack&quot;,20&#125;;
+	printf(&quot;%s,%d\n&quot;, m1.name, m1.age);
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-第二种写法可以在结构体类型的后定义结构体变量名也可以对结构体变量名进行初始化"><a class="markdownIt-Anchor" href="#2-第二种写法可以在结构体类型的后定义结构体变量名也可以对结构体变量名进行初始化"></a> 2、第二种写法，可以在结构体类型的}后，定义结构体变量名，也可以对结构体变量名进行初始化。</h3>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">struct Man &#123;
+	char* name;
+	int age;
+&#125; Man,m2&#x3D;&#123;&quot;jack&quot;,20&#125;;
+
+void main() &#123;
+	Man.name &#x3D; &quot;Tom&quot;;
+	Man.age &#x3D; 19;
+	printf(&quot;%s,%d\n&quot;, Man.name,Man
+	.age);
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-第三种写法匿名结构体控制结构体变量的个数限量版相当于单例"><a class="markdownIt-Anchor" href="#3-第三种写法匿名结构体控制结构体变量的个数限量版相当于单例"></a> 3、第三种写法:匿名结构体,控制结构体变量的个数（限量版），相当于单例</h3>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">struct  &#123;
+	char* name;
+	int age;
+&#125; Woman;
+
+void main() &#123;
+	Woman.name &#x3D; &quot;Lili&quot;;
+	Woman.age &#x3D; 19;
+	printf(&quot;%s,%d\n&quot;, Woman.name,Woman
+	.age);
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="四-结构体嵌套"><a class="markdownIt-Anchor" href="#四-结构体嵌套"></a> 四、结构体嵌套</h2>
+<p>结构体是可以进行嵌套使用的,可以分别定义使用，或者在一个结构体中定义另一个结构体</p>
+<h3 id="1-分别定义结构体嵌套"><a class="markdownIt-Anchor" href="#1-分别定义结构体嵌套"></a> 1、分别定义结构体嵌套</h3>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 老师的结构体
+struct Teacher &#123;
+	char name[20];
+&#125;;
+
+&#x2F;&#x2F; 学生的结构体
+struct Student &#123;
+	char name[20];
+	int age;
+	struct Teacher t;
+&#125;;
+
+void main() &#123;
+	struct Student s1 &#x3D; &#123; &quot;jack&quot;,21,&#123;&quot;Jason&quot;&#125; &#125;;
+	struct Student s2;
+	strcpy(s2.name, &quot;Tom&quot;);
+	s2.age &#x3D; 23;
+	strcpy(s2.t.name, &quot;Jason&quot;);
+	getchar();
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-结构体内定义结构体嵌套"><a class="markdownIt-Anchor" href="#2-结构体内定义结构体嵌套"></a> 2、结构体内定义结构体嵌套</h3>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 学生的结构体
+struct Student &#123;
+	char name[20];
+	int age;
+	&#x2F;&#x2F; 老师的结构体
+    struct Teacher &#123;
+	    char name[20];
+    &#125; t;
+&#125;;
+
+void main() &#123;
+	struct Student s1 &#x3D; &#123; &quot;jack&quot;,21,&#123;&quot;Jason&quot;&#125; &#125;;
+	struct Student s2;
+	strcpy(s2.name, &quot;Tom&quot;);
+	s2.age &#x3D; 23;
+	strcpy(s2.t.name, &quot;Jason&quot;);
+	getchar();
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="五-结构体与指针"><a class="markdownIt-Anchor" href="#五-结构体与指针"></a> 五、结构体与指针</h2>
+<p>结构体变量也可以使用指针进行操作，&quot;p-&gt;“是”(*p).&quot;的简写形式</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">struct Man&#123;
     char name[20];
     int age;
-};
+&#125;;
 
-void main(){
-    struct Man m1 = {&quot;Jack&quot;,30};
-    //结构体指针
-    struct Man *p = &amp;m1;
+void main()&#123;
+    struct Man m1 &#x3D; &#123;&quot;Jack&quot;,30&#125;;
+    &#x2F;&#x2F;结构体指针
+    struct Man *p &#x3D; &amp;m1;
     printf(&quot;%s,%d\n&quot;,(*p).name,(*p).age);
-    //&quot;p-&gt;&quot;是&quot;(*p).&quot;的简写形式
+    &#x2F;&#x2F;&quot;p-&gt;&quot;是&quot;(*p).&quot;的简写形式
     printf(&quot;%s,%d\n&quot;,p-&gt;name,p-&gt;age);
     getchar();
-}</code></pre><h2 id="六、结构体数组与指针"><a href="#六、结构体数组与指针" class="headerlink" title="六、结构体数组与指针"></a>六、结构体数组与指针</h2><p>结构体变量也可以使用指针进行操作，”p-&gt;”是”(*p).”的简写形式</p>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="六-结构体数组与指针"><a class="markdownIt-Anchor" href="#六-结构体数组与指针"></a> 六、结构体数组与指针</h2>
+<p>结构体变量也可以使用指针进行操作，&quot;p-&gt;“是”(*p).&quot;的简写形式</p>
 <p>例如：</p>
-<pre><code>struct Man {
-    char name[20];
-    int age;
-};
+<pre class="line-numbers language-none"><code class="language-none">struct Man &#123;
+	char name[20];
+	int age;
+&#125;;
 
-void main() {
-    struct Man mans[] = { {&quot;Jack&quot;,30},{&quot;Rose&quot;,19} };
-    //遍历数组
-    struct Man *p = mans;
-    for (; p &lt; mans + 2; p++) {
-        printf(&quot;%s,%d\n&quot;, p-&gt;name, p-&gt;age);
-    }
+void main() &#123;
+	struct Man mans[] &#x3D; &#123; &#123;&quot;Jack&quot;,30&#125;,&#123;&quot;Rose&quot;,19&#125; &#125;;
+	&#x2F;&#x2F;遍历数组
+	struct Man *p &#x3D; mans;
+	for (; p &lt; mans + 2; p++) &#123;
+		printf(&quot;%s,%d\n&quot;, p-&gt;name, p-&gt;age);
+	&#125;
 
-    int i = 0;
-    for (; i &lt; sizeof(mans) / sizeof(struct Man); i++) {
-        printf(&quot;%s,%d\n&quot;, mans[i].name, mans[i].age);
-    }
-    getchar();
-}</code></pre><h2 id="七、结构体的大小（字节对齐）"><a href="#七、结构体的大小（字节对齐）" class="headerlink" title="七、结构体的大小（字节对齐）"></a>七、结构体的大小（字节对齐）</h2><p><strong>结构体的大小必须是结构体中最宽基本数据类型的整数倍</strong></p>
+	int i &#x3D; 0;
+	for (; i &lt; sizeof(mans) &#x2F; sizeof(struct Man); i++) &#123;
+		printf(&quot;%s,%d\n&quot;, mans[i].name, mans[i].age);
+	&#125;
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="七-结构体的大小字节对齐"><a class="markdownIt-Anchor" href="#七-结构体的大小字节对齐"></a> 七、结构体的大小（字节对齐）</h2>
+<p><strong>结构体的大小必须是结构体中最宽基本数据类型的整数倍</strong></p>
 <p><strong>牺牲一定的存储空间（本需要12字节的空间，实际分配16字节，（最宽基本数据类型的整数倍）），提升读取的效率</strong></p>
 <p>例如：</p>
-<pre><code>struct Man {
-    int age;
-    double weight;
-};
+<pre class="line-numbers language-none"><code class="language-none">struct Man &#123;
+	int age;
+	double weight;
+&#125;;
 
-void main() {
-    struct Man m1 = { 20,80.9 };
-    printf(&quot;%#x,%d\n&quot;, &amp;m1,sizeof(m1));
-    getchar();
-}</code></pre><p>输出：</p>
-<pre><code>0xcffcc4,16</code></pre><h2 id="八、结构体与动态内存分配"><a href="#八、结构体与动态内存分配" class="headerlink" title="八、结构体与动态内存分配"></a>八、结构体与动态内存分配</h2><pre><code>struct Man{
+void main() &#123;
+	struct Man m1 &#x3D; &#123; 20,80.9 &#125;;
+	printf(&quot;%#x,%d\n&quot;, &amp;m1,sizeof(m1));
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">0xcffcc4,16<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="八-结构体与动态内存分配"><a class="markdownIt-Anchor" href="#八-结构体与动态内存分配"></a> 八、结构体与动态内存分配</h2>
+<pre class="line-numbers language-none"><code class="language-none">struct Man&#123;
     char *name;
     int age;
-};
+&#125;;
 
-void main(){
-    struct Man *man_p = (struct Man*)malloc(sizeof(struct Man)*10);
-    struct Man *p = man_p;
-    //赋值
-    p-&gt;name = &quot;Jack&quot;;
-    p-&gt;age = 20;
+void main()&#123;
+    struct Man *man_p &#x3D; (struct Man*)malloc(sizeof(struct Man)*10);
+    struct Man *p &#x3D; man_p;
+    &#x2F;&#x2F;赋值
+    p-&gt;name &#x3D; &quot;Jack&quot;;
+    p-&gt;age &#x3D; 20;
     p++;
-    p-&gt;name = &quot;Rose&quot;;
-    p-&gt;age = 23;
-
-    struct Man *loop_p =man_p  ;
-    for(;loop_p &lt; man_p+2;loop_p++){
+    p-&gt;name &#x3D; &quot;Rose&quot;;
+    p-&gt;age &#x3D; 23;
+    
+    struct Man *loop_p &#x3D;man_p  ;
+    for(;loop_p &lt; man_p+2;loop_p++)&#123;
         printf(&quot;%s,%d\n&quot;,loop_p-&gt;name,loop_p-&gt;age);
-    }
+    &#125;
     free(man_p);
     getchar();
-}</code></pre><h2 id="九、typedef-类型取别名"><a href="#九、typedef-类型取别名" class="headerlink" title="九、typedef 类型取别名"></a>九、typedef 类型取别名</h2><p><strong>1、不同的名称代表在干不同的事情；typedef int jint;</strong></p>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="九-typedef-类型取别名"><a class="markdownIt-Anchor" href="#九-typedef-类型取别名"></a> 九、typedef 类型取别名</h2>
+<p><strong>1、不同的名称代表在干不同的事情；typedef int jint;</strong></p>
 <p><strong>2、不同的情况下，使用不同的别名</strong></p>
-<pre><code>if(_cplusplus){
+<pre class="line-numbers language-none"><code class="language-none">if(_cplusplus)&#123;
     typedef _JNIEvn JNIEvn;
     typedef _JavaVM JavaVM;
 
-}</code></pre><p><strong>3、书写简洁</strong></p>
-<pre><code>struct Man{
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>3、书写简洁</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">struct Man&#123;
     char *name;
     int age;
-};
+&#125;;
 
 
-//Age  int 类型的别名
+&#x2F;&#x2F;Age  int 类型的别名
 typedef int Age;
-//Ap int 类型指针的别名
+&#x2F;&#x2F;Ap int 类型指针的别名
 typedef int* Ap;
 
 typedef struct Man JavaMan;
 typedef struct Man* JM;
-//简写
-typedef struct Woman{
+&#x2F;&#x2F;简写
+typedef struct Woman&#123;
     char name[20];
     int age;
-} W,*WP;// W 是Woman结构体的别名；WP 是Woman结构体指针的别名。
+&#125; W,*WP;&#x2F;&#x2F; W 是Woman结构体的别名；WP 是Woman结构体指针的别名。
 
 
-void main(){
-    int i = 5;
-    Ap p = &amp;i;
-    //结构体变量
-    W w1 = {&quot;Rose&quot;,25};
-    //结构体指针
-    WP wp1 = &amp;w1;
-
+void main()&#123;
+    int i &#x3D; 5;
+    Ap p &#x3D; &amp;i;
+    &#x2F;&#x2F;结构体变量
+    W w1 &#x3D; &#123;&quot;Rose&quot;,25&#125;;
+    &#x2F;&#x2F;结构体指针
+    WP wp1 &#x3D; &amp;w1;
+    
     printf(&quot;%s,%d\n&quot;,wp1-&gt;name,wp1-&gt;age);
     getchar(); 
-}</code></pre><h2 id="十、结构体函数指针成员"><a href="#十、结构体函数指针成员" class="headerlink" title="十、结构体函数指针成员"></a>十、结构体函数指针成员</h2><pre><code>#include &lt;Windows.h&gt;
-//Girl 结构体类似于Java中的类，name和age类似于属性，sayHi类似于方法
-struct Girl{
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="十-结构体函数指针成员"><a class="markdownIt-Anchor" href="#十-结构体函数指针成员"></a> 十、结构体函数指针成员</h2>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;Windows.h&gt;
+&#x2F;&#x2F;Girl 结构体类似于Java中的类，name和age类似于属性，sayHi类似于方法
+struct Girl&#123;
     char *name;
     int age;
-    //函数指针
+    &#x2F;&#x2F;函数指针
     void(*sayHi) (char*);
-};
+&#125;;
 
-void sayHi(char* text){
+void sayHi(char* text)&#123;
     MessageBoxA(0,text,&quot;title&quot;,0);
-}
+&#125;
 
-void main(){
+void main()&#123;
    struct Girl g1;
-   g1.name = &quot;Lucy&quot;;
-   g1.age = 18;
-   g1.sayHi = sayHi;
-
+   g1.name &#x3D; &quot;Lucy&quot;;
+   g1.age &#x3D; 18;
+   g1.sayHi &#x3D; sayHi;
+   
    g1.sayHi(&quot;Hello!&quot;);
    getchar(); 
-}</code></pre><p><strong>取别名的写法</strong></p>
-<pre><code>#include &lt;Windows.h&gt;
-//Girl 结构体类似于Java中的类，name和age类似于属性，sayHi类似于方法
-typedef struct Girl{
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>取别名的写法</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;Windows.h&gt;
+&#x2F;&#x2F;Girl 结构体类似于Java中的类，name和age类似于属性，sayHi类似于方法
+typedef struct Girl&#123;
     char *name;
     int age;
-    //函数指针
+    &#x2F;&#x2F;函数指针
     void(*sayHi) (char*);
-}Girl;
+&#125;Girl;
 
-//Girl结构体指针取别名
+&#x2F;&#x2F;Girl结构体指针取别名
 typedef Girl* GirlP;
 
-void sayHi(char* text){
+void sayHi(char* text)&#123;
     MessageBoxA(0,text,&quot;title&quot;,0);
-}
+&#125;
 
-void main(){
-   struct Girl g1 = {&quot;Lucy&quot;,19,sayHi};
-   GirlP gp1 = &amp;g1;
+void main()&#123;
+   struct Girl g1 &#x3D; &#123;&quot;Lucy&quot;,19,sayHi&#125;;
+   GirlP gp1 &#x3D; &amp;g1;
    gp1-&gt;sayHi(&quot;Hello&quot;);
    getchar(); 
-}</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
   </div>
   <div>
   
@@ -557,7 +603,7 @@ void main(){
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#（四）C语言之结构体"><span class="toc-text">（四）C语言之结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、什么是结构体"><span class="toc-text">一、什么是结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、初始化结构体的变量"><span class="toc-text">二、初始化结构体的变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-第一种初始化方式"><span class="toc-text">1. 第一种初始化方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-第二种初始化方式"><span class="toc-text">2. 第二种初始化方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、结构体的几种写法"><span class="toc-text">三、结构体的几种写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、第一种写法"><span class="toc-text">1、第一种写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、第二种写法，可以在结构体类型的-后，定义结构体变量名，也可以对结构体变量名进行初始化。"><span class="toc-text">2、第二种写法，可以在结构体类型的}后，定义结构体变量名，也可以对结构体变量名进行初始化。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、第三种写法-匿名结构体-控制结构体变量的个数（限量版），相当于单例"><span class="toc-text">3、第三种写法:匿名结构体,控制结构体变量的个数（限量版），相当于单例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、结构体嵌套"><span class="toc-text">四、结构体嵌套</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、分别定义结构体嵌套"><span class="toc-text">1、分别定义结构体嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、结构体内定义结构体嵌套"><span class="toc-text">2、结构体内定义结构体嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、结构体与指针"><span class="toc-text">五、结构体与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、结构体数组与指针"><span class="toc-text">六、结构体数组与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、结构体的大小（字节对齐）"><span class="toc-text">七、结构体的大小（字节对齐）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、结构体与动态内存分配"><span class="toc-text">八、结构体与动态内存分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、typedef-类型取别名"><span class="toc-text">九、typedef 类型取别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、结构体函数指针成员"><span class="toc-text">十、结构体函数指针成员</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9Bc%E8%AF%AD%E8%A8%80%E4%B9%8B%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text"> （四）C语言之结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text"> 一、什么是结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-text"> 二、初始化结构体的变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="toc-text"> 1. 第一种初始化方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E7%A7%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="toc-text"> 2. 第二种初始化方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%87%A0%E7%A7%8D%E5%86%99%E6%B3%95"><span class="toc-text"> 三、结构体的几种写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%86%99%E6%B3%95"><span class="toc-text"> 1、第一种写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E7%A7%8D%E5%86%99%E6%B3%95%E5%8F%AF%E4%BB%A5%E5%9C%A8%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%90%8E%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E5%90%8D%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%AF%B9%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E5%90%8D%E8%BF%9B%E8%A1%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text"> 2、第二种写法，可以在结构体类型的}后，定义结构体变量名，也可以对结构体变量名进行初始化。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%89%E7%A7%8D%E5%86%99%E6%B3%95%E5%8C%BF%E5%90%8D%E7%BB%93%E6%9E%84%E4%BD%93%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E7%9A%84%E4%B8%AA%E6%95%B0%E9%99%90%E9%87%8F%E7%89%88%E7%9B%B8%E5%BD%93%E4%BA%8E%E5%8D%95%E4%BE%8B"><span class="toc-text"> 3、第三种写法:匿名结构体,控制结构体变量的个数（限量版），相当于单例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97"><span class="toc-text"> 四、结构体嵌套</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%86%E5%88%AB%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97"><span class="toc-text"> 1、分别定义结构体嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97"><span class="toc-text"> 2、结构体内定义结构体嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E6%8C%87%E9%92%88"><span class="toc-text"> 五、结构体与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88"><span class="toc-text"> 六、结构体数组与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90"><span class="toc-text"> 七、结构体的大小（字节对齐）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-text"> 八、结构体与动态内存分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D-typedef-%E7%B1%BB%E5%9E%8B%E5%8F%96%E5%88%AB%E5%90%8D"><span class="toc-text"> 九、typedef 类型取别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81-%E7%BB%93%E6%9E%84%E4%BD%93%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E6%88%90%E5%91%98"><span class="toc-text"> 十、结构体函数指针成员</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -573,7 +619,7 @@ void main(){
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -590,7 +636,7 @@ void main(){
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#（四）C语言之结构体"><span class="toc-text">（四）C语言之结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、什么是结构体"><span class="toc-text">一、什么是结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、初始化结构体的变量"><span class="toc-text">二、初始化结构体的变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-第一种初始化方式"><span class="toc-text">1. 第一种初始化方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-第二种初始化方式"><span class="toc-text">2. 第二种初始化方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、结构体的几种写法"><span class="toc-text">三、结构体的几种写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、第一种写法"><span class="toc-text">1、第一种写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、第二种写法，可以在结构体类型的-后，定义结构体变量名，也可以对结构体变量名进行初始化。"><span class="toc-text">2、第二种写法，可以在结构体类型的}后，定义结构体变量名，也可以对结构体变量名进行初始化。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、第三种写法-匿名结构体-控制结构体变量的个数（限量版），相当于单例"><span class="toc-text">3、第三种写法:匿名结构体,控制结构体变量的个数（限量版），相当于单例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、结构体嵌套"><span class="toc-text">四、结构体嵌套</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、分别定义结构体嵌套"><span class="toc-text">1、分别定义结构体嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、结构体内定义结构体嵌套"><span class="toc-text">2、结构体内定义结构体嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、结构体与指针"><span class="toc-text">五、结构体与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、结构体数组与指针"><span class="toc-text">六、结构体数组与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、结构体的大小（字节对齐）"><span class="toc-text">七、结构体的大小（字节对齐）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、结构体与动态内存分配"><span class="toc-text">八、结构体与动态内存分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、typedef-类型取别名"><span class="toc-text">九、typedef 类型取别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、结构体函数指针成员"><span class="toc-text">十、结构体函数指针成员</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9Bc%E8%AF%AD%E8%A8%80%E4%B9%8B%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text"> （四）C语言之结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text"> 一、什么是结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-text"> 二、初始化结构体的变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="toc-text"> 1. 第一种初始化方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E7%A7%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="toc-text"> 2. 第二种初始化方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%87%A0%E7%A7%8D%E5%86%99%E6%B3%95"><span class="toc-text"> 三、结构体的几种写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%86%99%E6%B3%95"><span class="toc-text"> 1、第一种写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E7%A7%8D%E5%86%99%E6%B3%95%E5%8F%AF%E4%BB%A5%E5%9C%A8%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%90%8E%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E5%90%8D%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%AF%B9%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E5%90%8D%E8%BF%9B%E8%A1%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text"> 2、第二种写法，可以在结构体类型的}后，定义结构体变量名，也可以对结构体变量名进行初始化。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%89%E7%A7%8D%E5%86%99%E6%B3%95%E5%8C%BF%E5%90%8D%E7%BB%93%E6%9E%84%E4%BD%93%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E7%9A%84%E4%B8%AA%E6%95%B0%E9%99%90%E9%87%8F%E7%89%88%E7%9B%B8%E5%BD%93%E4%BA%8E%E5%8D%95%E4%BE%8B"><span class="toc-text"> 3、第三种写法:匿名结构体,控制结构体变量的个数（限量版），相当于单例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97"><span class="toc-text"> 四、结构体嵌套</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%86%E5%88%AB%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97"><span class="toc-text"> 1、分别定义结构体嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97"><span class="toc-text"> 2、结构体内定义结构体嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E6%8C%87%E9%92%88"><span class="toc-text"> 五、结构体与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88"><span class="toc-text"> 六、结构体数组与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90"><span class="toc-text"> 七、结构体的大小（字节对齐）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-text"> 八、结构体与动态内存分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D-typedef-%E7%B1%BB%E5%9E%8B%E5%8F%96%E5%88%AB%E5%90%8D"><span class="toc-text"> 九、typedef 类型取别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81-%E7%BB%93%E6%9E%84%E4%BD%93%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E6%88%90%E5%91%98"><span class="toc-text"> 十、结构体函数指针成员</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -611,13 +657,6 @@ void main(){
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -663,9 +702,9 @@ void main(){
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -673,14 +712,21 @@ void main(){
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -688,6 +734,13 @@ void main(){
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -724,13 +777,13 @@ void main(){
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -745,7 +798,7 @@ void main(){
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#（四）C语言之结构体"><span class="toc-text">（四）C语言之结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、什么是结构体"><span class="toc-text">一、什么是结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、初始化结构体的变量"><span class="toc-text">二、初始化结构体的变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-第一种初始化方式"><span class="toc-text">1. 第一种初始化方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-第二种初始化方式"><span class="toc-text">2. 第二种初始化方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、结构体的几种写法"><span class="toc-text">三、结构体的几种写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、第一种写法"><span class="toc-text">1、第一种写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、第二种写法，可以在结构体类型的-后，定义结构体变量名，也可以对结构体变量名进行初始化。"><span class="toc-text">2、第二种写法，可以在结构体类型的}后，定义结构体变量名，也可以对结构体变量名进行初始化。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、第三种写法-匿名结构体-控制结构体变量的个数（限量版），相当于单例"><span class="toc-text">3、第三种写法:匿名结构体,控制结构体变量的个数（限量版），相当于单例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、结构体嵌套"><span class="toc-text">四、结构体嵌套</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、分别定义结构体嵌套"><span class="toc-text">1、分别定义结构体嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、结构体内定义结构体嵌套"><span class="toc-text">2、结构体内定义结构体嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、结构体与指针"><span class="toc-text">五、结构体与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、结构体数组与指针"><span class="toc-text">六、结构体数组与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、结构体的大小（字节对齐）"><span class="toc-text">七、结构体的大小（字节对齐）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、结构体与动态内存分配"><span class="toc-text">八、结构体与动态内存分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、typedef-类型取别名"><span class="toc-text">九、typedef 类型取别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、结构体函数指针成员"><span class="toc-text">十、结构体函数指针成员</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9Bc%E8%AF%AD%E8%A8%80%E4%B9%8B%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text"> （四）C语言之结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text"> 一、什么是结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-text"> 二、初始化结构体的变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="toc-text"> 1. 第一种初始化方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E7%A7%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="toc-text"> 2. 第二种初始化方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%87%A0%E7%A7%8D%E5%86%99%E6%B3%95"><span class="toc-text"> 三、结构体的几种写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%86%99%E6%B3%95"><span class="toc-text"> 1、第一种写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AC%AC%E4%BA%8C%E7%A7%8D%E5%86%99%E6%B3%95%E5%8F%AF%E4%BB%A5%E5%9C%A8%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%90%8E%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E5%90%8D%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%AF%B9%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E5%90%8D%E8%BF%9B%E8%A1%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text"> 2、第二种写法，可以在结构体类型的}后，定义结构体变量名，也可以对结构体变量名进行初始化。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%89%E7%A7%8D%E5%86%99%E6%B3%95%E5%8C%BF%E5%90%8D%E7%BB%93%E6%9E%84%E4%BD%93%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E7%9A%84%E4%B8%AA%E6%95%B0%E9%99%90%E9%87%8F%E7%89%88%E7%9B%B8%E5%BD%93%E4%BA%8E%E5%8D%95%E4%BE%8B"><span class="toc-text"> 3、第三种写法:匿名结构体,控制结构体变量的个数（限量版），相当于单例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97"><span class="toc-text"> 四、结构体嵌套</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%86%E5%88%AB%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97"><span class="toc-text"> 1、分别定义结构体嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97"><span class="toc-text"> 2、结构体内定义结构体嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E6%8C%87%E9%92%88"><span class="toc-text"> 五、结构体与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88"><span class="toc-text"> 六、结构体数组与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90"><span class="toc-text"> 七、结构体的大小（字节对齐）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-text"> 八、结构体与动态内存分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D-typedef-%E7%B1%BB%E5%9E%8B%E5%8F%96%E5%88%AB%E5%90%8D"><span class="toc-text"> 九、typedef 类型取别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81-%E7%BB%93%E6%9E%84%E4%BD%93%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E6%88%90%E5%91%98"><span class="toc-text"> 十、结构体函数指针成员</span></a></li></ol></li></ol>
   </article>
   
   
@@ -756,22 +809,22 @@ void main(){
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -820,7 +873,7 @@ void main(){
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

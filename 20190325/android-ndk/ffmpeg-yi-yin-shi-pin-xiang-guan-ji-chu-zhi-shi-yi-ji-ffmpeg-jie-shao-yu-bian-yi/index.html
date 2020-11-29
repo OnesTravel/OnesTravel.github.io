@@ -131,7 +131,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -225,7 +238,7 @@
     
     
     <span class="dot"></span>
-    <span>3.3k 字</span>
+    <span>3.7k 字</span>
     
   </div>
   
@@ -251,34 +264,47 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="【FFmpeg】-一-音视频相关基础知识以及FFmpeg介绍"><a href="#【FFmpeg】-一-音视频相关基础知识以及FFmpeg介绍" class="headerlink" title="【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍"></a>【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍</h1><h2 id="一、音视频相关基础知识"><a href="#一、音视频相关基础知识" class="headerlink" title="一、音视频相关基础知识"></a>一、音视频相关基础知识</h2><h3 id="1、视频播放器原理"><a href="#1、视频播放器原理" class="headerlink" title="1、视频播放器原理"></a>1、视频播放器原理</h3><p><strong>视频播放器就是将一个封装的格式数据进行解封装，得到对应的音频压缩数据和视频压缩数据，再进行相应的音视频解码，得到音频采样数据和视频采样数据，最后将音频采样数据和视频采样数据同时播放，达到音视频同步。</strong></p>
+    <h1 id="ffmpeg一-音视频相关基础知识以及ffmpeg介绍"><a class="markdownIt-Anchor" href="#ffmpeg一-音视频相关基础知识以及ffmpeg介绍"></a> 【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍</h1>
+<h2 id="一-音视频相关基础知识"><a class="markdownIt-Anchor" href="#一-音视频相关基础知识"></a> 一、音视频相关基础知识</h2>
+<h3 id="1-视频播放器原理"><a class="markdownIt-Anchor" href="#1-视频播放器原理"></a> 1、视频播放器原理</h3>
+<p><strong>视频播放器就是将一个封装的格式数据进行解封装，得到对应的音频压缩数据和视频压缩数据，再进行相应的音视频解码，得到音频采样数据和视频采样数据，最后将音频采样数据和视频采样数据同时播放，达到音视频同步。</strong></p>
 <ul>
 <li><strong>封装格式数据通常有FLV、MKV、MP4、AVI、RMVB 等等</strong></li>
 <li><strong>录音、录像的实质就是一个压缩采集到的图像或者音频数据的过程，这个过程又称为编码</strong></li>
 <li><strong>播放视频或者音频文件，实质上是一个解压缩的过程，这个过程又称为解码</strong></li>
 </ul>
-<p><img src="/images/20190325/shipinyuanli.png" alt="视频播放器原理" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190325/shipinyuanli.png" class="lozad post-image"></p>
-<h4 id="1-1-解封装"><a href="#1-1-解封装" class="headerlink" title="1.1 解封装"></a>1.1 解封装</h4><p><strong>将封装格式的数据，分离成为音频流压缩编码数据和视频流压缩编码数据。封装格式种类很多，例如MP4，MKV，RMVB，TS，FLV，AVI等等，它的作用就是将已经压缩编码的视频数据和音频数据按照一定的格式放到一起，输出特定编码格式的视频码流和A音频码流。</strong></p>
-<h4 id="1-2-解码"><a href="#1-2-解码" class="headerlink" title="1.2 解码"></a>1.2 解码</h4><h5 id="1-2-1-音频压缩数据解码"><a href="#1-2-1-音频压缩数据解码" class="headerlink" title="1.2.1 音频压缩数据解码"></a>1.2.1 音频压缩数据解码</h5><p><strong>一般我们常见的音频压缩编码标准包含AAC，MP3，AC-3，WMA 等等；通过解码将压缩编码的音频数据输出成为非压缩的音频采样数据，例如PCM数据</strong></p>
+<p><img src="/images/20190325/shipinyuanli.png" alt="视频播放器原理" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190325/shipinyuanli.png" class="lozad post-image"></p>
+<h4 id="11-解封装"><a class="markdownIt-Anchor" href="#11-解封装"></a> 1.1 解封装</h4>
+<p><strong>将封装格式的数据，分离成为音频流压缩编码数据和视频流压缩编码数据。封装格式种类很多，例如MP4，MKV，RMVB，TS，FLV，AVI等等，它的作用就是将已经压缩编码的视频数据和音频数据按照一定的格式放到一起，输出特定编码格式的视频码流和A音频码流。</strong></p>
+<h4 id="12-解码"><a class="markdownIt-Anchor" href="#12-解码"></a> 1.2 解码</h4>
+<h5 id="121-音频压缩数据解码"><a class="markdownIt-Anchor" href="#121-音频压缩数据解码"></a> 1.2.1 音频压缩数据解码</h5>
+<p><strong>一般我们常见的音频压缩编码标准包含AAC，MP3，AC-3，WMA 等等；通过解码将压缩编码的音频数据输出成为非压缩的音频采样数据，例如PCM数据</strong></p>
 <ul>
 <li><strong>AAC</strong>：数据由大小不固定的ADTS构成</li>
-<li><strong>PCM</strong>：单声道的情况下按照顺序存储每个采样点的数据；双声道的情况下按照 “左右、左右”的顺序存储每个采样点两个声道的数据</li>
+<li><strong>PCM</strong>：单声道的情况下按照顺序存储每个采样点的数据；双声道的情况下按照 &quot;左右、左右&quot;的顺序存储每个采样点两个声道的数据</li>
 </ul>
 <p><strong>采样率</strong>：也称为采样速度或者采样率，定义了每秒从连续信号中提取并组成离散信号的采样个数，它用赫兹（Hz）来表示。采样频率的倒数是采样周期或者叫作采样时间，它是采样之间的时间间隔。通俗的讲采样频率是指计算机每秒钟采集多少个信号样本。</p>
-<h5 id="1-2-2-视频压缩数据解码"><a href="#1-2-2-视频压缩数据解码" class="headerlink" title="1.2.2 视频压缩数据解码"></a>1.2.2 视频压缩数据解码</h5><p><strong>一般我们常见的视频的压缩编码标准则包含H.264，MPEG2，VC-1等等；压缩编码的视频数据输出成为视频像素数据（非压缩的颜色数据），例如YUV(YUV420P,YUV422P,YUV444P;最常见为YUV420P)，RGB(RGB24,RGB32)等等。Y：亮度，U：色度，V：浓度</strong></p>
+<h5 id="122-视频压缩数据解码"><a class="markdownIt-Anchor" href="#122-视频压缩数据解码"></a> 1.2.2 视频压缩数据解码</h5>
+<p><strong>一般我们常见的视频的压缩编码标准则包含H.264，MPEG2，VC-1等等；压缩编码的视频数据输出成为视频像素数据（非压缩的颜色数据），例如YUV(YUV420P,YUV422P,YUV444P;最常见为YUV420P)，RGB(RGB24,RGB32)等等。Y：亮度，U：色度，V：浓度</strong></p>
 <ul>
 <li><strong>H.264</strong>：数据由大学不固定的NALU构成，最常见情况下，1个NALU存储了1帧画面的压缩编码后的数据</li>
 </ul>
-<h4 id="1-3-音视频同步"><a href="#1-3-音视频同步" class="headerlink" title="1.3 音视频同步"></a>1.3 音视频同步</h4><p><strong>根据解封装模块过程中获取到的参数信息，同步解码得到的音频和视频数据，并将音频和视频数据送至系统的声卡和显卡播放出来。</strong></p>
-<h2 id="二、FFmpeg-介绍"><a href="#二、FFmpeg-介绍" class="headerlink" title="二、FFmpeg 介绍"></a>二、FFmpeg 介绍</h2><h3 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h3><p><strong>FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序。采用LGPL或GPL许可证。它提供了录制、转换以及流化音视频的完整解决方案。它包含了非常先进的音频/视频编解码库libavcodec，为了保证高可移植性和编解码质量，libavcodec里很多code都是从头开发的。</strong></p>
-<h3 id="2、FFmpeg-命令"><a href="#2、FFmpeg-命令" class="headerlink" title="2、FFmpeg 命令"></a>2、FFmpeg 命令</h3><h4 id="2-1-视频格式转换命令"><a href="#2-1-视频格式转换命令" class="headerlink" title="2.1 视频格式转换命令"></a>2.1 视频格式转换命令</h4><table>
+<h4 id="13-音视频同步"><a class="markdownIt-Anchor" href="#13-音视频同步"></a> 1.3 音视频同步</h4>
+<p><strong>根据解封装模块过程中获取到的参数信息，同步解码得到的音频和视频数据，并将音频和视频数据送至系统的声卡和显卡播放出来。</strong></p>
+<h2 id="二-ffmpeg-介绍"><a class="markdownIt-Anchor" href="#二-ffmpeg-介绍"></a> 二、FFmpeg 介绍</h2>
+<h3 id="1-定义"><a class="markdownIt-Anchor" href="#1-定义"></a> 1、定义</h3>
+<p><strong>FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序。采用LGPL或GPL许可证。它提供了录制、转换以及流化音视频的完整解决方案。它包含了非常先进的音频/视频编解码库libavcodec，为了保证高可移植性和编解码质量，libavcodec里很多code都是从头开发的。</strong></p>
+<h3 id="2-ffmpeg-命令"><a class="markdownIt-Anchor" href="#2-ffmpeg-命令"></a> 2、FFmpeg 命令</h3>
+<h4 id="21-视频格式转换命令"><a class="markdownIt-Anchor" href="#21-视频格式转换命令"></a> 2.1 视频格式转换命令</h4>
+<table>
 <thead>
 <tr>
 <th>命令参数</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-i</td>
 <td>源文件</td>
 </tr>
@@ -286,31 +312,20 @@
 <td>-o</td>
 <td>输出文件</td>
 </tr>
-<tr>
-<td>```</td>
-<td></td>
-</tr>
-<tr>
-<td>//进入到FFmpeg 的 bin 目录下执行以下命令</td>
-<td></td>
-</tr>
-<tr>
-<td>ffmpeg -i d:\input.mp4 -o d:\output.avi</td>
-<td></td>
-</tr>
-<tr>
-<td>```</td>
-<td></td>
-</tr>
-</tbody></table>
-<h4 id="2-2-视频转-Gif-命令"><a href="#2-2-视频转-Gif-命令" class="headerlink" title="2.2 视频转 Gif 命令"></a>2.2 视频转 Gif 命令</h4><table>
+</tbody>
+</table>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;进入到FFmpeg 的 bin 目录下执行以下命令
+ffmpeg -i d:\\input.mp4 -o d:\\output.avi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="22-视频转-gif-命令"><a class="markdownIt-Anchor" href="#22-视频转-gif-命令"></a> 2.2 视频转 Gif 命令</h4>
+<table>
 <thead>
 <tr>
 <th>命令参数</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-i</td>
 <td>源文件</td>
 </tr>
@@ -330,93 +345,104 @@
 <td>-b:v</td>
 <td>码率</td>
 </tr>
-</tbody></table>
-<pre><code>//进入到FFmpeg 的 bin 目录下执行以下命令
-ffmpeg -ss 5 -t 15 -i d:\\input.mp4 -s 300x200 -b:v 1500K D:\\video_gif.gif</code></pre><h2 id="三、使用-visual-studio-编译-FFmpeg"><a href="#三、使用-visual-studio-编译-FFmpeg" class="headerlink" title="三、使用 visual studio 编译 FFmpeg"></a>三、使用 visual studio 编译 FFmpeg</h2><p>*注：项目根目录即创建cpp源文件所在目录</p>
+</tbody>
+</table>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;进入到FFmpeg 的 bin 目录下执行以下命令
+ffmpeg -ss 5 -t 15 -i d:\\input.mp4 -s 300x200 -b:v 1500K D:\\video_gif.gif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="三-使用-visual-studio-编译-ffmpeg"><a class="markdownIt-Anchor" href="#三-使用-visual-studio-编译-ffmpeg"></a> 三、使用 visual studio 编译 FFmpeg</h2>
+<p>*注：项目根目录即创建cpp源文件所在目录</p>
 <p><strong>步骤</strong>：</p>
 <ol>
-<li>在<a href="http://ffmpeg.org/" target="_blank" rel="noopener">【FFmpeg官网】</a>下载 FFmpeg 在windows 下的开发(dev)版本 <a href="https://ffmpeg.zeranoe.com/builds/" target="_blank" rel="noopener">ffmpeg-XXX-win64-dev</a></li>
+<li>在<a target="_blank" rel="noopener" href="http://ffmpeg.org/">【FFmpeg官网】</a>下载 FFmpeg 在windows 下的开发(dev)版本 <a target="_blank" rel="noopener" href="https://ffmpeg.zeranoe.com/builds/">ffmpeg-XXX-win64-dev</a></li>
 <li>在 visual studio上创建一个C++的空项目</li>
 <li>将下载好的 FFmpeg 包解压后，复制 include 和 lib 文件夹到刚刚创建好的项目根路径下</li>
-<li>下载 FFmpeg 在windows 下的 Shared 版本<a href="https://ffmpeg.zeranoe.com/builds/" target="_blank" rel="noopener">ffmpeg-XXX-win64-shared</a>,解压后赋值 bin 目录下的动态库(.dll)文件到项目根目录下</li>
+<li>下载 FFmpeg 在windows 下的 Shared 版本<a target="_blank" rel="noopener" href="https://ffmpeg.zeranoe.com/builds/">ffmpeg-XXX-win64-shared</a>,解压后赋值 bin 目录下的动态库(.dll)文件到项目根目录下</li>
 <li>修改项目的配置管理器中的活动姐姐方案平台为X64(根据自己操作系统位数更改)</li>
 <li>在 visual studio 中项目右键，点击【属性（ALT+Enter）】,选中【C++目录】，右侧的【包含目录】，点击编辑，增加刚刚复制到根目录下的 include 目录</li>
 </ol>
-<p><img src="/images/20190325/c++_include.png" alt="包含目录" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190325/c++_include.png" class="lozad post-image"></p>
+<p><img src="/images/20190325/c++_include.png" alt="包含目录" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190325/c++_include.png" class="lozad post-image"></p>
 <ol start="7">
 <li>点击【属性】中的【链接器】，在右侧选中【附加库目录】，点击编辑，增加刚刚复制到根目录下的 lib 目录</li>
 </ol>
-<p><img src="/images/20190325/lianjie_lib.png" alt="附加库目录" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190325/lianjie_lib.png" class="lozad post-image"></p>
+<p><img src="/images/20190325/lianjie_lib.png" alt="附加库目录" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190325/lianjie_lib.png" class="lozad post-image"></p>
 <ol start="8">
 <li>点击【属性】中的【链接器】下的【输入】，在右侧选中【附加依赖库】，点击编辑，增加刚刚复制到根目录下的 lib 目录下所有的 .lib 文件</li>
 </ol>
-<pre><code>avcodec.lib
+<pre class="line-numbers language-none"><code class="language-none">avcodec.lib
 avdevice.lib
 avfilter.lib
 avformat.lib
 avutil.lib
 postproc.lib
 swresample.lib
-swscale.lib</code></pre><p><img src="/images/20190325/fujiayilai_lib.png" alt="附加库目录" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190325/fujiayilai_lib.png" class="lozad post-image"></p>
+swscale.lib<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/images/20190325/fujiayilai_lib.png" alt="附加库目录" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190325/fujiayilai_lib.png" class="lozad post-image"></p>
 <ol start="9">
 <li>在项目中添加一个.cpp的源文件，如：my_ffmpeg.cpp</li>
 </ol>
-<pre><code>#include &lt;stdlib.h&gt;
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;stdlib.h&gt;
 #include &lt;stdio.h&gt;
 
-//C和C++混编，指示编译器按照C语言进行编译
-extern &quot;C&quot;{
-//引入ffmpeg的头文件
-#include &quot;libavcodec/avcodec.h&quot;
-};
+&#x2F;&#x2F;C和C++混编，指示编译器按照C语言进行编译
+extern &quot;C&quot;&#123;
+&#x2F;&#x2F;引入ffmpeg的头文件
+#include &quot;libavcodec&#x2F;avcodec.h&quot;
+&#125;;
 
-void main() {
-    //输出 ffmpeg 的配置
-    printf(&quot;%s\n&quot;,avcodec_configuration());
+void main() &#123;
+	&#x2F;&#x2F;输出 ffmpeg 的配置
+	printf(&quot;%s\n&quot;,avcodec_configuration());
 
-    getchar();
-}</code></pre><h2 id="四、使用-Linux主机-编译-FFmpeg"><a href="#四、使用-Linux主机-编译-FFmpeg" class="headerlink" title="四、使用 Linux主机 编译 FFmpeg"></a>四、使用 Linux主机 编译 FFmpeg</h2><h3 id="1、编译前准备"><a href="#1、编译前准备" class="headerlink" title="1、编译前准备"></a>1、编译前准备</h3><ul>
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="四-使用-linux主机-编译-ffmpeg"><a class="markdownIt-Anchor" href="#四-使用-linux主机-编译-ffmpeg"></a> 四、使用 Linux主机 编译 FFmpeg</h2>
+<h3 id="1-编译前准备"><a class="markdownIt-Anchor" href="#1-编译前准备"></a> 1、编译前准备</h3>
+<ul>
 <li>阿里云主机(Ubuntu/centos)</li>
 <li>客户端主机安装XShell，Xftp</li>
 </ul>
-<h3 id="2、编译"><a href="#2、编译" class="headerlink" title="2、编译"></a>2、编译</h3><ul>
+<h3 id="2-编译"><a class="markdownIt-Anchor" href="#2-编译"></a> 2、编译</h3>
+<ul>
 <li>使用Xftp将NDK、FFmpeg 上传到阿里云主机</li>
 <li>安装vim 编辑器</li>
 </ul>
-<pre><code>$ apt-get update
-$ sudo apt-get install vim-gtk</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">$ apt-get update
+$ sudo apt-get install vim-gtk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
 <li>NDK 安装，配置环境变量</li>
 </ul>
-<pre><code>//给文件授权可执行
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;给文件授权可执行
 $ chmod 777 -R android-ndk-r10e-linux-x86_64.bin
-//执行文件
-$ ./android-ndk-r10e-linux-x86_64.bin
-//配置环境变量
-$ vim ~/.bashrc
+&#x2F;&#x2F;执行文件
+$ .&#x2F;android-ndk-r10e-linux-x86_64.bin
+&#x2F;&#x2F;配置环境变量
+$ vim ~&#x2F;.bashrc
 
-//增加环境变量
-export NDKROOT=/home/study/ndk/android-ndk-r10e
-export PATH=$NDKROOT:$PATH
+&#x2F;&#x2F;增加环境变量
+export NDKROOT&#x3D;&#x2F;home&#x2F;study&#x2F;ndk&#x2F;android-ndk-r10e
+export PATH&#x3D;$NDKROOT:$PATH
 
-$ source ~/.bashrc
-//查看ndk版本号
-$ ndk-build -v</code></pre><ul>
-<li>解压 FFmpeg </li>
+$ source ~&#x2F;.bashrc
+&#x2F;&#x2F;查看ndk版本号
+$ ndk-build -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>解压 FFmpeg</li>
 </ul>
-<pre><code>$ tar -xzvf ffmpeg-4.1.2.tar.gz </code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">$ tar -xzvf ffmpeg-4.1.2.tar.gz <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
 <li>编译 FFmpeg ,实现 Shell 脚本文件android_build.sh</li>
 </ul>
-<pre><code>#!/bin/bash
+<pre class="line-numbers language-none"><code class="language-none">#!&#x2F;bin&#x2F;bash
 make clean
-export NDK=/home/study/ndk/android-ndk-r10e
-export SYSROOT=$NDK/platforms/android-9/arch-arm/
-export TOOLCHAIN=$NDK/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64
-export CPU=arm
-export PREFIX=$(pwd)/android/$CPU
-export ADDI_CFLAGS=&quot;-marm&quot;
+export NDK&#x3D;&#x2F;home&#x2F;study&#x2F;ndk&#x2F;android-ndk-r10e
+export SYSROOT&#x3D;$NDK&#x2F;platforms&#x2F;android-9&#x2F;arch-arm&#x2F;
+export TOOLCHAIN&#x3D;$NDK&#x2F;toolchains&#x2F;arm-linux-androideabi-4.8&#x2F;prebuilt&#x2F;linux-x86_64
+export CPU&#x3D;arm
+export PREFIX&#x3D;$(pwd)&#x2F;android&#x2F;$CPU
+export ADDI_CFLAGS&#x3D;&quot;-marm&quot;
 
-./configure --target-os=linux \
---prefix=$PREFIX --arch=arm \
+.&#x2F;configure --target-os&#x3D;linux \
+--prefix&#x3D;$PREFIX --arch&#x3D;arm \
 --disable-doc \
 --enable-shared \
 --disable-static \
@@ -429,22 +455,26 @@ export ADDI_CFLAGS=&quot;-marm&quot;
 --disable-ffserver \
 --disable-doc \
 --disable-symver \
---cross-prefix=$TOOLCHAIN/bin/arm-linux-androideabi- \
+--cross-prefix&#x3D;$TOOLCHAIN&#x2F;bin&#x2F;arm-linux-androideabi- \
 --enable-cross-compile \
---sysroot=$SYSROOT \
---extra-cflags=&quot;-Os -fpic $ADDI_CFLAGS&quot; \
---extra-ldflags=&quot;$ADDI_LDFLAGS&quot; \
+--sysroot&#x3D;$SYSROOT \
+--extra-cflags&#x3D;&quot;-Os -fpic $ADDI_CFLAGS&quot; \
+--extra-ldflags&#x3D;&quot;$ADDI_LDFLAGS&quot; \
 $ADDITIONAL_CONFIGURE_FLAG
 make clean
 make
 make install
-</code></pre><p>执行脚本文件</p>
-<pre><code>./android_build.sh</code></pre><h2 id="五、使用编译后形成的include和lib目录实现Android-NDK-解码功能"><a href="#五、使用编译后形成的include和lib目录实现Android-NDK-解码功能" class="headerlink" title="五、使用编译后形成的include和lib目录实现Android NDK 解码功能"></a>五、使用编译后形成的include和lib目录实现Android NDK 解码功能</h2><h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><ol>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行脚本文件</p>
+<pre class="line-numbers language-none"><code class="language-none">.&#x2F;android_build.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="五-使用编译后形成的include和lib目录实现android-ndk-解码功能"><a class="markdownIt-Anchor" href="#五-使用编译后形成的include和lib目录实现android-ndk-解码功能"></a> 五、使用编译后形成的include和lib目录实现Android NDK 解码功能</h2>
+<h3 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤：</h3>
+<ol>
 <li>在Android studio上创建一个支持C++的Android项目</li>
 <li>将生成的 include 和 lib 复制到 cpp 目录下，更改CMakeLists.txt文件</li>
 </ol>
-<pre><code>cmake_minimum_required(VERSION 3.4.1)
-set(DISTRIBUTION_DIR ${CMAKE_SOURCE_DIR}/../jniLibs/)
+<pre class="line-numbers language-none"><code class="language-none">cmake_minimum_required(VERSION 3.4.1)
+set(DISTRIBUTION_DIR $&#123;CMAKE_SOURCE_DIR&#125;&#x2F;..&#x2F;jniLibs&#x2F;)
 
 add_library( # Sets the name of the library.
         ffmpeg-video
@@ -463,7 +493,7 @@ add_library(
 set_target_properties(
         avcodec
         PROPERTIES IMPORTED_LOCATION
-        ${DISTRIBUTION_DIR}/${ANDROID_ABI}/libavcodec-56.so
+        $&#123;DISTRIBUTION_DIR&#125;&#x2F;$&#123;ANDROID_ABI&#125;&#x2F;libavcodec-56.so
 )
 
 #设备信息
@@ -477,7 +507,7 @@ add_library(
 set_target_properties(
         avdevice
         PROPERTIES IMPORTED_LOCATION
-        ${DISTRIBUTION_DIR}/${ANDROID_ABI}/libavdevice-56.so
+        $&#123;DISTRIBUTION_DIR&#125;&#x2F;$&#123;ANDROID_ABI&#125;&#x2F;libavdevice-56.so
 )
 
 #滤镜特效处理库
@@ -491,7 +521,7 @@ add_library(
 set_target_properties(
         avfilter
         PROPERTIES IMPORTED_LOCATION
-        ${DISTRIBUTION_DIR}/${ANDROID_ABI}/libavfilter-5.so
+        $&#123;DISTRIBUTION_DIR&#125;&#x2F;$&#123;ANDROID_ABI&#125;&#x2F;libavfilter-5.so
 )
 
 #封装格式处理库
@@ -505,7 +535,7 @@ add_library(
 set_target_properties(
         avformat
         PROPERTIES IMPORTED_LOCATION
-        ${DISTRIBUTION_DIR}/${ANDROID_ABI}/libavformat-56.so
+        $&#123;DISTRIBUTION_DIR&#125;&#x2F;$&#123;ANDROID_ABI&#125;&#x2F;libavformat-56.so
 )
 
 #工具库(大部分库都需要这个库的支持)
@@ -519,7 +549,7 @@ add_library(
 set_target_properties(
         avutil
         PROPERTIES IMPORTED_LOCATION
-        ${DISTRIBUTION_DIR}/${ANDROID_ABI}/libavutil-54.so
+        $&#123;DISTRIBUTION_DIR&#125;&#x2F;$&#123;ANDROID_ABI&#125;&#x2F;libavutil-54.so
 )
 
 #后期处理
@@ -533,7 +563,7 @@ add_library(
 set_target_properties(
         postproc
         PROPERTIES IMPORTED_LOCATION
-        ${DISTRIBUTION_DIR}/${ANDROID_ABI}/libpostproc-53.so
+        $&#123;DISTRIBUTION_DIR&#125;&#x2F;$&#123;ANDROID_ABI&#125;&#x2F;libpostproc-53.so
 )
 
 #数据格式转换库
@@ -547,7 +577,7 @@ add_library(
 set_target_properties(
         swresample
         PROPERTIES IMPORTED_LOCATION
-        ${DISTRIBUTION_DIR}/${ANDROID_ABI}/libswresample-1.so
+        $&#123;DISTRIBUTION_DIR&#125;&#x2F;$&#123;ANDROID_ABI&#125;&#x2F;libswresample-1.so
 )
 
 #视频像素数据格式转换
@@ -560,7 +590,7 @@ add_library(
 set_target_properties(
         swscale
         PROPERTIES IMPORTED_LOCATION
-        ${DISTRIBUTION_DIR}/${ANDROID_ABI}/libswscale-3.so
+        $&#123;DISTRIBUTION_DIR&#125;&#x2F;$&#123;ANDROID_ABI&#125;&#x2F;libswscale-3.so
 )
 
 
@@ -590,17 +620,18 @@ target_link_libraries(
         postproc
         swresample
         swscale
-        ${android-lib}
-        ${jnigraphics-lib}
-        ${log-lib}
-)</code></pre><ol start="3">
+        $&#123;android-lib&#125;
+        $&#123;jnigraphics-lib&#125;
+        $&#123;log-lib&#125;
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
 <li>编写本地 native 方法，编译生成.h头文件</li>
 </ol>
-<pre><code>package cn.onestravel.ndk.ffmpegdecodedemo;
+<pre class="line-numbers language-none"><code class="language-none">package cn.onestravel.ndk.ffmpegdecodedemo;
 
 
-public class VideoUtils {
-    static {
+public class VideoUtils &#123;
+    static &#123;
         System.loadLibrary(&quot;avutil-54&quot;);
         System.loadLibrary(&quot;avcodec-56&quot;);
         System.loadLibrary(&quot;avdevice-56&quot;);
@@ -610,275 +641,278 @@ public class VideoUtils {
         System.loadLibrary(&quot;swresample-1&quot;);
         System.loadLibrary(&quot;swscale-3&quot;);
         System.loadLibrary(&quot;ffmpeg-video&quot;);
-    }
+    &#125;
     public native static void decode(String input,String output);
-}
-</code></pre><ol start="5">
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="5">
 <li>对编译生成.h头文件进行实现，创建ffmpeg_video.c</li>
 </ol>
-<pre><code>//
-// Created by Administrator on 2019/3/27.
-//
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;
+&#x2F;&#x2F; Created by Administrator on 2019&#x2F;3&#x2F;27.
+&#x2F;&#x2F;
 
-//
-// Created by Administrator on 2019/3/26.
-//
-#include &lt;android/log.h&gt;
+&#x2F;&#x2F;
+&#x2F;&#x2F; Created by Administrator on 2019&#x2F;3&#x2F;26.
+&#x2F;&#x2F;
+#include &lt;android&#x2F;log.h&gt;
 #include &quot;cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils.h&quot;
-//编码
-#include &quot;include/libavcodec/avcodec.h&quot;
-//封装格式处理
-#include &quot;include/libavformat/avformat.h&quot;
-//像素处理
-#include &quot;include/libswscale/swscale.h&quot;
-#include &quot;include/libavutil/avutil.h&quot;
-#include &quot;include/libavutil/frame.h&quot;
+&#x2F;&#x2F;编码
+#include &quot;include&#x2F;libavcodec&#x2F;avcodec.h&quot;
+&#x2F;&#x2F;封装格式处理
+#include &quot;include&#x2F;libavformat&#x2F;avformat.h&quot;
+&#x2F;&#x2F;像素处理
+#include &quot;include&#x2F;libswscale&#x2F;swscale.h&quot;
+#include &quot;include&#x2F;libavutil&#x2F;avutil.h&quot;
+#include &quot;include&#x2F;libavutil&#x2F;frame.h&quot;
 
 #define LOGI(FORMAT,...) __android_log_print(ANDROID_LOG_INFO,&quot;FFMPEG&quot;,FORMAT,##__VA_ARGS__);
 #define LOGE(FORMAT,...) __android_log_print(ANDROID_LOG_ERROR,&quot;FFMPEG&quot;,FORMAT,##__VA_ARGS__);
 
 
-/*
+&#x2F;*
  * Class:     cn_onestravel_ndk_ffmpegdecode_VoideUtils
  * Method:    decode
- * Signature: (Ljava/lang/String;Ljava/lang/String;)V
- */
+ * Signature: (Ljava&#x2F;lang&#x2F;String;Ljava&#x2F;lang&#x2F;String;)V
+ *&#x2F;
 JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
-  (JNIEnv * env, jclass jcls, jstring input_jstr, jstring output_jstr){
-      //需要转码的视频文件(输入的视频文件)
-      const char* input_cstr = (*env)-&gt;GetStringUTFChars(env,input_jstr,NULL);
-      const char* output_cstr = (*env)-&gt;GetStringUTFChars(env,output_jstr,NULL);
+  (JNIEnv * env, jclass jcls, jstring input_jstr, jstring output_jstr)&#123;
+  	&#x2F;&#x2F;需要转码的视频文件(输入的视频文件)
+  	const char* input_cstr &#x3D; (*env)-&gt;GetStringUTFChars(env,input_jstr,NULL);
+  	const char* output_cstr &#x3D; (*env)-&gt;GetStringUTFChars(env,output_jstr,NULL);
 
-      //1.注册所有组件
-      av_register_all();
+  	&#x2F;&#x2F;1.注册所有组件
+  	av_register_all();
 
-      //封装格式上下文，统领全局的结构体，保存了视频文件封装格式的相关信息
-      AVFormatContext *pFormatCtx = avformat_alloc_context();
+  	&#x2F;&#x2F;封装格式上下文，统领全局的结构体，保存了视频文件封装格式的相关信息
+  	AVFormatContext *pFormatCtx &#x3D; avformat_alloc_context();
 
-      //2.打开输入视频文件
-      if (avformat_open_input(&amp;pFormatCtx, input_cstr, NULL, NULL) != 0)
-      {
-          LOGE(&quot;%s&quot;,&quot;无法打开输入视频文件&quot;);
-          return;
-      }
+  	&#x2F;&#x2F;2.打开输入视频文件
+  	if (avformat_open_input(&amp;pFormatCtx, input_cstr, NULL, NULL) !&#x3D; 0)
+  	&#123;
+  		LOGE(&quot;%s&quot;,&quot;无法打开输入视频文件&quot;);
+  		return;
+  	&#125;
 
-      //3.获取视频文件信息
-      if (avformat_find_stream_info(pFormatCtx,NULL) &lt; 0)
-      {
-          LOGE(&quot;%s&quot;,&quot;无法获取视频文件信息&quot;);
-          return;
-      }
+  	&#x2F;&#x2F;3.获取视频文件信息
+  	if (avformat_find_stream_info(pFormatCtx,NULL) &lt; 0)
+  	&#123;
+  		LOGE(&quot;%s&quot;,&quot;无法获取视频文件信息&quot;);
+  		return;
+  	&#125;
 
-      //获取视频流的索引位置
-      //遍历所有类型的流（音频流、视频流、字幕流），找到视频流
-      int v_stream_idx = -1;
-      int i = 0;
-      //number of streams
-      for (; i &lt; pFormatCtx-&gt;nb_streams; i++)
-      {
-          //流的类型
-          if (pFormatCtx-&gt;streams[i]-&gt;codec-&gt;codec_type == AVMEDIA_TYPE_VIDEO)
-          {
-              v_stream_idx = i;
-              break;
-          }
-      }
+  	&#x2F;&#x2F;获取视频流的索引位置
+  	&#x2F;&#x2F;遍历所有类型的流（音频流、视频流、字幕流），找到视频流
+  	int v_stream_idx &#x3D; -1;
+  	int i &#x3D; 0;
+  	&#x2F;&#x2F;number of streams
+  	for (; i &lt; pFormatCtx-&gt;nb_streams; i++)
+  	&#123;
+  		&#x2F;&#x2F;流的类型
+  		if (pFormatCtx-&gt;streams[i]-&gt;codec-&gt;codec_type &#x3D;&#x3D; AVMEDIA_TYPE_VIDEO)
+  		&#123;
+  			v_stream_idx &#x3D; i;
+  			break;
+  		&#125;
+  	&#125;
 
-      if (v_stream_idx == -1)
-      {
-          LOGE(&quot;%s&quot;,&quot;找不到视频流\n&quot;);
-          return;
-      }
+  	if (v_stream_idx &#x3D;&#x3D; -1)
+  	&#123;
+  		LOGE(&quot;%s&quot;,&quot;找不到视频流\n&quot;);
+  		return;
+  	&#125;
 
-      //只有知道视频的编码方式，才能够根据编码方式去找到解码器
-      //获取视频流中的编解码上下文
-      AVCodecContext *pCodecCtx = pFormatCtx-&gt;streams[v_stream_idx]-&gt;codec;
-      //4.根据编解码上下文中的编码id查找对应的解码
-      AVCodec *pCodec = avcodec_find_decoder(pCodecCtx-&gt;codec_id);
-      //（迅雷看看，找不到解码器，临时下载一个解码器）
-      if (pCodec == NULL)
-      {
-          LOGE(&quot;%s&quot;,&quot;找不到解码器\n&quot;);
-          return;
-      }
+  	&#x2F;&#x2F;只有知道视频的编码方式，才能够根据编码方式去找到解码器
+  	&#x2F;&#x2F;获取视频流中的编解码上下文
+  	AVCodecContext *pCodecCtx &#x3D; pFormatCtx-&gt;streams[v_stream_idx]-&gt;codec;
+  	&#x2F;&#x2F;4.根据编解码上下文中的编码id查找对应的解码
+  	AVCodec *pCodec &#x3D; avcodec_find_decoder(pCodecCtx-&gt;codec_id);
+  	&#x2F;&#x2F;（迅雷看看，找不到解码器，临时下载一个解码器）
+  	if (pCodec &#x3D;&#x3D; NULL)
+  	&#123;
+  		LOGE(&quot;%s&quot;,&quot;找不到解码器\n&quot;);
+  		return;
+  	&#125;
 
-      //5.打开解码器
-      if (avcodec_open2(pCodecCtx,pCodec,NULL)&lt;0)
-      {
-          LOGE(&quot;%s&quot;,&quot;解码器无法打开\n&quot;);
-          return;
-      }
+  	&#x2F;&#x2F;5.打开解码器
+  	if (avcodec_open2(pCodecCtx,pCodec,NULL)&lt;0)
+  	&#123;
+  		LOGE(&quot;%s&quot;,&quot;解码器无法打开\n&quot;);
+  		return;
+  	&#125;
 
-      //输出视频信息
-      LOGI(&quot;视频的文件格式：%s&quot;,pFormatCtx-&gt;iformat-&gt;name);
-      LOGI(&quot;视频时长：%ld&quot;, (pFormatCtx-&gt;duration)/1000000);
-      LOGI(&quot;视频的宽高：%d,%d&quot;,pCodecCtx-&gt;width,pCodecCtx-&gt;height);
-      LOGI(&quot;解码器的名称：%s&quot;,pCodec-&gt;name);
+  	&#x2F;&#x2F;输出视频信息
+  	LOGI(&quot;视频的文件格式：%s&quot;,pFormatCtx-&gt;iformat-&gt;name);
+  	LOGI(&quot;视频时长：%ld&quot;, (pFormatCtx-&gt;duration)&#x2F;1000000);
+  	LOGI(&quot;视频的宽高：%d,%d&quot;,pCodecCtx-&gt;width,pCodecCtx-&gt;height);
+  	LOGI(&quot;解码器的名称：%s&quot;,pCodec-&gt;name);
 
-      //准备读取
-      //AVPacket用于存储一帧一帧的压缩数据（H264）
-      //缓冲区，开辟空间
-      AVPacket *packet = (AVPacket*)av_malloc(sizeof(AVPacket));
+  	&#x2F;&#x2F;准备读取
+  	&#x2F;&#x2F;AVPacket用于存储一帧一帧的压缩数据（H264）
+  	&#x2F;&#x2F;缓冲区，开辟空间
+  	AVPacket *packet &#x3D; (AVPacket*)av_malloc(sizeof(AVPacket));
 
-      //AVFrame用于存储解码后的像素数据(YUV)
-      //内存分配
-      AVFrame *pFrame = av_frame_alloc();
-      //YUV420
-      AVFrame *pFrameYUV = av_frame_alloc();
-      //只有指定了AVFrame的像素格式、画面大小才能真正分配内存
-      //缓冲区分配内存
-      uint8_t *out_buffer = (uint8_t *)av_malloc(avpicture_get_size(AV_PIX_FMT_YUV420P, pCodecCtx-&gt;width, pCodecCtx-&gt;height));
-      //初始化缓冲区
-      avpicture_fill((AVPicture *)pFrameYUV, out_buffer, AV_PIX_FMT_YUV420P, pCodecCtx-&gt;width, pCodecCtx-&gt;height);
+  	&#x2F;&#x2F;AVFrame用于存储解码后的像素数据(YUV)
+  	&#x2F;&#x2F;内存分配
+  	AVFrame *pFrame &#x3D; av_frame_alloc();
+  	&#x2F;&#x2F;YUV420
+  	AVFrame *pFrameYUV &#x3D; av_frame_alloc();
+  	&#x2F;&#x2F;只有指定了AVFrame的像素格式、画面大小才能真正分配内存
+  	&#x2F;&#x2F;缓冲区分配内存
+  	uint8_t *out_buffer &#x3D; (uint8_t *)av_malloc(avpicture_get_size(AV_PIX_FMT_YUV420P, pCodecCtx-&gt;width, pCodecCtx-&gt;height));
+  	&#x2F;&#x2F;初始化缓冲区
+  	avpicture_fill((AVPicture *)pFrameYUV, out_buffer, AV_PIX_FMT_YUV420P, pCodecCtx-&gt;width, pCodecCtx-&gt;height);
 
-      //用于转码（缩放）的参数，转之前的宽高，转之后的宽高，格式等
-      struct SwsContext *sws_ctx = sws_getContext(pCodecCtx-&gt;width,pCodecCtx-&gt;height,pCodecCtx-&gt;pix_fmt,
-          pCodecCtx-&gt;width, pCodecCtx-&gt;height, AV_PIX_FMT_YUV420P,
-          SWS_BICUBIC, NULL, NULL, NULL);
+  	&#x2F;&#x2F;用于转码（缩放）的参数，转之前的宽高，转之后的宽高，格式等
+  	struct SwsContext *sws_ctx &#x3D; sws_getContext(pCodecCtx-&gt;width,pCodecCtx-&gt;height,pCodecCtx-&gt;pix_fmt,
+  		pCodecCtx-&gt;width, pCodecCtx-&gt;height, AV_PIX_FMT_YUV420P,
+  		SWS_BICUBIC, NULL, NULL, NULL);
 
 
-      int got_picture, ret;
+  	int got_picture, ret;
 
-      FILE *fp_yuv = fopen(output_cstr, &quot;wb+&quot;);
+  	FILE *fp_yuv &#x3D; fopen(output_cstr, &quot;wb+&quot;);
 
-      int frame_count = 0;
+  	int frame_count &#x3D; 0;
 
-      //6.一帧一帧的读取压缩数据
-      while (av_read_frame(pFormatCtx, packet) &gt;= 0)
-      {
-          //只要视频压缩数据（根据流的索引位置判断）
-          if (packet-&gt;stream_index == v_stream_idx)
-          {
-              //7.解码一帧视频压缩数据，得到视频像素数据
-              ret = avcodec_decode_video2(pCodecCtx, pFrame, &amp;got_picture, packet);
-              if (ret &lt; 0)
-              {
-                  LOGE(&quot;%s&quot;,&quot;解码错误&quot;);
-                  return;
-              }
+  	&#x2F;&#x2F;6.一帧一帧的读取压缩数据
+  	while (av_read_frame(pFormatCtx, packet) &gt;&#x3D; 0)
+  	&#123;
+  		&#x2F;&#x2F;只要视频压缩数据（根据流的索引位置判断）
+  		if (packet-&gt;stream_index &#x3D;&#x3D; v_stream_idx)
+  		&#123;
+  			&#x2F;&#x2F;7.解码一帧视频压缩数据，得到视频像素数据
+  			ret &#x3D; avcodec_decode_video2(pCodecCtx, pFrame, &amp;got_picture, packet);
+  			if (ret &lt; 0)
+  			&#123;
+  				LOGE(&quot;%s&quot;,&quot;解码错误&quot;);
+  				return;
+  			&#125;
 
-              //为0说明解码完成，非0正在解码
-              if (got_picture)
-              {
-                  //AVFrame转为像素格式YUV420，宽高
-                  //2 6输入、输出数据
-                  //3 7输入、输出画面一行的数据的大小 AVFrame 转换是一行一行转换的
-                  //4 输入数据第一列要转码的位置 从0开始
-                  //5 输入画面的高度
-                  sws_scale(sws_ctx, pFrame-&gt;data, pFrame-&gt;linesize, 0, pCodecCtx-&gt;height,
-                      pFrameYUV-&gt;data, pFrameYUV-&gt;linesize);
+  			&#x2F;&#x2F;为0说明解码完成，非0正在解码
+  			if (got_picture)
+  			&#123;
+  				&#x2F;&#x2F;AVFrame转为像素格式YUV420，宽高
+  				&#x2F;&#x2F;2 6输入、输出数据
+  				&#x2F;&#x2F;3 7输入、输出画面一行的数据的大小 AVFrame 转换是一行一行转换的
+  				&#x2F;&#x2F;4 输入数据第一列要转码的位置 从0开始
+  				&#x2F;&#x2F;5 输入画面的高度
+  				sws_scale(sws_ctx, pFrame-&gt;data, pFrame-&gt;linesize, 0, pCodecCtx-&gt;height,
+  					pFrameYUV-&gt;data, pFrameYUV-&gt;linesize);
 
-                  //输出到YUV文件
-                  //AVFrame像素帧写入文件
-                  //data解码后的图像像素数据（音频采样数据）
-                  //Y 亮度 UV 色度（压缩了） 人对亮度更加敏感
-                  //U V 个数是Y的1/4
-                  int y_size = pCodecCtx-&gt;width * pCodecCtx-&gt;height;
-                  fwrite(pFrameYUV-&gt;data[0], 1, y_size, fp_yuv);
-                  fwrite(pFrameYUV-&gt;data[1], 1, y_size / 4, fp_yuv);
-                  fwrite(pFrameYUV-&gt;data[2], 1, y_size / 4, fp_yuv);
+  				&#x2F;&#x2F;输出到YUV文件
+  				&#x2F;&#x2F;AVFrame像素帧写入文件
+  				&#x2F;&#x2F;data解码后的图像像素数据（音频采样数据）
+  				&#x2F;&#x2F;Y 亮度 UV 色度（压缩了） 人对亮度更加敏感
+  				&#x2F;&#x2F;U V 个数是Y的1&#x2F;4
+  				int y_size &#x3D; pCodecCtx-&gt;width * pCodecCtx-&gt;height;
+  				fwrite(pFrameYUV-&gt;data[0], 1, y_size, fp_yuv);
+  				fwrite(pFrameYUV-&gt;data[1], 1, y_size &#x2F; 4, fp_yuv);
+  				fwrite(pFrameYUV-&gt;data[2], 1, y_size &#x2F; 4, fp_yuv);
 
-                  frame_count++;
-                  LOGI(&quot;解码第%d帧&quot;,frame_count);
-              }
-          }
+  				frame_count++;
+  				LOGI(&quot;解码第%d帧&quot;,frame_count);
+  			&#125;
+  		&#125;
 
-          //释放资源
-          av_free_packet(packet);
-      }
+  		&#x2F;&#x2F;释放资源
+  		av_free_packet(packet);
+  	&#125;
 
-      fclose(fp_yuv);
+  	fclose(fp_yuv);
 
-      (*env)-&gt;ReleaseStringUTFChars(env,input_jstr,input_cstr);
-      (*env)-&gt;ReleaseStringUTFChars(env,output_jstr,output_cstr);
+  	(*env)-&gt;ReleaseStringUTFChars(env,input_jstr,input_cstr);
+  	(*env)-&gt;ReleaseStringUTFChars(env,output_jstr,output_cstr);
 
-      av_frame_free(&amp;pFrame);
+  	av_frame_free(&amp;pFrame);
 
-      avcodec_close(pCodecCtx);
+  	avcodec_close(pCodecCtx);
 
-      avformat_free_context(pFormatCtx);
+  	avformat_free_context(pFormatCtx);
 
-  }</code></pre><ol start="5">
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="5">
 <li>Activity 实现</li>
 </ol>
-<pre><code>public class MainActivity extends AppCompatActivity {
+<pre class="line-numbers language-none"><code class="language-none">public class MainActivity extends AppCompatActivity &#123;
 
 
     private boolean permission;
     private VideoThread videoThread;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) &#123;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         requestPermission();
-        videoThread = new VideoThread();
-    }
+        videoThread &#x3D; new VideoThread();
+    &#125;
 
-    /**
+    &#x2F;**
      * 获取权限
-     */
-    private void requestPermission() {
-        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
-            String[] perms = {&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;};
-            if (checkSelfPermission(perms[0]) == PackageManager.PERMISSION_DENIED) {
-                permission = false;
+     *&#x2F;
+    private void requestPermission() &#123;
+        if (Build.VERSION.SDK_INT &gt;&#x3D; Build.VERSION_CODES.M) &#123;
+            String[] perms &#x3D; &#123;&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;&#125;;
+            if (checkSelfPermission(perms[0]) &#x3D;&#x3D; PackageManager.PERMISSION_DENIED) &#123;
+                permission &#x3D; false;
                 requestPermissions(perms, 200);
-            } else {
-                permission = true;
-            }
-        }
-    }
+            &#125; else &#123;
+                permission &#x3D; true;
+            &#125;
+        &#125;
+    &#125;
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) &#123;
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 200) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                permission = true;
-            }
-        }
-    }
+        if (requestCode &#x3D;&#x3D; 200) &#123;
+            if (grantResults[0] &#x3D;&#x3D; PackageManager.PERMISSION_GRANTED) &#123;
+                permission &#x3D; true;
+            &#125;
+        &#125;
+    &#125;
 
-    public void decode(View view) {
-        if (!permission) {
+    public void decode(View view) &#123;
+        if (!permission) &#123;
             Toast.makeText(this, &quot;请允许存储权限&quot;, Toast.LENGTH_SHORT).show();
             requestPermission();
             return;
-        }
-        if (videoThread == null) {
-            videoThread = new VideoThread();
-        }
-        try {
-            if(!videoThread.isAlive()) {
+        &#125;
+        if (videoThread &#x3D;&#x3D; null) &#123;
+            videoThread &#x3D; new VideoThread();
+        &#125;
+        try &#123;
+            if(!videoThread.isAlive()) &#123;
                 videoThread.start();
-            }
-        }catch (Exception e){
+            &#125;
+        &#125;catch (Exception e)&#123;
             e.printStackTrace();
-        }
+        &#125;
 
-    }
+    &#125;
 
 
     @Override
-    protected void onDestroy() {
-        videoThread = null;
+    protected void onDestroy() &#123;
+        videoThread &#x3D; null;
         super.onDestroy();
-    }
+    &#125;
 
-    public static class VideoThread extends Thread {
+    public static class VideoThread extends Thread &#123;
         @Override
-        public void run() {
+        public void run() &#123;
             super.run();
-            String input = Environment.getExternalStorageDirectory().getAbsolutePath() + &quot;/input.mp4&quot;;
-            String output = Environment.getExternalStorageDirectory().getAbsolutePath() + &quot;/out.yuv&quot;;
+            String input &#x3D; Environment.getExternalStorageDirectory().getAbsolutePath() + &quot;&#x2F;input.mp4&quot;;
+            String output &#x3D; Environment.getExternalStorageDirectory().getAbsolutePath() + &quot;&#x2F;out.yuv&quot;;
             VideoUtils.decode(input, output);
             Log.i(&quot;Activity&quot;,&quot;编码完成&quot;);
-        }
-    }
-}
+        &#125;
+    &#125;
+&#125;
 
-</code></pre><ol start="6">
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="6">
 <li>运行程序，安装到手机，进行解码成 yuv</li>
 </ol>
 
@@ -953,7 +987,7 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【FFmpeg】-一-音视频相关基础知识以及FFmpeg介绍"><span class="toc-text">【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、音视频相关基础知识"><span class="toc-text">一、音视频相关基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、视频播放器原理"><span class="toc-text">1、视频播放器原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-解封装"><span class="toc-text">1.1 解封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-解码"><span class="toc-text">1.2 解码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-音频压缩数据解码"><span class="toc-text">1.2.1 音频压缩数据解码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-视频压缩数据解码"><span class="toc-text">1.2.2 视频压缩数据解码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-音视频同步"><span class="toc-text">1.3 音视频同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、FFmpeg-介绍"><span class="toc-text">二、FFmpeg 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、定义"><span class="toc-text">1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、FFmpeg-命令"><span class="toc-text">2、FFmpeg 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-视频格式转换命令"><span class="toc-text">2.1 视频格式转换命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-视频转-Gif-命令"><span class="toc-text">2.2 视频转 Gif 命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、使用-visual-studio-编译-FFmpeg"><span class="toc-text">三、使用 visual studio 编译 FFmpeg</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、使用-Linux主机-编译-FFmpeg"><span class="toc-text">四、使用 Linux主机 编译 FFmpeg</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、编译前准备"><span class="toc-text">1、编译前准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、编译"><span class="toc-text">2、编译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、使用编译后形成的include和lib目录实现Android-NDK-解码功能"><span class="toc-text">五、使用编译后形成的include和lib目录实现Android NDK 解码功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤："><span class="toc-text">步骤：</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ffmpeg%E4%B8%80-%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BB%A5%E5%8F%8Affmpeg%E4%BB%8B%E7%BB%8D"><span class="toc-text"> 【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text"> 一、音视频相关基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8%E5%8E%9F%E7%90%86"><span class="toc-text"> 1、视频播放器原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-%E8%A7%A3%E5%B0%81%E8%A3%85"><span class="toc-text"> 1.1 解封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E8%A7%A3%E7%A0%81"><span class="toc-text"> 1.2 解码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#121-%E9%9F%B3%E9%A2%91%E5%8E%8B%E7%BC%A9%E6%95%B0%E6%8D%AE%E8%A7%A3%E7%A0%81"><span class="toc-text"> 1.2.1 音频压缩数据解码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#122-%E8%A7%86%E9%A2%91%E5%8E%8B%E7%BC%A9%E6%95%B0%E6%8D%AE%E8%A7%A3%E7%A0%81"><span class="toc-text"> 1.2.2 视频压缩数据解码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%90%8C%E6%AD%A5"><span class="toc-text"> 1.3 音视频同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-ffmpeg-%E4%BB%8B%E7%BB%8D"><span class="toc-text"> 二、FFmpeg 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ffmpeg-%E5%91%BD%E4%BB%A4"><span class="toc-text"> 2、FFmpeg 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#21-%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%91%BD%E4%BB%A4"><span class="toc-text"> 2.1 视频格式转换命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-%E8%A7%86%E9%A2%91%E8%BD%AC-gif-%E5%91%BD%E4%BB%A4"><span class="toc-text"> 2.2 视频转 Gif 命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%BD%BF%E7%94%A8-visual-studio-%E7%BC%96%E8%AF%91-ffmpeg"><span class="toc-text"> 三、使用 visual studio 编译 FFmpeg</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%BD%BF%E7%94%A8-linux%E4%B8%BB%E6%9C%BA-%E7%BC%96%E8%AF%91-ffmpeg"><span class="toc-text"> 四、使用 Linux主机 编译 FFmpeg</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BC%96%E8%AF%91%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text"> 1、编译前准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BC%96%E8%AF%91"><span class="toc-text"> 2、编译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E4%BD%BF%E7%94%A8%E7%BC%96%E8%AF%91%E5%90%8E%E5%BD%A2%E6%88%90%E7%9A%84include%E5%92%8Clib%E7%9B%AE%E5%BD%95%E5%AE%9E%E7%8E%B0android-ndk-%E8%A7%A3%E7%A0%81%E5%8A%9F%E8%83%BD"><span class="toc-text"> 五、使用编译后形成的include和lib目录实现Android NDK 解码功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-text"> 步骤：</span></a></li></ol></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -969,7 +1003,7 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -986,7 +1020,7 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【FFmpeg】-一-音视频相关基础知识以及FFmpeg介绍"><span class="toc-text">【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、音视频相关基础知识"><span class="toc-text">一、音视频相关基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、视频播放器原理"><span class="toc-text">1、视频播放器原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-解封装"><span class="toc-text">1.1 解封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-解码"><span class="toc-text">1.2 解码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-音频压缩数据解码"><span class="toc-text">1.2.1 音频压缩数据解码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-视频压缩数据解码"><span class="toc-text">1.2.2 视频压缩数据解码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-音视频同步"><span class="toc-text">1.3 音视频同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、FFmpeg-介绍"><span class="toc-text">二、FFmpeg 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、定义"><span class="toc-text">1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、FFmpeg-命令"><span class="toc-text">2、FFmpeg 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-视频格式转换命令"><span class="toc-text">2.1 视频格式转换命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-视频转-Gif-命令"><span class="toc-text">2.2 视频转 Gif 命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、使用-visual-studio-编译-FFmpeg"><span class="toc-text">三、使用 visual studio 编译 FFmpeg</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、使用-Linux主机-编译-FFmpeg"><span class="toc-text">四、使用 Linux主机 编译 FFmpeg</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、编译前准备"><span class="toc-text">1、编译前准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、编译"><span class="toc-text">2、编译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、使用编译后形成的include和lib目录实现Android-NDK-解码功能"><span class="toc-text">五、使用编译后形成的include和lib目录实现Android NDK 解码功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤："><span class="toc-text">步骤：</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ffmpeg%E4%B8%80-%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BB%A5%E5%8F%8Affmpeg%E4%BB%8B%E7%BB%8D"><span class="toc-text"> 【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text"> 一、音视频相关基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8%E5%8E%9F%E7%90%86"><span class="toc-text"> 1、视频播放器原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-%E8%A7%A3%E5%B0%81%E8%A3%85"><span class="toc-text"> 1.1 解封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E8%A7%A3%E7%A0%81"><span class="toc-text"> 1.2 解码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#121-%E9%9F%B3%E9%A2%91%E5%8E%8B%E7%BC%A9%E6%95%B0%E6%8D%AE%E8%A7%A3%E7%A0%81"><span class="toc-text"> 1.2.1 音频压缩数据解码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#122-%E8%A7%86%E9%A2%91%E5%8E%8B%E7%BC%A9%E6%95%B0%E6%8D%AE%E8%A7%A3%E7%A0%81"><span class="toc-text"> 1.2.2 视频压缩数据解码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%90%8C%E6%AD%A5"><span class="toc-text"> 1.3 音视频同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-ffmpeg-%E4%BB%8B%E7%BB%8D"><span class="toc-text"> 二、FFmpeg 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ffmpeg-%E5%91%BD%E4%BB%A4"><span class="toc-text"> 2、FFmpeg 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#21-%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%91%BD%E4%BB%A4"><span class="toc-text"> 2.1 视频格式转换命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-%E8%A7%86%E9%A2%91%E8%BD%AC-gif-%E5%91%BD%E4%BB%A4"><span class="toc-text"> 2.2 视频转 Gif 命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%BD%BF%E7%94%A8-visual-studio-%E7%BC%96%E8%AF%91-ffmpeg"><span class="toc-text"> 三、使用 visual studio 编译 FFmpeg</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%BD%BF%E7%94%A8-linux%E4%B8%BB%E6%9C%BA-%E7%BC%96%E8%AF%91-ffmpeg"><span class="toc-text"> 四、使用 Linux主机 编译 FFmpeg</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BC%96%E8%AF%91%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text"> 1、编译前准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BC%96%E8%AF%91"><span class="toc-text"> 2、编译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E4%BD%BF%E7%94%A8%E7%BC%96%E8%AF%91%E5%90%8E%E5%BD%A2%E6%88%90%E7%9A%84include%E5%92%8Clib%E7%9B%AE%E5%BD%95%E5%AE%9E%E7%8E%B0android-ndk-%E8%A7%A3%E7%A0%81%E5%8A%9F%E8%83%BD"><span class="toc-text"> 五、使用编译后形成的include和lib目录实现Android NDK 解码功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-text"> 步骤：</span></a></li></ol></li></ol></li></ol>
     </div>
   </article>
   
@@ -1007,13 +1041,6 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -1059,9 +1086,9 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -1069,14 +1096,21 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -1084,6 +1118,13 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -1120,13 +1161,13 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -1141,7 +1182,7 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【FFmpeg】-一-音视频相关基础知识以及FFmpeg介绍"><span class="toc-text">【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、音视频相关基础知识"><span class="toc-text">一、音视频相关基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、视频播放器原理"><span class="toc-text">1、视频播放器原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-解封装"><span class="toc-text">1.1 解封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-解码"><span class="toc-text">1.2 解码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-音频压缩数据解码"><span class="toc-text">1.2.1 音频压缩数据解码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-视频压缩数据解码"><span class="toc-text">1.2.2 视频压缩数据解码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-音视频同步"><span class="toc-text">1.3 音视频同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、FFmpeg-介绍"><span class="toc-text">二、FFmpeg 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、定义"><span class="toc-text">1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、FFmpeg-命令"><span class="toc-text">2、FFmpeg 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-视频格式转换命令"><span class="toc-text">2.1 视频格式转换命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-视频转-Gif-命令"><span class="toc-text">2.2 视频转 Gif 命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、使用-visual-studio-编译-FFmpeg"><span class="toc-text">三、使用 visual studio 编译 FFmpeg</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、使用-Linux主机-编译-FFmpeg"><span class="toc-text">四、使用 Linux主机 编译 FFmpeg</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、编译前准备"><span class="toc-text">1、编译前准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、编译"><span class="toc-text">2、编译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、使用编译后形成的include和lib目录实现Android-NDK-解码功能"><span class="toc-text">五、使用编译后形成的include和lib目录实现Android NDK 解码功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤："><span class="toc-text">步骤：</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ffmpeg%E4%B8%80-%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BB%A5%E5%8F%8Affmpeg%E4%BB%8B%E7%BB%8D"><span class="toc-text"> 【FFmpeg】(一) 音视频相关基础知识以及FFmpeg介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9B%B8%E5%85%B3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text"> 一、音视频相关基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8%E5%8E%9F%E7%90%86"><span class="toc-text"> 1、视频播放器原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-%E8%A7%A3%E5%B0%81%E8%A3%85"><span class="toc-text"> 1.1 解封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E8%A7%A3%E7%A0%81"><span class="toc-text"> 1.2 解码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#121-%E9%9F%B3%E9%A2%91%E5%8E%8B%E7%BC%A9%E6%95%B0%E6%8D%AE%E8%A7%A3%E7%A0%81"><span class="toc-text"> 1.2.1 音频压缩数据解码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#122-%E8%A7%86%E9%A2%91%E5%8E%8B%E7%BC%A9%E6%95%B0%E6%8D%AE%E8%A7%A3%E7%A0%81"><span class="toc-text"> 1.2.2 视频压缩数据解码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%90%8C%E6%AD%A5"><span class="toc-text"> 1.3 音视频同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-ffmpeg-%E4%BB%8B%E7%BB%8D"><span class="toc-text"> 二、FFmpeg 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ffmpeg-%E5%91%BD%E4%BB%A4"><span class="toc-text"> 2、FFmpeg 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#21-%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%91%BD%E4%BB%A4"><span class="toc-text"> 2.1 视频格式转换命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-%E8%A7%86%E9%A2%91%E8%BD%AC-gif-%E5%91%BD%E4%BB%A4"><span class="toc-text"> 2.2 视频转 Gif 命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%BD%BF%E7%94%A8-visual-studio-%E7%BC%96%E8%AF%91-ffmpeg"><span class="toc-text"> 三、使用 visual studio 编译 FFmpeg</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%BD%BF%E7%94%A8-linux%E4%B8%BB%E6%9C%BA-%E7%BC%96%E8%AF%91-ffmpeg"><span class="toc-text"> 四、使用 Linux主机 编译 FFmpeg</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BC%96%E8%AF%91%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text"> 1、编译前准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BC%96%E8%AF%91"><span class="toc-text"> 2、编译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E4%BD%BF%E7%94%A8%E7%BC%96%E8%AF%91%E5%90%8E%E5%BD%A2%E6%88%90%E7%9A%84include%E5%92%8Clib%E7%9B%AE%E5%BD%95%E5%AE%9E%E7%8E%B0android-ndk-%E8%A7%A3%E7%A0%81%E5%8A%9F%E8%83%BD"><span class="toc-text"> 五、使用编译后形成的include和lib目录实现Android NDK 解码功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-text"> 步骤：</span></a></li></ol></li></ol></li></ol>
   </article>
   
   
@@ -1152,22 +1193,22 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -1216,7 +1257,7 @@ JNIEXPORT void JNICALL Java_cn_onestravel_ndk_ffmpegdecodedemo_VideoUtils_decode
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

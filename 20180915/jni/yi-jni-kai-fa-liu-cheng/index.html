@@ -129,7 +129,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -223,7 +236,7 @@
     
     
     <span class="dot"></span>
-    <span>1.2k 字</span>
+    <span>1.3k 字</span>
     
   </div>
   
@@ -244,165 +257,195 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="JNI-开发流程"><a href="#JNI-开发流程" class="headerlink" title="JNI 开发流程"></a>JNI 开发流程</h1><h2 id="一、C-语言执行的流程"><a href="#一、C-语言执行的流程" class="headerlink" title="一、C 语言执行的流程"></a>一、C 语言执行的流程</h2><ol>
+    <h1 id="jni-开发流程"><a class="markdownIt-Anchor" href="#jni-开发流程"></a> JNI 开发流程</h1>
+<h2 id="一-c-语言执行的流程"><a class="markdownIt-Anchor" href="#一-c-语言执行的流程"></a> 一、C 语言执行的流程</h2>
+<ol>
 <li>编辑：编写代码的过程。</li>
 <li>预编译（预处理）：为编译做准备工作，完成代码文本的替换工作。</li>
 <li>编译：形成目标代码(.obj)。</li>
 <li>连接：将目标代码与C 函数库连接合并，形成最终的可执行文件。</li>
 <li>执行：执行可执行文件。</li>
 </ol>
-<h2 id="二、头文件"><a href="#二、头文件" class="headerlink" title="二、头文件"></a>二、头文件</h2><h3 id="1、头文件的作用"><a href="#1、头文件的作用" class="headerlink" title="1、头文件的作用"></a>1、头文件的作用</h3><p><strong>头文件告诉编译器有这样一个函数，连接器负责找到这个函数的实现</strong></p>
-<h3 id="2、自定义头文件"><a href="#2、自定义头文件" class="headerlink" title="2、自定义头文件"></a>2、自定义头文件</h3><p><strong>*注：开发工具为 Visual Studio 2017</strong></p>
-<h4 id="1、创建-h-文件，对相应方法进行声明。"><a href="#1、创建-h-文件，对相应方法进行声明。" class="headerlink" title="1、创建 .h 文件，对相应方法进行声明。"></a>1、创建 .h 文件，对相应方法进行声明。</h4><p>例如：创建 math.h</p>
-<pre><code>#ifndef _MATH_H  //如果没有定义 _MATH_H 标识
-#define _MATH_H  //定义 _MATH_H 标识
+<h2 id="二-头文件"><a class="markdownIt-Anchor" href="#二-头文件"></a> 二、头文件</h2>
+<h3 id="1-头文件的作用"><a class="markdownIt-Anchor" href="#1-头文件的作用"></a> 1、头文件的作用</h3>
+<p><strong>头文件告诉编译器有这样一个函数，连接器负责找到这个函数的实现</strong></p>
+<h3 id="2-自定义头文件"><a class="markdownIt-Anchor" href="#2-自定义头文件"></a> 2、自定义头文件</h3>
+<p>*<strong>注：开发工具为 Visual Studio 2017</strong></p>
+<h4 id="1-创建-h-文件对相应方法进行声明"><a class="markdownIt-Anchor" href="#1-创建-h-文件对相应方法进行声明"></a> 1、创建 .h 文件，对相应方法进行声明。</h4>
+<p>例如：创建 math.h</p>
+<pre class="line-numbers language-none"><code class="language-none">#ifndef _MATH_H  &#x2F;&#x2F;如果没有定义 _MATH_H 标识
+#define _MATH_H  &#x2F;&#x2F;定义 _MATH_H 标识
 int add(int, int, int);
-#endif</code></pre><p>或</p>
-<pre><code>//该头文件只被包含一次，让编译器自己处理好循环包含问题
+#endif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>或</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;该头文件只被包含一次，让编译器自己处理好循环包含问题
 #pragma once 
-int add(int, int, int);</code></pre><h4 id="2、在-h-文件同级目录下创建对应的-c-文件，对-h-文件中声明的方法进行实现。"><a href="#2、在-h-文件同级目录下创建对应的-c-文件，对-h-文件中声明的方法进行实现。" class="headerlink" title="2、在 .h 文件同级目录下创建对应的 .c 文件，对 .h 文件中声明的方法进行实现。"></a>2、在 .h 文件同级目录下创建对应的 .c 文件，对 .h 文件中声明的方法进行实现。</h4><p>例如：创建 head.c </p>
-<pre><code>#define _CRT_SECURE_NO_WARNINGS
+int add(int, int, int);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-在-h-文件同级目录下创建对应的-c-文件对-h-文件中声明的方法进行实现"><a class="markdownIt-Anchor" href="#2-在-h-文件同级目录下创建对应的-c-文件对-h-文件中声明的方法进行实现"></a> 2、在 .h 文件同级目录下创建对应的 .c 文件，对 .h 文件中声明的方法进行实现。</h4>
+<p>例如：创建 head.c</p>
+<pre class="line-numbers language-none"><code class="language-none">#define _CRT_SECURE_NO_WARNINGS
 #include &quot;math.h&quot;
 #include &lt;stdio.h&gt;
 
-int add(int a, int b, int c){
-   int result = 0;
-   result = a + b + c;
+int add(int a, int b, int c)&#123;
+   int result &#x3D; 0;
+   result &#x3D; a + b + c;
    return result;
-}
-</code></pre><h4 id="3、创建一个C文件，进行验证头文件是否编写成功。"><a href="#3、创建一个C文件，进行验证头文件是否编写成功。" class="headerlink" title="3、创建一个C文件，进行验证头文件是否编写成功。"></a>3、创建一个C文件，进行验证头文件是否编写成功。</h4><p>例如：创建 test.c</p>
-<pre><code>#include&lt;stdio.h&gt;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3-创建一个c文件进行验证头文件是否编写成功"><a class="markdownIt-Anchor" href="#3-创建一个c文件进行验证头文件是否编写成功"></a> 3、创建一个C文件，进行验证头文件是否编写成功。</h4>
+<p>例如：创建 test.c</p>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;stdio.h&gt;
 #include &quot;math.h&quot;
 
 
-void main(){
-    int a = 3, b = 4, c = 5, result = 0;
-    result = add(a, b, c);
-    printf(&quot;The result is %d!\n&quot;, result);
-    system(&quot;pause&quot;);
-}</code></pre><h2 id="三、define-指令"><a href="#三、define-指令" class="headerlink" title="三、define 指令"></a>三、define 指令</h2><h3 id="1、define-指令的作用"><a href="#1、define-指令的作用" class="headerlink" title="1、define 指令的作用"></a>1、define 指令的作用</h3><ol>
-<li>define 指令用来定义标识；<br> 如：** #ifdef __cplusplus 标识支持C++语法；防止文件重复引入**</li>
+void main()&#123;
+	int a &#x3D; 3, b &#x3D; 4, c &#x3D; 5, result &#x3D; 0;
+	result &#x3D; add(a, b, c);
+	printf(&quot;The result is %d!\n&quot;, result);
+	system(&quot;pause&quot;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="三-define-指令"><a class="markdownIt-Anchor" href="#三-define-指令"></a> 三、define 指令</h2>
+<h3 id="1-define-指令的作用"><a class="markdownIt-Anchor" href="#1-define-指令的作用"></a> 1、define 指令的作用</h3>
+<ol>
+<li>define 指令用来定义标识；<br />
+如：** #ifdef __cplusplus 标识支持C++语法；防止文件重复引入**</li>
 <li>define 指令用来定义常数；如：<strong>#define MAX 100</strong></li>
-<li>define 指令用来定义“宏函数”。<br>如：</li>
+<li>define 指令用来定义“宏函数”。<br />
+如：</li>
 </ol>
-<pre><code>void jni_read(){
+<pre class="line-numbers language-none"><code class="language-none">void jni_read()&#123;
     printf(&quot;read\n&quot;);
-}
+&#125;
 
-void jni_write(){
+void jni_write()&#123;
     printf(&quot;write\n&quot;);
-}
+&#125;
 
-/**
+&#x2F;**
  * 宏函数
- */
+ *&#x2F;
 #define jin(NAME) jni_##NAME();
 
-void main(){
+void main()&#123;
     jni(read);
     jni(write);
     getchar();
-}</code></pre><p>日志输出示例：</p>
-<pre><code>/**
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>日志输出示例：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;**
  *__VA_ARGS__    可变参数
- */
+ *&#x2F;
 #define LOG(FOTMAT,...) printf(##FOTMAT,__VA_ARGS__);printf(&quot;\n&quot;);
 
-void main(){
+void main()&#123;
     LOG(&quot;%s: %d&quot;,&quot;size&quot;,99);
     getchar();
-}</code></pre><h2 id="四、JNI-Java-Native-Interface"><a href="#四、JNI-Java-Native-Interface" class="headerlink" title="四、JNI (Java Native Interface)"></a>四、JNI (Java Native Interface)</h2><h3 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h3><p>*<em>Java 调用C/C++或者C/C++调用 Java 的一套 API *</em></p>
-<h3 id="2、Java调用C-C-项目开发步骤（Windows系统下）"><a href="#2、Java调用C-C-项目开发步骤（Windows系统下）" class="headerlink" title="2、Java调用C/C++项目开发步骤（Windows系统下）"></a>2、Java调用C/C++项目开发步骤（Windows系统下）</h3><ul>
-<li><p>编写native方法</p>
-<pre><code>package com.example.jni;
-public class JNITest {
-
-  public native static String getStringFromC();
-
-  public static void main(String[] args){
-
-  }
-}</code></pre></li>
-<li><p>javah命令，生成.h文件</p>
-<pre><code>javah com.example.jni.JNITest
-//生成 com_example_jni_JNITest.h 文件</code></pre></li>
-<li><p>复制.h头文件到CPP工程中</p>
-</li>
-<li><p>复制jni.h和jni_md.h文件到CPP工程中</p>
-</li>
-<li><p>实现.h头文件中声明的函数；C函数名称：Java_完整类名_函数名</p>
-</li>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="四-jni-java-native-interface"><a class="markdownIt-Anchor" href="#四-jni-java-native-interface"></a> 四、JNI (Java Native Interface)</h2>
+<h3 id="1-定义"><a class="markdownIt-Anchor" href="#1-定义"></a> 1、定义</h3>
+<p>**Java 调用C/C<ins>或者C/C</ins>调用 Java 的一套 API **</p>
+<h3 id="2-java调用cc项目开发步骤windows系统下"><a class="markdownIt-Anchor" href="#2-java调用cc项目开发步骤windows系统下"></a> 2、Java调用C/C++项目开发步骤（Windows系统下）</h3>
+<ul>
+<li>编写native方法</li>
 </ul>
-<pre><code>//JNITest.c
+<pre class="line-numbers language-none"><code class="language-none">package com.example.jni;
+public class JNITest &#123;
+
+    public native static String getStringFromC();
+    
+    public static void main(String[] args)&#123;
+
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>javah命令，生成.h文件</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">javah com.example.jni.JNITest
+&#x2F;&#x2F;生成 com_example_jni_JNITest.h 文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>复制.h头文件到CPP工程中</li>
+<li>复制jni.h和jni_md.h文件到CPP工程中</li>
+<li>实现.h头文件中声明的函数；C函数名称：Java_完整类名_函数名</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;JNITest.c
 #include &quot;com_example_jni_JNITest.h&quot;
 
 JNIEXPORT jstring JNICALL Java_com_example_jni_JNITest_getStringFromC
-(JNIEnv *jEnv, jclass jcls) {
-    //简单实现，将C的字符传转成Java的字符串
-    return (*jEnv)-&gt;NewStringUTF(jEnv, &quot;C String&quot;);
+(JNIEnv *jEnv, jclass jcls) &#123;
+	&#x2F;&#x2F;简单实现，将C的字符传转成Java的字符串
+	return (*jEnv)-&gt;NewStringUTF(jEnv, &quot;C String&quot;);
 
-}</code></pre><ul>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>生成动态库.dll文件(Windows环境下默认dll，Linux环境下默认为so)</li>
 <li>配置D:\dll 目录到环境变量，并将刚刚生成的 .dll 文件复制到D:\dll 目录下；或者复制到项目根目录下；</li>
-<li>重启Eclipse，使用IDEA的需要在项目运行配置中的 VM options 中增加配置：<br>```<br>// VM options:</li>
-<li>Djava.library.path=D:\dll<pre><code>
-</code></pre></li>
+<li>重启Eclipse，使用IDEA的需要在项目运行配置中的 VM options 中增加配置：</li>
 </ul>
-<h2 id="五、JNIEnv"><a href="#五、JNIEnv" class="headerlink" title="五、JNIEnv"></a>五、JNIEnv</h2><h3 id="1、JNIEnv-是什么"><a href="#1、JNIEnv-是什么" class="headerlink" title="1、JNIEnv 是什么"></a>1、JNIEnv 是什么</h3><ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; VM options:
+-Djava.library.path&#x3D;D:\dll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="五-jnienv"><a class="markdownIt-Anchor" href="#五-jnienv"></a> 五、JNIEnv</h2>
+<h3 id="1-jnienv-是什么"><a class="markdownIt-Anchor" href="#1-jnienv-是什么"></a> 1、JNIEnv 是什么</h3>
+<ul>
 <li><strong>在C语言中JNIEnv是一个结构体指针，代表Java运行环境，主要是调用Java中的代码，在上面JNITest.c中实现函数声明的时候，jEnv 是一个二级指针</strong></li>
 </ul>
-<pre><code>//JNITest.c
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;JNITest.c
 #include &quot;com_example_jni_JNITest.h&quot;
 
 JNIEXPORT jstring JNICALL Java_com_example_jni_JNITest_getStringFromC
-(JNIEnv *jEnv, jclass jcls) {
-    //简单实现，将C的字符传转成Java的字符串
-    return (*jEnv)-&gt;NewStringUTF(jEnv, &quot;C String&quot;);
+(JNIEnv *jEnv, jclass jcls) &#123;
+	&#x2F;&#x2F;简单实现，将C的字符传转成Java的字符串
+	return (*jEnv)-&gt;NewStringUTF(jEnv, &quot;C String&quot;);
 
-}</code></pre><ul>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li><strong>在C++中JNIEnv是一个结构体的别名，代表Java运行环境，主要是调用Java中的代码，jEnv 是一个结构体的一级指针</strong></li>
 </ul>
-<pre><code>//JNITest.cpp
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;JNITest.cpp
 #include &quot;com_example_jni_JNITest.h&quot;
 
 JNIEXPORT jstring JNICALL Java_com_example_jni_JNITest_getStringFromC
-(JNIEnv *jEnv, jclass jcls) {
-    //简单实现，将C的字符传转成Java的字符串
-    return jEnv-&gt;NewStringUTF(&quot;C String&quot;);
+(JNIEnv *jEnv, jclass jcls) &#123;
+	&#x2F;&#x2F;简单实现，将C的字符传转成Java的字符串
+	return jEnv-&gt;NewStringUTF(&quot;C String&quot;);
 
-}</code></pre><p>模拟C 的实现</p>
-<pre><code>//JNIEnv 是结构体指针的别名
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>模拟C 的实现</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;JNIEnv 是结构体指针的别名
 typedef struct JNINativeInferface_* JNIEnv;
-//结构体
-struct JNINativeInferface_{
+&#x2F;&#x2F;结构体
+struct JNINativeInferface_&#123;
     char* (*NewStringUTF)(JNIEnv*,char*);
-};
+&#125;;
 
-//函数实现
-char* NewStringUTF(JNIEnv* env,char* str){
+&#x2F;&#x2F;函数实现
+char* NewStringUTF(JNIEnv* env,char* str)&#123;
     return str;
-}
+&#125;
 
-void main(){
-    //实例化结构体
+void main()&#123;
+    &#x2F;&#x2F;实例化结构体
     struct JNINativeInferface_ struct_env;
-    struct_env.NewStringUTF = NewStringUTF;
-
-    //结构体指针
-    JNIEnv e = &amp;struct_env;
-    //结构体的二级指针
-    JNIEnv *env = &amp;e;
-    //通过二级指针调用函数
-    char* str = (*env)-&gt;NewStringUTF(env,&quot;Hello&quot;);
-    printf(&quot;str = %s\n&quot;,str);
+    struct_env.NewStringUTF &#x3D; NewStringUTF;
+    
+    &#x2F;&#x2F;结构体指针
+    JNIEnv e &#x3D; &amp;struct_env;
+    &#x2F;&#x2F;结构体的二级指针
+    JNIEnv *env &#x3D; &amp;e;
+    &#x2F;&#x2F;通过二级指针调用函数
+    char* str &#x3D; (*env)-&gt;NewStringUTF(env,&quot;Hello&quot;);
+    printf(&quot;str &#x3D; %s\n&quot;,str);
     getchar();
-}
-</code></pre><h3 id="2、JNIEnv-调用函数时C和C-的区别"><a href="#2、JNIEnv-调用函数时C和C-的区别" class="headerlink" title="2、JNIEnv 调用函数时C和C++的区别"></a>2、JNIEnv 调用函数时C和C++的区别</h3><ul>
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-jnienv-调用函数时c和c的区别"><a class="markdownIt-Anchor" href="#2-jnienv-调用函数时c和c的区别"></a> 2、JNIEnv 调用函数时C和C++的区别</h3>
+<ul>
 <li>C 中需要传入 JNIEnv ，因为函数执行过程中需要 JNIEnv</li>
 <li>C++ 中不需要传入 JNIEnv ，是因为C++中有 this，相当与JNIEnv</li>
 <li>C++只是针对C的那一套进行分装，给一个变量赋值为指针，这个变量是二级指针</li>
 </ul>
-<h2 id="六、jclass"><a href="#六、jclass" class="headerlink" title="六、jclass"></a>六、jclass</h2><p>每个native函数（C中的函数），都至少有两个参数(JNIEnv* jclass或者jobject)。</p>
+<h2 id="六-jclass"><a class="markdownIt-Anchor" href="#六-jclass"></a> 六、jclass</h2>
+<p>每个native函数（C中的函数），都至少有两个参数(JNIEnv* jclass或者jobject)。</p>
 <ul>
 <li>当native方法为静态方法时：jclass代表native 方法所属类的class对象（JNITest.class）；</li>
 <li>当 native 方法为非静态方法时：jobject 代表 native 方法所属的对象。</li>
@@ -479,7 +522,7 @@ void main(){
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JNI-开发流程"><span class="toc-text">JNI 开发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、C-语言执行的流程"><span class="toc-text">一、C 语言执行的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、头文件"><span class="toc-text">二、头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、头文件的作用"><span class="toc-text">1、头文件的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、自定义头文件"><span class="toc-text">2、自定义头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、创建-h-文件，对相应方法进行声明。"><span class="toc-text">1、创建 .h 文件，对相应方法进行声明。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、在-h-文件同级目录下创建对应的-c-文件，对-h-文件中声明的方法进行实现。"><span class="toc-text">2、在 .h 文件同级目录下创建对应的 .c 文件，对 .h 文件中声明的方法进行实现。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、创建一个C文件，进行验证头文件是否编写成功。"><span class="toc-text">3、创建一个C文件，进行验证头文件是否编写成功。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、define-指令"><span class="toc-text">三、define 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、define-指令的作用"><span class="toc-text">1、define 指令的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、JNI-Java-Native-Interface"><span class="toc-text">四、JNI (Java Native Interface)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、定义"><span class="toc-text">1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Java调用C-C-项目开发步骤（Windows系统下）"><span class="toc-text">2、Java调用C&#x2F;C++项目开发步骤（Windows系统下）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、JNIEnv"><span class="toc-text">五、JNIEnv</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、JNIEnv-是什么"><span class="toc-text">1、JNIEnv 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、JNIEnv-调用函数时C和C-的区别"><span class="toc-text">2、JNIEnv 调用函数时C和C++的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、jclass"><span class="toc-text">六、jclass</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jni-%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-text"> JNI 开发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-c-%E8%AF%AD%E8%A8%80%E6%89%A7%E8%A1%8C%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-text"> 一、C 语言执行的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text"> 二、头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%A4%B4%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 1、头文件的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text"> 2、自定义头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA-h-%E6%96%87%E4%BB%B6%E5%AF%B9%E7%9B%B8%E5%BA%94%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E5%A3%B0%E6%98%8E"><span class="toc-text"> 1、创建 .h 文件，对相应方法进行声明。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9C%A8-h-%E6%96%87%E4%BB%B6%E5%90%8C%E7%BA%A7%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BA%E5%AF%B9%E5%BA%94%E7%9A%84-c-%E6%96%87%E4%BB%B6%E5%AF%B9-h-%E6%96%87%E4%BB%B6%E4%B8%AD%E5%A3%B0%E6%98%8E%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 2、在 .h 文件同级目录下创建对应的 .c 文件，对 .h 文件中声明的方法进行实现。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAc%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E9%AA%8C%E8%AF%81%E5%A4%B4%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E7%BC%96%E5%86%99%E6%88%90%E5%8A%9F"><span class="toc-text"> 3、创建一个C文件，进行验证头文件是否编写成功。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-define-%E6%8C%87%E4%BB%A4"><span class="toc-text"> 三、define 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-define-%E6%8C%87%E4%BB%A4%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 1、define 指令的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-jni-java-native-interface"><span class="toc-text"> 四、JNI (Java Native Interface)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-java%E8%B0%83%E7%94%A8cc%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4windows%E7%B3%BB%E7%BB%9F%E4%B8%8B"><span class="toc-text"> 2、Java调用C&#x2F;C++项目开发步骤（Windows系统下）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-jnienv"><span class="toc-text"> 五、JNIEnv</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jnienv-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text"> 1、JNIEnv 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jnienv-%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E6%97%B6c%E5%92%8Cc%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text"> 2、JNIEnv 调用函数时C和C++的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-jclass"><span class="toc-text"> 六、jclass</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -495,7 +538,7 @@ void main(){
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -512,7 +555,7 @@ void main(){
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JNI-开发流程"><span class="toc-text">JNI 开发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、C-语言执行的流程"><span class="toc-text">一、C 语言执行的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、头文件"><span class="toc-text">二、头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、头文件的作用"><span class="toc-text">1、头文件的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、自定义头文件"><span class="toc-text">2、自定义头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、创建-h-文件，对相应方法进行声明。"><span class="toc-text">1、创建 .h 文件，对相应方法进行声明。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、在-h-文件同级目录下创建对应的-c-文件，对-h-文件中声明的方法进行实现。"><span class="toc-text">2、在 .h 文件同级目录下创建对应的 .c 文件，对 .h 文件中声明的方法进行实现。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、创建一个C文件，进行验证头文件是否编写成功。"><span class="toc-text">3、创建一个C文件，进行验证头文件是否编写成功。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、define-指令"><span class="toc-text">三、define 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、define-指令的作用"><span class="toc-text">1、define 指令的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、JNI-Java-Native-Interface"><span class="toc-text">四、JNI (Java Native Interface)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、定义"><span class="toc-text">1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Java调用C-C-项目开发步骤（Windows系统下）"><span class="toc-text">2、Java调用C&#x2F;C++项目开发步骤（Windows系统下）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、JNIEnv"><span class="toc-text">五、JNIEnv</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、JNIEnv-是什么"><span class="toc-text">1、JNIEnv 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、JNIEnv-调用函数时C和C-的区别"><span class="toc-text">2、JNIEnv 调用函数时C和C++的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、jclass"><span class="toc-text">六、jclass</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jni-%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-text"> JNI 开发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-c-%E8%AF%AD%E8%A8%80%E6%89%A7%E8%A1%8C%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-text"> 一、C 语言执行的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text"> 二、头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%A4%B4%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 1、头文件的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text"> 2、自定义头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA-h-%E6%96%87%E4%BB%B6%E5%AF%B9%E7%9B%B8%E5%BA%94%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E5%A3%B0%E6%98%8E"><span class="toc-text"> 1、创建 .h 文件，对相应方法进行声明。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9C%A8-h-%E6%96%87%E4%BB%B6%E5%90%8C%E7%BA%A7%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BA%E5%AF%B9%E5%BA%94%E7%9A%84-c-%E6%96%87%E4%BB%B6%E5%AF%B9-h-%E6%96%87%E4%BB%B6%E4%B8%AD%E5%A3%B0%E6%98%8E%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 2、在 .h 文件同级目录下创建对应的 .c 文件，对 .h 文件中声明的方法进行实现。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAc%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E9%AA%8C%E8%AF%81%E5%A4%B4%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E7%BC%96%E5%86%99%E6%88%90%E5%8A%9F"><span class="toc-text"> 3、创建一个C文件，进行验证头文件是否编写成功。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-define-%E6%8C%87%E4%BB%A4"><span class="toc-text"> 三、define 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-define-%E6%8C%87%E4%BB%A4%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 1、define 指令的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-jni-java-native-interface"><span class="toc-text"> 四、JNI (Java Native Interface)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-java%E8%B0%83%E7%94%A8cc%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4windows%E7%B3%BB%E7%BB%9F%E4%B8%8B"><span class="toc-text"> 2、Java调用C&#x2F;C++项目开发步骤（Windows系统下）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-jnienv"><span class="toc-text"> 五、JNIEnv</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jnienv-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text"> 1、JNIEnv 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jnienv-%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E6%97%B6c%E5%92%8Cc%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text"> 2、JNIEnv 调用函数时C和C++的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-jclass"><span class="toc-text"> 六、jclass</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -533,13 +576,6 @@ void main(){
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -585,9 +621,9 @@ void main(){
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -595,14 +631,21 @@ void main(){
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -610,6 +653,13 @@ void main(){
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -646,13 +696,13 @@ void main(){
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -667,7 +717,7 @@ void main(){
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JNI-开发流程"><span class="toc-text">JNI 开发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、C-语言执行的流程"><span class="toc-text">一、C 语言执行的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、头文件"><span class="toc-text">二、头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、头文件的作用"><span class="toc-text">1、头文件的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、自定义头文件"><span class="toc-text">2、自定义头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、创建-h-文件，对相应方法进行声明。"><span class="toc-text">1、创建 .h 文件，对相应方法进行声明。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、在-h-文件同级目录下创建对应的-c-文件，对-h-文件中声明的方法进行实现。"><span class="toc-text">2、在 .h 文件同级目录下创建对应的 .c 文件，对 .h 文件中声明的方法进行实现。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、创建一个C文件，进行验证头文件是否编写成功。"><span class="toc-text">3、创建一个C文件，进行验证头文件是否编写成功。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、define-指令"><span class="toc-text">三、define 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、define-指令的作用"><span class="toc-text">1、define 指令的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、JNI-Java-Native-Interface"><span class="toc-text">四、JNI (Java Native Interface)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、定义"><span class="toc-text">1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Java调用C-C-项目开发步骤（Windows系统下）"><span class="toc-text">2、Java调用C&#x2F;C++项目开发步骤（Windows系统下）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、JNIEnv"><span class="toc-text">五、JNIEnv</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、JNIEnv-是什么"><span class="toc-text">1、JNIEnv 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、JNIEnv-调用函数时C和C-的区别"><span class="toc-text">2、JNIEnv 调用函数时C和C++的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、jclass"><span class="toc-text">六、jclass</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jni-%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-text"> JNI 开发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-c-%E8%AF%AD%E8%A8%80%E6%89%A7%E8%A1%8C%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-text"> 一、C 语言执行的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text"> 二、头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%A4%B4%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 1、头文件的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text"> 2、自定义头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA-h-%E6%96%87%E4%BB%B6%E5%AF%B9%E7%9B%B8%E5%BA%94%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E5%A3%B0%E6%98%8E"><span class="toc-text"> 1、创建 .h 文件，对相应方法进行声明。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9C%A8-h-%E6%96%87%E4%BB%B6%E5%90%8C%E7%BA%A7%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BA%E5%AF%B9%E5%BA%94%E7%9A%84-c-%E6%96%87%E4%BB%B6%E5%AF%B9-h-%E6%96%87%E4%BB%B6%E4%B8%AD%E5%A3%B0%E6%98%8E%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 2、在 .h 文件同级目录下创建对应的 .c 文件，对 .h 文件中声明的方法进行实现。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAc%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E9%AA%8C%E8%AF%81%E5%A4%B4%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E7%BC%96%E5%86%99%E6%88%90%E5%8A%9F"><span class="toc-text"> 3、创建一个C文件，进行验证头文件是否编写成功。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-define-%E6%8C%87%E4%BB%A4"><span class="toc-text"> 三、define 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-define-%E6%8C%87%E4%BB%A4%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 1、define 指令的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-jni-java-native-interface"><span class="toc-text"> 四、JNI (Java Native Interface)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-java%E8%B0%83%E7%94%A8cc%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4windows%E7%B3%BB%E7%BB%9F%E4%B8%8B"><span class="toc-text"> 2、Java调用C&#x2F;C++项目开发步骤（Windows系统下）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-jnienv"><span class="toc-text"> 五、JNIEnv</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jnienv-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text"> 1、JNIEnv 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jnienv-%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E6%97%B6c%E5%92%8Cc%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text"> 2、JNIEnv 调用函数时C和C++的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-jclass"><span class="toc-text"> 六、jclass</span></a></li></ol></li></ol>
   </article>
   
   
@@ -678,22 +728,22 @@ void main(){
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -742,7 +792,7 @@ void main(){
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

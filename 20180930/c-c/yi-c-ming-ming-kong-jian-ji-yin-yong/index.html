@@ -127,7 +127,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -221,7 +234,7 @@
     
     
     <span class="dot"></span>
-    <span>1.6k 字</span>
+    <span>1.8k 字</span>
     
   </div>
   
@@ -237,12 +250,15 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="C-命名空间及引用"><a href="#C-命名空间及引用" class="headerlink" title="C++命名空间及引用"></a>C++命名空间及引用</h1><h2 id="一、C-与-C-的关系"><a href="#一、C-与-C-的关系" class="headerlink" title="一、C 与 C++ 的关系"></a>一、C 与 C++ 的关系</h2><ol>
+    <h1 id="c命名空间及引用"><a class="markdownIt-Anchor" href="#c命名空间及引用"></a> C++命名空间及引用</h1>
+<h2 id="一-c-与-c-的关系"><a class="markdownIt-Anchor" href="#一-c-与-c-的关系"></a> 一、C 与 C++ 的关系</h2>
+<ol>
 <li>C++ 可以与 C 代码进行混编</li>
 <li>C++ 是一个面向对象编程语言、C 语言是面向过程的编程语言</li>
 <li>C++ 是对 C 的一个增强</li>
 </ol>
-<h2 id="二、C-命名空间"><a href="#二、C-命名空间" class="headerlink" title="二、C++ 命名空间"></a>二、C++ 命名空间</h2><ol>
+<h2 id="二-c-命名空间"><a class="markdownIt-Anchor" href="#二-c-命名空间"></a> 二、C++ 命名空间</h2>
+<ol>
 <li>C++ 标准的命名空间为 std ，包含很多标准的定义</li>
 <li>&lt;&lt; 为运算符重载</li>
 <li>命名空间类似于Java中的包</li>
@@ -250,292 +266,322 @@
 <li>:: 为访问修饰符</li>
 </ol>
 <p>示例：</p>
-<pre><code>#include &lt;stdlib.h&gt;
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;stdlib.h&gt;
 #include &lt;iostream&gt;
 
-//使用标准命名空间
+&#x2F;&#x2F;使用标准命名空间
 using namespace std;
 
-//自定义命名空间
-namespace NSP_A{
-    int a = 9;
-    struct Teacher{
+&#x2F;&#x2F;自定义命名空间
+namespace NSP_A&#123;
+    int a &#x3D; 9;
+    struct Teacher&#123;
         char name[20];
         int age;
-    };
-    struct Student{
+    &#125;;
+    struct Student&#123;
         char name[20];
         int age;
-    };
-}
+    &#125;;
+&#125;
 
-void main(){
-    //std::cout &lt;&lt; &quot;this is c plus plus&quot; &lt;&lt; std::endl;
+void main()&#123;
+    &#x2F;&#x2F;std::cout &lt;&lt; &quot;this is c plus plus&quot; &lt;&lt; std::endl;
     cout &lt;&lt; &quot;this is c plus plus&quot; &lt;&lt; endl;
     cout &lt;&lt; &quot;访问自定义命名空间的属性a:&quot; &lt;&lt; NSP_A::a &lt;&lt; endl;
-
-    //使用命名空间中的结构体
+    
+    &#x2F;&#x2F;使用命名空间中的结构体
     using NSP_A::Student;
     Student t;
-    t.age = 19;
+    t.age &#x3D; 19;
     cout &lt;&lt; &quot;学生的年龄为:&quot; &lt;&lt; t.age &lt;&lt; endl;
     getchar();
-}</code></pre><h2 id="三、C-中的类"><a href="#三、C-中的类" class="headerlink" title="三、C++ 中的类"></a>三、C++ 中的类</h2><p><strong>C++ 中的类中的属性共享权限访问修饰符</strong></p>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="三-c-中的类"><a class="markdownIt-Anchor" href="#三-c-中的类"></a> 三、C++ 中的类</h2>
+<p><strong>C++ 中的类中的属性共享权限访问修饰符</strong></p>
 <p><strong>类的 } 后有分号;</strong></p>
-<pre><code>using namespace std;
+<pre class="line-numbers language-none"><code class="language-none">using namespace std;
 #define PI 3.14
-class MyCircle{
-//属性
+class MyCircle&#123;
+&#x2F;&#x2F;属性
 private:
     double r;
     double s;
 public:
     double length;
 public:
-    void setR(double r){
-        this-&gt;r = r;
-    }
-    double getS(){
+    void setR(double r)&#123;
+        this-&gt;r &#x3D; r;
+    &#125;
+    double getS()&#123;
         return PI * r * r;
-    }
-};
+    &#125;
+&#125;;
 
-void main(){
+void main()&#123;
     MyCircle c1;
     c1.setR(4);
     cout &lt;&lt; &quot;圆的面积：&quot; &lt;&lt; c1.getS() &lt;&lt; endl;
-
+    
     getchar();
-}</code></pre><p>输出：</p>
-<pre><code>圆的面积：50.24</code></pre><h2 id="四、C-中的结构体"><a href="#四、C-中的结构体" class="headerlink" title="四、C++ 中的结构体"></a>四、C++ 中的结构体</h2><ul>
-<li><p><strong>C++ 中的结构体中有权限访问修饰符</strong></p>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">圆的面积：50.24<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="四-c-中的结构体"><a class="markdownIt-Anchor" href="#四-c-中的结构体"></a> 四、C++ 中的结构体</h2>
+<ul>
+<li>
+<p><strong>C++ 中的结构体中有权限访问修饰符</strong></p>
 </li>
-<li><p><strong>结构体在C++ 中使用时可以省略 struct</strong></p>
+<li>
+<p><strong>结构体在C++ 中使用时可以省略 struct</strong></p>
 </li>
-<li><p><strong>结构体不能被继承</strong></p>
+<li>
+<p><strong>结构体不能被继承</strong></p>
 </li>
 </ul>
-<pre><code>using namespace std;
+<pre class="line-numbers language-none"><code class="language-none">using namespace std;
 
-struct Teacher{
-//属性
+struct Teacher&#123;
+&#x2F;&#x2F;属性
 public:
     char* name;
     int age;
 public:
-    void say(){
+    void say()&#123;
        cout &lt;&lt; &quot;My name is &quot; &lt;&lt; this-&gt;name &lt;&lt; &quot;, I am &quot; &lt;&lt; this-&gt;age &lt;&lt; &quot; years old.&quot; &lt;&lt; endl;
-    }
-};
+    &#125;
+&#125;;
 
-void main(){
+void main()&#123;
     Teacher t1;
     strcpy(t1.name, &quot;Jack&quot;);
-    t1.age = 25;
+    t1.age &#x3D; 25;
     t1.say();
     getchar();
-}</code></pre><h2 id="五、C-中的数据类型"><a href="#五、C-中的数据类型" class="headerlink" title="五、C++ 中的数据类型"></a>五、C++ 中的数据类型</h2><ul>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="五-c-中的数据类型"><a class="markdownIt-Anchor" href="#五-c-中的数据类型"></a> 五、C++ 中的数据类型</h2>
+<ul>
 <li><strong>C++中有 bool 类型 ，大小为1字节</strong></li>
 <li><strong>C++中的三目运算可以成为左值，改变复合条件的属性的值</strong></li>
 </ul>
-<pre><code>using namespace std;
-void main(){
-    //bool isSingle = true;
-
-    bool isSingle = -1;
-
-    if(isSingle){
+<pre class="line-numbers language-none"><code class="language-none">using namespace std;
+void main()&#123;
+    &#x2F;&#x2F;bool isSingle &#x3D; true;
+    
+    bool isSingle &#x3D; -1;
+    
+    if(isSingle)&#123;
         cout &lt;&lt; &quot;单身&quot; &lt;&lt; endl;
-    }else{
+    &#125;else&#123;
         cout &lt;&lt; &quot;有对象&quot; &lt;&lt; endl;
-    }
-
-    int a = 10, b = 20;
-    int c = (a &gt; b) ? a : b;
+    &#125;
+    
+    int a &#x3D; 10, b &#x3D; 20;
+    int c &#x3D; (a &gt; b) ? a : b;
     cout &lt;&lt; &quot;最大的数为&quot; &lt;&lt; ((a &gt; b) ? a : b) &lt;&lt; endl;
-
-    //三目运算可以成为左值
-    (a &gt; b) ? a : b = 30;
+    
+    &#x2F;&#x2F;三目运算可以成为左值
+    (a &gt; b) ? a : b &#x3D; 30;
      cout &lt;&lt; &quot;b 的值为&quot; &lt;&lt; b &lt;&lt; endl;
     getchar();
-}</code></pre><h2 id="六、C-中的引用"><a href="#六、C-中的引用" class="headerlink" title="六、C++ 中的引用"></a>六、C++ 中的引用</h2><h3 id="1、引用的定义"><a href="#1、引用的定义" class="headerlink" title="1、引用的定义"></a>1、引用的定义</h3><ul>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="六-c-中的引用"><a class="markdownIt-Anchor" href="#六-c-中的引用"></a> 六、C++ 中的引用</h2>
+<h3 id="1-引用的定义"><a class="markdownIt-Anchor" href="#1-引用的定义"></a> 1、引用的定义</h3>
+<ul>
 <li><strong>C++ 中的引用就是在声明的变量名称前加&amp;符号,是为变量取别名，作为函数参数传递，能保证参数传递过程中不产生副本</strong></li>
 <li><strong>引用必须要有值，不能为NULL</strong></li>
-<li><strong>引用可以直接操作变量，指针要通过取值(*p),间接操作变量，指针的可读性差</strong></li>
+<li>*<em>引用可以直接操作变量，指针要通过取值(<em>p),间接操作变量，指针的可读性差</em></em></li>
 </ul>
-<pre><code>using namespace std;
-void main(){
+<pre class="line-numbers language-none"><code class="language-none">using namespace std;
+void main()&#123;
 
-    int a = 10;
-    //b就是a的内存空间的另一个别名
-    int &amp;b = a;
-
+    int a &#x3D; 10;
+    &#x2F;&#x2F;b就是a的内存空间的另一个别名
+    int &amp;b &#x3D; a;
+    
     cout &lt;&lt; b &lt;&lt; endl;
     getchar();
-
-}</code></pre><h3 id="2、C-中的引用的作用"><a href="#2、C-中的引用的作用" class="headerlink" title="2、C++ 中的引用的作用"></a>2、C++ 中的引用的作用</h3><ul>
+    
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-c-中的引用的作用"><a class="markdownIt-Anchor" href="#2-c-中的引用的作用"></a> 2、C++ 中的引用的作用</h3>
+<ul>
 <li><strong>在 C++ 代码中使用引用比使用指针写起来更加方便</strong></li>
 </ul>
-<pre><code>using namespace std;
+<pre class="line-numbers language-none"><code class="language-none">using namespace std;
 
-//通过指针进行值交换
-void swap_1(int *a, int *b){
-    int c = 0;
-    c = *a;
-    *a = *b;
-    *b = c;
-}
+&#x2F;&#x2F;通过指针进行值交换
+void swap_1(int *a, int *b)&#123;
+    int c &#x3D; 0;
+    c &#x3D; *a;
+    *a &#x3D; *b;
+    *b &#x3D; c;
+&#125;
 
-//通过引用进行值交换
-void swap_2(int &amp;a, int &amp;b){
-    int c = 0;
-    c = a;
-    a = b;
-    b = c;
-}
+&#x2F;&#x2F;通过引用进行值交换
+void swap_2(int &amp;a, int &amp;b)&#123;
+    int c &#x3D; 0;
+    c &#x3D; a;
+    a &#x3D; b;
+    b &#x3D; c;
+&#125;
 
-void main(){
-    int x = 30;
-    int y = 50;
+void main()&#123;
+    int x &#x3D; 30;
+    int y &#x3D; 50;
     swap_1(&amp;x, &amp;y);
     cout &lt;&lt; &quot;指针交换：x的值为：&quot;&lt;&lt; x &lt;&lt; &quot;,y的值为&quot; &lt;&lt; y &lt;&lt; endl;
-
+    
     swap_2(x,y);
     cout &lt;&lt; &quot;引用交换：x的值为：&quot;&lt;&lt; x &lt;&lt; &quot;,y的值为&quot; &lt;&lt; y &lt;&lt; endl;
     getchar();
-
-}</code></pre><h3 id="3、C-中引用的主要功能"><a href="#3、C-中引用的主要功能" class="headerlink" title="3、C++中引用的主要功能"></a>3、C++中引用的主要功能</h3><ul>
+    
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-c中引用的主要功能"><a class="markdownIt-Anchor" href="#3-c中引用的主要功能"></a> 3、C++中引用的主要功能</h3>
+<ul>
 <li><strong>在 C++ 中，引用的主要功能是作为函数的参数或返回值</strong></li>
 </ul>
-<pre><code>using namespace std;
-struct Teacher{
+<pre class="line-numbers language-none"><code class="language-none">using namespace std;
+struct Teacher&#123;
    const char* name;
     int age
-};
-void myprint(Teacher &amp;t){
+&#125;;
+void myprint(Teacher &amp;t)&#123;
     cout &lt;&lt; &quot;姓名：&quot; &lt;&lt; t.name &lt;&lt; &quot;,年龄：&quot; &lt;&lt; t.age &lt;&lt; endl;
-}
+&#125;
 
-void main(){
+void main()&#123;
     Teacher t;
-    t.name = &quot;jsaon&quot;;
-    t.age = 29;
+    t.name &#x3D; &quot;jsaon&quot;;
+    t.age &#x3D; 29;
     myprint(t);
     getchar();
-}</code></pre><ul>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li><strong>在 C++ 中，对指针的引用可以代替二级指针</strong></li>
 </ul>
-<pre><code>using namespace std;
-struct Teacher{
+<pre class="line-numbers language-none"><code class="language-none">using namespace std;
+struct Teacher&#123;
    const char* name;
     int age
-};
-void getTeacher(Teacher **p){
-    Teacher *tmp = (Teacher*)malloc(sizeof(Teacher));
-    tmp-&gt;age = 20;
-    *p = tmp;
-}
+&#125;;
+void getTeacher(Teacher **p)&#123;
+    Teacher *tmp &#x3D; (Teacher*)malloc(sizeof(Teacher));
+    tmp-&gt;age &#x3D; 20;
+    *p &#x3D; tmp;
+&#125;
 
-//指针的引用，代替二级指针
-void getTeacher(Teacher* &amp;p){
-    p = (Teacher*)malloc(sizeof(Teacher));
-    p-&gt;age = 20;
-}
+&#x2F;&#x2F;指针的引用，代替二级指针
+void getTeacher(Teacher* &amp;p)&#123;
+    p &#x3D; (Teacher*)malloc(sizeof(Teacher));
+    p-&gt;age &#x3D; 20;
+&#125;
 
-void main(){
-    Teacher *t = NULL;
+void main()&#123;
+    Teacher *t &#x3D; NULL;
     getTeacher(&amp;t);
     getchar();
-}</code></pre><h3 id="4、指针常量和常量指针"><a href="#4、指针常量和常量指针" class="headerlink" title="4、指针常量和常量指针"></a>4、指针常量和常量指针</h3><ul>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-指针常量和常量指针"><a class="markdownIt-Anchor" href="#4-指针常量和常量指针"></a> 4、指针常量和常量指针</h3>
+<ul>
 <li><strong>指针常量就是指针的常量，不改变地址的指针，但是可以修改它指向的内容</strong></li>
 </ul>
-<pre><code>void main(){
-    int a = 2, b = 3;
-    int *const p1 = &amp;a;
-    //p1 = &amp;b; //失败的，不能改变地址
-    *p1 = 4; //可以改变a的值
+<pre class="line-numbers language-none"><code class="language-none">void main()&#123;
+    int a &#x3D; 2, b &#x3D; 3;
+    int *const p1 &#x3D; &amp;a;
+    &#x2F;&#x2F;p1 &#x3D; &amp;b; &#x2F;&#x2F;失败的，不能改变地址
+    *p1 &#x3D; 4; &#x2F;&#x2F;可以改变a的值
     getchar();
-}
-</code></pre><ul>
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li><strong>常量指针就是指向常量的指针，不能修改内容，可以修改地址</strong></li>
 </ul>
-<pre><code>void main(){
-    int a = 2, b = 3;
-    const int *p2 = &amp;a;
-    p1 = &amp;b; //可以改变地址
-    //*p2 = 9; //不可以改变a的值
+<pre class="line-numbers language-none"><code class="language-none">void main()&#123;
+    int a &#x3D; 2, b &#x3D; 3;
+    const int *p2 &#x3D; &amp;a;
+    p1 &#x3D; &amp;b; &#x2F;&#x2F;可以改变地址
+    &#x2F;&#x2F;*p2 &#x3D; 9; &#x2F;&#x2F;不可以改变a的值
     getchar();
-}
-</code></pre><h3 id="5、常引用"><a href="#5、常引用" class="headerlink" title="5、常引用"></a>5、常引用</h3><p><strong>常引用类似于Java中的final，值不可修改</strong></p>
-<pre><code>void main(){
-    int a = 10,b = 9;
-    const int &amp;c = a;
-    //c = b; //不能再次赋值
-
-    const int &amp;d = 66;
-}</code></pre><h2 id="七、C-中的函数"><a href="#七、C-中的函数" class="headerlink" title="七、C++ 中的函数"></a>七、C++ 中的函数</h2><h3 id="1、函数参数的默认值"><a href="#1、函数参数的默认值" class="headerlink" title="1、函数参数的默认值"></a>1、函数参数的默认值</h3><ul>
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="5-常引用"><a class="markdownIt-Anchor" href="#5-常引用"></a> 5、常引用</h3>
+<p><strong>常引用类似于Java中的final，值不可修改</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">void main()&#123;
+    int a &#x3D; 10,b &#x3D; 9;
+    const int &amp;c &#x3D; a;
+    &#x2F;&#x2F;c &#x3D; b; &#x2F;&#x2F;不能再次赋值
+    
+    const int &amp;d &#x3D; 66;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="七-c-中的函数"><a class="markdownIt-Anchor" href="#七-c-中的函数"></a> 七、C++ 中的函数</h2>
+<h3 id="1-函数参数的默认值"><a class="markdownIt-Anchor" href="#1-函数参数的默认值"></a> 1、函数参数的默认值</h3>
+<ul>
 <li><strong>在C++中，可以对函数的参数设置默认值</strong></li>
 <li><strong>有默认值的参数必须在无默认值参数的最后</strong></li>
 </ul>
-<pre><code>using namespace std;
-int add(int x, int y = 13, int z = 20) {
-    return (x + y + z);
-}
-void main() {
-    int x = 17;
-    int sum = add(10);
-    cout &lt;&lt; &quot;x+y+z=&quot; &lt;&lt; sum &lt;&lt; endl;
-    getchar();
-}</code></pre><h3 id="2、函数的可变参数"><a href="#2、函数的可变参数" class="headerlink" title="2、函数的可变参数"></a>2、函数的可变参数</h3><ul>
+<pre class="line-numbers language-none"><code class="language-none">using namespace std;
+int add(int x, int y &#x3D; 13, int z &#x3D; 20) &#123;
+	return (x + y + z);
+&#125;
+void main() &#123;
+	int x &#x3D; 17;
+	int sum &#x3D; add(10);
+	cout &lt;&lt; &quot;x+y+z&#x3D;&quot; &lt;&lt; sum &lt;&lt; endl;
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-函数的可变参数"><a class="markdownIt-Anchor" href="#2-函数的可变参数"></a> 2、函数的可变参数</h3>
+<ul>
 <li><strong>在C++中，针对函数参数不确定的情况下，可使用可变参数</strong></li>
 </ul>
-<pre><code>#include &lt;stdarg.h&gt;
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;stdarg.h&gt;
 using namespace std;
-void func(int i,...){
-    //可变参数指针
+void func(int i,...)&#123;
+    &#x2F;&#x2F;可变参数指针
     va_list args_p;
-    //开始读取可变参数，i是最后一个固定参数
+    &#x2F;&#x2F;开始读取可变参数，i是最后一个固定参数
     va_start(args_p,i);
-
-    int a = va_arg(args_p,int);
-    int b = va_arg(args_p,int);
-    char c = va_arg(args_p,char);
+    
+    int a &#x3D; va_arg(args_p,int);
+    int b &#x3D; va_arg(args_p,int);
+    char c &#x3D; va_arg(args_p,char);
     cout &lt;&lt; a &lt;&lt; endl;
     cout &lt;&lt; b &lt;&lt; endl;
     cout &lt;&lt; c &lt;&lt; endl;
-    //结束
+    &#x2F;&#x2F;结束
     va_end(args_p);
-}
+&#125;
 
-void main() {
-    func(9,10,32,&#39;C&#39;);
-    getchar();
-}</code></pre><h3 id="3、函数的可变参数-循环读取"><a href="#3、函数的可变参数-循环读取" class="headerlink" title="3、函数的可变参数(循环读取)"></a>3、函数的可变参数(循环读取)</h3><ul>
+void main() &#123;
+	func(9,10,32,&#39;C&#39;);
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-函数的可变参数循环读取"><a class="markdownIt-Anchor" href="#3-函数的可变参数循环读取"></a> 3、函数的可变参数(循环读取)</h3>
+<ul>
 <li><strong>在C++中，针对函数参数不确定的情况下，可使用可变参数</strong></li>
-<li>**可变参数在循环遍历时，不能获取个数，只能通过约定来确定可变参数个数；如第一个值来表</li>
-<li>示可变参数个数**</li>
+<li><strong>可变参数在循环遍历时，不能获取个数，只能通过约定来确定可变参数个数；如第一个值来表<br />
+-示可变参数个数</strong></li>
 </ul>
-<pre><code>#include &lt;stdarg.h&gt;
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;stdarg.h&gt;
 using namespace std;
-void func(int count, ...) {
-    //可变参数指针
-    va_list args_p;
-    //开始读取可变参数，i是最后一个固定参数
-    va_start(args_p, count);
-    char value;
-    int i = 0;
-    for (;i &lt; count; i++) {
-        value = va_arg(args_p, char);
-        cout &lt;&lt; value &lt;&lt; endl;
-    }
-    //结束
-    va_end(args_p);
-}
+void func(int count, ...) &#123;
+	&#x2F;&#x2F;可变参数指针
+	va_list args_p;
+	&#x2F;&#x2F;开始读取可变参数，i是最后一个固定参数
+	va_start(args_p, count);
+	char value;
+	int i &#x3D; 0;
+	for (;i &lt; count; i++) &#123;
+		value &#x3D; va_arg(args_p, char);
+		cout &lt;&lt; value &lt;&lt; endl;
+	&#125;
+	&#x2F;&#x2F;结束
+	va_end(args_p);
+&#125;
 
-void main() {
-    func(3, &#39;a&#39;, &#39;b&#39;, &#39;C&#39;);
-    getchar();
-}</code></pre>
+void main() &#123;
+	func(3, &#39;a&#39;, &#39;b&#39;, &#39;C&#39;);
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
   </div>
   <div>
   
@@ -607,7 +653,7 @@ void main() {
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-命名空间及引用"><span class="toc-text">C++命名空间及引用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、C-与-C-的关系"><span class="toc-text">一、C 与 C++ 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、C-命名空间"><span class="toc-text">二、C++ 命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、C-中的类"><span class="toc-text">三、C++ 中的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、C-中的结构体"><span class="toc-text">四、C++ 中的结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、C-中的数据类型"><span class="toc-text">五、C++ 中的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、C-中的引用"><span class="toc-text">六、C++ 中的引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、引用的定义"><span class="toc-text">1、引用的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、C-中的引用的作用"><span class="toc-text">2、C++ 中的引用的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、C-中引用的主要功能"><span class="toc-text">3、C++中引用的主要功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、指针常量和常量指针"><span class="toc-text">4、指针常量和常量指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、常引用"><span class="toc-text">5、常引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、C-中的函数"><span class="toc-text">七、C++ 中的函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、函数参数的默认值"><span class="toc-text">1、函数参数的默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、函数的可变参数"><span class="toc-text">2、函数的可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、函数的可变参数-循环读取"><span class="toc-text">3、函数的可变参数(循环读取)</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E5%8F%8A%E5%BC%95%E7%94%A8"><span class="toc-text"> C++命名空间及引用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-c-%E4%B8%8E-c-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text"> 一、C 与 C++ 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-c-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-text"> 二、C++ 命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-c-%E4%B8%AD%E7%9A%84%E7%B1%BB"><span class="toc-text"> 三、C++ 中的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-c-%E4%B8%AD%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text"> 四、C++ 中的结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-c-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 五、C++ 中的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-c-%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8"><span class="toc-text"> 六、C++ 中的引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BC%95%E7%94%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、引用的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-c-%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 2、C++ 中的引用的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-c%E4%B8%AD%E5%BC%95%E7%94%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-text"> 3、C++中引用的主要功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8C%87%E9%92%88%E5%B8%B8%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88"><span class="toc-text"> 4、指针常量和常量指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B8%B8%E5%BC%95%E7%94%A8"><span class="toc-text"> 5、常引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-c-%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-text"> 七、C++ 中的函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text"> 1、函数参数的默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="toc-text"> 2、函数的可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%BE%AA%E7%8E%AF%E8%AF%BB%E5%8F%96"><span class="toc-text"> 3、函数的可变参数(循环读取)</span></a></li></ol></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -623,7 +669,7 @@ void main() {
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -640,7 +686,7 @@ void main() {
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-命名空间及引用"><span class="toc-text">C++命名空间及引用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、C-与-C-的关系"><span class="toc-text">一、C 与 C++ 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、C-命名空间"><span class="toc-text">二、C++ 命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、C-中的类"><span class="toc-text">三、C++ 中的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、C-中的结构体"><span class="toc-text">四、C++ 中的结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、C-中的数据类型"><span class="toc-text">五、C++ 中的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、C-中的引用"><span class="toc-text">六、C++ 中的引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、引用的定义"><span class="toc-text">1、引用的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、C-中的引用的作用"><span class="toc-text">2、C++ 中的引用的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、C-中引用的主要功能"><span class="toc-text">3、C++中引用的主要功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、指针常量和常量指针"><span class="toc-text">4、指针常量和常量指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、常引用"><span class="toc-text">5、常引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、C-中的函数"><span class="toc-text">七、C++ 中的函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、函数参数的默认值"><span class="toc-text">1、函数参数的默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、函数的可变参数"><span class="toc-text">2、函数的可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、函数的可变参数-循环读取"><span class="toc-text">3、函数的可变参数(循环读取)</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E5%8F%8A%E5%BC%95%E7%94%A8"><span class="toc-text"> C++命名空间及引用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-c-%E4%B8%8E-c-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text"> 一、C 与 C++ 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-c-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-text"> 二、C++ 命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-c-%E4%B8%AD%E7%9A%84%E7%B1%BB"><span class="toc-text"> 三、C++ 中的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-c-%E4%B8%AD%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text"> 四、C++ 中的结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-c-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 五、C++ 中的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-c-%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8"><span class="toc-text"> 六、C++ 中的引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BC%95%E7%94%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、引用的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-c-%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 2、C++ 中的引用的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-c%E4%B8%AD%E5%BC%95%E7%94%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-text"> 3、C++中引用的主要功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8C%87%E9%92%88%E5%B8%B8%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88"><span class="toc-text"> 4、指针常量和常量指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B8%B8%E5%BC%95%E7%94%A8"><span class="toc-text"> 5、常引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-c-%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-text"> 七、C++ 中的函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text"> 1、函数参数的默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="toc-text"> 2、函数的可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%BE%AA%E7%8E%AF%E8%AF%BB%E5%8F%96"><span class="toc-text"> 3、函数的可变参数(循环读取)</span></a></li></ol></li></ol></li></ol>
     </div>
   </article>
   
@@ -661,13 +707,6 @@ void main() {
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -713,9 +752,9 @@ void main() {
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -723,14 +762,21 @@ void main() {
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -738,6 +784,13 @@ void main() {
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -774,13 +827,13 @@ void main() {
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -795,7 +848,7 @@ void main() {
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-命名空间及引用"><span class="toc-text">C++命名空间及引用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、C-与-C-的关系"><span class="toc-text">一、C 与 C++ 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、C-命名空间"><span class="toc-text">二、C++ 命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、C-中的类"><span class="toc-text">三、C++ 中的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、C-中的结构体"><span class="toc-text">四、C++ 中的结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、C-中的数据类型"><span class="toc-text">五、C++ 中的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、C-中的引用"><span class="toc-text">六、C++ 中的引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、引用的定义"><span class="toc-text">1、引用的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、C-中的引用的作用"><span class="toc-text">2、C++ 中的引用的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、C-中引用的主要功能"><span class="toc-text">3、C++中引用的主要功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、指针常量和常量指针"><span class="toc-text">4、指针常量和常量指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、常引用"><span class="toc-text">5、常引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、C-中的函数"><span class="toc-text">七、C++ 中的函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、函数参数的默认值"><span class="toc-text">1、函数参数的默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、函数的可变参数"><span class="toc-text">2、函数的可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、函数的可变参数-循环读取"><span class="toc-text">3、函数的可变参数(循环读取)</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E5%8F%8A%E5%BC%95%E7%94%A8"><span class="toc-text"> C++命名空间及引用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-c-%E4%B8%8E-c-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text"> 一、C 与 C++ 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-c-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-text"> 二、C++ 命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-c-%E4%B8%AD%E7%9A%84%E7%B1%BB"><span class="toc-text"> 三、C++ 中的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-c-%E4%B8%AD%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text"> 四、C++ 中的结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-c-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 五、C++ 中的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-c-%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8"><span class="toc-text"> 六、C++ 中的引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BC%95%E7%94%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text"> 1、引用的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-c-%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 2、C++ 中的引用的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-c%E4%B8%AD%E5%BC%95%E7%94%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-text"> 3、C++中引用的主要功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8C%87%E9%92%88%E5%B8%B8%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88"><span class="toc-text"> 4、指针常量和常量指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B8%B8%E5%BC%95%E7%94%A8"><span class="toc-text"> 5、常引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-c-%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-text"> 七、C++ 中的函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text"> 1、函数参数的默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="toc-text"> 2、函数的可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%BE%AA%E7%8E%AF%E8%AF%BB%E5%8F%96"><span class="toc-text"> 3、函数的可变参数(循环读取)</span></a></li></ol></li></ol></li></ol>
   </article>
   
   
@@ -806,22 +859,22 @@ void main() {
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -870,7 +923,7 @@ void main() {
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

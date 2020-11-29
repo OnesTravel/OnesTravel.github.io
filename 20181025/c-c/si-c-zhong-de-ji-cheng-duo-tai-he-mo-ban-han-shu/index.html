@@ -127,7 +127,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -221,7 +234,7 @@
     
     
     <span class="dot"></span>
-    <span>1.6k 字</span>
+    <span>1.8k 字</span>
     
   </div>
   
@@ -237,127 +250,135 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="C-中的继承、多态和模板函数"><a href="#C-中的继承、多态和模板函数" class="headerlink" title="C++中的继承、多态和模板函数"></a>C++中的继承、多态和模板函数</h1><h2 id="一、继承"><a href="#一、继承" class="headerlink" title="一、继承"></a>一、继承</h2><h3 id="1、属性和方法的继承"><a href="#1、属性和方法的继承" class="headerlink" title="1、属性和方法的继承"></a>1、属性和方法的继承</h3><p><strong>继承可以更好的实现代码的重用性</strong></p>
-<pre><code>#include &lt;stdlib.h&gt;
+    <h1 id="c中的继承-多态和模板函数"><a class="markdownIt-Anchor" href="#c中的继承-多态和模板函数"></a> C++中的继承、多态和模板函数</h1>
+<h2 id="一-继承"><a class="markdownIt-Anchor" href="#一-继承"></a> 一、继承</h2>
+<h3 id="1-属性和方法的继承"><a class="markdownIt-Anchor" href="#1-属性和方法的继承"></a> 1、属性和方法的继承</h3>
+<p><strong>继承可以更好的实现代码的重用性</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;stdlib.h&gt;
 #include &lt;iostream&gt;
 
 using namespace std;
 
-//开发者
-class Developer {
+&#x2F;&#x2F;开发者
+class Developer &#123;
 protected:
-    char* language;
-    char* ide;
-    int age;
+	char* language;
+	char* ide;
+	int age;
 public:
-    void say() {
-        cout &lt;&lt; &quot;我是开发者&quot; &lt;&lt; endl;
-    }
-};
+	void say() &#123;
+		cout &lt;&lt; &quot;我是开发者&quot; &lt;&lt; endl;
+	&#125;
+&#125;;
 
-//Android开发者
-class AndroidDeveloper : public Developer {
+&#x2F;&#x2F;Android开发者
+class AndroidDeveloper : public Developer &#123;
 public:
-    AndroidDeveloper() {
-        this-&gt;language = (char*)&quot;Android+Kotlin&quot;;
-        this-&gt;ide = (char*)&quot;Android Stuio&quot;;
-    }
-    //开发Android Application
-    void createAndroidApp() {
-        cout &lt;&lt; &quot;我使用&quot; &lt;&lt; this-&gt;ide &lt;&lt; &quot;开发了一款Android应用,使用了&quot; &lt;&lt; this-&gt;language &lt;&lt; &quot;语言&quot; &lt;&lt; endl;
-    }
+	AndroidDeveloper() &#123;
+		this-&gt;language &#x3D; (char*)&quot;Android+Kotlin&quot;;
+		this-&gt;ide &#x3D; (char*)&quot;Android Stuio&quot;;
+	&#125;
+	&#x2F;&#x2F;开发Android Application
+	void createAndroidApp() &#123;
+		cout &lt;&lt; &quot;我使用&quot; &lt;&lt; this-&gt;ide &lt;&lt; &quot;开发了一款Android应用,使用了&quot; &lt;&lt; this-&gt;language &lt;&lt; &quot;语言&quot; &lt;&lt; endl;
+	&#125;
 private:
-    //Android 版本
-    char* androidVersion;
+	&#x2F;&#x2F;Android 版本
+	char* androidVersion;
 
-};
+&#125;;
 
-//所有开发者都有开发工作
-void work(Developer&amp; d) {
-    d.say();
-}
+&#x2F;&#x2F;所有开发者都有开发工作
+void work(Developer&amp; d) &#123;
+	d.say();
+&#125;
 
-void main() {
-    AndroidDeveloper androidDev;
-    androidDev.say();
-    androidDev.createAndroidApp();
-    //子类对象初始化父类类型的对象
-    Developer d1 = androidDev;
-    work(d1);
-    //父类类型的指针
-    Developer* d_p = &amp;androidDev;
-    d_p-&gt;say();
-    //父类类型的引用
-    Developer d2 = androidDev;
-    d2.say();
+void main() &#123;
+	AndroidDeveloper androidDev;
+	androidDev.say();
+	androidDev.createAndroidApp();
+    &#x2F;&#x2F;子类对象初始化父类类型的对象
+	Developer d1 &#x3D; androidDev;
+	work(d1);
+	&#x2F;&#x2F;父类类型的指针
+	Developer* d_p &#x3D; &amp;androidDev;
+	d_p-&gt;say();
+	&#x2F;&#x2F;父类类型的引用
+	Developer d2 &#x3D; androidDev;
+	d2.say();
 
-    getchar();
-}</code></pre><h3 id="2、通过子类给父类构造方法传参"><a href="#2、通过子类给父类构造方法传参" class="headerlink" title="2、通过子类给父类构造方法传参"></a>2、通过子类给父类构造方法传参</h3><p><strong>父类的构造函数先调用；子类的析构函数先调用</strong></p>
-<pre><code>//开发者
-class Developer {
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-通过子类给父类构造方法传参"><a class="markdownIt-Anchor" href="#2-通过子类给父类构造方法传参"></a> 2、通过子类给父类构造方法传参</h3>
+<p><strong>父类的构造函数先调用；子类的析构函数先调用</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;开发者
+class Developer &#123;
 protected:
-    char* language;
-    char* ide;
-    int age;
+	char* language;
+	char* ide;
+	int age;
 public:
-    Developer(char * language, char* ide, int age) {
-        this-&gt;language = language;
-        this-&gt;ide = ide;
-        this-&gt;age = age;
-        cout &lt;&lt; &quot;Developer 构造函数&quot; &lt;&lt; endl;
-    }
-    ~Developer() {
-        cout &lt;&lt; &quot;Developer 析构函数&quot; &lt;&lt; endl;
-    }
-    void say() {
-        cout &lt;&lt; &quot;我是开发者&quot; &lt;&lt; endl;
-    }
-};
+	Developer(char * language, char* ide, int age) &#123;
+		this-&gt;language &#x3D; language;
+		this-&gt;ide &#x3D; ide;
+		this-&gt;age &#x3D; age;
+		cout &lt;&lt; &quot;Developer 构造函数&quot; &lt;&lt; endl;
+	&#125;
+	~Developer() &#123;
+		cout &lt;&lt; &quot;Developer 析构函数&quot; &lt;&lt; endl;
+	&#125;
+	void say() &#123;
+		cout &lt;&lt; &quot;我是开发者&quot; &lt;&lt; endl;
+	&#125;
+&#125;;
 
-//Android开发者
-class AndroidDeveloper : public Developer {
+&#x2F;&#x2F;Android开发者
+class AndroidDeveloper : public Developer &#123;
 public:
-    AndroidDeveloper(char* language, char* ide, int age, char* androidVersion) : Developer(language, ide, age) {
-        this-&gt;language = language;
-        this-&gt;ide = ide;
-        this-&gt;age = age;
-        cout &lt;&lt; &quot;AndroidDeveloper 构造函数&quot; &lt;&lt; endl;
-    }
-    ~AndroidDeveloper(){
-        cout &lt;&lt; &quot;AndroidDeveloper 析构函数&quot; &lt;&lt; endl;
-    }
-    //开发Android Application
-    void createAndroidApp() {
-        cout &lt;&lt; &quot;我使用&quot; &lt;&lt; this-&gt;ide &lt;&lt; &quot;开发了一款Android应用,使用了&quot; &lt;&lt; this-&gt;language &lt;&lt; &quot;语言&quot; &lt;&lt; endl;
-    }
+	AndroidDeveloper(char* language, char* ide, int age, char* androidVersion) : Developer(language, ide, age) &#123;
+		this-&gt;language &#x3D; language;
+		this-&gt;ide &#x3D; ide;
+		this-&gt;age &#x3D; age;
+		cout &lt;&lt; &quot;AndroidDeveloper 构造函数&quot; &lt;&lt; endl;
+	&#125;
+	~AndroidDeveloper()&#123;
+		cout &lt;&lt; &quot;AndroidDeveloper 析构函数&quot; &lt;&lt; endl;
+	&#125;
+	&#x2F;&#x2F;开发Android Application
+	void createAndroidApp() &#123;
+		cout &lt;&lt; &quot;我使用&quot; &lt;&lt; this-&gt;ide &lt;&lt; &quot;开发了一款Android应用,使用了&quot; &lt;&lt; this-&gt;language &lt;&lt; &quot;语言&quot; &lt;&lt; endl;
+	&#125;
 private:
-    //Android 版本
-    char* androidVersion;
+	&#x2F;&#x2F;Android 版本
+	char* androidVersion;
 
-};
+&#125;;
 
-void work(Developer&amp; d) {
-    d.say();
-}
+void work(Developer&amp; d) &#123;
+	d.say();
+&#125;
 
-//父类的构造函数先调用
-//子类的析构函数先调用
-void func() {
-    AndroidDeveloper androidDev((char*)&quot;Kotlin&quot;, (char*)&quot;Android Studio&quot;, 5, (char*)&quot;5.0.1&quot;);
-    androidDev.say();
-    androidDev.createAndroidApp();
-}
+&#x2F;&#x2F;父类的构造函数先调用
+&#x2F;&#x2F;子类的析构函数先调用
+void func() &#123;
+	AndroidDeveloper androidDev((char*)&quot;Kotlin&quot;, (char*)&quot;Android Studio&quot;, 5, (char*)&quot;5.0.1&quot;);
+	androidDev.say();
+	androidDev.createAndroidApp();
+&#125;
 
-void main() {
-    func();
-    getchar();
-}</code></pre><p>输出：</p>
-<pre><code>Developer 构造函数
+void main() &#123;
+	func();
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">Developer 构造函数
 AndroidDeveloper 构造函数
 我是开发者
 我使用Android Studio开发了一款Android应用,使用了Kotlin语言
 AndroidDeveloper 析构函数
-Developer 析构函数</code></pre><h3 id="3、继承中父类和子类的权限继承关系"><a href="#3、继承中父类和子类的权限继承关系" class="headerlink" title="3、继承中父类和子类的权限继承关系"></a>3、继承中父类和子类的权限继承关系</h3><table>
+Developer 析构函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-继承中父类和子类的权限继承关系"><a class="markdownIt-Anchor" href="#3-继承中父类和子类的权限继承关系"></a> 3、继承中父类和子类的权限继承关系</h3>
+<table>
 <thead>
 <tr>
 <th>基类中</th>
@@ -365,7 +386,8 @@ Developer 析构函数</code></pre><h3 id="3、继承中父类和子类的权限
 <th>子类中</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>public</td>
 <td>＆ public继承</td>
 <td>=&gt; public</td>
@@ -410,196 +432,218 @@ Developer 析构函数</code></pre><h3 id="3、继承中父类和子类的权限
 <td>＆ private继承</td>
 <td>=&gt; 子类无权访问</td>
 </tr>
-</tbody></table>
-<h3 id="4、继承的二义性"><a href="#4、继承的二义性" class="headerlink" title="4、继承的二义性"></a>4、继承的二义性</h3><h4 id="4-1-继承的二义性定义"><a href="#4-1-继承的二义性定义" class="headerlink" title="4.1 继承的二义性定义"></a>4.1 继承的二义性定义</h4><p><strong>在某个类B同时继承另一个类A的两个或多个子类时(A1和A2)，通过类B访问类A的成员时，会出现成员不明确的情况，即继承的二义性</strong></p>
-<pre><code>class A {
+</tbody>
+</table>
+<h3 id="4-继承的二义性"><a class="markdownIt-Anchor" href="#4-继承的二义性"></a> 4、继承的二义性</h3>
+<h4 id="41-继承的二义性定义"><a class="markdownIt-Anchor" href="#41-继承的二义性定义"></a> 4.1 继承的二义性定义</h4>
+<p><strong>在某个类B同时继承另一个类A的两个或多个子类时(A1和A2)，通过类B访问类A的成员时，会出现成员不明确的情况，即继承的二义性</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">class A &#123;
 public:
-    char* name;
-};
+	char* name;
+&#125;;
 
-class A1 : public A {
+class A1 : public A &#123;
 
-};
+&#125;;
 
-class A2 : public A {
+class A2 : public A &#123;
 
-};
+&#125;;
 
-class B : public A1, public A2 {
+class B : public A1, public A2 &#123;
 
-};
+&#125;;
 
-void main() {
-    B b;
-    //报错，提示B::name不明确
-    //b.name = (char*)&quot;Jack&quot;;
+void main() &#123;
+	B b;
+	&#x2F;&#x2F;报错，提示B::name不明确
+	&#x2F;&#x2F;b.name &#x3D; (char*)&quot;Jack&quot;;
 
-    //指定父类显式调用
-    b.A1::name = (char*)&quot;Rose&quot;;
-    getchar();
-}</code></pre><h4 id="4-2-继承的二义性定义解决方案"><a href="#4-2-继承的二义性定义解决方案" class="headerlink" title="4.2 继承的二义性定义解决方案"></a>4.2 继承的二义性定义解决方案</h4><p><strong>再遇到继承的二义性时，可使用虚继承来解决继承的二义性问题</strong><br><strong>虚继承：不同路径继承来的同名成员只有一份拷贝</strong></p>
-<pre><code>class A {
+	&#x2F;&#x2F;指定父类显式调用
+	b.A1::name &#x3D; (char*)&quot;Rose&quot;;
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="42-继承的二义性定义解决方案"><a class="markdownIt-Anchor" href="#42-继承的二义性定义解决方案"></a> 4.2 继承的二义性定义解决方案</h4>
+<p><strong>再遇到继承的二义性时，可使用虚继承来解决继承的二义性问题</strong><br />
+<strong>虚继承：不同路径继承来的同名成员只有一份拷贝</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">class A &#123;
 public:
-    char* name;
-};
+	char* name;
+&#125;;
 
-class A1 : virtual public A {
+class A1 : virtual public A &#123;
 
-};
+&#125;;
 
-class A2 : virtual public A {
+class A2 : virtual public A &#123;
 
-};
+&#125;;
 
-class B : public A1, public A2 {
+class B : public A1, public A2 &#123;
 
-};
+&#125;;
 
-void main() {
-    B b;
-    //报错，提示B::name不明确
-    //b.name = (char*)&quot;Jack&quot;;
+void main() &#123;
+	B b;
+	&#x2F;&#x2F;报错，提示B::name不明确
+	&#x2F;&#x2F;b.name &#x3D; (char*)&quot;Jack&quot;;
 
-    //指定父类显式调用
-    b.A1::name = (char*)&quot;Rose&quot;;
-    getchar();
-}</code></pre><h2 id="二、多态"><a href="#二、多态" class="headerlink" title="二、多态"></a>二、多态</h2><ul>
+	&#x2F;&#x2F;指定父类显式调用
+	b.A1::name &#x3D; (char*)&quot;Rose&quot;;
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="二-多态"><a class="markdownIt-Anchor" href="#二-多态"></a> 二、多态</h2>
+<ul>
 <li><strong>多态是为了提高程序的扩展性</strong></li>
 <li><strong>动态多态：子类重写父类的函数，程序运行过程中，决定哪一个函数被调用</strong></li>
 <li><strong>静态多态：就是函数重载</strong></li>
 </ul>
-<h3 id="1、虚函数"><a href="#1、虚函数" class="headerlink" title="1、虚函数"></a>1、虚函数</h3><p><strong>virtual 关键字修饰的函数叫虚函数，用来实现多态</strong></p>
+<h3 id="1-虚函数"><a class="markdownIt-Anchor" href="#1-虚函数"></a> 1、虚函数</h3>
+<p><strong>virtual 关键字修饰的函数叫虚函数，用来实现多态</strong></p>
 <p>例如：</p>
 <p>Plane.h</p>
-<pre><code>#pragma once
+<pre class="line-numbers language-none"><code class="language-none">#pragma once
 
-class Plane {
+class Plane &#123;
 public:
-    virtual void fly();
-    virtual void land();
-};
-</code></pre><p>Plane.cpp</p>
-<pre><code>#include &quot;Plane.h&quot;
+	virtual void fly();
+	virtual void land();
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Plane.cpp</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &quot;Plane.h&quot;
 #include &lt;stdlib.h&gt;
 #include &lt;iostream&gt;
 
 using namespace std;
-void Plane::fly() {
-    cout &lt;&lt; &quot;飞机起飞&quot; &lt;&lt; endl;
-}
+void Plane::fly() &#123;
+	cout &lt;&lt; &quot;飞机起飞&quot; &lt;&lt; endl;
+&#125;
 
-void Plane::land() {
-    cout &lt;&lt; &quot;飞机降落&quot; &lt;&lt; endl;
-}</code></pre><p>Helicopter.h</p>
-<pre><code>#pragma once
+void Plane::land() &#123;
+	cout &lt;&lt; &quot;飞机降落&quot; &lt;&lt; endl;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Helicopter.h</p>
+<pre class="line-numbers language-none"><code class="language-none">#pragma once
 #include &quot;Plane.h&quot;
 
-class Helicopter : public Plane {
+class Helicopter : public Plane &#123;
 public:
-    virtual void fly();
-    virtual void land();
-};
-</code></pre><p>Helicopter.cpp</p>
-<pre><code>#include &quot;Helicopter.h&quot;
+	virtual void fly();
+	virtual void land();
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Helicopter.cpp</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &quot;Helicopter.h&quot;
 #include &lt;stdlib.h&gt;
 #include &lt;iostream&gt;
 
 using namespace std;
-void Helicopter::fly() {
-    cout &lt;&lt; &quot;直升飞机在原地起飞&quot; &lt;&lt; endl;
-}
+void Helicopter::fly() &#123;
+	cout &lt;&lt; &quot;直升飞机在原地起飞&quot; &lt;&lt; endl;
+&#125;
 
-void Helicopter::land() {
-    cout &lt;&lt; &quot;直升飞机降落在屋顶&quot; &lt;&lt; endl;
-}
-</code></pre><p>Test.cpp</p>
-<pre><code>#include &lt;stdlib.h&gt;
+void Helicopter::land() &#123;
+	cout &lt;&lt; &quot;直升飞机降落在屋顶&quot; &lt;&lt; endl;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Test.cpp</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;stdlib.h&gt;
 #include &lt;iostream&gt;
 #include &quot;Plane.h&quot;
 #include &quot;Helicopter.h&quot;
 using namespace std;
 
-//业务函数
+&#x2F;&#x2F;业务函数
 
-void runPlane(Plane &amp;p) {
-    p.fly();
-    p.land();
-}
+void runPlane(Plane &amp;p) &#123;
+	p.fly();
+	p.land();
+&#125;
 
-void main() {
-    Plane p;
-
-    runPlane(p);
-    Helicopter h;
-    //在 Plane.h 和 Helicopter.h 中的函数上不使用 virtual 修饰时，打印“飞机起飞”和“飞机降落”
-    //使用 virtual 修饰时，打印“直升飞机在原地起飞”和“直升飞机降落在屋顶”，实现多态
-    runPlane(h);
-    getchar();
-}
-</code></pre><h3 id="2、发生动态多态的条件"><a href="#2、发生动态多态的条件" class="headerlink" title="2、发生动态多态的条件"></a>2、发生动态多态的条件</h3><ul>
+void main() &#123;
+	Plane p;
+	
+	runPlane(p);
+	Helicopter h;
+	&#x2F;&#x2F;在 Plane.h 和 Helicopter.h 中的函数上不使用 virtual 修饰时，打印“飞机起飞”和“飞机降落”
+	&#x2F;&#x2F;使用 virtual 修饰时，打印“直升飞机在原地起飞”和“直升飞机降落在屋顶”，实现多态
+	runPlane(h);
+	getchar();
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-发生动态多态的条件"><a class="markdownIt-Anchor" href="#2-发生动态多态的条件"></a> 2、发生动态多态的条件</h3>
+<ul>
 <li>使用继承</li>
 <li>父类的引用或指针指向子类的对象</li>
 <li>函数的重写</li>
 </ul>
-<h3 id="3、纯虚函数（抽象类）"><a href="#3、纯虚函数（抽象类）" class="headerlink" title="3、纯虚函数（抽象类）"></a>3、纯虚函数（抽象类）</h3><ul>
+<h3 id="3-纯虚函数抽象类"><a class="markdownIt-Anchor" href="#3-纯虚函数抽象类"></a> 3、纯虚函数（抽象类）</h3>
+<ul>
 <li><strong>当一个类具有一个纯虚函数时，这个类就是抽象类</strong></li>
 <li><strong>抽象类不能被实例化</strong></li>
 <li><strong>子类继承抽象类，必须要实现纯虚函数，如果没有重新，子类也是抽象类</strong></li>
 </ul>
-<pre><code>//形状
-class Shape {
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;形状
+class Shape &#123;
 public:
-    virtual void sayArea() = 0;
-};
+	virtual void sayArea() &#x3D; 0;
+&#125;;
 
-//圆
-class Circle : public Shape {
+&#x2F;&#x2F;圆
+class Circle : public Shape &#123;
 private:
-    int r;
+	int r;
 public:
-    Circle(int r) {
-        this-&gt;r = r;
-    }
-    void sayArea() {
-        cout &lt;&lt; &quot;圆的面积：&quot; &lt;&lt; 3.14 * r * r &lt;&lt; endl;
-    }
-};
+	Circle(int r) &#123;
+		this-&gt;r &#x3D; r;
+	&#125;
+	void sayArea() &#123;
+		cout &lt;&lt; &quot;圆的面积：&quot; &lt;&lt; 3.14 * r * r &lt;&lt; endl;
+	&#125;
+&#125;;
 
-void main() {
-    Circle c(5);
-    c.sayArea();
-    getchar();
-}</code></pre><h3 id="4、接口"><a href="#4、接口" class="headerlink" title="4、接口"></a>4、接口</h3><p><strong>接口只是逻辑上的划分，语法上跟抽象类的写法没有区别</strong></p>
-<pre><code>//可以看作一个接口
-class Drawable{
-    virtual void draw() = 0;
-}</code></pre><h3 id="5、抽象类的作用"><a href="#5、抽象类的作用" class="headerlink" title="5、抽象类的作用"></a>5、抽象类的作用</h3><p><strong>为了继承约束，子类必须按照约束实现</strong></p>
-<pre><code>//可以看作一个接口
-class Drawable{
-    virtual void draw() = 0;
-}</code></pre><h2 id="二、模板函数（泛型）"><a href="#二、模板函数（泛型）" class="headerlink" title="二、模板函数（泛型）"></a>二、模板函数（泛型）</h2><p><strong>函数模板类似于泛型，用于在业务相同，参数类型不同时进行声明，在使用过程中，根据实际类型进行推导</strong></p>
-<pre><code>template &lt;typename T,typename Z&gt;
-//交换两个变量的值
-void swap(T&amp; a, Z&amp; b){
-    T tmp = 0;
-    tmp = a;
-    a = b;
-    b = tmp;
-}
+void main() &#123;
+	Circle c(5);
+	c.sayArea();
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-接口"><a class="markdownIt-Anchor" href="#4-接口"></a> 4、接口</h3>
+<p><strong>接口只是逻辑上的划分，语法上跟抽象类的写法没有区别</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;可以看作一个接口
+class Drawable&#123;
+    virtual void draw() &#x3D; 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="5-抽象类的作用"><a class="markdownIt-Anchor" href="#5-抽象类的作用"></a> 5、抽象类的作用</h3>
+<p><strong>为了继承约束，子类必须按照约束实现</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;可以看作一个接口
+class Drawable&#123;
+    virtual void draw() &#x3D; 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="二-模板函数泛型"><a class="markdownIt-Anchor" href="#二-模板函数泛型"></a> 二、模板函数（泛型）</h2>
+<p><strong>函数模板类似于泛型，用于在业务相同，参数类型不同时进行声明，在使用过程中，根据实际类型进行推导</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">template &lt;typename T,typename Z&gt;
+&#x2F;&#x2F;交换两个变量的值
+void swap(T&amp; a, Z&amp; b)&#123;
+    T tmp &#x3D; 0;
+    tmp &#x3D; a;
+    a &#x3D; b;
+    b &#x3D; tmp;
+&#125;
 
-void main(){
-    int a = 10;
-    int b = 25;
+void main()&#123;
+    int a &#x3D; 10;
+    int b &#x3D; 25;
     swap(a,b);
     cout &lt;&lt; a &lt;&lt; &quot;,&quot; &lt;&lt; b &lt;&lt; endl;
-
-    char* x = (char*)&quot;abc&quot;;
-    char* y = (char*)&quot;def&quot;;
+    
+    char* x &#x3D; (char*)&quot;abc&quot;;
+    char* y &#x3D; (char*)&quot;def&quot;;
     swap(x,y);
     cout &lt;&lt; x &lt;&lt; &quot;,&quot; &lt;&lt; y &lt;&lt; endl;
-
+    
     getchar();
-}</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
   </div>
   <div>
   
@@ -671,7 +715,7 @@ void main(){
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-中的继承、多态和模板函数"><span class="toc-text">C++中的继承、多态和模板函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、继承"><span class="toc-text">一、继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、属性和方法的继承"><span class="toc-text">1、属性和方法的继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、通过子类给父类构造方法传参"><span class="toc-text">2、通过子类给父类构造方法传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、继承中父类和子类的权限继承关系"><span class="toc-text">3、继承中父类和子类的权限继承关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、继承的二义性"><span class="toc-text">4、继承的二义性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-继承的二义性定义"><span class="toc-text">4.1 继承的二义性定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-继承的二义性定义解决方案"><span class="toc-text">4.2 继承的二义性定义解决方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、多态"><span class="toc-text">二、多态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、虚函数"><span class="toc-text">1、虚函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、发生动态多态的条件"><span class="toc-text">2、发生动态多态的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、纯虚函数（抽象类）"><span class="toc-text">3、纯虚函数（抽象类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、接口"><span class="toc-text">4、接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、抽象类的作用"><span class="toc-text">5、抽象类的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、模板函数（泛型）"><span class="toc-text">二、模板函数（泛型）</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81%E5%92%8C%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0"><span class="toc-text"> C++中的继承、多态和模板函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%BB%A7%E6%89%BF"><span class="toc-text"> 一、继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text"> 1、属性和方法的继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%9A%E8%BF%87%E5%AD%90%E7%B1%BB%E7%BB%99%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E4%BC%A0%E5%8F%82"><span class="toc-text"> 2、通过子类给父类构造方法传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%88%B6%E7%B1%BB%E5%92%8C%E5%AD%90%E7%B1%BB%E7%9A%84%E6%9D%83%E9%99%90%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="toc-text"> 3、继承中父类和子类的权限继承关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BA%8C%E4%B9%89%E6%80%A7"><span class="toc-text"> 4、继承的二义性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#41-%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BA%8C%E4%B9%89%E6%80%A7%E5%AE%9A%E4%B9%89"><span class="toc-text"> 4.1 继承的二义性定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#42-%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BA%8C%E4%B9%89%E6%80%A7%E5%AE%9A%E4%B9%89%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text"> 4.2 继承的二义性定义解决方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%A4%9A%E6%80%81"><span class="toc-text"> 二、多态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%99%9A%E5%87%BD%E6%95%B0"><span class="toc-text"> 1、虚函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%91%E7%94%9F%E5%8A%A8%E6%80%81%E5%A4%9A%E6%80%81%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-text"> 2、发生动态多态的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-text"> 3、纯虚函数（抽象类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8E%A5%E5%8F%A3"><span class="toc-text"> 4、接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 5、抽象类的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0%E6%B3%9B%E5%9E%8B"><span class="toc-text"> 二、模板函数（泛型）</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -687,7 +731,7 @@ void main(){
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -704,7 +748,7 @@ void main(){
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-中的继承、多态和模板函数"><span class="toc-text">C++中的继承、多态和模板函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、继承"><span class="toc-text">一、继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、属性和方法的继承"><span class="toc-text">1、属性和方法的继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、通过子类给父类构造方法传参"><span class="toc-text">2、通过子类给父类构造方法传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、继承中父类和子类的权限继承关系"><span class="toc-text">3、继承中父类和子类的权限继承关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、继承的二义性"><span class="toc-text">4、继承的二义性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-继承的二义性定义"><span class="toc-text">4.1 继承的二义性定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-继承的二义性定义解决方案"><span class="toc-text">4.2 继承的二义性定义解决方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、多态"><span class="toc-text">二、多态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、虚函数"><span class="toc-text">1、虚函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、发生动态多态的条件"><span class="toc-text">2、发生动态多态的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、纯虚函数（抽象类）"><span class="toc-text">3、纯虚函数（抽象类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、接口"><span class="toc-text">4、接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、抽象类的作用"><span class="toc-text">5、抽象类的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、模板函数（泛型）"><span class="toc-text">二、模板函数（泛型）</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81%E5%92%8C%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0"><span class="toc-text"> C++中的继承、多态和模板函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%BB%A7%E6%89%BF"><span class="toc-text"> 一、继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text"> 1、属性和方法的继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%9A%E8%BF%87%E5%AD%90%E7%B1%BB%E7%BB%99%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E4%BC%A0%E5%8F%82"><span class="toc-text"> 2、通过子类给父类构造方法传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%88%B6%E7%B1%BB%E5%92%8C%E5%AD%90%E7%B1%BB%E7%9A%84%E6%9D%83%E9%99%90%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="toc-text"> 3、继承中父类和子类的权限继承关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BA%8C%E4%B9%89%E6%80%A7"><span class="toc-text"> 4、继承的二义性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#41-%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BA%8C%E4%B9%89%E6%80%A7%E5%AE%9A%E4%B9%89"><span class="toc-text"> 4.1 继承的二义性定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#42-%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BA%8C%E4%B9%89%E6%80%A7%E5%AE%9A%E4%B9%89%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text"> 4.2 继承的二义性定义解决方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%A4%9A%E6%80%81"><span class="toc-text"> 二、多态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%99%9A%E5%87%BD%E6%95%B0"><span class="toc-text"> 1、虚函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%91%E7%94%9F%E5%8A%A8%E6%80%81%E5%A4%9A%E6%80%81%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-text"> 2、发生动态多态的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-text"> 3、纯虚函数（抽象类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8E%A5%E5%8F%A3"><span class="toc-text"> 4、接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 5、抽象类的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0%E6%B3%9B%E5%9E%8B"><span class="toc-text"> 二、模板函数（泛型）</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -725,13 +769,6 @@ void main(){
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -777,9 +814,9 @@ void main(){
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -787,14 +824,21 @@ void main(){
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -802,6 +846,13 @@ void main(){
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -838,13 +889,13 @@ void main(){
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -859,7 +910,7 @@ void main(){
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-中的继承、多态和模板函数"><span class="toc-text">C++中的继承、多态和模板函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、继承"><span class="toc-text">一、继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、属性和方法的继承"><span class="toc-text">1、属性和方法的继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、通过子类给父类构造方法传参"><span class="toc-text">2、通过子类给父类构造方法传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、继承中父类和子类的权限继承关系"><span class="toc-text">3、继承中父类和子类的权限继承关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、继承的二义性"><span class="toc-text">4、继承的二义性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-继承的二义性定义"><span class="toc-text">4.1 继承的二义性定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-继承的二义性定义解决方案"><span class="toc-text">4.2 继承的二义性定义解决方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、多态"><span class="toc-text">二、多态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、虚函数"><span class="toc-text">1、虚函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、发生动态多态的条件"><span class="toc-text">2、发生动态多态的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、纯虚函数（抽象类）"><span class="toc-text">3、纯虚函数（抽象类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、接口"><span class="toc-text">4、接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、抽象类的作用"><span class="toc-text">5、抽象类的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、模板函数（泛型）"><span class="toc-text">二、模板函数（泛型）</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81%E5%92%8C%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0"><span class="toc-text"> C++中的继承、多态和模板函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%BB%A7%E6%89%BF"><span class="toc-text"> 一、继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text"> 1、属性和方法的继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%9A%E8%BF%87%E5%AD%90%E7%B1%BB%E7%BB%99%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E4%BC%A0%E5%8F%82"><span class="toc-text"> 2、通过子类给父类构造方法传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%88%B6%E7%B1%BB%E5%92%8C%E5%AD%90%E7%B1%BB%E7%9A%84%E6%9D%83%E9%99%90%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="toc-text"> 3、继承中父类和子类的权限继承关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BA%8C%E4%B9%89%E6%80%A7"><span class="toc-text"> 4、继承的二义性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#41-%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BA%8C%E4%B9%89%E6%80%A7%E5%AE%9A%E4%B9%89"><span class="toc-text"> 4.1 继承的二义性定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#42-%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BA%8C%E4%B9%89%E6%80%A7%E5%AE%9A%E4%B9%89%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text"> 4.2 继承的二义性定义解决方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%A4%9A%E6%80%81"><span class="toc-text"> 二、多态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%99%9A%E5%87%BD%E6%95%B0"><span class="toc-text"> 1、虚函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%91%E7%94%9F%E5%8A%A8%E6%80%81%E5%A4%9A%E6%80%81%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-text"> 2、发生动态多态的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-text"> 3、纯虚函数（抽象类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8E%A5%E5%8F%A3"><span class="toc-text"> 4、接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 5、抽象类的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%A8%A1%E6%9D%BF%E5%87%BD%E6%95%B0%E6%B3%9B%E5%9E%8B"><span class="toc-text"> 二、模板函数（泛型）</span></a></li></ol></li></ol>
   </article>
   
   
@@ -870,22 +921,22 @@ void main(){
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -934,7 +985,7 @@ void main(){
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

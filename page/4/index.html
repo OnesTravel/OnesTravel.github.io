@@ -113,7 +113,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -196,16 +209,20 @@
     </a>
     <div class="card-excerpt">
       
-      一、领域特定语言 DSL的概念
+       一、领域特定语言 DSL的概念
+
 只在特定领域使用的语言;例如：HTML、Gradle、SQL
 
-二、领域特定语言 DSL的特点
+ 二、领域特定语言 DSL的特点
+
 它也是计算机编程语言
 具有语言表达能力
 表达能力比较有限
 关注某个特定领域
 
-三、Html DSL四、Gradle DSL以下内容引用自 Kotlin 语言中文站使用...
+ 三、Html DSL
+ 四、Gradle DSL
+ 以下内容引用自 Kotli...
       
     </div>
     <div class="card-post-footer">
@@ -242,16 +259,17 @@
     </a>
     <div class="card-excerpt">
       
-      一、基本概念
+       一、基本概念
+
 传入或者返回函数的函数
 函数引用  ::println
 带有 Receiver 的引用 pdfPrinter::println
 
-二、常见高阶函数（forEach/map/flatMap）
+ 二、常见高阶函数（forEach/map/flatMap）
+
 forEach : 迭代/遍历数组/list
 
-//forEach函数使用的一般结构
-ob...
+&amp;#x2F;&amp;#x2F;forEa...
       
     </div>
     <div class="card-post-footer">
@@ -288,18 +306,21 @@ ob...
     </a>
     <div class="card-excerpt">
       
-      一、面向对象的概念
+       一、面向对象的概念
+
 本质上就是解决如何用程序描述世界的问题
 讨论如何把实际存在的东西映射成程序的类和对象
 一种程序设计的思路,思想,方法
 程序设计层面的概念
 设计模式：前人的程序设计经验
 
-二、抽象类与接口相当于半成品与协议
-1、接口
+ 二、抽象类与接口
+相当于半成品与协议
+ 1、接口
+
 接口，直观理解就是一种约定
 
-interface Inpu...
+interfac...
       
     </div>
     <div class="card-post-footer">
@@ -373,8 +394,10 @@ interface Inpu...
     </a>
     <div class="card-excerpt">
       
-      C++中的类型转换与STL标准模板库一、C++类型转换在C++中类型转换包含 static_cast、const_cast、dynamic_cast、reinterpret_cast 四种类型转换。使用原始类型转换，所有转换都是一种写法，可读性不高，有可能有潜在的风险
-1、static_cas...
+       C++中的类型转换与STL标准模板库
+ 一、C++类型转换
+在C++中类型转换包含 static_cast、const_cast、dynamic_cast、reinterpret_cast 四种类型转换。使用原始类型转换，所有转换都是一种写法，可读性不高，有可能有潜在的风险
+ 1、stati...
       
     </div>
     <div class="card-post-footer">
@@ -411,11 +434,14 @@ interface Inpu...
     </a>
     <div class="card-excerpt">
       
-      C++中的异常处理与模板类一、C++ 中的异常处理1、异常处理在C++ 中可以抛出任何类型的异常，根据抛出的异常数据类型，进入到相应的 catch块中 ，未知类型可用 … 代替
-void main() {
-    try {
-        int a = 300;
-        if (a...
+       C++中的异常处理与模板类
+ 一、C++ 中的异常处理
+ 1、异常处理
+在C++ 中可以抛出任何类型的异常，根据抛出的异常数据类型，进入到相应的 catch块中 ，未知类型可用 … 代替
+void main() &amp;#123;
+	try &amp;#123;
+		int a &amp;#x3D; 300;
+	...
       
     </div>
     <div class="card-post-footer">
@@ -452,15 +478,17 @@ void main() {
     </a>
     <div class="card-excerpt">
       
-      C++中的继承、多态和模板函数一、继承1、属性和方法的继承继承可以更好的实现代码的重用性
+       C++中的继承、多态和模板函数
+ 一、继承
+ 1、属性和方法的继承
+继承可以更好的实现代码的重用性
 #include &amp;lt;stdlib.h&amp;gt;
 #include &amp;lt;iostream&amp;gt;
 
 using namespace std;
 
-//开发者
-class Developer {
-pro...
+&amp;#x2F;&amp;#x2F;开发者
+class...
       
     </div>
     <div class="card-post-footer">
@@ -497,16 +525,18 @@ pro...
     </a>
     <div class="card-excerpt">
       
-      C++中的静态成员与this指针一、静态成员1、static 关键字
+       C++中的静态成员与this指针
+ 一、静态成员
+ 1、static 关键字
+
 静态属性只能在全局范围内进行初始化赋值
 静态方法可以直接通过类名进行访问，也可以通过对象名进行访问
 
-class Teacher {
+class Teacher &amp;#123;
 private:
-    char* name;
+	char* name;
 public:
-    //计数器
-  ...
+	&amp;#x...
       
     </div>
     <div class="card-post-footer">
@@ -543,15 +573,16 @@ public:
     </a>
     <div class="card-excerpt">
       
-      C++中的类与构造函数一、C++中类的常用写法1、在头文件中声明类的属性和方法如：MyTeacher.h
-//防止重复引入
+       C++中的类与构造函数
+ 一、C++中类的常用写法
+ 1、在头文件中声明类的属性和方法
+如：MyTeacher.h
+&amp;#x2F;&amp;#x2F;防止重复引入
 #pragma once
-class MyTeacher{
+class MyTeacher&amp;#123;
 private:
     char* name;
-    int age;
-public:
-    void ...
+    int a...
       
     </div>
     <div class="card-post-footer">
@@ -588,15 +619,17 @@ public:
     </a>
     <div class="card-excerpt">
       
-      C++命名空间及引用一、C 与 C++ 的关系
+       C++命名空间及引用
+ 一、C 与 C++ 的关系
+
 C++ 可以与 C 代码进行混编
 C++ 是一个面向对象编程语言、C 语言是面向过程的编程语言
 C++ 是对 C 的一个增强
 
-二、C++ 命名空间
+ 二、C++ 命名空间
+
 C++ 标准的命名空间为 std ，包含很多标准的定义
-&amp;lt;&amp;lt; 为运算符重载
-命名空间...
+&amp;lt;&amp;lt; 为运算符重...
       
     </div>
     <div class="card-post-footer">
@@ -633,11 +666,16 @@ C++ 标准的命名空间为 std ，包含很多标准的定义
     </a>
     <div class="card-excerpt">
       
-      JNI 引用、异常处理和缓存策略一、JNI 引用变量1、引用类型JNI 引用的类型分为局部引用和全局引用
-2、引用的作用在JNI中告知虚拟机何时回收一个 JNI 变量
-3、局部引用的使用通过DeleteLocalRef 手动释放
+       JNI 引用、异常处理和缓存策略
+ 一、JNI 引用变量
+ 1、引用类型
+JNI 引用的类型分为局部引用和全局引用
+ 2、引用的作用
+在JNI中告知虚拟机何时回收一个 JNI 变量
+ 3、局部引用的使用
+通过DeleteLocalRef 手动释放
 
-访问一个很大的java对象，使用完成之后，还要进行复杂的耗时操...
+访问一个很大的java对象，使用完成之后，...
       
     </div>
     <div class="card-post-footer">
@@ -674,13 +712,16 @@ C++ 标准的命名空间为 std ，包含很多标准的定义
     </a>
     <div class="card-excerpt">
       
-      JNI 的数据类型一、JNI 数据类型Java基本数据类型与JNI数据类型的映射关系
+       JNI 的数据类型
+ 一、JNI 数据类型
+Java基本数据类型与JNI数据类型的映射关系
 
 
 
 Java数据类型
 JNI数据类型
 C/C++数据类型
+
 
 
 
@@ -695,8 +736,7 @@ signed char
 
 
 char
-jchar
-un...
+jch...
       
     </div>
     <div class="card-post-footer">
@@ -757,7 +797,7 @@ un...
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -788,13 +828,6 @@ un...
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -840,9 +873,9 @@ un...
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -850,14 +883,21 @@ un...
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -865,6 +905,13 @@ un...
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -901,13 +948,13 @@ un...
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -1251,22 +1298,22 @@ un...
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -1638,7 +1685,7 @@ un...
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

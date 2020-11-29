@@ -113,7 +113,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -194,42 +207,50 @@
     
     
     <span class="dot"></span>
-    <span>739 words</span>
+    <span>775 words</span>
     
   </div>
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="OneActionBar-Instructions-for-use"><a href="#OneActionBar-Instructions-for-use" class="headerlink" title="OneActionBar Instructions for use"></a><a href="https://github.com/onestravel/OneActionBar" target="_blank" rel="noopener">OneActionBar</a> Instructions for use</h1><p><a href="/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar">中文文档</a> </p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>*<em>Custom ActionBar, support attribute, java code mode configuration, can realize title, title with return key, search, search ActionBar with return key; simple configuration, convenient to use, can adapt to most scenes. *</em></p>
-<h2 id="renderings"><a href="#renderings" class="headerlink" title="renderings"></a>renderings</h2><p>###<img src="/images/20190825/image-20190915194738463.png" alt="效果图" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190825/image-20190915194738463.png" class="lozad post-image"></p>
+    <h1 id="oneactionbar"><a class="markdownIt-Anchor" href="#oneactionbar"></a> <a target="_blank" rel="noopener" href="https://github.com/onestravel/OneActionBar">OneActionBar</a> Instructions for use</h1>
+<p><a href="/20190825/android-ndk/oneactionbar-shi-xian-tong-yong-actionbar">中文文档</a></p>
+<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>**Custom ActionBar, support attribute, java code mode configuration, can realize title, title with return key, search, search ActionBar with return key; simple configuration, convenient to use, can adapt to most scenes. **</p>
+<h2 id="renderings"><a class="markdownIt-Anchor" href="#renderings"></a> renderings</h2>
+<p>###<img src="/images/20190825/image-20190915194738463.png" alt="效果图" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/20190825/image-20190915194738463.png" class="lozad post-image"></p>
 <ol>
 <li>Standard header, transparent background <code>style=&quot;@style/OneActionBar.Normal&quot;</code></li>
 <li>Standard heading, blue background <code>style=&quot;@style/OneActionBar.Normal.Blue&quot;</code></li>
 <li>With return key header, transparent background <code>style=&quot;@style/OneActionBar.Back&quot;</code></li>
 <li>With the return key head, blue background <code>style=&quot;@style/OneActionBar.Back.Blue&quot;</code></li>
 <li>With search box header, transparent background <code>style=&quot;@style/OneActionBar.Search&quot;</code></li>
-<li>With search box header, blue background ``style=”@style/OneActionBar.Search.Blue”</li>
+<li>With search box header, blue background ``style=&quot;@style/OneActionBar.Search.Blue&quot;</li>
 <li>Search box with return key header, transparent background <code>style=&quot;@style/OneActionBar.Back.Search&quot;</code></li>
 <li>Search box with return key header, blue background <code>style=&quot;@style/OneActionBar.Back.Search.Blue&quot;</code></li>
 </ol>
-<h2 id="Introduction-method"><a href="#Introduction-method" class="headerlink" title="Introduction method"></a>Introduction method</h2><p>TAG: <a href="https://jitpack.io/#onestravel/OneActionBar" target="_blank" rel="noopener"><img src="https://jitpack.io/v/onestravel/OneActionBar.svg" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://jitpack.io/v/onestravel/OneActionBar.svg" class="lozad post-image"></a></p>
-<h4 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h4><ul>
+<h2 id="introduction-method"><a class="markdownIt-Anchor" href="#introduction-method"></a> Introduction method</h2>
+<p>TAG: <a target="_blank" rel="noopener" href="https://jitpack.io/#onestravel/OneActionBar"><img src="https://jitpack.io/v/onestravel/OneActionBar.svg" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://jitpack.io/v/onestravel/OneActionBar.svg" class="lozad post-image"></a></p>
+<h4 id="gradle"><a class="markdownIt-Anchor" href="#gradle"></a> gradle</h4>
+<ul>
 <li>Add the following configuration to build.gradle (same level as model) in the root directory of the project</li>
 </ul>
-<pre><code>Allprojects {
-Repositories {
+<pre class="line-numbers language-none"><code class="language-none">Allprojects &#123;
+Repositories &#123;
 ...
-Maven { url &#39;https://jitpack.io&#39; }
-}
-}
-</code></pre><ul>
+Maven &#123; url &#39;https:&#x2F;&#x2F;jitpack.io&#39; &#125;
+&#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>Add dependencies in build.gradle in model</li>
 </ul>
-<pre><code>Dependencies {
+<pre class="line-numbers language-none"><code class="language-none">Dependencies &#123;
 Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
-}
-</code></pre><h2 id="Attribute-Description"><a href="#Attribute-Description" class="headerlink" title="Attribute Description"></a>Attribute Description</h2><table>
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="attribute-description"><a class="markdownIt-Anchor" href="#attribute-description"></a> Attribute Description</h2>
+<table>
 <thead>
 <tr>
 <th>Property Name</th>
@@ -237,128 +258,131 @@ Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
 <th>Example</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>app:barBackColor</td>
 <td>ActionBar Returns the color of the key, the color of the icon and the font</td>
-<td>app:barBackColor=”#000000”</td>
+<td>app:barBackColor=&quot;#000000&quot;</td>
 </tr>
 <tr>
 <td>app:barBackIconWidth</td>
 <td>ActionBar Returns the width of the key icon</td>
-<td>app:barBackIconWidth=”25dp”</td>
+<td>app:barBackIconWidth=“25dp”</td>
 </tr>
 <tr>
 <td>app:barBackIconHeight</td>
 <td>ActionBar Returns the height of the key icon</td>
-<td>app:barBackIconHeight=”25dp”</td>
+<td>app:barBackIconHeight=“25dp”</td>
 </tr>
 <tr>
 <td>app:barBackText</td>
 <td>ActionBar back key text</td>
-<td>app:barBackText=”return”</td>
+<td>app:barBackText=“return”</td>
 </tr>
 <tr>
 <td>app:barBackTextSize</td>
 <td>ActionBar back key text size</td>
-<td>app:barBackTextSize=”13sp”</td>
+<td>app:barBackTextSize=“13sp”</td>
 </tr>
 <tr>
 <td>app:barTitle</td>
 <td>ActionBar Headline Text</td>
-<td>app:barTitle=”Home”</td>
+<td>app:barTitle=“Home”</td>
 </tr>
 <tr>
 <td>app:barTitleColor</td>
 <td>ActionBar Header Text Color</td>
-<td>app:barTitleColor=”#000000”</td>
+<td>app:barTitleColor=&quot;#000000&quot;</td>
 </tr>
 <tr>
 <td>app:barTitleSize</td>
 <td>ActionBar Header Text Size</td>
-<td>app:barTitleSize=”22sp”</td>
+<td>app:barTitleSize=“22sp”</td>
 </tr>
 <tr>
 <td>app:barType</td>
 <td>ActionBar style, there are four styles in total: TYPE_NORMAL (normal style), TYPE_BACK (normal with return key style), TYPE_SEARCH (search style), TYPE_BACK_SEARCH (with return key search style),</td>
-<td>app:barType=” TYPE_NORMAL”</td>
+<td>app:barType=&quot; TYPE_NORMAL&quot;</td>
 </tr>
 <tr>
 <td>app:barActionBtnColor</td>
 <td>ActionBar Right side action button icon/text color</td>
-<td>app:barActionBtnColor=”#FF0000”</td>
+<td>app:barActionBtnColor=&quot;#FF0000&quot;</td>
 </tr>
 <tr>
 <td>app:barActionBtnText</td>
 <td>ActionBar Right side action button text</td>
-<td>app:barActionBtnText=”Next”</td>
+<td>app:barActionBtnText=“Next”</td>
 </tr>
 <tr>
 <td>app:barActionBtnTextSize</td>
 <td>ActionBar title action button text size</td>
-<td>app:barActionBtnTextSize=”15sp”</td>
+<td>app:barActionBtnTextSize=“15sp”</td>
 </tr>
 <tr>
 <td>app:barBottomLineWidth</td>
 <td>The width of the split line at the bottom of the ActionBar</td>
-<td>app:barBottomLineWidth=”1dp”</td>
+<td>app:barBottomLineWidth=“1dp”</td>
 </tr>
 <tr>
 <td>app:barBottomLineColor</td>
 <td>The color of the bottom line of the ActionBar</td>
-<td>app:barBottomLineColor=”#1a1a1a”</td>
+<td>app:barBottomLineColor=&quot;#1a1a1a&quot;</td>
 </tr>
 <tr>
 <td>app:barActionBtnIcon</td>
 <td>ActionBar Right side action button icon</td>
-<td>app:barActionBtnIcon=”@drawable/icon_next”</td>
+<td>app:barActionBtnIcon=&quot;@drawable/icon_next&quot;</td>
 </tr>
 <tr>
 <td>app:barActionBtnIconWidth</td>
 <td>ActionBar Title Action Button Width</td>
-<td>app:barActionBtnIconWidth=”25dp”</td>
+<td>app:barActionBtnIconWidth=“25dp”</td>
 </tr>
 <tr>
 <td>app:barActionBtnIconHeight</td>
 <td>ActionBar The right side of the action button height</td>
-<td>app:barActionBtnIconHeight=”25dp”</td>
+<td>app:barActionBtnIconHeight=“25dp”</td>
 </tr>
 <tr>
 <td>app:barSearchBackground</td>
 <td>ActionBar Search Style Background</td>
-<td>app:barSearchBackground=”#FFFFFF”</td>
+<td>app:barSearchBackground=&quot;#FFFFFF&quot;</td>
 </tr>
 <tr>
 <td>app:barSearchHint</td>
 <td>ActionBar search style search box hint text</td>
-<td>app:barSearchHint=”Please enter search content”</td>
+<td>app:barSearchHint=“Please enter search content”</td>
 </tr>
 <tr>
 <td>app:barSearchText</td>
 <td>ActionBar Search Style Search Box Text</td>
-<td>app:barSearchText=”Today News”</td>
+<td>app:barSearchText=“Today News”</td>
 </tr>
 <tr>
 <td>app:barSearchHintColor</td>
 <td>ActionBar Search Style Search Box Tip Text Color</td>
-<td>app:barSearchHintColor=”#E1E1E1”</td>
+<td>app:barSearchHintColor=&quot;#E1E1E1&quot;</td>
 </tr>
 <tr>
 <td>app:barSearchTextColor</td>
 <td>ActionBar Search Style Search Box Text Color</td>
-<td>app:barSearchTextColor=”#000000”</td>
+<td>app:barSearchTextColor=&quot;#000000&quot;</td>
 </tr>
 <tr>
 <td>app:barSearchTextSize</td>
 <td>ActionBar Search Style Search Box Text Size</td>
-<td>app:barSearchTextSize=”20sp”</td>
+<td>app:barSearchTextSize=“20sp”</td>
 </tr>
 <tr>
 <td>android:background</td>
 <td>ActionBar background color</td>
-<td>android:background=”#FFFFFF”</td>
+<td>android:background=&quot;#FFFFFF&quot;</td>
 </tr>
-</tbody></table>
-<h2 id="Style-Description"><a href="#Style-Description" class="headerlink" title="Style Description"></a>Style Description</h2><p>According to the image effect, the first custom style description is as follows</p>
+</tbody>
+</table>
+<h2 id="style-description"><a class="markdownIt-Anchor" href="#style-description"></a> Style Description</h2>
+<p>According to the image effect, the first custom style description is as follows</p>
 <p>Note: The label corresponds to the picture effect number</p>
 <ol>
 <li>Standard header, transparent background <code>style=&quot;@style/OneActionBar.Normal&quot;</code></li>
@@ -366,36 +390,37 @@ Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
 <li>With return key header, transparent background <code>style=&quot;@style/OneActionBar.Back&quot;</code></li>
 <li>With the return key head, blue background <code>style=&quot;@style/OneActionBar.Back.Blue&quot;</code></li>
 <li>With search box header, transparent background <code>style=&quot;@style/OneActionBar.Search&quot;</code></li>
-<li>With search box header, blue background ``style=”@style/OneActionBar.Search.Blue”</li>
+<li>With search box header, blue background ``style=&quot;@style/OneActionBar.Search.Blue&quot;</li>
 <li>Search box with return key header, transparent background <code>style=&quot;@style/OneActionBar.Back.Search&quot;</code></li>
 <li>Search box with return key header, blue background <code>style=&quot;@style/OneActionBar.Back.Search.Blue&quot;</code></li>
 </ol>
-<h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><ol>
+<h2 id="example"><a class="markdownIt-Anchor" href="#example"></a> example</h2>
+<ol>
 <li>layout xml</li>
 </ol>
-<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cn.onestravel.one.actionbar.OneActionBar</span><span class="token style-attr language-css"><span class="token attr-name">
-        <span class="token attr-name">Style</span></span><span class="token punctuation">="</span><span class="token attr-value">@style/OneActionBar<span class="token number">.</span>Back<span class="token number">.</span>Blue</span><span class="token punctuation">"</span></span>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cn.onestravel.one.actionbar.OneActionBar</span>
+        <span class="token attr-name">Style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@style/OneActionBar.Back.Blue<span class="token punctuation">"</span></span>
         <span class="token attr-name"><span class="token namespace">Android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
         <span class="token attr-name"><span class="token namespace">Android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>50dp<span class="token punctuation">"</span></span>
         <span class="token attr-name"><span class="token namespace">App:</span>barActionBtnText</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Next<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">App:</span>barTitle</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Questionnaire<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
+        <span class="token attr-name"><span class="token namespace">App:</span>barTitle</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Questionnaire<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
 <li>style</li>
 </ol>
-<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>OneActionBar.Back<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
-               &lt;item name=<span class="token string">"barTitleSize"</span>><span class="token number">22</span>sp&lt;/item>
-        &lt;item name=<span class="token string">"barActionBtnTextSize"</span>><span class="token number">16</span>sp&lt;/item>
-        &lt;item name=<span class="token string">"barType"</span>>TYPE_BACK&lt;/item>
-        &lt;item name=<span class="token string">"barBackTextSize"</span>><span class="token number">14</span>sp&lt;/item>
-        &lt;item name=<span class="token string">"barBackText"</span>>Back&lt;/item>
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>OneActionBar.Back<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  			 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>barTitleSize<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>22sp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>barActionBtnTextSize<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>16sp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>barType<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>TYPE_BACK<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>barBackTextSize<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>14sp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>barBackText<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Back<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>OneActionBar.Back.Blue<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>OneActionBar.Back<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
-    &lt;item name=<span class="token string">"android:background"</span>><span class="token hexcode">#0080ff</span>&lt;/item>
-    &lt;item name=<span class="token string">"barBackColor"</span>>@<span class="token property">android</span><span class="token punctuation">:</span>color/white&lt;/item>
-    &lt;item name=<span class="token string">"barTitleColor"</span>>@<span class="token property">android</span><span class="token punctuation">:</span>color/white&lt;/item>
-    &lt;item name=<span class="token string">"barActionBtnColor"</span>>@<span class="token property">android</span><span class="token punctuation">:</span>color/white&lt;/item>
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>OneActionBar.Back.Blue<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>OneActionBar.Back<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android:background<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>#0080ff<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>barBackColor<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>@android:color/white<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>barTitleColor<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>@android:color/white<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>barActionBtnColor<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>@android:color/white<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   </div>
   <div>
@@ -444,7 +469,7 @@ Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>TOC</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OneActionBar-Instructions-for-use"><span class="toc-text">OneActionBar Instructions for use</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#renderings"><span class="toc-text">renderings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-method"><span class="toc-text">Introduction method</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gradle"><span class="toc-text">gradle</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Attribute-Description"><span class="toc-text">Attribute Description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Style-Description"><span class="toc-text">Style Description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-text">example</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#oneactionbar"><span class="toc-text"> OneActionBar Instructions for use</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#renderings"><span class="toc-text"> renderings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction-method"><span class="toc-text"> Introduction method</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gradle"><span class="toc-text"> gradle</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#attribute-description"><span class="toc-text"> Attribute Description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#style-description"><span class="toc-text"> Style Description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-text"> example</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -460,7 +485,7 @@ Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
     <span>Posts</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>Categories</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -491,13 +516,6 @@ Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -543,9 +561,9 @@ Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -553,14 +571,21 @@ Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -568,6 +593,13 @@ Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -604,13 +636,13 @@ Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -954,22 +986,22 @@ Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -1341,7 +1373,7 @@ Implementation &#39;com.github.onestravel:OneActionBar:TAG&#39;
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

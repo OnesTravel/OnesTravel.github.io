@@ -127,7 +127,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -229,10 +242,13 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="10-矩阵中的路径"><a href="#10-矩阵中的路径" class="headerlink" title="10.矩阵中的路径"></a>10.矩阵中的路径</h1><p>本题知识点：数组</p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如 </p>
-<pre class=" language-math"><code class="language-math">\begin{bmatrix} a & b & c &e \\ s & f & c & s \\ a & d & e& e\\ \end{bmatrix}</code></pre>
-<p>矩阵中包含一条字符串”bcced”的路径，但是矩阵中不包含”abcb”路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入该格子。</p>
+    <h1 id="10矩阵中的路径"><a class="markdownIt-Anchor" href="#10矩阵中的路径"></a> 10.矩阵中的路径</h1>
+<p>本题知识点：数组</p>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo fence="true">[</mo><mtable rowspacing="0.15999999999999992em" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>a</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>b</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>c</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>e</mi></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>s</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>f</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>c</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>s</mi></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>a</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>d</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>e</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>e</mi></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow><annotation encoding="application/x-tex">\begin{bmatrix} a &amp; b &amp; c &amp;e \\ s &amp; f &amp; c &amp; s \\ a &amp; d &amp; e&amp; e\\ \end{bmatrix}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.60004em;vertical-align:-1.55002em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05002em;"><span style="top:-2.2500000000000004em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎣</span></span></span><span style="top:-4.05002em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎡</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55002em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">a</span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">s</span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">b</span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">e</span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">s</span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span></span></span><span class="mclose"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05002em;"><span style="top:-2.2500000000000004em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎦</span></span></span><span style="top:-4.05002em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎤</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55002em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>矩阵中包含一条字符串&quot;bcced&quot;的路径，但是矩阵中不包含&quot;abcb&quot;路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入该格子。</p>
 <html>
 <table>
 <tr>
@@ -254,159 +270,169 @@
     <td>e</td>
 </tr>
 </table>
-
 </html>
+<h2 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h2>
+<p>回溯法<br />
+基本思想：<br />
+0.根据给定数组，初始化一个标志位数组，初始化为false，表示未走过，true表示已经走过，不能走第二次<br />
+1.根据行数和列数，遍历数组，先找到一个与str字符串的第一个元素相匹配的矩阵元素，进入judge<br />
+2.根据i和j先确定一维数组的位置，因为给定的matrix是一个一维数组<br />
+3.确定递归终止条件：越界，当前找到的矩阵值不等于数组对应位置的值，已经走过的，这三类情况，都直接false，说明这条路不通<br />
+4.若n，就是待判定的字符串str的索引已经判断到了最后一位，此时说明是匹配成功的<br />
+5.下面就是本题的精髓，递归不断地寻找周围四个格子是否符合条件，只要有一个格子符合条件，就继续再找这个符合条件的格子的四周是否存在符合条件的格子，直到k到达末尾或者不满足递归条件就停止。<br />
+6.走到这一步，说明本次是不成功的，我们要还原一下标志位数组index处的标志位，进入下一轮的判断。</p>
+<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h2>
+<h3 id="java-代码"><a class="markdownIt-Anchor" href="#java-代码"></a> java 代码</h3>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 回溯法查找路径是否存在
+ * @param matrix 矩阵数组
+ * @param rows 矩阵行数
+ * @param cols 矩阵列数
+ * @param str 查找字符串路径数组
+ * @return
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">hasPath</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> rows<span class="token punctuation">,</span> <span class="token keyword">int</span> cols<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> str<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//创建和矩阵相同大小的标志位数组</span>
+    <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span> flag <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span>matrix<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> rows<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> cols<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">//查找字符串路径的起始位，开始向四周搜索路径</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> str<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-
-
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>回溯法<br>基本思想：<br>0.根据给定数组，初始化一个标志位数组，初始化为false，表示未走过，true表示已经走过，不能走第二次<br>1.根据行数和列数，遍历数组，先找到一个与str字符串的第一个元素相匹配的矩阵元素，进入judge<br>2.根据i和j先确定一维数组的位置，因为给定的matrix是一个一维数组<br>3.确定递归终止条件：越界，当前找到的矩阵值不等于数组对应位置的值，已经走过的，这三类情况，都直接false，说明这条路不通<br>4.若n，就是待判定的字符串str的索引已经判断到了最后一位，此时说明是匹配成功的<br>5.下面就是本题的精髓，递归不断地寻找周围四个格子是否符合条件，只要有一个格子符合条件，就继续再找这个符合条件的格子的四周是否存在符合条件的格子，直到k到达末尾或者不满足递归条件就停止。<br>6.走到这一步，说明本次是不成功的，我们要还原一下标志位数组index处的标志位，进入下一轮的判断。</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="java-代码"><a href="#java-代码" class="headerlink" title="java 代码"></a>java 代码</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 回溯法查找路径是否存在
-     * @param matrix 矩阵数组
-     * @param rows 矩阵行数
-     * @param cols 矩阵列数
-     * @param str 查找字符串路径数组
-     * @return
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">hasPath</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> rows<span class="token punctuation">,</span> <span class="token keyword">int</span> cols<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//创建和矩阵相同大小的标志位数组</span>
-        <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span> flag <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">boolean</span><span class="token punctuation">[</span>matrix<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> rows<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> cols<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">//查找字符串路径的起始位，开始向四周搜索路径</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> str<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 回溯法查找路径是否存在
+ * @param matrix 矩阵数组
+ * @param rows 矩阵行数
+ * @param cols 矩阵列数
+ * @param i 当前行数坐标
+ * @param j 当前列数坐标
+ * @param str 查找字符串路径数组
+ * @param n 当前字符串数组中查到当前位数
+ * @param flag 标记路径中是否已经进入的标志
+ * @return
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">judge</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> rows<span class="token punctuation">,</span> <span class="token keyword">int</span> cols<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> str<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span> flag<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//判断当前坐标是否越界，如果越界，则不在矩阵内，返回false</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> j <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> i <span class="token operator">>=</span> rows <span class="token operator">||</span> j <span class="token operator">>=</span> cols<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 回溯法查找路径是否存在
-     * @param matrix 矩阵数组
-     * @param rows 矩阵行数
-     * @param cols 矩阵列数
-     * @param i 当前行数坐标
-     * @param j 当前列数坐标
-     * @param str 查找字符串路径数组
-     * @param n 当前字符串数组中查到当前位数
-     * @param flag 标记路径中是否已经进入的标志
-     * @return
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">judge</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> rows<span class="token punctuation">,</span> <span class="token keyword">int</span> cols<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> str<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span> flag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//判断当前坐标是否越界，如果越界，则不在矩阵内，返回false</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> j <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> i <span class="token operator">>=</span> rows <span class="token operator">||</span> j <span class="token operator">>=</span> cols<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//根据矩阵坐标转换为数组下标</span>
-        <span class="token keyword">int</span> index <span class="token operator">=</span> i <span class="token operator">*</span> cols <span class="token operator">+</span> j<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//判断盖数组下标的格子是否已经进入，如果进入，则不能再次进入，返回false</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//判断查找的字符串路径当前字符与数组中当前下标的字符是否相同，如果不相同，则当前格子不存在路径，返回false</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">!=</span> matrix<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//判断已经查找到字符串最后一位，则路径存在，返回true</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">==</span> str<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//当前位置表示当前格子符合字符串查找路径中当当前位置n，将该格子标记为true，避免下一个格子搜索时进入</span>
-        flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//开始搜索字符串查找路径当前位置的下一个字符路径，分布查找当前格子上，下，左，右的格子是否存在下一个字符的路径</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
-                <span class="token operator">||</span> <span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
-                <span class="token operator">||</span> <span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
-                <span class="token operator">||</span> <span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
-        <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//下一个字符路径存在，则当前格子路径正确，返回true</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//下一个字符路径不存在，当前格子路径不正确，则将当前格子标志位置为false(回溯),可以允许其他格子检查时进入</span>
-            flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-         <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token string">'c'</span><span class="token punctuation">,</span><span class="token string">'e'</span><span class="token punctuation">,</span><span class="token string">'s'</span><span class="token punctuation">,</span><span class="token string">'f'</span><span class="token punctuation">,</span><span class="token string">'c'</span><span class="token punctuation">,</span><span class="token string">'s'</span><span class="token punctuation">,</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'d'</span><span class="token punctuation">,</span><span class="token string">'e'</span><span class="token punctuation">,</span><span class="token string">'e'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> rows <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> cols <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
-        <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> str <span class="token operator">=</span> <span class="token string">"bccfd"</span><span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">hasPath</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span>rows<span class="token punctuation">,</span>cols<span class="token punctuation">,</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code></pre>
-<h3 id="Kotlin-代码"><a href="#Kotlin-代码" class="headerlink" title="Kotlin 代码"></a>Kotlin 代码</h3><pre class=" language-kotlin"><code class="language-kotlin">     <span class="token comment" spellcheck="true">/**
-     * 回溯法查找路径是否存在
-     * @param matrix 矩阵数组
-     * @param rows 矩阵行数
-     * @param cols 矩阵列数
-     * @param i 当前行数坐标
-     * @param j 当前列数坐标
-     * @param str 查找字符串路径数组
-     * @param n 当前字符串数组中查到当前位数
-     * @param flag 标记路径中是否已经进入的标志
-     * @return
-     */</span>
-    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">judge</span><span class="token punctuation">(</span>
-        matrix<span class="token operator">:</span> CharArray<span class="token punctuation">,</span>
-        rows<span class="token operator">:</span> Int<span class="token punctuation">,</span>
-        cols<span class="token operator">:</span> Int<span class="token punctuation">,</span>
-        i<span class="token operator">:</span> Int<span class="token punctuation">,</span>
-        j<span class="token operator">:</span> Int<span class="token punctuation">,</span>
-        str<span class="token operator">:</span> CharArray<span class="token punctuation">,</span>
-        n<span class="token operator">:</span> Int<span class="token punctuation">,</span>
-        flag<span class="token operator">:</span> BooleanArray
-    <span class="token punctuation">)</span><span class="token operator">:</span> Boolean <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//判断当前坐标是否越界，如果越界，则不在矩阵内，返回false</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> j <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> i <span class="token operator">>=</span> rows <span class="token operator">||</span> j <span class="token operator">>=</span> cols<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//根据矩阵坐标转换为数组下标</span>
-        <span class="token keyword">val</span> index <span class="token operator">=</span> i <span class="token operator">*</span> cols <span class="token operator">+</span> j
-        <span class="token comment" spellcheck="true">//判断盖数组下标的格子是否已经进入，如果进入，则不能再次进入，返回false</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//判断查找的字符串路径当前字符与数组中当前下标的字符是否相同，如果不相同，则当前格子不存在路径，返回false</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">!=</span> matrix<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//判断已经查找到字符串最后一位，则路径存在，返回true</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">==</span> str<span class="token punctuation">.</span>size<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//当前位置表示当前格子符合字符串查找路径中当当前位置n，将该格子标记为true，避免下一个格子搜索时进入</span>
-        flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span>
-        <span class="token comment" spellcheck="true">//开始搜索字符串查找路径当前位置的下一个字符路径，分布查找当前格子上，下，左，右的格子是否存在下一个字符的路径</span>
-        <span class="token keyword">return</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//根据矩阵坐标转换为数组下标</span>
+    <span class="token keyword">int</span> index <span class="token operator">=</span> i <span class="token operator">*</span> cols <span class="token operator">+</span> j<span class="token punctuation">;</span>
+    <span class="token comment">//判断盖数组下标的格子是否已经进入，如果进入，则不能再次进入，返回false</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//判断查找的字符串路径当前字符与数组中当前下标的字符是否相同，如果不相同，则当前格子不存在路径，返回false</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">!=</span> matrix<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//判断已经查找到字符串最后一位，则路径存在，返回true</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">==</span> str<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//当前位置表示当前格子符合字符串查找路径中当当前位置n，将该格子标记为true，避免下一个格子搜索时进入</span>
+    flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token comment">//开始搜索字符串查找路径当前位置的下一个字符路径，分布查找当前格子上，下，左，右的格子是否存在下一个字符的路径</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
             <span class="token operator">||</span> <span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
             <span class="token operator">||</span> <span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
             <span class="token operator">||</span> <span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
-        <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//下一个字符路径存在，则当前格子路径正确，返回true</span>
-            <span class="token boolean">true</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//下一个字符路径不存在，当前格子路径不正确，则将当前格子标志位置为false(回溯),可以允许其他格子检查时进入</span>
-            flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span>
-            <span class="token boolean">false</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//下一个字符路径存在，则当前格子路径正确，返回true</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//下一个字符路径不存在，当前格子路径不正确，则将当前格子标志位置为false(回溯),可以允许其他格子检查时进入</span>
+        flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token comment" spellcheck="true">/**
-     * 入口函数
-     */</span>
-    <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> matrix <span class="token operator">=</span>
-            <span class="token function">charArrayOf</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span>
-        <span class="token keyword">val</span> rows <span class="token operator">=</span> <span class="token number">3</span>
-        <span class="token keyword">val</span> cols <span class="token operator">=</span> <span class="token number">4</span>
-        <span class="token keyword">val</span> str <span class="token operator">=</span> <span class="token string">"bccfd"</span><span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">hasPath</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h2 id="引用声明"><a href="#引用声明" class="headerlink" title="引用声明"></a>引用声明</h2><p>该题目引用自<br><a href="https://www.nowcoder.com/practice/c61c6999eecb4b8f88a98f66b273a3cc?tpId=13&tqId=11218&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&from=onestravel" target="_blank" rel="noopener">牛客网</a></p>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+     <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token string">'c'</span><span class="token punctuation">,</span><span class="token string">'e'</span><span class="token punctuation">,</span><span class="token string">'s'</span><span class="token punctuation">,</span><span class="token string">'f'</span><span class="token punctuation">,</span><span class="token string">'c'</span><span class="token punctuation">,</span><span class="token string">'s'</span><span class="token punctuation">,</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'d'</span><span class="token punctuation">,</span><span class="token string">'e'</span><span class="token punctuation">,</span><span class="token string">'e'</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> rows <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> cols <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> str <span class="token operator">=</span> <span class="token string">"bccfd"</span><span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">hasPath</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span>rows<span class="token punctuation">,</span>cols<span class="token punctuation">,</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="kotlin-代码"><a class="markdownIt-Anchor" href="#kotlin-代码"></a> Kotlin 代码</h3>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"> <span class="token comment">/**
+ * 回溯法查找路径是否存在
+ * @param matrix 矩阵数组
+ * @param rows 矩阵行数
+ * @param cols 矩阵列数
+ * @param i 当前行数坐标
+ * @param j 当前列数坐标
+ * @param str 查找字符串路径数组
+ * @param n 当前字符串数组中查到当前位数
+ * @param flag 标记路径中是否已经进入的标志
+ * @return
+ */</span>
+<span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">judge</span><span class="token punctuation">(</span>
+    matrix<span class="token operator">:</span> CharArray<span class="token punctuation">,</span>
+    rows<span class="token operator">:</span> Int<span class="token punctuation">,</span>
+    cols<span class="token operator">:</span> Int<span class="token punctuation">,</span>
+    i<span class="token operator">:</span> Int<span class="token punctuation">,</span>
+    j<span class="token operator">:</span> Int<span class="token punctuation">,</span>
+    str<span class="token operator">:</span> CharArray<span class="token punctuation">,</span>
+    n<span class="token operator">:</span> Int<span class="token punctuation">,</span>
+    flag<span class="token operator">:</span> BooleanArray
+<span class="token punctuation">)</span><span class="token operator">:</span> Boolean <span class="token punctuation">&#123;</span>
+    <span class="token comment">//判断当前坐标是否越界，如果越界，则不在矩阵内，返回false</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> j <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> i <span class="token operator">>=</span> rows <span class="token operator">||</span> j <span class="token operator">>=</span> cols<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//根据矩阵坐标转换为数组下标</span>
+    <span class="token keyword">val</span> index <span class="token operator">=</span> i <span class="token operator">*</span> cols <span class="token operator">+</span> j
+    <span class="token comment">//判断盖数组下标的格子是否已经进入，如果进入，则不能再次进入，返回false</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//判断查找的字符串路径当前字符与数组中当前下标的字符是否相同，如果不相同，则当前格子不存在路径，返回false</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">!=</span> matrix<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//判断已经查找到字符串最后一位，则路径存在，返回true</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">==</span> str<span class="token punctuation">.</span>size<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//当前位置表示当前格子符合字符串查找路径中当当前位置n，将该格子标记为true，避免下一个格子搜索时进入</span>
+    flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span>
+    <span class="token comment">//开始搜索字符串查找路径当前位置的下一个字符路径，分布查找当前格子上，下，左，右的格子是否存在下一个字符的路径</span>
+    <span class="token keyword">return</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
+        <span class="token operator">||</span> <span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
+        <span class="token operator">||</span> <span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
+        <span class="token operator">||</span> <span class="token function">judge</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> str<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> flag<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//下一个字符路径存在，则当前格子路径正确，返回true</span>
+        <span class="token boolean">true</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//下一个字符路径不存在，当前格子路径不正确，则将当前格子标志位置为false(回溯),可以允许其他格子检查时进入</span>
+        flag<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+        <span class="token boolean">false</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/**
+ * 入口函数
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> matrix <span class="token operator">=</span>
+        <span class="token function">charArrayOf</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span>
+    <span class="token keyword">val</span> rows <span class="token operator">=</span> <span class="token number">3</span>
+    <span class="token keyword">val</span> cols <span class="token operator">=</span> <span class="token number">4</span>
+    <span class="token keyword">val</span> str <span class="token operator">=</span> <span class="token string">"bccfd"</span><span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">hasPath</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rows<span class="token punctuation">,</span> cols<span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="引用声明"><a class="markdownIt-Anchor" href="#引用声明"></a> 引用声明</h2>
+<p>该题目引用自<br />
+<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/c61c6999eecb4b8f88a98f66b273a3cc?tpId=13&amp;tqId=11218&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;from=onestravel">牛客网</a></p>
 
   </div>
   <div>
@@ -479,7 +505,7 @@
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10-矩阵中的路径"><span class="toc-text">10.矩阵中的路径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84"><span class="toc-text"> 10.矩阵中的路径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -495,7 +521,7 @@
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -512,7 +538,7 @@
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10-矩阵中的路径"><span class="toc-text">10.矩阵中的路径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84"><span class="toc-text"> 10.矩阵中的路径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -533,13 +559,6 @@
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -585,9 +604,9 @@
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -595,14 +614,21 @@
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -610,6 +636,13 @@
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -646,13 +679,13 @@
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -667,7 +700,7 @@
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10-矩阵中的路径"><span class="toc-text">10.矩阵中的路径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-代码"><span class="toc-text">java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-代码"><span class="toc-text">Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用声明"><span class="toc-text">引用声明</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84"><span class="toc-text"> 10.矩阵中的路径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%BB%A3%E7%A0%81"><span class="toc-text"> java 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kotlin-%E4%BB%A3%E7%A0%81"><span class="toc-text"> Kotlin 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%A3%B0%E6%98%8E"><span class="toc-text"> 引用声明</span></a></li></ol></li></ol>
   </article>
   
   
@@ -678,22 +711,22 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -742,7 +775,7 @@
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     
@@ -779,6 +812,13 @@
 
   
   
+  
+
+  
+  
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+
   
 
   

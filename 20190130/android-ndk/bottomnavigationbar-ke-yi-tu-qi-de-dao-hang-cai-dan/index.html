@@ -129,7 +129,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -244,49 +257,59 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="BottomNavigationBar-使用说明"><a href="#BottomNavigationBar-使用说明" class="headerlink" title="BottomNavigationBar 使用说明"></a><a href="https://github.com/onestravel/BottomNavigationBar" target="_blank" rel="noopener">BottomNavigationBar</a> 使用说明</h1><h2 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h2><h5 id="BottomNavigationBar-是自定义的一个实现App应用底部导航栏功能的View-可以实现底部-2-5-个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能-可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）-选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色-可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。"><a href="#BottomNavigationBar-是自定义的一个实现App应用底部导航栏功能的View-可以实现底部-2-5-个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能-可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）-选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色-可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。" class="headerlink" title="BottomNavigationBar 是自定义的一个实现App应用底部导航栏功能的View,可以实现底部 2-5 个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能; 可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）,选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色;可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。"></a>BottomNavigationBar 是自定义的一个实现App应用底部导航栏功能的View,可以实现底部 2-5 个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能; 可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）,选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色;可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。</h5><h3 id="先看一组效果图"><a href="#先看一组效果图" class="headerlink" title="先看一组效果图"></a>先看一组效果图</h3><h4 id="五个菜单，没有凸起的，都是可选中的"><a href="#五个菜单，没有凸起的，都是可选中的" class="headerlink" title="五个菜单，没有凸起的，都是可选中的"></a>五个菜单，没有凸起的，都是可选中的</h4><p><img src="/images/gif/SVID_20190130_155132_1.gif" alt="SVID_20190130_155132_1" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/gif/SVID_20190130_155132_1.gif" class="lozad post-image"></p>
+    <h1 id="bottomnavigationbar"><a class="markdownIt-Anchor" href="#bottomnavigationbar"></a> <a target="_blank" rel="noopener" href="https://github.com/onestravel/BottomNavigationBar">BottomNavigationBar</a> 使用说明</h1>
+<h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介：</h2>
+<h5 id="bottomnavigationbar-是自定义的一个实现app应用底部导航栏功能的view可以实现底部-2-5-个导航菜单一般不会有更多可以实现某一个菜单凸起的效果如有5个菜单可以选择让第三个菜单凸起floating这是很多app都有的功能-可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色可以自由控制是否需要选中checkable选择开启时可变换为选中颜色选择关闭时不能更改为选择颜色可以控制默认选中哪一项可以设置某一个导航菜单的未读消息数数字或者小红点"><a class="markdownIt-Anchor" href="#bottomnavigationbar-是自定义的一个实现app应用底部导航栏功能的view可以实现底部-2-5-个导航菜单一般不会有更多可以实现某一个菜单凸起的效果如有5个菜单可以选择让第三个菜单凸起floating这是很多app都有的功能-可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色可以自由控制是否需要选中checkable选择开启时可变换为选中颜色选择关闭时不能更改为选择颜色可以控制默认选中哪一项可以设置某一个导航菜单的未读消息数数字或者小红点"></a> BottomNavigationBar 是自定义的一个实现App应用底部导航栏功能的View,可以实现底部 2-5 个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能; 可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）,选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色;可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。</h5>
+<h3 id="先看一组效果图"><a class="markdownIt-Anchor" href="#先看一组效果图"></a> 先看一组效果图</h3>
+<h4 id="五个菜单没有凸起的都是可选中的"><a class="markdownIt-Anchor" href="#五个菜单没有凸起的都是可选中的"></a> 五个菜单，没有凸起的，都是可选中的</h4>
+<p><img src="/images/gif/SVID_20190130_155132_1.gif" alt="SVID_20190130_155132_1" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/gif/SVID_20190130_155132_1.gif" class="lozad post-image"></p>
 <center>图1</center>
 #### 中间有凸起，并且中间的不能选中，但点击事件可以响应
-
-<p><img src="/images/gif/SVID_20190130_155440_1.gif" alt="SVID_20190130_155440_1" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/gif/SVID_20190130_155440_1.gif" class="lozad post-image"></p>
+<p><img src="/images/gif/SVID_20190130_155440_1.gif" alt="SVID_20190130_155440_1" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/images/gif/SVID_20190130_155440_1.gif" class="lozad post-image"></p>
 <center>图2</center>
 ## 引入方法
-
-<p>TAG:     <a href="https://jitpack.io/#onestravel/BottomNavigationBar" target="_blank" rel="noopener"><img src="https://jitpack.io/v/onestravel/BottomNavigationBar.svg" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://jitpack.io/v/onestravel/BottomNavigationBar.svg" class="lozad post-image"></a></p>
-<h4 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h4><ul>
+<p>TAG:     <a target="_blank" rel="noopener" href="https://jitpack.io/#onestravel/BottomNavigationBar"><img src="https://jitpack.io/v/onestravel/BottomNavigationBar.svg" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://jitpack.io/v/onestravel/BottomNavigationBar.svg" class="lozad post-image"></a></p>
+<h4 id="gradle"><a class="markdownIt-Anchor" href="#gradle"></a> gradle</h4>
+<ul>
 <li>在项目中的根目录下的 build.gradle (与model同级的) 中增加如下配置</li>
 </ul>
-<pre><code>
-    allprojects {
-        repositories {
-            ...
-            maven { url &#39;https://jitpack.io&#39; }
-        }
-    }
-</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">
+allprojects &#123;
+	repositories &#123;
+		...
+		maven &#123; url &#39;https:&#x2F;&#x2F;jitpack.io&#39; &#125;
+	&#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>在model 中的build.gradle 中增加依赖</li>
 </ul>
-<pre><code>dependencies {
+<pre class="line-numbers language-none"><code class="language-none">dependencies &#123;
 implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
-}
-</code></pre><h4 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h4><ul>
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="maven"><a class="markdownIt-Anchor" href="#maven"></a> maven</h4>
+<ul>
 <li>在pom.xml文件中加入下面配置</li>
 </ul>
-<pre><code>    &lt;repositories&gt;
-        &lt;repository&gt;
-            &lt;id&gt;jitpack.io&lt;/id&gt;
-            &lt;url&gt;https://jitpack.io&lt;/url&gt;
-        &lt;/repository&gt;
-    &lt;/repositories&gt;</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;repositories&gt;
+	&lt;repository&gt;
+	    &lt;id&gt;jitpack.io&lt;&#x2F;id&gt;
+	    &lt;url&gt;https:&#x2F;&#x2F;jitpack.io&lt;&#x2F;url&gt;
+	&lt;&#x2F;repository&gt;
+&lt;&#x2F;repositories&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>添加maven依赖</li>
 </ul>
-<pre class=" language-java"><code class="language-java">    <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
-        <span class="token operator">&lt;</span>groupId<span class="token operator">></span>com<span class="token punctuation">.</span>github<span class="token punctuation">.</span>onestravel<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
-        <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>BottomNavigationBar<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
-        <span class="token operator">&lt;</span>version<span class="token operator">></span>TAG<span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
-</code></pre>
-<h2 id="属性说明"><a href="#属性说明" class="headerlink" title="属性说明"></a>属性说明</h2><h3 id="BottomNavigationBar-属性说明"><a href="#BottomNavigationBar-属性说明" class="headerlink" title="BottomNavigationBar 属性说明"></a>BottomNavigationBar 属性说明</h3><table>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token generics"><span class="token punctuation">&lt;</span>dependency<span class="token punctuation">></span></span>
+    <span class="token generics"><span class="token punctuation">&lt;</span>groupId<span class="token punctuation">></span></span>com<span class="token punctuation">.</span>github<span class="token punctuation">.</span>onestravel<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+    <span class="token generics"><span class="token punctuation">&lt;</span>artifactId<span class="token punctuation">></span></span><span class="token class-name">BottomNavigationBar</span><span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+    <span class="token generics"><span class="token punctuation">&lt;</span>version<span class="token punctuation">></span></span>TAG<span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="属性说明"><a class="markdownIt-Anchor" href="#属性说明"></a> 属性说明</h2>
+<h3 id="bottomnavigationbar-属性说明"><a class="markdownIt-Anchor" href="#bottomnavigationbar-属性说明"></a> BottomNavigationBar 属性说明</h3>
+<table>
 <thead>
 <tr>
 <th>属性</th>
@@ -294,7 +317,8 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>app:itemIconTint</td>
 <td>@drawable/tab_selecter</td>
 <td>整体的tab菜单的图片选中和未选中的颜色变化，传入一个资源drawable文件</td>
@@ -339,34 +363,38 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
 <td>5dp</td>
 <td>置导航栏文字和Icon的间隔高度</td>
 </tr>
-</tbody></table>
-<h4 id="示例1-不需要浮动（凸起）的菜单，图1效果"><a href="#示例1-不需要浮动（凸起）的菜单，图1效果" class="headerlink" title="示例1:不需要浮动（凸起）的菜单，图1效果"></a>示例1:不需要浮动（凸起）的菜单，图1效果</h4><pre class=" language-java"><code class="language-java">
-    <span class="token operator">&lt;</span>cn<span class="token punctuation">.</span>onestravel<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span>view<span class="token punctuation">.</span>BottomNavigationBar
-        android<span class="token operator">:</span>id<span class="token operator">=</span><span class="token string">"@+id/BottomLayout"</span>
-        android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"match_parent"</span>
-        android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"50dp"</span>
-        android<span class="token operator">:</span>layout_alignParentBottom<span class="token operator">=</span><span class="token string">"true"</span>
-        android<span class="token operator">:</span>background<span class="token operator">=</span><span class="token string">"@android:color/white"</span>
-        android<span class="token operator">:</span>paddingTop<span class="token operator">=</span><span class="token string">"5dp"</span>
-        android<span class="token operator">:</span>paddingBottom<span class="token operator">=</span><span class="token string">"5dp"</span>
-        app<span class="token operator">:</span>menu<span class="token operator">=</span><span class="token string">"@menu/navigation_menu"</span><span class="token operator">></span>
+</tbody>
+</table>
+<h4 id="示例1不需要浮动凸起的菜单图1效果"><a class="markdownIt-Anchor" href="#示例1不需要浮动凸起的菜单图1效果"></a> 示例1:不需要浮动（凸起）的菜单，图1效果</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token operator">&lt;</span>cn<span class="token punctuation">.</span>onestravel<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span>view<span class="token punctuation">.</span><span class="token class-name">BottomNavigationBar</span>
+    android<span class="token operator">:</span>id<span class="token operator">=</span><span class="token string">"@+id/BottomLayout"</span>
+    android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"match_parent"</span>
+    android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"50dp"</span>
+    android<span class="token operator">:</span>layout_alignParentBottom<span class="token operator">=</span><span class="token string">"true"</span>
+    android<span class="token operator">:</span>background<span class="token operator">=</span><span class="token string">"@android:color/white"</span>
+    android<span class="token operator">:</span>paddingTop<span class="token operator">=</span><span class="token string">"5dp"</span>
+    android<span class="token operator">:</span>paddingBottom<span class="token operator">=</span><span class="token string">"5dp"</span>
+    app<span class="token operator">:</span>menu<span class="token operator">=</span><span class="token string">"@menu/navigation_menu"</span><span class="token operator">></span>
 
-    <span class="token operator">&lt;</span><span class="token operator">/</span>cn<span class="token punctuation">.</span>onestravel<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span>view<span class="token punctuation">.</span>BottomNavigationBar<span class="token operator">></span>
-</code></pre>
-<h4 id="示例2-需要浮动（凸起）的菜单，图2效果"><a href="#示例2-需要浮动（凸起）的菜单，图2效果" class="headerlink" title="示例2:需要浮动（凸起）的菜单，图2效果"></a>示例2:需要浮动（凸起）的菜单，图2效果</h4><pre class=" language-java"><code class="language-java"> <span class="token operator">&lt;</span>cn<span class="token punctuation">.</span>onestravel<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span>view<span class="token punctuation">.</span>BottomNavigationBar
-        android<span class="token operator">:</span>id<span class="token operator">=</span><span class="token string">"@+id/BottomLayout"</span>
-        android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"match_parent"</span>
-        android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"50dp"</span>
-        android<span class="token operator">:</span>layout_alignParentBottom<span class="token operator">=</span><span class="token string">"true"</span>
-        android<span class="token operator">:</span>background<span class="token operator">=</span><span class="token string">"@android:color/white"</span>
-        android<span class="token operator">:</span>paddingTop<span class="token operator">=</span><span class="token string">"5dp"</span>
-        android<span class="token operator">:</span>paddingBottom<span class="token operator">=</span><span class="token string">"5dp"</span>
-        app<span class="token operator">:</span>floatingEnable<span class="token operator">=</span><span class="token string">"true"</span>
-        app<span class="token operator">:</span>floatingUp<span class="token operator">=</span><span class="token string">"25dp"</span>
-        app<span class="token operator">:</span>menu<span class="token operator">=</span><span class="token string">"@menu/navigation_menu"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>cn<span class="token punctuation">.</span>onestravel<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span>view<span class="token punctuation">.</span><span class="token class-name">BottomNavigationBar</span><span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="示例2需要浮动凸起的菜单图2效果"><a class="markdownIt-Anchor" href="#示例2需要浮动凸起的菜单图2效果"></a> 示例2:需要浮动（凸起）的菜单，图2效果</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">&lt;</span>cn<span class="token punctuation">.</span>onestravel<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span>view<span class="token punctuation">.</span><span class="token class-name">BottomNavigationBar</span>
+       android<span class="token operator">:</span>id<span class="token operator">=</span><span class="token string">"@+id/BottomLayout"</span>
+       android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"match_parent"</span>
+       android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"50dp"</span>
+       android<span class="token operator">:</span>layout_alignParentBottom<span class="token operator">=</span><span class="token string">"true"</span>
+       android<span class="token operator">:</span>background<span class="token operator">=</span><span class="token string">"@android:color/white"</span>
+       android<span class="token operator">:</span>paddingTop<span class="token operator">=</span><span class="token string">"5dp"</span>
+       android<span class="token operator">:</span>paddingBottom<span class="token operator">=</span><span class="token string">"5dp"</span>
+       app<span class="token operator">:</span>floatingEnable<span class="token operator">=</span><span class="token string">"true"</span>
+       app<span class="token operator">:</span>floatingUp<span class="token operator">=</span><span class="token string">"25dp"</span>
+       app<span class="token operator">:</span>menu<span class="token operator">=</span><span class="token string">"@menu/navigation_menu"</span><span class="token operator">></span>
 
-    <span class="token operator">&lt;</span><span class="token operator">/</span>cn<span class="token punctuation">.</span>onestravel<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span>view<span class="token punctuation">.</span>BottomNavigationBar<span class="token operator">></span></code></pre>
-<h3 id="menu-菜单属性值说明"><a href="#menu-菜单属性值说明" class="headerlink" title="menu 菜单属性值说明"></a>menu 菜单属性值说明</h3><table>
+   <span class="token operator">&lt;</span><span class="token operator">/</span>cn<span class="token punctuation">.</span>onestravel<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span>view<span class="token punctuation">.</span><span class="token class-name">BottomNavigationBar</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="menu-菜单属性值说明"><a class="markdownIt-Anchor" href="#menu-菜单属性值说明"></a> menu 菜单属性值说明</h3>
+<table>
 <thead>
 <tr>
 <th>属性</th>
@@ -374,7 +402,8 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>android:id</td>
 <td>@+id/tab1</td>
 <td>导航菜单 Item 的ID；</td>
@@ -404,8 +433,10 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
 <td>true/false</td>
 <td>设置该导航菜单 Item 是否浮动，与BottomNavigationBar 的app:floatingEnable和 app:floatingUp属性配合使用，默认为false，即不浮动（不凸起）；</td>
 </tr>
-</tbody></table>
-<h4 id="示例1-不需要浮动（凸起）的菜单，图1效果-1"><a href="#示例1-不需要浮动（凸起）的菜单，图1效果-1" class="headerlink" title="示例1:不需要浮动（凸起）的菜单，图1效果"></a>示例1:不需要浮动（凸起）的菜单，图1效果</h4><pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token operator">?</span><span class="token operator">></span>
+</tbody>
+</table>
+<h4 id="示例1不需要浮动凸起的菜单图1效果-2"><a class="markdownIt-Anchor" href="#示例1不需要浮动凸起的菜单图1效果-2"></a> 示例1:不需要浮动（凸起）的菜单，图1效果</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token operator">?</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>menu xmlns<span class="token operator">:</span>android<span class="token operator">=</span><span class="token string">"http://schemas.android.com/apk/res/android"</span>
     xmlns<span class="token operator">:</span>app<span class="token operator">=</span><span class="token string">"http://schemas.android.com/apk/res-auto"</span><span class="token operator">></span>
 
@@ -429,8 +460,9 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
         android<span class="token operator">:</span>id<span class="token operator">=</span><span class="token string">"@+id/tab4"</span>
         android<span class="token operator">:</span>icon<span class="token operator">=</span><span class="token string">"@drawable/bar_my"</span>
         android<span class="token operator">:</span>title<span class="token operator">=</span><span class="token string">"我的"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>item<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>menu<span class="token operator">></span></code></pre>
-<h4 id="示例2-需要浮动（凸起）的菜单，图2效果-1"><a href="#示例2-需要浮动（凸起）的菜单，图2效果-1" class="headerlink" title="示例2:需要浮动（凸起）的菜单，图2效果"></a>示例2:需要浮动（凸起）的菜单，图2效果</h4><pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token operator">?</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>menu<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="示例2需要浮动凸起的菜单图2效果-2"><a class="markdownIt-Anchor" href="#示例2需要浮动凸起的菜单图2效果-2"></a> 示例2:需要浮动（凸起）的菜单，图2效果</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token operator">?</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>menu xmlns<span class="token operator">:</span>android<span class="token operator">=</span><span class="token string">"http://schemas.android.com/apk/res/android"</span>
     xmlns<span class="token operator">:</span>app<span class="token operator">=</span><span class="token string">"http://schemas.android.com/apk/res-auto"</span><span class="token operator">></span>
 
@@ -456,46 +488,55 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
         android<span class="token operator">:</span>id<span class="token operator">=</span><span class="token string">"@+id/tab4"</span>
         android<span class="token operator">:</span>icon<span class="token operator">=</span><span class="token string">"@drawable/bar_my"</span>
         android<span class="token operator">:</span>title<span class="token operator">=</span><span class="token string">"我的"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>item<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>menu<span class="token operator">></span></code></pre>
-<h3 id="设置点击切换监听"><a href="#设置点击切换监听" class="headerlink" title="设置点击切换监听"></a>设置点击切换监听</h3><p><strong>在NavigationBar的Tab进行切换时，会回调改方法，可进行相应处理，如：未读消息数设置</strong></p>
-<pre class=" language-java"><code class="language-java">        bottomView<span class="token punctuation">.</span><span class="token function">setOnItemSelectedListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BottomNavigationBar<span class="token punctuation">.</span>OnItemSelectedListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token annotation punctuation">@Override</span>
-                    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onItemSelected</span><span class="token punctuation">(</span>BottomNavigationBar<span class="token punctuation">.</span>Item item<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                        <span class="token keyword">if</span><span class="token punctuation">(</span>position<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                            bottomView<span class="token punctuation">.</span><span class="token function">setFloatingEnable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
-                            bottomView<span class="token punctuation">.</span><span class="token function">setFloatingEnable</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                        <span class="token punctuation">}</span>
-                    <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="添加Fragment进行管理，点击自动切换"><a href="#添加Fragment进行管理，点击自动切换" class="headerlink" title="添加Fragment进行管理，点击自动切换"></a>添加Fragment进行管理，点击自动切换</h3><p><strong>需要先设置FragmentManager管理器和加载Fragment的ViewGroup,一般为FrameLayout ,需要设置id;之后调用addFragment，为对应的Tab添加Fragment,</strong></p>
-<pre class=" language-javascript"><code class="language-javascript">        bottomView<span class="token punctuation">.</span><span class="token function">setFragmentManager</span><span class="token punctuation">(</span><span class="token function">getFragmentManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>mainFragment<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        bottomView<span class="token punctuation">.</span><span class="token function">addFragment</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>tab1<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">FirstFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        bottomView<span class="token punctuation">.</span><span class="token function">addFragment</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>tab2<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">SecondFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        bottomView<span class="token punctuation">.</span><span class="token function">addFragment</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>tab3<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">ThirdFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        bottomView<span class="token punctuation">.</span><span class="token function">addFragment</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>tab4<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">FourFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        bottomView<span class="token punctuation">.</span><span class="token function">addFragment</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>tab5<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">FiveFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="版本更新说明"><a href="#版本更新说明" class="headerlink" title="版本更新说明"></a>版本更新说明</h3><h4 id="1-0-2"><a href="#1-0-2" class="headerlink" title="1.0.2"></a>1.0.2</h4><ul>
+<span class="token operator">&lt;</span><span class="token operator">/</span>menu<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="设置点击切换监听"><a class="markdownIt-Anchor" href="#设置点击切换监听"></a> 设置点击切换监听</h3>
+<p><strong>在NavigationBar的Tab进行切换时，会回调改方法，可进行相应处理，如：未读消息数设置</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">bottomView<span class="token punctuation">.</span><span class="token function">setOnItemSelectedListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BottomNavigationBar</span><span class="token punctuation">.</span><span class="token class-name">OnItemSelectedListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onItemSelected</span><span class="token punctuation">(</span><span class="token class-name">BottomNavigationBar</span><span class="token punctuation">.</span><span class="token class-name">Item</span> item<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>position<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                    bottomView<span class="token punctuation">.</span><span class="token function">setFloatingEnable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                    bottomView<span class="token punctuation">.</span><span class="token function">setFloatingEnable</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="添加fragment进行管理点击自动切换"><a class="markdownIt-Anchor" href="#添加fragment进行管理点击自动切换"></a> 添加Fragment进行管理，点击自动切换</h3>
+<p><strong>需要先设置FragmentManager管理器和加载Fragment的ViewGroup,一般为FrameLayout ,需要设置id;之后调用addFragment，为对应的Tab添加Fragment,</strong></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">bottomView<span class="token punctuation">.</span><span class="token function">setFragmentManager</span><span class="token punctuation">(</span><span class="token function">getFragmentManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>mainFragment<span class="token punctuation">)</span><span class="token punctuation">;</span>
+bottomView<span class="token punctuation">.</span><span class="token function">addFragment</span><span class="token punctuation">(</span><span class="token constant">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>tab1<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">FirstFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bottomView<span class="token punctuation">.</span><span class="token function">addFragment</span><span class="token punctuation">(</span><span class="token constant">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>tab2<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">SecondFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bottomView<span class="token punctuation">.</span><span class="token function">addFragment</span><span class="token punctuation">(</span><span class="token constant">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>tab3<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">ThirdFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bottomView<span class="token punctuation">.</span><span class="token function">addFragment</span><span class="token punctuation">(</span><span class="token constant">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>tab4<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">FourFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bottomView<span class="token punctuation">.</span><span class="token function">addFragment</span><span class="token punctuation">(</span><span class="token constant">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>tab5<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">FiveFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="版本更新说明"><a class="markdownIt-Anchor" href="#版本更新说明"></a> 版本更新说明</h3>
+<h4 id="102"><a class="markdownIt-Anchor" href="#102"></a> 1.0.2</h4>
+<ul>
 <li>初版实现自定义底部导航栏</li>
 </ul>
-<h4 id="1-0-3"><a href="#1-0-3" class="headerlink" title="1.0.3"></a>1.0.3</h4><ul>
+<h4 id="103"><a class="markdownIt-Anchor" href="#103"></a> 1.0.3</h4>
+<ul>
 <li>在原基础上对封装进行优化，支持代码实现导航栏</li>
 </ul>
-<h4 id="1-0-4"><a href="#1-0-4" class="headerlink" title="1.0.4"></a>1.0.4</h4><ul>
+<h4 id="104"><a class="markdownIt-Anchor" href="#104"></a> 1.0.4</h4>
+<ul>
 <li>优化选中突出效果，支持选中放大，支持导航栏背景圆角</li>
 </ul>
-<h4 id="1-0-5"><a href="#1-0-5" class="headerlink" title="1.0.5"></a>1.0.5</h4><ul>
+<h4 id="105"><a class="markdownIt-Anchor" href="#105"></a> 1.0.5</h4>
+<ul>
 <li>可以自定义导航栏文字大小</li>
 <li>可以自定义图标的宽度和高度</li>
 <li>自定义图标和文字间隔高度</li>
 </ul>
-<h4 id="1-0-6"><a href="#1-0-6" class="headerlink" title="1.0.6"></a>1.0.6</h4><ul>
+<h4 id="106"><a class="markdownIt-Anchor" href="#106"></a> 1.0.6</h4>
+<ul>
 <li>可以Java Api 设置导航栏文字大小</li>
 <li>可以Java Api 设置图标的宽度和高度</li>
 <li>Java Api 设置图标和文字间隔高度</li>
 <li>支持管理Fragment ,实现Fragment点击自动切换</li>
 </ul>
-<h1 id="温馨提示："><a href="#温馨提示：" class="headerlink" title="温馨提示："></a>温馨提示：</h1><p><strong>在使用过程中，如遇到任何问题，可发送邮件至<a href="mailto:server@onestravel.cn">server@onestravel.cn</a>说明相关问题，我在看到邮件第一时间，会针对相应问题进行沟通解决，谢谢支持！</strong></p>
+<h1 id="温馨提示"><a class="markdownIt-Anchor" href="#温馨提示"></a> 温馨提示：</h1>
+<p><strong>在使用过程中，如遇到任何问题，可发送邮件至server@onestravel.cn说明相关问题，我在看到邮件第一时间，会针对相应问题进行沟通解决，谢谢支持！</strong></p>
 
   </div>
   <div>
@@ -568,7 +609,7 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BottomNavigationBar-使用说明"><span class="toc-text">BottomNavigationBar 使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介："><span class="toc-text">简介：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#BottomNavigationBar-是自定义的一个实现App应用底部导航栏功能的View-可以实现底部-2-5-个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能-可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）-选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色-可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。"><span class="toc-text">BottomNavigationBar 是自定义的一个实现App应用底部导航栏功能的View,可以实现底部 2-5 个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能; 可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）,选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色;可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先看一组效果图"><span class="toc-text">先看一组效果图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#五个菜单，没有凸起的，都是可选中的"><span class="toc-text">五个菜单，没有凸起的，都是可选中的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gradle"><span class="toc-text">gradle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#maven"><span class="toc-text">maven</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性说明"><span class="toc-text">属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BottomNavigationBar-属性说明"><span class="toc-text">BottomNavigationBar 属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例1-不需要浮动（凸起）的菜单，图1效果"><span class="toc-text">示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例2-需要浮动（凸起）的菜单，图2效果"><span class="toc-text">示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#menu-菜单属性值说明"><span class="toc-text">menu 菜单属性值说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例1-不需要浮动（凸起）的菜单，图1效果-1"><span class="toc-text">示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例2-需要浮动（凸起）的菜单，图2效果-1"><span class="toc-text">示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置点击切换监听"><span class="toc-text">设置点击切换监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加Fragment进行管理，点击自动切换"><span class="toc-text">添加Fragment进行管理，点击自动切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#版本更新说明"><span class="toc-text">版本更新说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-2"><span class="toc-text">1.0.2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-3"><span class="toc-text">1.0.3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-4"><span class="toc-text">1.0.4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-5"><span class="toc-text">1.0.5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-6"><span class="toc-text">1.0.6</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#温馨提示："><span class="toc-text">温馨提示：</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#bottomnavigationbar"><span class="toc-text"> BottomNavigationBar 使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text"> 简介：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#bottomnavigationbar-%E6%98%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%8E%B0app%E5%BA%94%E7%94%A8%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%8A%9F%E8%83%BD%E7%9A%84view%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E5%BA%95%E9%83%A8-2-5-%E4%B8%AA%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E4%B8%80%E8%88%AC%E4%B8%8D%E4%BC%9A%E6%9C%89%E6%9B%B4%E5%A4%9A%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E6%9F%90%E4%B8%80%E4%B8%AA%E8%8F%9C%E5%8D%95%E5%87%B8%E8%B5%B7%E7%9A%84%E6%95%88%E6%9E%9C%E5%A6%82%E6%9C%895%E4%B8%AA%E8%8F%9C%E5%8D%95%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E8%AE%A9%E7%AC%AC%E4%B8%89%E4%B8%AA%E8%8F%9C%E5%8D%95%E5%87%B8%E8%B5%B7floating%E8%BF%99%E6%98%AF%E5%BE%88%E5%A4%9Aapp%E9%83%BD%E6%9C%89%E7%9A%84%E5%8A%9F%E8%83%BD-%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E7%BC%96%E5%86%99%E7%9A%84%E9%A2%9C%E8%89%B2%E5%8F%98%E5%8C%96%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E6%9D%A5%E6%9B%B4%E6%94%B9%E5%9B%BE%E6%A0%87%E5%92%8C%E6%96%87%E5%AD%97%E9%80%89%E4%B8%AD%E6%97%B6%E5%92%8C%E6%9C%AA%E9%80%89%E4%B8%AD%E6%97%B6%E7%9A%84%E9%A2%9C%E8%89%B2%E5%8F%AF%E4%BB%A5%E8%87%AA%E7%94%B1%E6%8E%A7%E5%88%B6%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E9%80%89%E4%B8%ADcheckable%E9%80%89%E6%8B%A9%E5%BC%80%E5%90%AF%E6%97%B6%E5%8F%AF%E5%8F%98%E6%8D%A2%E4%B8%BA%E9%80%89%E4%B8%AD%E9%A2%9C%E8%89%B2%E9%80%89%E6%8B%A9%E5%85%B3%E9%97%AD%E6%97%B6%E4%B8%8D%E8%83%BD%E6%9B%B4%E6%94%B9%E4%B8%BA%E9%80%89%E6%8B%A9%E9%A2%9C%E8%89%B2%E5%8F%AF%E4%BB%A5%E6%8E%A7%E5%88%B6%E9%BB%98%E8%AE%A4%E9%80%89%E4%B8%AD%E5%93%AA%E4%B8%80%E9%A1%B9%E5%8F%AF%E4%BB%A5%E8%AE%BE%E7%BD%AE%E6%9F%90%E4%B8%80%E4%B8%AA%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E7%9A%84%E6%9C%AA%E8%AF%BB%E6%B6%88%E6%81%AF%E6%95%B0%E6%95%B0%E5%AD%97%E6%88%96%E8%80%85%E5%B0%8F%E7%BA%A2%E7%82%B9"><span class="toc-text"> BottomNavigationBar 是自定义的一个实现App应用底部导航栏功能的View,可以实现底部 2-5 个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能; 可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）,选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色;可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E7%9C%8B%E4%B8%80%E7%BB%84%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="toc-text"> 先看一组效果图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E4%B8%AA%E8%8F%9C%E5%8D%95%E6%B2%A1%E6%9C%89%E5%87%B8%E8%B5%B7%E7%9A%84%E9%83%BD%E6%98%AF%E5%8F%AF%E9%80%89%E4%B8%AD%E7%9A%84"><span class="toc-text"> 五个菜单，没有凸起的，都是可选中的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gradle"><span class="toc-text"> gradle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#maven"><span class="toc-text"> maven</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E"><span class="toc-text"> 属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bottomnavigationbar-%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E"><span class="toc-text"> BottomNavigationBar 属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1%E4%B8%8D%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE1%E6%95%88%E6%9E%9C"><span class="toc-text"> 示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE2%E6%95%88%E6%9E%9C"><span class="toc-text"> 示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#menu-%E8%8F%9C%E5%8D%95%E5%B1%9E%E6%80%A7%E5%80%BC%E8%AF%B4%E6%98%8E"><span class="toc-text"> menu 菜单属性值说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1%E4%B8%8D%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE1%E6%95%88%E6%9E%9C-2"><span class="toc-text"> 示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE2%E6%95%88%E6%9E%9C-2"><span class="toc-text"> 示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%82%B9%E5%87%BB%E5%88%87%E6%8D%A2%E7%9B%91%E5%90%AC"><span class="toc-text"> 设置点击切换监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0fragment%E8%BF%9B%E8%A1%8C%E7%AE%A1%E7%90%86%E7%82%B9%E5%87%BB%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2"><span class="toc-text"> 添加Fragment进行管理，点击自动切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E"><span class="toc-text"> 版本更新说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#102"><span class="toc-text"> 1.0.2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#103"><span class="toc-text"> 1.0.3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#104"><span class="toc-text"> 1.0.4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#105"><span class="toc-text"> 1.0.5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#106"><span class="toc-text"> 1.0.6</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%A9%E9%A6%A8%E6%8F%90%E7%A4%BA"><span class="toc-text"> 温馨提示：</span></a></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -584,7 +625,7 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -601,7 +642,7 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BottomNavigationBar-使用说明"><span class="toc-text">BottomNavigationBar 使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介："><span class="toc-text">简介：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#BottomNavigationBar-是自定义的一个实现App应用底部导航栏功能的View-可以实现底部-2-5-个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能-可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）-选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色-可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。"><span class="toc-text">BottomNavigationBar 是自定义的一个实现App应用底部导航栏功能的View,可以实现底部 2-5 个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能; 可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）,选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色;可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先看一组效果图"><span class="toc-text">先看一组效果图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#五个菜单，没有凸起的，都是可选中的"><span class="toc-text">五个菜单，没有凸起的，都是可选中的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gradle"><span class="toc-text">gradle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#maven"><span class="toc-text">maven</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性说明"><span class="toc-text">属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BottomNavigationBar-属性说明"><span class="toc-text">BottomNavigationBar 属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例1-不需要浮动（凸起）的菜单，图1效果"><span class="toc-text">示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例2-需要浮动（凸起）的菜单，图2效果"><span class="toc-text">示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#menu-菜单属性值说明"><span class="toc-text">menu 菜单属性值说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例1-不需要浮动（凸起）的菜单，图1效果-1"><span class="toc-text">示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例2-需要浮动（凸起）的菜单，图2效果-1"><span class="toc-text">示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置点击切换监听"><span class="toc-text">设置点击切换监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加Fragment进行管理，点击自动切换"><span class="toc-text">添加Fragment进行管理，点击自动切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#版本更新说明"><span class="toc-text">版本更新说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-2"><span class="toc-text">1.0.2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-3"><span class="toc-text">1.0.3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-4"><span class="toc-text">1.0.4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-5"><span class="toc-text">1.0.5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-6"><span class="toc-text">1.0.6</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#温馨提示："><span class="toc-text">温馨提示：</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#bottomnavigationbar"><span class="toc-text"> BottomNavigationBar 使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text"> 简介：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#bottomnavigationbar-%E6%98%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%8E%B0app%E5%BA%94%E7%94%A8%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%8A%9F%E8%83%BD%E7%9A%84view%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E5%BA%95%E9%83%A8-2-5-%E4%B8%AA%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E4%B8%80%E8%88%AC%E4%B8%8D%E4%BC%9A%E6%9C%89%E6%9B%B4%E5%A4%9A%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E6%9F%90%E4%B8%80%E4%B8%AA%E8%8F%9C%E5%8D%95%E5%87%B8%E8%B5%B7%E7%9A%84%E6%95%88%E6%9E%9C%E5%A6%82%E6%9C%895%E4%B8%AA%E8%8F%9C%E5%8D%95%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E8%AE%A9%E7%AC%AC%E4%B8%89%E4%B8%AA%E8%8F%9C%E5%8D%95%E5%87%B8%E8%B5%B7floating%E8%BF%99%E6%98%AF%E5%BE%88%E5%A4%9Aapp%E9%83%BD%E6%9C%89%E7%9A%84%E5%8A%9F%E8%83%BD-%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E7%BC%96%E5%86%99%E7%9A%84%E9%A2%9C%E8%89%B2%E5%8F%98%E5%8C%96%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E6%9D%A5%E6%9B%B4%E6%94%B9%E5%9B%BE%E6%A0%87%E5%92%8C%E6%96%87%E5%AD%97%E9%80%89%E4%B8%AD%E6%97%B6%E5%92%8C%E6%9C%AA%E9%80%89%E4%B8%AD%E6%97%B6%E7%9A%84%E9%A2%9C%E8%89%B2%E5%8F%AF%E4%BB%A5%E8%87%AA%E7%94%B1%E6%8E%A7%E5%88%B6%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E9%80%89%E4%B8%ADcheckable%E9%80%89%E6%8B%A9%E5%BC%80%E5%90%AF%E6%97%B6%E5%8F%AF%E5%8F%98%E6%8D%A2%E4%B8%BA%E9%80%89%E4%B8%AD%E9%A2%9C%E8%89%B2%E9%80%89%E6%8B%A9%E5%85%B3%E9%97%AD%E6%97%B6%E4%B8%8D%E8%83%BD%E6%9B%B4%E6%94%B9%E4%B8%BA%E9%80%89%E6%8B%A9%E9%A2%9C%E8%89%B2%E5%8F%AF%E4%BB%A5%E6%8E%A7%E5%88%B6%E9%BB%98%E8%AE%A4%E9%80%89%E4%B8%AD%E5%93%AA%E4%B8%80%E9%A1%B9%E5%8F%AF%E4%BB%A5%E8%AE%BE%E7%BD%AE%E6%9F%90%E4%B8%80%E4%B8%AA%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E7%9A%84%E6%9C%AA%E8%AF%BB%E6%B6%88%E6%81%AF%E6%95%B0%E6%95%B0%E5%AD%97%E6%88%96%E8%80%85%E5%B0%8F%E7%BA%A2%E7%82%B9"><span class="toc-text"> BottomNavigationBar 是自定义的一个实现App应用底部导航栏功能的View,可以实现底部 2-5 个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能; 可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）,选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色;可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E7%9C%8B%E4%B8%80%E7%BB%84%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="toc-text"> 先看一组效果图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E4%B8%AA%E8%8F%9C%E5%8D%95%E6%B2%A1%E6%9C%89%E5%87%B8%E8%B5%B7%E7%9A%84%E9%83%BD%E6%98%AF%E5%8F%AF%E9%80%89%E4%B8%AD%E7%9A%84"><span class="toc-text"> 五个菜单，没有凸起的，都是可选中的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gradle"><span class="toc-text"> gradle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#maven"><span class="toc-text"> maven</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E"><span class="toc-text"> 属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bottomnavigationbar-%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E"><span class="toc-text"> BottomNavigationBar 属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1%E4%B8%8D%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE1%E6%95%88%E6%9E%9C"><span class="toc-text"> 示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE2%E6%95%88%E6%9E%9C"><span class="toc-text"> 示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#menu-%E8%8F%9C%E5%8D%95%E5%B1%9E%E6%80%A7%E5%80%BC%E8%AF%B4%E6%98%8E"><span class="toc-text"> menu 菜单属性值说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1%E4%B8%8D%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE1%E6%95%88%E6%9E%9C-2"><span class="toc-text"> 示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE2%E6%95%88%E6%9E%9C-2"><span class="toc-text"> 示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%82%B9%E5%87%BB%E5%88%87%E6%8D%A2%E7%9B%91%E5%90%AC"><span class="toc-text"> 设置点击切换监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0fragment%E8%BF%9B%E8%A1%8C%E7%AE%A1%E7%90%86%E7%82%B9%E5%87%BB%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2"><span class="toc-text"> 添加Fragment进行管理，点击自动切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E"><span class="toc-text"> 版本更新说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#102"><span class="toc-text"> 1.0.2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#103"><span class="toc-text"> 1.0.3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#104"><span class="toc-text"> 1.0.4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#105"><span class="toc-text"> 1.0.5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#106"><span class="toc-text"> 1.0.6</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%A9%E9%A6%A8%E6%8F%90%E7%A4%BA"><span class="toc-text"> 温馨提示：</span></a></li></ol>
     </div>
   </article>
   
@@ -622,13 +663,6 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -674,9 +708,9 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -684,14 +718,21 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -699,6 +740,13 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -735,13 +783,13 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -756,7 +804,7 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BottomNavigationBar-使用说明"><span class="toc-text">BottomNavigationBar 使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介："><span class="toc-text">简介：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#BottomNavigationBar-是自定义的一个实现App应用底部导航栏功能的View-可以实现底部-2-5-个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能-可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）-选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色-可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。"><span class="toc-text">BottomNavigationBar 是自定义的一个实现App应用底部导航栏功能的View,可以实现底部 2-5 个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能; 可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）,选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色;可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先看一组效果图"><span class="toc-text">先看一组效果图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#五个菜单，没有凸起的，都是可选中的"><span class="toc-text">五个菜单，没有凸起的，都是可选中的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gradle"><span class="toc-text">gradle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#maven"><span class="toc-text">maven</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性说明"><span class="toc-text">属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BottomNavigationBar-属性说明"><span class="toc-text">BottomNavigationBar 属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例1-不需要浮动（凸起）的菜单，图1效果"><span class="toc-text">示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例2-需要浮动（凸起）的菜单，图2效果"><span class="toc-text">示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#menu-菜单属性值说明"><span class="toc-text">menu 菜单属性值说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例1-不需要浮动（凸起）的菜单，图1效果-1"><span class="toc-text">示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例2-需要浮动（凸起）的菜单，图2效果-1"><span class="toc-text">示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置点击切换监听"><span class="toc-text">设置点击切换监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加Fragment进行管理，点击自动切换"><span class="toc-text">添加Fragment进行管理，点击自动切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#版本更新说明"><span class="toc-text">版本更新说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-2"><span class="toc-text">1.0.2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-3"><span class="toc-text">1.0.3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-4"><span class="toc-text">1.0.4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-5"><span class="toc-text">1.0.5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-6"><span class="toc-text">1.0.6</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#温馨提示："><span class="toc-text">温馨提示：</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#bottomnavigationbar"><span class="toc-text"> BottomNavigationBar 使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text"> 简介：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#bottomnavigationbar-%E6%98%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%8E%B0app%E5%BA%94%E7%94%A8%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%8A%9F%E8%83%BD%E7%9A%84view%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E5%BA%95%E9%83%A8-2-5-%E4%B8%AA%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E4%B8%80%E8%88%AC%E4%B8%8D%E4%BC%9A%E6%9C%89%E6%9B%B4%E5%A4%9A%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E6%9F%90%E4%B8%80%E4%B8%AA%E8%8F%9C%E5%8D%95%E5%87%B8%E8%B5%B7%E7%9A%84%E6%95%88%E6%9E%9C%E5%A6%82%E6%9C%895%E4%B8%AA%E8%8F%9C%E5%8D%95%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E8%AE%A9%E7%AC%AC%E4%B8%89%E4%B8%AA%E8%8F%9C%E5%8D%95%E5%87%B8%E8%B5%B7floating%E8%BF%99%E6%98%AF%E5%BE%88%E5%A4%9Aapp%E9%83%BD%E6%9C%89%E7%9A%84%E5%8A%9F%E8%83%BD-%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E7%BC%96%E5%86%99%E7%9A%84%E9%A2%9C%E8%89%B2%E5%8F%98%E5%8C%96%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E6%9D%A5%E6%9B%B4%E6%94%B9%E5%9B%BE%E6%A0%87%E5%92%8C%E6%96%87%E5%AD%97%E9%80%89%E4%B8%AD%E6%97%B6%E5%92%8C%E6%9C%AA%E9%80%89%E4%B8%AD%E6%97%B6%E7%9A%84%E9%A2%9C%E8%89%B2%E5%8F%AF%E4%BB%A5%E8%87%AA%E7%94%B1%E6%8E%A7%E5%88%B6%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E9%80%89%E4%B8%ADcheckable%E9%80%89%E6%8B%A9%E5%BC%80%E5%90%AF%E6%97%B6%E5%8F%AF%E5%8F%98%E6%8D%A2%E4%B8%BA%E9%80%89%E4%B8%AD%E9%A2%9C%E8%89%B2%E9%80%89%E6%8B%A9%E5%85%B3%E9%97%AD%E6%97%B6%E4%B8%8D%E8%83%BD%E6%9B%B4%E6%94%B9%E4%B8%BA%E9%80%89%E6%8B%A9%E9%A2%9C%E8%89%B2%E5%8F%AF%E4%BB%A5%E6%8E%A7%E5%88%B6%E9%BB%98%E8%AE%A4%E9%80%89%E4%B8%AD%E5%93%AA%E4%B8%80%E9%A1%B9%E5%8F%AF%E4%BB%A5%E8%AE%BE%E7%BD%AE%E6%9F%90%E4%B8%80%E4%B8%AA%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E7%9A%84%E6%9C%AA%E8%AF%BB%E6%B6%88%E6%81%AF%E6%95%B0%E6%95%B0%E5%AD%97%E6%88%96%E8%80%85%E5%B0%8F%E7%BA%A2%E7%82%B9"><span class="toc-text"> BottomNavigationBar 是自定义的一个实现App应用底部导航栏功能的View,可以实现底部 2-5 个导航菜单（一般不会有更多），可以实现某一个菜单凸起的效果，如，有5个菜单，可以选择让第三个菜单凸起（floating），这是很多App都有的功能; 可以根据编写的颜色变化的资源文件来更改图标和文字选中时和未选中时的颜色，可以自由控制是否需要选中（checkable）,选择开启时，可变换为选中颜色，选择关闭时，不能更改为选择颜色;可以控制默认选中哪一项；可以设置某一个导航菜单的未读消息数（数字或者小红点）。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E7%9C%8B%E4%B8%80%E7%BB%84%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="toc-text"> 先看一组效果图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E4%B8%AA%E8%8F%9C%E5%8D%95%E6%B2%A1%E6%9C%89%E5%87%B8%E8%B5%B7%E7%9A%84%E9%83%BD%E6%98%AF%E5%8F%AF%E9%80%89%E4%B8%AD%E7%9A%84"><span class="toc-text"> 五个菜单，没有凸起的，都是可选中的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gradle"><span class="toc-text"> gradle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#maven"><span class="toc-text"> maven</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E"><span class="toc-text"> 属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bottomnavigationbar-%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E"><span class="toc-text"> BottomNavigationBar 属性说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1%E4%B8%8D%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE1%E6%95%88%E6%9E%9C"><span class="toc-text"> 示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE2%E6%95%88%E6%9E%9C"><span class="toc-text"> 示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#menu-%E8%8F%9C%E5%8D%95%E5%B1%9E%E6%80%A7%E5%80%BC%E8%AF%B4%E6%98%8E"><span class="toc-text"> menu 菜单属性值说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1%E4%B8%8D%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE1%E6%95%88%E6%9E%9C-2"><span class="toc-text"> 示例1:不需要浮动（凸起）的菜单，图1效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2%E9%9C%80%E8%A6%81%E6%B5%AE%E5%8A%A8%E5%87%B8%E8%B5%B7%E7%9A%84%E8%8F%9C%E5%8D%95%E5%9B%BE2%E6%95%88%E6%9E%9C-2"><span class="toc-text"> 示例2:需要浮动（凸起）的菜单，图2效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%82%B9%E5%87%BB%E5%88%87%E6%8D%A2%E7%9B%91%E5%90%AC"><span class="toc-text"> 设置点击切换监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0fragment%E8%BF%9B%E8%A1%8C%E7%AE%A1%E7%90%86%E7%82%B9%E5%87%BB%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2"><span class="toc-text"> 添加Fragment进行管理，点击自动切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E"><span class="toc-text"> 版本更新说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#102"><span class="toc-text"> 1.0.2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#103"><span class="toc-text"> 1.0.3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#104"><span class="toc-text"> 1.0.4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#105"><span class="toc-text"> 1.0.5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#106"><span class="toc-text"> 1.0.6</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%A9%E9%A6%A8%E6%8F%90%E7%A4%BA"><span class="toc-text"> 温馨提示：</span></a></li></ol>
   </article>
   
   
@@ -767,22 +815,22 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -831,7 +879,7 @@ implementation &#39;com.github.onestravel:BottomNavigationBar:TAG&#39;
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

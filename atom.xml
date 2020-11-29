@@ -17,7 +17,7 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</title>
+    <title></title>
     <link href="https://blog.onestravel.cn/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"/>
     <id>https://blog.onestravel.cn/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/</id>
     <published>2020-08-19T06:41:23.578Z</published>
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h1 id=&quot;【笔记四】编译插桩操纵字节码，实现不可能完成的任务&quot;&gt;&lt;a href=&quot;#【笔记四】编译插桩操纵字节码，实现不可能完成的任务&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;笔记四编译插桩操纵字节码实现不可能完成的任务&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#笔记四编译插桩操纵字节码实现不可能完成的任务&quot;&gt;&lt;/a&gt;
         
       
     
@@ -39,7 +39,7 @@
   </entry>
   
   <entry>
-    <title>Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</title>
+    <title></title>
     <link href="https://blog.onestravel.cn/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"/>
     <id>https://blog.onestravel.cn/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/</id>
     <published>2020-08-17T03:09:43.525Z</published>
@@ -51,7 +51,8 @@
       
         
         
-          &lt;h1 id=&quot;【笔记三】字节码层面分析-class-文件结构&quot;&gt;&lt;a href=&quot;#【笔记三】字节码层面分析-class-文件结构&quot; class=&quot;headerlink&quot; title=&quot;【笔记三】字节码层面分析 class 文件结构&quot;&gt;&lt;/a&gt;【笔记三】字节码层面分析
+          &lt;h1 id=&quot;笔记三字节码层面分析-class-文件结构&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#笔记三字节码层面分析-class-文件结构&quot;&gt;&lt;/a&gt; 【笔记三】字节码层面分析 class 文件结构&lt;/h1&gt;
+&lt;h2
         
       
     
@@ -61,7 +62,7 @@
   </entry>
   
   <entry>
-    <title>Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</title>
+    <title></title>
     <link href="https://blog.onestravel.cn/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"/>
     <id>https://blog.onestravel.cn/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/</id>
     <published>2020-07-19T10:18:47.870Z</published>
@@ -73,7 +74,8 @@
       
         
         
-          &lt;h1 id=&quot;【笔记二】GC-回收机制和分代回收策略&quot;&gt;&lt;a href=&quot;#【笔记二】GC-回收机制和分代回收策略&quot; class=&quot;headerlink&quot; title=&quot;【笔记二】GC 回收机制和分代回收策略&quot;&gt;&lt;/a&gt;【笔记二】GC
+          &lt;h1 id=&quot;笔记二gc-回收机制和分代回收策略&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#笔记二gc-回收机制和分代回收策略&quot;&gt;&lt;/a&gt; 【笔记二】GC 回收机制和分代回收策略&lt;/h1&gt;
+&lt;p&gt;垃圾回收（Garbage
         
       
     
@@ -83,7 +85,7 @@
   </entry>
   
   <entry>
-    <title>Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</title>
+    <title></title>
     <link href="https://blog.onestravel.cn/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"/>
     <id>https://blog.onestravel.cn/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/</id>
     <published>2020-07-18T01:59:38.950Z</published>
@@ -95,7 +97,8 @@
       
         
         
-          &lt;h1 id=&quot;【笔记一】Java程序运行时，内存是如何分配的&quot;&gt;&lt;a href=&quot;#【笔记一】Java程序运行时，内存是如何分配的&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;笔记一java程序运行时内存是如何分配的&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#笔记一java程序运行时内存是如何分配的&quot;&gt;&lt;/a&gt; 【笔记一】Java程序运行时，内存是如何分配的&lt;/h1&gt;
+&lt;p&gt;Java
         
       
     
@@ -105,7 +108,7 @@
   </entry>
   
   <entry>
-    <title>java/并发编程/笔记一【并发编程】线程基础</title>
+    <title></title>
     <link href="https://blog.onestravel.cn/20200626/java/bing-fa-bian-cheng/bi-ji-yi-bing-fa-bian-cheng-xian-cheng-ji-chu/"/>
     <id>https://blog.onestravel.cn/20200626/java/bing-fa-bian-cheng/bi-ji-yi-bing-fa-bian-cheng-xian-cheng-ji-chu/</id>
     <published>2020-06-26T14:56:23.285Z</published>
@@ -117,7 +120,8 @@
       
         
         
-          &lt;h1 id=&quot;【并发编程】线程基础&quot;&gt;&lt;a href=&quot;#【并发编程】线程基础&quot; class=&quot;headerlink&quot; title=&quot;【并发编程】线程基础&quot;&gt;&lt;/a&gt;【并发编程】线程基础&lt;/h1&gt;&lt;h2 id=&quot;一-实现线程的方式&quot;&gt;&lt;a href=&quot;#一-实现线程的方式&quot;
+          &lt;h1 id=&quot;并发编程线程基础&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#并发编程线程基础&quot;&gt;&lt;/a&gt; 【并发编程】线程基础&lt;/h1&gt;
+&lt;h2 id=&quot;一-实现线程的方式&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;
         
       
     
@@ -139,7 +143,8 @@
       
         
         
-          &lt;h1 id=&quot;Glide-4-11-0-浅析&quot;&gt;&lt;a href=&quot;#Glide-4-11-0-浅析&quot; class=&quot;headerlink&quot; title=&quot;Glide-4.11.0 浅析&quot;&gt;&lt;/a&gt;Glide-4.11.0 浅析&lt;/h1&gt;&lt;p&gt;Glide
+          &lt;h1 id=&quot;glide-4110-浅析&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#glide-4110-浅析&quot;&gt;&lt;/a&gt; Glide-4.11.0 浅析&lt;/h1&gt;
+&lt;p&gt;Glide
         
       
     
@@ -169,7 +174,7 @@
       
         
         
-          &lt;h1 id=&quot;FiveFiveVideoPlayer&quot;&gt;&lt;a href=&quot;#FiveFiveVideoPlayer&quot; class=&quot;headerlink&quot; title=&quot;FiveFiveVideoPlayer&quot;&gt;&lt;/a&gt;&lt;a
+          &lt;h1 id=&quot;fivefivevideoplayer&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#fivefivevideoplayer&quot;&gt;&lt;/a&gt; &lt;a
         
       
     
@@ -197,7 +202,7 @@
       
         
         
-          &lt;h1 id=&quot;OneActionBar-使用说明&quot;&gt;&lt;a href=&quot;#OneActionBar-使用说明&quot; class=&quot;headerlink&quot; title=&quot;OneActionBar 使用说明&quot;&gt;&lt;/a&gt;&lt;a
+          &lt;h1 id=&quot;oneactionbar&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#oneactionbar&quot;&gt;&lt;/a&gt; &lt;a
         
       
     
@@ -225,7 +230,8 @@
       
         
         
-          &lt;h1 id=&quot;15-调整数组顺序使奇数位于偶数前面&quot;&gt;&lt;a href=&quot;#15-调整数组顺序使奇数位于偶数前面&quot; class=&quot;headerlink&quot; title=&quot;15.调整数组顺序使奇数位于偶数前面&quot;&gt;&lt;/a&gt;15.调整数组顺序使奇数位于偶数前面&lt;/h1&gt;&lt;h2
+          &lt;h1 id=&quot;15调整数组顺序使奇数位于偶数前面&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#15调整数组顺序使奇数位于偶数前面&quot;&gt;&lt;/a&gt; 15.调整数组顺序使奇数位于偶数前面&lt;/h1&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a
         
       
     
@@ -251,7 +257,8 @@
       
         
         
-          &lt;h1 id=&quot;14-数值的整数次方&quot;&gt;&lt;a href=&quot;#14-数值的整数次方&quot; class=&quot;headerlink&quot; title=&quot;14.数值的整数次方&quot;&gt;&lt;/a&gt;14.数值的整数次方&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot;
+          &lt;h1 id=&quot;14数值的整数次方&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#14数值的整数次方&quot;&gt;&lt;/a&gt; 14.数值的整数次方&lt;/h1&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;
         
       
     
@@ -277,7 +284,8 @@
       
         
         
-          &lt;h1 id=&quot;视频解码、像素格式转换与Native原生绘制&quot;&gt;&lt;a href=&quot;#视频解码、像素格式转换与Native原生绘制&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;视频解码-像素格式转换与native原生绘制&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#视频解码-像素格式转换与native原生绘制&quot;&gt;&lt;/a&gt; 视频解码、像素格式转换与Native原生绘制&lt;/h1&gt;
+&lt;h2
         
       
     
@@ -307,7 +315,8 @@
       
         
         
-          &lt;h1 id=&quot;13-二进制中-1-的个数&quot;&gt;&lt;a href=&quot;#13-二进制中-1-的个数&quot; class=&quot;headerlink&quot; title=&quot;13. 二进制中 1 的个数&quot;&gt;&lt;/a&gt;13. 二进制中 1 的个数&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a
+          &lt;h1 id=&quot;13-二进制中-1-的个数&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#13-二进制中-1-的个数&quot;&gt;&lt;/a&gt; 13. 二进制中 1 的个数&lt;/h1&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a
         
       
     
@@ -333,7 +342,8 @@
       
         
         
-          &lt;h1 id=&quot;12-剪绳子&quot;&gt;&lt;a href=&quot;#12-剪绳子&quot; class=&quot;headerlink&quot; title=&quot;12. 剪绳子&quot;&gt;&lt;/a&gt;12. 剪绳子&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;12-剪绳子&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#12-剪绳子&quot;&gt;&lt;/a&gt; 12. 剪绳子&lt;/h1&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#题目描述&quot;&gt;&lt;/a&gt;
         
       
     
@@ -359,7 +369,8 @@
       
         
         
-          &lt;h1 id=&quot;11-机器人的运动范围&quot;&gt;&lt;a href=&quot;#11-机器人的运动范围&quot; class=&quot;headerlink&quot; title=&quot;11.机器人的运动范围&quot;&gt;&lt;/a&gt;11.机器人的运动范围&lt;/h1&gt;&lt;p&gt;本题知识点：数组&lt;/p&gt;
+          &lt;h1 id=&quot;11机器人的运动范围&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#11机器人的运动范围&quot;&gt;&lt;/a&gt; 11.机器人的运动范围&lt;/h1&gt;
+&lt;p&gt;本题知识点：数组&lt;/p&gt;
 &lt;h2 id=&quot;题目描述&quot;&gt;&lt;a
         
       
@@ -380,7 +391,7 @@
     <link href="https://blog.onestravel.cn/20190325/algorithm/10.ju-zhen-zhong-de-lu-jing/"/>
     <id>https://blog.onestravel.cn/20190325/algorithm/10.ju-zhen-zhong-de-lu-jing/</id>
     <published>2019-03-25T03:45:00.000Z</published>
-    <updated>2020-11-27T02:29:09.622Z</updated>
+    <updated>2020-11-27T15:34:27.566Z</updated>
     
     <summary type="html">
     
@@ -388,7 +399,8 @@
       
         
         
-          &lt;h1 id=&quot;10-矩阵中的路径&quot;&gt;&lt;a href=&quot;#10-矩阵中的路径&quot; class=&quot;headerlink&quot; title=&quot;10.矩阵中的路径&quot;&gt;&lt;/a&gt;10.矩阵中的路径&lt;/h1&gt;&lt;p&gt;本题知识点：数组&lt;/p&gt;
+          &lt;h1 id=&quot;10矩阵中的路径&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#10矩阵中的路径&quot;&gt;&lt;/a&gt; 10.矩阵中的路径&lt;/h1&gt;
+&lt;p&gt;本题知识点：数组&lt;/p&gt;
 &lt;h2 id=&quot;题目描述&quot;&gt;&lt;a
         
       
@@ -415,7 +427,7 @@
       
         
         
-          &lt;h1 id=&quot;【FFmpeg】-一-音视频相关基础知识以及FFmpeg介绍&quot;&gt;&lt;a href=&quot;#【FFmpeg】-一-音视频相关基础知识以及FFmpeg介绍&quot; class=&quot;headerlink&quot; title=&quot;【FFmpeg】(一)
+          &lt;h1 id=&quot;ffmpeg一-音视频相关基础知识以及ffmpeg介绍&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ffmpeg一-音视频相关基础知识以及ffmpeg介绍&quot;&gt;&lt;/a&gt; 【FFmpeg】(一)
         
       
     
@@ -445,7 +457,8 @@
       
         
         
-          &lt;h1 id=&quot;9-旋转数组的最小数字&quot;&gt;&lt;a href=&quot;#9-旋转数组的最小数字&quot; class=&quot;headerlink&quot; title=&quot;9. 旋转数组的最小数字&quot;&gt;&lt;/a&gt;9. 旋转数组的最小数字&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot;
+          &lt;h1 id=&quot;9-旋转数组的最小数字&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#9-旋转数组的最小数字&quot;&gt;&lt;/a&gt; 9. 旋转数组的最小数字&lt;/h1&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;
         
       
     
@@ -471,7 +484,7 @@
       
         
         
-          &lt;h1 id=&quot;AndroidStudio下集成Fmod，实现仿QQ变声效果（二）&quot;&gt;&lt;a href=&quot;#AndroidStudio下集成Fmod，实现仿QQ变声效果（二）&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;androidstudio下集成fmod实现仿qq变声效果二&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#androidstudio下集成fmod实现仿qq变声效果二&quot;&gt;&lt;/a&gt;
         
       
     
@@ -501,7 +514,8 @@
       
         
         
-          &lt;h1 id=&quot;8-3-矩形覆盖&quot;&gt;&lt;a href=&quot;#8-3-矩形覆盖&quot; class=&quot;headerlink&quot; title=&quot;8.3 矩形覆盖&quot;&gt;&lt;/a&gt;8.3 矩形覆盖&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;83-矩形覆盖&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#83-矩形覆盖&quot;&gt;&lt;/a&gt; 8.3 矩形覆盖&lt;/h1&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;
         
       
     
@@ -527,7 +541,8 @@
       
         
         
-          &lt;h1 id=&quot;8-2-变态跳台阶&quot;&gt;&lt;a href=&quot;#8-2-变态跳台阶&quot; class=&quot;headerlink&quot; title=&quot;8.2 变态跳台阶&quot;&gt;&lt;/a&gt;8.2 变态跳台阶&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot;
+          &lt;h1 id=&quot;82-变态跳台阶&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#82-变态跳台阶&quot;&gt;&lt;/a&gt; 8.2 变态跳台阶&lt;/h1&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;
         
       
     

@@ -129,7 +129,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -244,65 +257,81 @@
   
   </header>
   <div id="section" class="post-content">
-    <h3 id="一、基本互操作"><a href="#一、基本互操作" class="headerlink" title="一、基本互操作"></a>一、基本互操作</h3><h4 id="1、属性读写"><a href="#1、属性读写" class="headerlink" title="1、属性读写"></a>1、属性读写</h4><ul>
+    <h3 id="一-基本互操作"><a class="markdownIt-Anchor" href="#一-基本互操作"></a> 一、基本互操作</h3>
+<h4 id="1-属性读写"><a class="markdownIt-Anchor" href="#1-属性读写"></a> 1、属性读写</h4>
+<ul>
 <li>Kotlin 自动识别 Java Getter/Setter</li>
 <li>Java 操作 Kotlin 属性通过 Getter/Setter</li>
 </ul>
-<h4 id="2、空安全类型"><a href="#2、空安全类型" class="headerlink" title="2、空安全类型"></a>2、空安全类型</h4><ul>
+<h4 id="2-空安全类型"><a class="markdownIt-Anchor" href="#2-空安全类型"></a> 2、空安全类型</h4>
+<ul>
 <li>Kotlin 空安全类型的原理</li>
 <li>平台类型 Platform Type,自己明确传入的参数和返回值是否可能为空</li>
 <li>可使用注解 @Nullable 和 @NotNull 来确保不能为空</li>
 </ul>
-<h4 id="3、几类函数的调用"><a href="#3、几类函数的调用" class="headerlink" title="3、几类函数的调用"></a>3、几类函数的调用</h4><ul>
+<h4 id="3-几类函数的调用"><a class="markdownIt-Anchor" href="#3-几类函数的调用"></a> 3、几类函数的调用</h4>
+<ul>
 <li>包级函数：静态方法</li>
 <li>扩展方法：带Receiver 的静态方法</li>
 <li>运算符重载：带 Receiver 的对应名称的静态方法</li>
 </ul>
-<h4 id="4、几个常用注解的使用"><a href="#4、几个常用注解的使用" class="headerlink" title="4、几个常用注解的使用"></a>4、几个常用注解的使用</h4><ul>
+<h4 id="4-几个常用注解的使用"><a class="markdownIt-Anchor" href="#4-几个常用注解的使用"></a> 4、几个常用注解的使用</h4>
+<ul>
 <li>@JvmField : 将属性编译为 Java 变量</li>
 <li>@JvmStatic : 将对象的方法编译成 Java 静态方法</li>
 <li>@JvmOverloads : 默认参数生成重载方法</li>
 <li>@file:JvmName : 知道 Kotlin 文件编译后的类名，默认为 Kotlin 文件名+Kt</li>
 </ul>
-<h4 id="5、NoArg-与-AllOpen"><a href="#5、NoArg-与-AllOpen" class="headerlink" title="5、NoArg 与 AllOpen"></a>5、NoArg 与 AllOpen</h4><ul>
+<h4 id="5-noarg-与-allopen"><a class="markdownIt-Anchor" href="#5-noarg-与-allopen"></a> 5、NoArg 与 AllOpen</h4>
+<ul>
 <li>NoArg 为被标注的类生成无参构造方法</li>
 <li>NoArg 支持 Jpa 注解，如：@Entity</li>
 <li>AllOpen 为被标注的类去掉 final ,允许被继承</li>
 <li>AllOpen 支持 Spring 注解，如: @Component</li>
 <li>支持自定义注解类型，如：@PoKo</li>
 </ul>
-<h4 id="6、泛型"><a href="#6、泛型" class="headerlink" title="6、泛型"></a>6、泛型</h4><ul>
+<h4 id="6-泛型"><a class="markdownIt-Anchor" href="#6-泛型"></a> 6、泛型</h4>
+<ul>
 <li>通配符 Kotlin 的 * 对象于 Java 的 ?</li>
 <li>协变和逆变 out/in</li>
 </ul>
-<pre><code>ArrayList&lt;out String&gt;</code></pre><ul>
+<pre class="line-numbers language-none"><code class="language-none">ArrayList&lt;out String&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
 <li>没有 Raw 类型</li>
 </ul>
-<pre><code>Java 的List  -&gt;   Kotlin 的List&lt;*&gt;</code></pre><h3 id="二、SAM-转换"><a href="#二、SAM-转换" class="headerlink" title="二、SAM 转换"></a>二、SAM 转换</h3><ul>
+<pre class="line-numbers language-none"><code class="language-none">Java 的List  -&gt;   Kotlin 的List&lt;*&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="二-sam-转换"><a class="markdownIt-Anchor" href="#二-sam-转换"></a> 二、SAM 转换</h3>
+<ul>
 <li>Single Abstract Method</li>
-<li>SAM 转换的条件<br>   Java的接口，单一接口方法</li>
+<li>SAM 转换的条件<br />
+Java的接口，单一接口方法</li>
 <li>注意转换后的实例变化</li>
 </ul>
-<h3 id="三、正则表达式"><a href="#三、正则表达式" class="headerlink" title="三、正则表达式"></a>三、正则表达式</h3><ul>
+<h3 id="三-正则表达式"><a class="markdownIt-Anchor" href="#三-正则表达式"></a> 三、正则表达式</h3>
+<ul>
 <li>用 Raw 字符串定义正则表达式</li>
 <li>Java 的 Pattern 在 Kotlin 中同样适用</li>
 <li>可通过Kotlin 的 Regex 自定义Kotlin 风格的正则表达式</li>
 </ul>
-<h3 id="四、集合框架"><a href="#四、集合框架" class="headerlink" title="四、集合框架"></a>四、集合框架</h3><ul>
+<h3 id="四-集合框架"><a class="markdownIt-Anchor" href="#四-集合框架"></a> 四、集合框架</h3>
+<ul>
 <li>Kotlin 到 Java 的类型映射</li>
 <li>不可变与可变集合接口，Kotlin 中所有的List,Map,Set 都是不可变的接口</li>
 <li>部分接口优化，比如：list.removeAt(0);</li>
 </ul>
-<h3 id="五、IO-操作"><a href="#五、IO-操作" class="headerlink" title="五、IO 操作"></a>五、IO 操作</h3><ul>
+<h3 id="五-io-操作"><a class="markdownIt-Anchor" href="#五-io-操作"></a> 五、IO 操作</h3>
+<ul>
 <li>File、Stream、Reader、Writer的扩展方法</li>
 <li>使用use 扩展自动关闭资源</li>
 <li>小文件一次性读取 readLines()</li>
 </ul>
-<h3 id="六、装箱与拆箱"><a href="#六、装箱与拆箱" class="headerlink" title="六、装箱与拆箱"></a>六、装箱与拆箱</h3><ul>
+<h3 id="六-装箱与拆箱"><a class="markdownIt-Anchor" href="#六-装箱与拆箱"></a> 六、装箱与拆箱</h3>
+<ul>
 <li>Java 的基本数据类型，都会映射到 Kotlin 中的基本类型</li>
 <li>由于Kotlin 中不区分Java 中的装箱类型与拆箱类型，需要注意规避基本类型相关的问题</li>
 </ul>
-<h3 id="七、注解处理器"><a href="#七、注解处理器" class="headerlink" title="七、注解处理器"></a>七、注解处理器</h3><ul>
+<h3 id="七-注解处理器"><a class="markdownIt-Anchor" href="#七-注解处理器"></a> 七、注解处理器</h3>
+<ul>
 <li>apply plugin: “kotlin-kapt”</li>
 <li>注意添加生成的代码路径到 SourceSets{}</li>
 <li>注意 Intellij 暂时不支持注解处理器的编译</li>
@@ -379,7 +408,7 @@
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本互操作"><span class="toc-text">一、基本互操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、属性读写"><span class="toc-text">1、属性读写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、空安全类型"><span class="toc-text">2、空安全类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、几类函数的调用"><span class="toc-text">3、几类函数的调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、几个常用注解的使用"><span class="toc-text">4、几个常用注解的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、NoArg-与-AllOpen"><span class="toc-text">5、NoArg 与 AllOpen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、泛型"><span class="toc-text">6、泛型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、SAM-转换"><span class="toc-text">二、SAM 转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、正则表达式"><span class="toc-text">三、正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、集合框架"><span class="toc-text">四、集合框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、IO-操作"><span class="toc-text">五、IO 操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、装箱与拆箱"><span class="toc-text">六、装箱与拆箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、注解处理器"><span class="toc-text">七、注解处理器</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E4%BA%92%E6%93%8D%E4%BD%9C"><span class="toc-text"> 一、基本互操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B1%9E%E6%80%A7%E8%AF%BB%E5%86%99"><span class="toc-text"> 1、属性读写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A9%BA%E5%AE%89%E5%85%A8%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 2、空安全类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%87%A0%E7%B1%BB%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8"><span class="toc-text"> 3、几类函数的调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%87%A0%E4%B8%AA%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text"> 4、几个常用注解的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-noarg-%E4%B8%8E-allopen"><span class="toc-text"> 5、NoArg 与 AllOpen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%B3%9B%E5%9E%8B"><span class="toc-text"> 6、泛型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-sam-%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 二、SAM 转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text"> 三、正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6"><span class="toc-text"> 四、集合框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-io-%E6%93%8D%E4%BD%9C"><span class="toc-text"> 五、IO 操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1"><span class="toc-text"> 六、装箱与拆箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83-%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-text"> 七、注解处理器</span></a></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -395,7 +424,7 @@
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -412,7 +441,7 @@
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本互操作"><span class="toc-text">一、基本互操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、属性读写"><span class="toc-text">1、属性读写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、空安全类型"><span class="toc-text">2、空安全类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、几类函数的调用"><span class="toc-text">3、几类函数的调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、几个常用注解的使用"><span class="toc-text">4、几个常用注解的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、NoArg-与-AllOpen"><span class="toc-text">5、NoArg 与 AllOpen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、泛型"><span class="toc-text">6、泛型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、SAM-转换"><span class="toc-text">二、SAM 转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、正则表达式"><span class="toc-text">三、正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、集合框架"><span class="toc-text">四、集合框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、IO-操作"><span class="toc-text">五、IO 操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、装箱与拆箱"><span class="toc-text">六、装箱与拆箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、注解处理器"><span class="toc-text">七、注解处理器</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E4%BA%92%E6%93%8D%E4%BD%9C"><span class="toc-text"> 一、基本互操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B1%9E%E6%80%A7%E8%AF%BB%E5%86%99"><span class="toc-text"> 1、属性读写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A9%BA%E5%AE%89%E5%85%A8%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 2、空安全类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%87%A0%E7%B1%BB%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8"><span class="toc-text"> 3、几类函数的调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%87%A0%E4%B8%AA%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text"> 4、几个常用注解的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-noarg-%E4%B8%8E-allopen"><span class="toc-text"> 5、NoArg 与 AllOpen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%B3%9B%E5%9E%8B"><span class="toc-text"> 6、泛型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-sam-%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 二、SAM 转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text"> 三、正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6"><span class="toc-text"> 四、集合框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-io-%E6%93%8D%E4%BD%9C"><span class="toc-text"> 五、IO 操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1"><span class="toc-text"> 六、装箱与拆箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83-%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-text"> 七、注解处理器</span></a></li></ol>
     </div>
   </article>
   
@@ -433,13 +462,6 @@
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -485,9 +507,9 @@
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -495,14 +517,21 @@
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -510,6 +539,13 @@
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -546,13 +582,13 @@
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -567,7 +603,7 @@
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本互操作"><span class="toc-text">一、基本互操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、属性读写"><span class="toc-text">1、属性读写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、空安全类型"><span class="toc-text">2、空安全类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、几类函数的调用"><span class="toc-text">3、几类函数的调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、几个常用注解的使用"><span class="toc-text">4、几个常用注解的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、NoArg-与-AllOpen"><span class="toc-text">5、NoArg 与 AllOpen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、泛型"><span class="toc-text">6、泛型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、SAM-转换"><span class="toc-text">二、SAM 转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、正则表达式"><span class="toc-text">三、正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、集合框架"><span class="toc-text">四、集合框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、IO-操作"><span class="toc-text">五、IO 操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、装箱与拆箱"><span class="toc-text">六、装箱与拆箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、注解处理器"><span class="toc-text">七、注解处理器</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E4%BA%92%E6%93%8D%E4%BD%9C"><span class="toc-text"> 一、基本互操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B1%9E%E6%80%A7%E8%AF%BB%E5%86%99"><span class="toc-text"> 1、属性读写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A9%BA%E5%AE%89%E5%85%A8%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 2、空安全类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%87%A0%E7%B1%BB%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8"><span class="toc-text"> 3、几类函数的调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%87%A0%E4%B8%AA%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text"> 4、几个常用注解的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-noarg-%E4%B8%8E-allopen"><span class="toc-text"> 5、NoArg 与 AllOpen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%B3%9B%E5%9E%8B"><span class="toc-text"> 6、泛型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-sam-%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 二、SAM 转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text"> 三、正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6"><span class="toc-text"> 四、集合框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-io-%E6%93%8D%E4%BD%9C"><span class="toc-text"> 五、IO 操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1"><span class="toc-text"> 六、装箱与拆箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83-%E6%B3%A8%E8%A7%A3%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-text"> 七、注解处理器</span></a></li></ol>
   </article>
   
   
@@ -578,22 +614,22 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -642,7 +678,7 @@
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

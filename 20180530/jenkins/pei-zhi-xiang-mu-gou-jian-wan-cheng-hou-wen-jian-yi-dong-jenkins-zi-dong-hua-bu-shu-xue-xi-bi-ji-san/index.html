@@ -131,7 +131,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -251,30 +264,46 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="配置项目构建完成后文件移动—-Jenkins自动化部署学习笔记（三）"><a href="#配置项目构建完成后文件移动—-Jenkins自动化部署学习笔记（三）" class="headerlink" title="配置项目构建完成后文件移动—- Jenkins自动化部署学习笔记（三）"></a>配置项目构建完成后文件移动—- Jenkins自动化部署学习笔记（三）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;在前两篇文章中，跟大家分享了在 Windows 系统上安装 Jenkins 和使用 Jenkins 进行 Android 项目的编译打包；相信可能会有人疑问，打包完成之后，我需要将 apk 文件放入指定位置怎么办。</p>
-<p>&emsp;&emsp;其实，Jenkins 功能很强大，它可以配置在打包完成之后将你所需的文件拷贝至目标路径，亦可配置在打包完成后（成功/失败），邮件通知相关人员。下面详细介绍：</p>
-<h2 id="一、将打好的包移动至指定目录"><a href="#一、将打好的包移动至指定目录" class="headerlink" title="一、将打好的包移动至指定目录"></a>一、将打好的包移动至指定目录</h2><ol>
-<li>我在自己的电脑上安装 Jenkins ，进行项目构建，并且想要将每次构建的包存入到E盘的AndroidApk目录下：<br> 在上篇文章中，我们说到了，在配置构建任务时，有一个构建的选项，我们可以增加相应的操作来实现；<ul>
-<li>（1）、在构建选项区域下方，点击 <strong>增加构建步骤</strong> ，选择<strong>Execete Windows batch commond</strong><br>添加一个构建任务（务必在<strong>Invoke Gradle script</strong> 任务下方）<br><img src="https://upload-images.jianshu.io/upload_images/3236417-82616e807b302e26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-82616e807b302e26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></li>
-</ul>
-</li>
+    <h1 id="配置项目构建完成后文件移动-jenkins自动化部署学习笔记三"><a class="markdownIt-Anchor" href="#配置项目构建完成后文件移动-jenkins自动化部署学习笔记三"></a> 配置项目构建完成后文件移动---- Jenkins自动化部署学习笔记（三）</h1>
+<h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
+<p>  在前两篇文章中，跟大家分享了在 Windows 系统上安装 Jenkins 和使用 Jenkins 进行 Android 项目的编译打包；相信可能会有人疑问，打包完成之后，我需要将 apk 文件放入指定位置怎么办。</p>
+<p>  其实，Jenkins 功能很强大，它可以配置在打包完成之后将你所需的文件拷贝至目标路径，亦可配置在打包完成后（成功/失败），邮件通知相关人员。下面详细介绍：</p>
+<h2 id="一-将打好的包移动至指定目录"><a class="markdownIt-Anchor" href="#一-将打好的包移动至指定目录"></a> 一、将打好的包移动至指定目录</h2>
+<ol>
+<li>我在自己的电脑上安装 Jenkins ，进行项目构建，并且想要将每次构建的包存入到E盘的AndroidApk目录下：<br />
+在上篇文章中，我们说到了，在配置构建任务时，有一个构建的选项，我们可以增加相应的操作来实现；</li>
 </ol>
 <ul>
-<li>（2）、在增加的 Windows 命令框中，需要配置相应的操作命令来实现移动的功能</li>
+<li>
+<p>（1）、在构建选项区域下方，点击 <strong>增加构建步骤</strong> ，选择<strong>Execete Windows batch commond</strong><br />
+添加一个构建任务（务必在<strong>Invoke Gradle script</strong> 任务下方）<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-82616e807b302e26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-82616e807b302e26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+</li>
+<li>
+<p>（2）、在增加的 Windows 命令框中，需要配置相应的操作命令来实现移动的功能</p>
+</li>
 </ul>
-<p>其实移动的功能，我们可以看作是将源文件复制到目标目录，然后将源文件删除。<br>在打包时我们可以根据不同的环境配置不同的包，比如<em>debug</em>.apk ，<em>release</em>.apk；<br>我们也可以使用命令，将不同环境的包，移动至不同的目录下：</p>
-<p>复制文件，我们需要源文件目录和目标文件目录：<br>此项目中：<br>源文件目录：D:\jenkinsSpace\example\app\build\outputs\apk\<br>目标文件目录：E:\AndroidApk<br>在AndroidApk下，我们再创建不同的文件夹，如：devApk 和 releaseApk<br>故，命令如下：  </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-37c45381987196df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="移动文件命令" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-37c45381987196df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<pre><code>copy D:\jenkinsSpace\example\app\build\outputs\apk\*debug*.apk E:\AndroidApk\devApk
+<p>其实移动的功能，我们可以看作是将源文件复制到目标目录，然后将源文件删除。<br />
+在打包时我们可以根据不同的环境配置不同的包，比如<em>debug</em>.apk ，<em>release</em>.apk；<br />
+我们也可以使用命令，将不同环境的包，移动至不同的目录下：</p>
+<p>复制文件，我们需要源文件目录和目标文件目录：<br />
+此项目中：<br />
+源文件目录：D:\jenkinsSpace\example\app\build\outputs\apk\<br />
+目标文件目录：E:\AndroidApk<br />
+在AndroidApk下，我们再创建不同的文件夹，如：devApk 和 releaseApk<br />
+故，命令如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-37c45381987196df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="移动文件命令" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-37c45381987196df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<pre class="line-numbers language-none"><code class="language-none">copy D:\jenkinsSpace\example\app\build\outputs\apk\*debug*.apk E:\AndroidApk\devApk
 copy D:\jenkinsSpace\example\app\build\outputs\apk\*release*.apk E:\AndroidApk\releaseApk
-rmdir /s /q D:\jenkinsSpace\example\</code></pre><p>可以看到，这个总共有三条命令</p>
+rmdir &#x2F;s &#x2F;q D:\jenkinsSpace\example\<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>可以看到，这个总共有三条命令</p>
 <p>第一条命令：是将源文件目录下的名称包含 debug ，后缀名为  .apk  的文件复制到 E:\AndroidApk\devApk  目录下</p>
 <p>第二条命令：是将源文件目录下的名称包含 release ，后缀名为  .apk  的文件复制到 E:\AndroidApk\releaseApk  目录下</p>
 <p>第三条命令：是将 Jenkins 构建该项目的工作空间进行清空（删除工作空间目录及子文件）</p>
 <ul>
 <li>（3）、配置好之后，我们点击保存， 进行立即构建，构建结果如下：</li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-0716cd05044fa6e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建结果" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-0716cd05044fa6e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-0716cd05044fa6e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建结果" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-0716cd05044fa6e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <p>我们可以看到，在位置 1 处：项目构建成功，耗时 1分56秒</p>
 <p>位置 2 处 ：执行了复制名称包含 debug ，后缀名为 .apk 的文件的命令，成功</p>
 <p>位置 3 处 ：执行了复制名称包含 release ，后缀名为 .apk 的文件的命令，失败</p>
@@ -284,29 +313,62 @@ rmdir /s /q D:\jenkinsSpace\example\</code></pre><p>可以看到，这个总共�
 <ol start="2">
 <li>我们有时候需要将打好的apk 移动至共享文件夹，方便大家使用获取安装，这时候，我们只需要在执行复制命令前增加一行命令，将共享文件夹目录映射到本地盘符：</li>
 </ol>
-<p>命令如下：<br>net use [盘符] \[ip][共享文件夹] “[password]” /user:”[userName]”</p>
-<pre><code>% 将共享文件夹映射为盘符 Y:%
-net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot;</code></pre><p>在此命令下，我们更改上面的命令中的盘符为共享文件夹盘符，就可将apk移动至共享文件夹了</p>
-<pre><code>copy D:\jenkinsSpace\example\app\build\outputs\apk\*debug*.apk Y:\AndroidApk\devApk
+<p>命令如下：<br />
+net use [盘符] \[ip][共享文件夹] “[password]” /user:&quot;[userName]&quot;</p>
+<pre class="line-numbers language-none"><code class="language-none">% 将共享文件夹映射为盘符 Y:%
+net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; &#x2F;user:&quot;tech&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>在此命令下，我们更改上面的命令中的盘符为共享文件夹盘符，就可将apk移动至共享文件夹了</p>
+<pre class="line-numbers language-none"><code class="language-none">copy D:\jenkinsSpace\example\app\build\outputs\apk\*debug*.apk Y:\AndroidApk\devApk
 copy D:\jenkinsSpace\example\app\build\outputs\apk\*release*.apk Y:\AndroidApk\releaseApk
-rmdir /s /q D:\jenkinsSpace\example\</code></pre><ol start="3">
-<li>我们也可以定义一个bat文件，放在主机上，让Jenkins任务去调用执行这个bat文件，来复制/移动文件<br> bat文件内容如下：<pre><code>% 将共享文件夹映射为盘符 Y:%
-net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot;
-</code></pre></li>
+rmdir &#x2F;s &#x2F;q D:\jenkinsSpace\example\<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>我们也可以定义一个bat文件，放在主机上，让Jenkins任务去调用执行这个bat文件，来复制/移动文件<br />
+bat文件内容如下：</li>
 </ol>
-<p>% 配置工作空间目录变量%<br>set “spaceDir=D:\jenkinsSpace\example”</p>
-<p>% 配置目标文件夹目录变量%<br>set “targetDir=Y:\AndroidApk\jekinsBuildApks”</p>
-<p>% 定义当前日期字符串的变量如 20180505%<br>set “dateStr=%date:<del>0,4%%date:</del>5,2%%date:~8,2%”</p>
-<p>% 定义Apk源文件目录%<br>set “resourceDir=%spaceDir%\app\build\outputs\apk”</p>
-<p>% 根据日期分别定义在dev,test , release 下需要创建的文件夹目录%<br>set “devPath=%targetDir%\dev%dateStr%”<br>set “testPath=%targetDir%\test%dateStr%”<br>set “releasePath=%targetDir%\release%dateStr%”</p>
-<p>% 创建文件夹%<br>md %devPath%<br>md %testPath%<br>md %releasePath%</p>
-<p>% 复制apk到目标文件夹%<br>copy %resourceDir%*dev<em>.apk %devPath%<br>copy %resourceDir%*test</em>.apk %testPath%<br>copy %resourceDir%*release*.apk %releasePath%</p>
-<p>% 强制删除工作空间目录%<br>rd/s/q %spaceDir%\</p>
-<pre><code>该文件中 **%%** 之间的内容为**注释内容**
-然后我们将该bat文件命名为copyApp.bat ,放置在D:\bat\目录下，
-我们再Jenkins 任务中做如下配置</code></pre><p>call D:\bat\copyApp.bat<br>exit 0<br>```<br><img src="https://upload-images.jianshu.io/upload_images/3236417-84cee5e0e631f58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="执行bat文件" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-84cee5e0e631f58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<p>call D:\bat\copyApp.bat 是调用执行bat文件，<br>exit 0 是用来处理上面出现的因windows 命令执行错误导致Build FAILURE，<br>Jenkins 任务根据cmd命令行返回是否为0来判断是否Build 成功，故只要exit 0,每次返回0，无论windows 命令执行成功与否，只要项目Build 成功了，整个任务就是成功的。<br>至此项目移动至其他目录完成！</p>
-<p>上一篇：<a href="https://www.jianshu.com/p/f3cf39738788" target="_blank" rel="noopener">自动化构建Android项目 —- Jenkins自动化部署学习笔记（二）</a></p>
+<pre class="line-numbers language-none"><code class="language-none">% 将共享文件夹映射为盘符 Y:%
+net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; &#x2F;user:&quot;tech&quot;
+
+% 配置工作空间目录变量%
+set &quot;spaceDir&#x3D;D:\jenkinsSpace\example&quot;
+
+% 配置目标文件夹目录变量%
+set &quot;targetDir&#x3D;Y:\AndroidApk\jekinsBuildApks&quot;
+
+% 定义当前日期字符串的变量如 20180505%
+set &quot;dateStr&#x3D;%date:~0,4%%date:~5,2%%date:~8,2%&quot;
+
+% 定义Apk源文件目录%
+set &quot;resourceDir&#x3D;%spaceDir%\app\build\outputs\apk&quot;
+
+% 根据日期分别定义在dev,test , release 下需要创建的文件夹目录%
+set &quot;devPath&#x3D;%targetDir%\dev\%dateStr%&quot;
+set &quot;testPath&#x3D;%targetDir%\test\%dateStr%&quot;
+set &quot;releasePath&#x3D;%targetDir%\release\%dateStr%&quot;
+
+% 创建文件夹%
+md %devPath%
+md %testPath%
+md %releasePath%
+
+% 复制apk到目标文件夹%
+copy %resourceDir%\*dev*.apk %devPath%
+copy %resourceDir%\*test*.apk %testPath%
+copy %resourceDir%\*release*.apk %releasePath%
+
+% 强制删除工作空间目录%
+rd&#x2F;s&#x2F;q %spaceDir%\
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>该文件中 <strong>%%</strong> 之间的内容为<strong>注释内容</strong><br />
+然后我们将该bat文件命名为copyApp.bat ,放置在D:\bat\目录下，<br />
+我们再Jenkins 任务中做如下配置</p>
+<pre class="line-numbers language-none"><code class="language-none">call D:\bat\copyApp.bat
+exit 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-84cee5e0e631f58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="执行bat文件" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-84cee5e0e631f58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p>call D:\bat\copyApp.bat 是调用执行bat文件，<br />
+exit 0 是用来处理上面出现的因windows 命令执行错误导致Build FAILURE，<br />
+Jenkins 任务根据cmd命令行返回是否为0来判断是否Build 成功，故只要exit 0,每次返回0，无论windows 命令执行成功与否，只要项目Build 成功了，整个任务就是成功的。<br />
+至此项目移动至其他目录完成！</p>
+<p>上一篇：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f3cf39738788">自动化构建Android项目 ---- Jenkins自动化部署学习笔记（二）</a></p>
 
   </div>
   <div>
@@ -379,7 +441,7 @@ net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#配置项目构建完成后文件移动—-Jenkins自动化部署学习笔记（三）"><span class="toc-text">配置项目构建完成后文件移动—- Jenkins自动化部署学习笔记（三）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、将打好的包移动至指定目录"><span class="toc-text">一、将打好的包移动至指定目录</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%AE%8C%E6%88%90%E5%90%8E%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8-jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89"><span class="toc-text"> 配置项目构建完成后文件移动---- Jenkins自动化部署学习笔记（三）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%B0%86%E6%89%93%E5%A5%BD%E7%9A%84%E5%8C%85%E7%A7%BB%E5%8A%A8%E8%87%B3%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95"><span class="toc-text"> 一、将打好的包移动至指定目录</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -395,7 +457,7 @@ net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -412,7 +474,7 @@ net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#配置项目构建完成后文件移动—-Jenkins自动化部署学习笔记（三）"><span class="toc-text">配置项目构建完成后文件移动—- Jenkins自动化部署学习笔记（三）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、将打好的包移动至指定目录"><span class="toc-text">一、将打好的包移动至指定目录</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%AE%8C%E6%88%90%E5%90%8E%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8-jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89"><span class="toc-text"> 配置项目构建完成后文件移动---- Jenkins自动化部署学习笔记（三）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%B0%86%E6%89%93%E5%A5%BD%E7%9A%84%E5%8C%85%E7%A7%BB%E5%8A%A8%E8%87%B3%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95"><span class="toc-text"> 一、将打好的包移动至指定目录</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -433,13 +495,6 @@ net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -485,9 +540,9 @@ net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -495,14 +550,21 @@ net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -510,6 +572,13 @@ net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -546,13 +615,13 @@ net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -567,7 +636,7 @@ net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#配置项目构建完成后文件移动—-Jenkins自动化部署学习笔记（三）"><span class="toc-text">配置项目构建完成后文件移动—- Jenkins自动化部署学习笔记（三）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、将打好的包移动至指定目录"><span class="toc-text">一、将打好的包移动至指定目录</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%AE%8C%E6%88%90%E5%90%8E%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8-jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89"><span class="toc-text"> 配置项目构建完成后文件移动---- Jenkins自动化部署学习笔记（三）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%B0%86%E6%89%93%E5%A5%BD%E7%9A%84%E5%8C%85%E7%A7%BB%E5%8A%A8%E8%87%B3%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95"><span class="toc-text"> 一、将打好的包移动至指定目录</span></a></li></ol></li></ol>
   </article>
   
   
@@ -578,22 +647,22 @@ net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -642,7 +711,7 @@ net use Y: \\192.168.22.156\tech  &quot;!qaz2wsx3edc&quot; /user:&quot;tech&quot
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

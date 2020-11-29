@@ -127,7 +127,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -221,7 +234,7 @@
     
     
     <span class="dot"></span>
-    <span>1.4k 字</span>
+    <span>1.6k 字</span>
     
   </div>
   
@@ -237,324 +250,350 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="C-中的静态成员与this指针"><a href="#C-中的静态成员与this指针" class="headerlink" title="C++中的静态成员与this指针"></a>C++中的静态成员与this指针</h1><h2 id="一、静态成员"><a href="#一、静态成员" class="headerlink" title="一、静态成员"></a>一、静态成员</h2><h3 id="1、static-关键字"><a href="#1、static-关键字" class="headerlink" title="1、static 关键字"></a>1、static 关键字</h3><ul>
+    <h1 id="c中的静态成员与this指针"><a class="markdownIt-Anchor" href="#c中的静态成员与this指针"></a> C++中的静态成员与this指针</h1>
+<h2 id="一-静态成员"><a class="markdownIt-Anchor" href="#一-静态成员"></a> 一、静态成员</h2>
+<h3 id="1-static-关键字"><a class="markdownIt-Anchor" href="#1-static-关键字"></a> 1、static 关键字</h3>
+<ul>
 <li><strong>静态属性只能在全局范围内进行初始化赋值</strong></li>
 <li><strong>静态方法可以直接通过类名进行访问，也可以通过对象名进行访问</strong></li>
 </ul>
-<pre><code>class Teacher {
+<pre class="line-numbers language-none"><code class="language-none">class Teacher &#123;
 private:
-    char* name;
+	char* name;
 public:
-    //计数器
-    static int total;
+	&#x2F;&#x2F;计数器
+	static int total;
 public:
-    Teacher(char* name) {
-        this-&gt;name = name;
-        cout &lt;&lt; &quot;Teacher有参构造函数&quot; &lt;&lt; endl;
-    }
-    ~Teacher() {
-        cout &lt;&lt; &quot;Teacher析构函数&quot; &lt;&lt; endl;
-    }
-    void setName(char* name) {
-        this-&gt;name = name;
-    }
-    char* getName() {
-        return this-&gt;name;
-    }
-    //计数的静态函数
-    static void count(){
-        total++;
-        cout &lt;&lt; &quot;total:&quot; &lt;&lt; total &lt;&lt; endl;
-    }
-};
+	Teacher(char* name) &#123;
+		this-&gt;name &#x3D; name;
+		cout &lt;&lt; &quot;Teacher有参构造函数&quot; &lt;&lt; endl;
+	&#125;
+	~Teacher() &#123;
+		cout &lt;&lt; &quot;Teacher析构函数&quot; &lt;&lt; endl;
+	&#125;
+	void setName(char* name) &#123;
+		this-&gt;name &#x3D; name;
+	&#125;
+	char* getName() &#123;
+		return this-&gt;name;
+	&#125;
+	&#x2F;&#x2F;计数的静态函数
+	static void count()&#123;
+	    total++;
+	    cout &lt;&lt; &quot;total:&quot; &lt;&lt; total &lt;&lt; endl;
+	&#125;
+&#125;;
 
-//静态属性初始化赋值
-int Teacher::total = 10;
+&#x2F;&#x2F;静态属性初始化赋值
+int Teacher::total &#x3D; 10;
 
-void main() {
+void main() &#123;
     Teacher::total++;
-    cout &lt;&lt; Teacher::total &lt;&lt; endl;
-    //直接通过类名访问
-    Teacher::count();
-    cout &lt;&lt; Teacher::total &lt;&lt; endl;
-    //通过对象名访问
-    Teacher t1((char*)&quot;JACK&quot;);
-    t1.count();
-    cout &lt;&lt; Teacher::total &lt;&lt; endl;
-    getchar();
-}</code></pre><h2 id="二、类的大小"><a href="#二、类的大小" class="headerlink" title="二、类的大小"></a>二、类的大小</h2><p>C/C++ 内存分区：栈、堆、全局（静态、全局）、常量区（字符串）、程序代码区<br><strong>普通属性与结构体具有相同的内存布局</strong></p>
-<pre><code>class A {
+	cout &lt;&lt; Teacher::total &lt;&lt; endl;
+	&#x2F;&#x2F;直接通过类名访问
+	Teacher::count();
+	cout &lt;&lt; Teacher::total &lt;&lt; endl;
+	&#x2F;&#x2F;通过对象名访问
+	Teacher t1((char*)&quot;JACK&quot;);
+	t1.count();
+	cout &lt;&lt; Teacher::total &lt;&lt; endl;
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="二-类的大小"><a class="markdownIt-Anchor" href="#二-类的大小"></a> 二、类的大小</h2>
+<p>C/C++ 内存分区：栈、堆、全局（静态、全局）、常量区（字符串）、程序代码区<br />
+<strong>普通属性与结构体具有相同的内存布局</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">class A &#123;
 public:
-    int i;
-    int j;
-    int k;
-};
+	int i;
+	int j;
+	int k;
+&#125;;
 
-class B {
+class B &#123;
 public:
-    int i;
-    int j;
-    int k;
-    void myprint() {
-        cout &lt;&lt; &quot;打印&quot; &lt;&lt; endl;
-    }
+	int i;
+	int j;
+	int k;
+	void myprint() &#123;
+		cout &lt;&lt; &quot;打印&quot; &lt;&lt; endl;
+	&#125;
 
-};
+&#125;;
 
-void main() {
-    cout &lt;&lt; sizeof(A) &lt;&lt; endl;
-    cout &lt;&lt; sizeof(B) &lt;&lt; endl;
-    getchar();
-}
-</code></pre><h2 id="三、this-指针"><a href="#三、this-指针" class="headerlink" title="三、this 指针"></a>三、this 指针</h2><h3 id="1、this指针"><a href="#1、this指针" class="headerlink" title="1、this指针"></a>1、this指针</h3><p><strong>this 是当前对象的指针</strong><br><strong>因为函数是共享的，所有使用this指针用来标识当前对象</strong></p>
-<pre><code>class Teacher {
+void main() &#123;
+	cout &lt;&lt; sizeof(A) &lt;&lt; endl;
+	cout &lt;&lt; sizeof(B) &lt;&lt; endl;
+	getchar();
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="三-this-指针"><a class="markdownIt-Anchor" href="#三-this-指针"></a> 三、this 指针</h2>
+<h3 id="1-this指针"><a class="markdownIt-Anchor" href="#1-this指针"></a> 1、this指针</h3>
+<p><strong>this 是当前对象的指针</strong><br />
+<strong>因为函数是共享的，所有使用this指针用来标识当前对象</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">class Teacher &#123;
 private:
-    char* name;
-    int age;
+	char* name;
+	int age;
 public:
-    Teacher(char* name,int age) {
-        this-&gt;name = name;
-        this-&gt;age = age;
-        cout &lt;&lt; &quot;Teacher有参构造函数&quot; &lt;&lt; endl;
-    }
-    ~Teacher() {
-        cout &lt;&lt; &quot;Teacher析构函数&quot; &lt;&lt; endl;
-    }
-    void setName(char* name) {
-        this-&gt;name = name;
-    }
-    char* getName() {
-        return this-&gt;name;
-    }
-    void setAge(int age) {
-        this-&gt;age = age;
-    }
-    int getAge() {
-        return this-&gt;age;
-    }
-    void myprint() {
-        cout &lt;&lt; this-&gt;getName() &lt;&lt; &quot;,&quot; &lt;&lt; this-&gt;getAge() &lt;&lt; endl;
-    }
-};
+	Teacher(char* name,int age) &#123;
+		this-&gt;name &#x3D; name;
+		this-&gt;age &#x3D; age;
+		cout &lt;&lt; &quot;Teacher有参构造函数&quot; &lt;&lt; endl;
+	&#125;
+	~Teacher() &#123;
+		cout &lt;&lt; &quot;Teacher析构函数&quot; &lt;&lt; endl;
+	&#125;
+	void setName(char* name) &#123;
+		this-&gt;name &#x3D; name;
+	&#125;
+	char* getName() &#123;
+		return this-&gt;name;
+	&#125;
+	void setAge(int age) &#123;
+		this-&gt;age &#x3D; age;
+	&#125;
+	int getAge() &#123;
+		return this-&gt;age;
+	&#125;
+	void myprint() &#123;
+		cout &lt;&lt; this-&gt;getName() &lt;&lt; &quot;,&quot; &lt;&lt; this-&gt;getAge() &lt;&lt; endl;
+	&#125;
+&#125;;
 
 
-void main() {
-    Teacher t1((char*)&quot;Jack&quot;, 20);
-    Teacher t2((char*)&quot;Rose&quot;, 18);
-    t1.myprint();
-    t2.myprint();
-    getchar();
-}</code></pre><h3 id="2、常函数（const修饰函数）"><a href="#2、常函数（const修饰函数）" class="headerlink" title="2、常函数（const修饰函数）"></a>2、常函数（const修饰函数）</h3><p><strong>常函数，修饰的是this；既不能改变指针的值，也不能改变指针指向的内容</strong><br><strong>常量对象只能调用常量函数,不能调用非常量函数</strong><br><strong>常函数当前对象不能被修改，防止数据成员被非法访问</strong></p>
-<pre><code>class Teacher {
+void main() &#123;
+	Teacher t1((char*)&quot;Jack&quot;, 20);
+	Teacher t2((char*)&quot;Rose&quot;, 18);
+	t1.myprint();
+	t2.myprint();
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-常函数const修饰函数"><a class="markdownIt-Anchor" href="#2-常函数const修饰函数"></a> 2、常函数（const修饰函数）</h3>
+<p><strong>常函数，修饰的是this；既不能改变指针的值，也不能改变指针指向的内容</strong><br />
+<strong>常量对象只能调用常量函数,不能调用非常量函数</strong><br />
+<strong>常函数当前对象不能被修改，防止数据成员被非法访问</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">class Teacher &#123;
 private:
-    char* name;
-    int age;
+	char* name;
+	int age;
 public:
-    Teacher(char* name,int age) {
-        this-&gt;name = name;
-        this-&gt;age = age;
-        cout &lt;&lt; &quot;Teacher有参构造函数&quot; &lt;&lt; endl;
-    }
-    ~Teacher() {
-        cout &lt;&lt; &quot;Teacher析构函数&quot; &lt;&lt; endl;
-    }
-    void setName(char* name) {
-        this-&gt;name = name;
-    }
-    char* getName() {
-        return this-&gt;name;
-    }
-    void setAge(int age) {
-        this-&gt;age = age;
-    }
-    int getAge() {
-        return this-&gt;age;
-    }
-    void myprint() const {
-        printf(&quot;%#x\n&quot;,this);
-        //不能改变属性的值
-        //this-&gt;name = &quot;Jason&quot;;
-        //不能改变this指针的值
-        //this = (Teacher*)0x000090;
-        cout &lt;&lt; this-&gt;getName() &lt;&lt; &quot;,&quot; &lt;&lt; this-&gt;getAge() &lt;&lt; endl;
-    }
-};</code></pre><h2 id="四、友元函数与友元类"><a href="#四、友元函数与友元类" class="headerlink" title="四、友元函数与友元类"></a>四、友元函数与友元类</h2><h3 id="1、友元函数"><a href="#1、友元函数" class="headerlink" title="1、友元函数"></a>1、友元函数</h3><p><strong>在友元函数中可以访问私有的属性</strong></p>
-<pre><code>class A {
+	Teacher(char* name,int age) &#123;
+		this-&gt;name &#x3D; name;
+		this-&gt;age &#x3D; age;
+		cout &lt;&lt; &quot;Teacher有参构造函数&quot; &lt;&lt; endl;
+	&#125;
+	~Teacher() &#123;
+		cout &lt;&lt; &quot;Teacher析构函数&quot; &lt;&lt; endl;
+	&#125;
+	void setName(char* name) &#123;
+		this-&gt;name &#x3D; name;
+	&#125;
+	char* getName() &#123;
+		return this-&gt;name;
+	&#125;
+	void setAge(int age) &#123;
+		this-&gt;age &#x3D; age;
+	&#125;
+	int getAge() &#123;
+		return this-&gt;age;
+	&#125;
+	void myprint() const &#123;
+	    printf(&quot;%#x\n&quot;,this);
+	    &#x2F;&#x2F;不能改变属性的值
+	    &#x2F;&#x2F;this-&gt;name &#x3D; &quot;Jason&quot;;
+	    &#x2F;&#x2F;不能改变this指针的值
+	    &#x2F;&#x2F;this &#x3D; (Teacher*)0x000090;
+		cout &lt;&lt; this-&gt;getName() &lt;&lt; &quot;,&quot; &lt;&lt; this-&gt;getAge() &lt;&lt; endl;
+	&#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="四-友元函数与友元类"><a class="markdownIt-Anchor" href="#四-友元函数与友元类"></a> 四、友元函数与友元类</h2>
+<h3 id="1-友元函数"><a class="markdownIt-Anchor" href="#1-友元函数"></a> 1、友元函数</h3>
+<p><strong>在友元函数中可以访问私有的属性</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">class A &#123;
 private:
-    int i;
+	int i;
 public:
-    A(int i) {
-        this-&gt;i = i;
-    }
-    void myprint() {
-        cout &lt;&lt; i &lt;&lt; endl;
-    }
-    //友元函数
-    friend void modify_i(A*p, int a);
-};
+	A(int i) &#123;
+		this-&gt;i &#x3D; i;
+	&#125;
+	void myprint() &#123;
+		cout &lt;&lt; i &lt;&lt; endl;
+	&#125;
+	&#x2F;&#x2F;友元函数
+	friend void modify_i(A*p, int a);
+&#125;;
 
-//友元函数的实现,在友元函数中可以访问私有的属性
-void modify_i(A*p, int a) {
-    p-&gt;i = a;
-}
+&#x2F;&#x2F;友元函数的实现,在友元函数中可以访问私有的属性
+void modify_i(A*p, int a) &#123;
+	p-&gt;i &#x3D; a;
+&#125;
 
-void main() {
-    A* a = new A(10);
-    a-&gt;myprint();
-    modify_i(a, 20);
-    a-&gt;myprint();
-    getchar();
-}</code></pre><h3 id="2、友元类"><a href="#2、友元类" class="headerlink" title="2、友元类"></a>2、友元类</h3><p><strong>友元类可以访问引用友元类的类的任何成员</strong></p>
-<pre><code>class A {
-    //友元类
-    friend class B;
+void main() &#123;
+	A* a &#x3D; new A(10);
+	a-&gt;myprint();
+	modify_i(a, 20);
+	a-&gt;myprint();
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-友元类"><a class="markdownIt-Anchor" href="#2-友元类"></a> 2、友元类</h3>
+<p><strong>友元类可以访问引用友元类的类的任何成员</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">class A &#123;
+	&#x2F;&#x2F;友元类
+	friend class B;
 private:
-    int i;
+	int i;
 public:
-    A(int i) {
-        this-&gt;i = i;
-    }
-    void myprint() {
-        cout &lt;&lt; i &lt;&lt; endl;
-    }
-    //友元函数
-    friend void modify_i(A*p, int a);
-};
+	A(int i) &#123;
+		this-&gt;i &#x3D; i;
+	&#125;
+	void myprint() &#123;
+		cout &lt;&lt; i &lt;&lt; endl;
+	&#125;
+	&#x2F;&#x2F;友元函数
+	friend void modify_i(A*p, int a);
+&#125;;
 
-//友元函数的实现,在友元函数中可以访问私有的属性
-void modify_i(A*p, int a) {
-    p-&gt;i = a;
-}
+&#x2F;&#x2F;友元函数的实现,在友元函数中可以访问私有的属性
+void modify_i(A*p, int a) &#123;
+	p-&gt;i &#x3D; a;
+&#125;
 
-class B {
+class B &#123;
 private:
-    A a;
+	A a;
 public:
-    B(int a_i):a(a_i) {
-        this-&gt;a = a;
-    }
-    //B这个友元类可以访问A类的任何成员
-    void accessAny() {
-        a.i = 30;
-    }
-    A getA() {
-        return a;
-    }
-};
+	B(int a_i):a(a_i) &#123;
+		this-&gt;a &#x3D; a;
+	&#125;
+	&#x2F;&#x2F;B这个友元类可以访问A类的任何成员
+	void accessAny() &#123;
+		a.i &#x3D; 30;
+	&#125;
+	A getA() &#123;
+		return a;
+	&#125;
+&#125;;
 
-void main() {
-    B* b = new B(10);
-    A a = b-&gt;getA();
-    a.myprint();
-    b-&gt;accessAny();
-    a = b-&gt;getA();
-    a.myprint();
-    getchar();
-}</code></pre><h2 id="五、运算符重载"><a href="#五、运算符重载" class="headerlink" title="五、运算符重载"></a>五、运算符重载</h2><p><strong>运算符的重载，本质上还是函数的调用</strong></p>
-<h3 id="1、单独进行运算符重载"><a href="#1、单独进行运算符重载" class="headerlink" title="1、单独进行运算符重载"></a>1、单独进行运算符重载</h3><pre><code>class Point {
+void main() &#123;
+	B* b &#x3D; new B(10);
+	A a &#x3D; b-&gt;getA();
+	a.myprint();
+	b-&gt;accessAny();
+	a &#x3D; b-&gt;getA();
+	a.myprint();
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="五-运算符重载"><a class="markdownIt-Anchor" href="#五-运算符重载"></a> 五、运算符重载</h2>
+<p><strong>运算符的重载，本质上还是函数的调用</strong></p>
+<h3 id="1-单独进行运算符重载"><a class="markdownIt-Anchor" href="#1-单独进行运算符重载"></a> 1、单独进行运算符重载</h3>
+<pre class="line-numbers language-none"><code class="language-none">class Point &#123;
 public:
-    int x;
-    int y;
+	int x;
+	int y;
 public:
-    Point(int x = 0,int y = 0) {
-        this-&gt;x = x;
-        this-&gt;y = y;
-    }
+	Point(int x &#x3D; 0,int y &#x3D; 0) &#123;
+		this-&gt;x &#x3D; x;
+		this-&gt;y &#x3D; y;
+	&#125;
 
-    void myprint() {
-        cout &lt;&lt; x &lt;&lt; &quot;,&quot; &lt;&lt; y &lt;&lt; endl;
-    }
-};
-//重载+号
-Point operator+(Point &amp;p1, Point &amp;p2) {
-    Point tmp(p1.x + p2.x, p1.y + p2.y);
-    return tmp;
-}
+	void myprint() &#123;
+		cout &lt;&lt; x &lt;&lt; &quot;,&quot; &lt;&lt; y &lt;&lt; endl;
+	&#125;
+&#125;;
+&#x2F;&#x2F;重载+号
+Point operator+(Point &amp;p1, Point &amp;p2) &#123;
+	Point tmp(p1.x + p2.x, p1.y + p2.y);
+	return tmp;
+&#125;
 
-//重载-号
-Point operator-(Point &amp;p1, Point &amp;p2) {
-    Point tmp(p1.x - p2.x, p1.y - p2.y);
-    return tmp;
-}
+&#x2F;&#x2F;重载-号
+Point operator-(Point &amp;p1, Point &amp;p2) &#123;
+	Point tmp(p1.x - p2.x, p1.y - p2.y);
+	return tmp;
+&#125;
 
-void main() {
-    Point p1(10,20);
-    Point p2(20,10);
-    Point p3 = p1 + p2;
-    p3.myprint();
-    getchar();
-}</code></pre><h3 id="2、类成员函数运算符重载"><a href="#2、类成员函数运算符重载" class="headerlink" title="2、类成员函数运算符重载"></a>2、类成员函数运算符重载</h3><pre><code>class Point {
+void main() &#123;
+	Point p1(10,20);
+	Point p2(20,10);
+	Point p3 &#x3D; p1 + p2;
+	p3.myprint();
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-类成员函数运算符重载"><a class="markdownIt-Anchor" href="#2-类成员函数运算符重载"></a> 2、类成员函数运算符重载</h3>
+<pre class="line-numbers language-none"><code class="language-none">class Point &#123;
 public:
-    int x;
-    int y;
+	int x;
+	int y;
 public:
-    Point(int x = 0, int y = 0) {
-        this-&gt;x = x;
-        this-&gt;y = y;
-    }
+	Point(int x &#x3D; 0, int y &#x3D; 0) &#123;
+		this-&gt;x &#x3D; x;
+		this-&gt;y &#x3D; y;
+	&#125;
 
-    void myprint() {
-        cout &lt;&lt; x &lt;&lt; &quot;,&quot; &lt;&lt; y &lt;&lt; endl;
-    }
-    //成员函数运算符重载+号
-    Point operator+(Point &amp;p2) {
-        Point tmp(this-&gt;x + p2.x, this-&gt;y + p2.y);
-        return tmp;
-    }
+	void myprint() &#123;
+		cout &lt;&lt; x &lt;&lt; &quot;,&quot; &lt;&lt; y &lt;&lt; endl;
+	&#125;
+	&#x2F;&#x2F;成员函数运算符重载+号
+	Point operator+(Point &amp;p2) &#123;
+		Point tmp(this-&gt;x + p2.x, this-&gt;y + p2.y);
+		return tmp;
+	&#125;
 
-    //成员函数运算符重载-号
-    Point operator-(Point &amp;p2) {
-        Point tmp(this-&gt;x - p2.x, this-&gt;y - p2.y);
-        return tmp;
-    }
-};
+	&#x2F;&#x2F;成员函数运算符重载-号
+	Point operator-(Point &amp;p2) &#123;
+		Point tmp(this-&gt;x - p2.x, this-&gt;y - p2.y);
+		return tmp;
+	&#125;
+&#125;;
 
 
-void main() {
-    Point p1(10, 20);
-    Point p2(20, 10);
-    //p1.operator+(p1);
-    Point p3 = p1 + p2;
-    p3.myprint();
-    getchar();
-}</code></pre><h3 id="3、友元函数运算符重载"><a href="#3、友元函数运算符重载" class="headerlink" title="3、友元函数运算符重载"></a>3、友元函数运算符重载</h3><p><strong>当属性私有时，通过友元函数完成运算符重载</strong></p>
-<pre><code>class Point {
-    friend Point operator+(Point &amp;p1, Point &amp;p2);
-    friend Point operator-(Point &amp;p1, Point &amp;p2);
+void main() &#123;
+	Point p1(10, 20);
+	Point p2(20, 10);
+	&#x2F;&#x2F;p1.operator+(p1);
+	Point p3 &#x3D; p1 + p2;
+	p3.myprint();
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-友元函数运算符重载"><a class="markdownIt-Anchor" href="#3-友元函数运算符重载"></a> 3、友元函数运算符重载</h3>
+<p><strong>当属性私有时，通过友元函数完成运算符重载</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">class Point &#123;
+	friend Point operator+(Point &amp;p1, Point &amp;p2);
+	friend Point operator-(Point &amp;p1, Point &amp;p2);
 private:
-    int x;
-    int y;
+	int x;
+	int y;
 public:
-    Point(int x = 0, int y = 0) {
-        this-&gt;x = x;
-        this-&gt;y = y;
-    }
+	Point(int x &#x3D; 0, int y &#x3D; 0) &#123;
+		this-&gt;x &#x3D; x;
+		this-&gt;y &#x3D; y;
+	&#125;
 
-    void myprint() {
-        cout &lt;&lt; x &lt;&lt; &quot;,&quot; &lt;&lt; y &lt;&lt; endl;
-    }
+	void myprint() &#123;
+		cout &lt;&lt; x &lt;&lt; &quot;,&quot; &lt;&lt; y &lt;&lt; endl;
+	&#125;
+	
+&#125;;
 
-};
+&#x2F;&#x2F;友元函数运算符重载+号
+Point operator+(Point &amp;p1, Point &amp;p2) &#123;
+	Point tmp(p1.x + p2.x, p1.y + p2.y);
+	return tmp;
+&#125;
 
-//友元函数运算符重载+号
-Point operator+(Point &amp;p1, Point &amp;p2) {
-    Point tmp(p1.x + p2.x, p1.y + p2.y);
-    return tmp;
-}
+&#x2F;&#x2F;友元函数运算符重载-号
+Point operator-(Point &amp;p1, Point &amp;p2) &#123;
+	Point tmp(p1.x - p2.x, p1.y - p2.y);
+	return tmp;
+&#125;
 
-//友元函数运算符重载-号
-Point operator-(Point &amp;p1, Point &amp;p2) {
-    Point tmp(p1.x - p2.x, p1.y - p2.y);
-    return tmp;
-}
-
-void main() {
-    Point p1(10, 20);
-    Point p2(20, 10);
-    Point p3 = p1 + p2;
-    p3.myprint();
-    getchar();
-}</code></pre>
+void main() &#123;
+	Point p1(10, 20);
+	Point p2(20, 10);
+	Point p3 &#x3D; p1 + p2;
+	p3.myprint();
+	getchar();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
   </div>
   <div>
   
@@ -626,7 +665,7 @@ void main() {
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-中的静态成员与this指针"><span class="toc-text">C++中的静态成员与this指针</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、静态成员"><span class="toc-text">一、静态成员</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、static-关键字"><span class="toc-text">1、static 关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、类的大小"><span class="toc-text">二、类的大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、this-指针"><span class="toc-text">三、this 指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、this指针"><span class="toc-text">1、this指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、常函数（const修饰函数）"><span class="toc-text">2、常函数（const修饰函数）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、友元函数与友元类"><span class="toc-text">四、友元函数与友元类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、友元函数"><span class="toc-text">1、友元函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、友元类"><span class="toc-text">2、友元类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、运算符重载"><span class="toc-text">五、运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、单独进行运算符重载"><span class="toc-text">1、单独进行运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、类成员函数运算符重载"><span class="toc-text">2、类成员函数运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、友元函数运算符重载"><span class="toc-text">3、友元函数运算符重载</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E4%B8%AD%E7%9A%84%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E4%B8%8Ethis%E6%8C%87%E9%92%88"><span class="toc-text"> C++中的静态成员与this指针</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%9D%99%E6%80%81%E6%88%90%E5%91%98"><span class="toc-text"> 一、静态成员</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-static-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text"> 1、static 关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%B1%BB%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="toc-text"> 二、类的大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-this-%E6%8C%87%E9%92%88"><span class="toc-text"> 三、this 指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-this%E6%8C%87%E9%92%88"><span class="toc-text"> 1、this指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E5%87%BD%E6%95%B0const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0"><span class="toc-text"> 2、常函数（const修饰函数）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8F%8B%E5%85%83%E7%B1%BB"><span class="toc-text"> 四、友元函数与友元类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0"><span class="toc-text"> 1、友元函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8B%E5%85%83%E7%B1%BB"><span class="toc-text"> 2、友元类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 五、运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%95%E7%8B%AC%E8%BF%9B%E8%A1%8C%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 1、单独进行运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 2、类成员函数运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 3、友元函数运算符重载</span></a></li></ol></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -642,7 +681,7 @@ void main() {
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -659,7 +698,7 @@ void main() {
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-中的静态成员与this指针"><span class="toc-text">C++中的静态成员与this指针</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、静态成员"><span class="toc-text">一、静态成员</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、static-关键字"><span class="toc-text">1、static 关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、类的大小"><span class="toc-text">二、类的大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、this-指针"><span class="toc-text">三、this 指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、this指针"><span class="toc-text">1、this指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、常函数（const修饰函数）"><span class="toc-text">2、常函数（const修饰函数）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、友元函数与友元类"><span class="toc-text">四、友元函数与友元类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、友元函数"><span class="toc-text">1、友元函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、友元类"><span class="toc-text">2、友元类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、运算符重载"><span class="toc-text">五、运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、单独进行运算符重载"><span class="toc-text">1、单独进行运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、类成员函数运算符重载"><span class="toc-text">2、类成员函数运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、友元函数运算符重载"><span class="toc-text">3、友元函数运算符重载</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E4%B8%AD%E7%9A%84%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E4%B8%8Ethis%E6%8C%87%E9%92%88"><span class="toc-text"> C++中的静态成员与this指针</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%9D%99%E6%80%81%E6%88%90%E5%91%98"><span class="toc-text"> 一、静态成员</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-static-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text"> 1、static 关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%B1%BB%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="toc-text"> 二、类的大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-this-%E6%8C%87%E9%92%88"><span class="toc-text"> 三、this 指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-this%E6%8C%87%E9%92%88"><span class="toc-text"> 1、this指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E5%87%BD%E6%95%B0const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0"><span class="toc-text"> 2、常函数（const修饰函数）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8F%8B%E5%85%83%E7%B1%BB"><span class="toc-text"> 四、友元函数与友元类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0"><span class="toc-text"> 1、友元函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8B%E5%85%83%E7%B1%BB"><span class="toc-text"> 2、友元类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 五、运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%95%E7%8B%AC%E8%BF%9B%E8%A1%8C%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 1、单独进行运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 2、类成员函数运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 3、友元函数运算符重载</span></a></li></ol></li></ol></li></ol>
     </div>
   </article>
   
@@ -680,13 +719,6 @@ void main() {
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -732,9 +764,9 @@ void main() {
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -742,14 +774,21 @@ void main() {
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -757,6 +796,13 @@ void main() {
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -793,13 +839,13 @@ void main() {
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -814,7 +860,7 @@ void main() {
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-中的静态成员与this指针"><span class="toc-text">C++中的静态成员与this指针</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、静态成员"><span class="toc-text">一、静态成员</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、static-关键字"><span class="toc-text">1、static 关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、类的大小"><span class="toc-text">二、类的大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、this-指针"><span class="toc-text">三、this 指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、this指针"><span class="toc-text">1、this指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、常函数（const修饰函数）"><span class="toc-text">2、常函数（const修饰函数）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、友元函数与友元类"><span class="toc-text">四、友元函数与友元类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、友元函数"><span class="toc-text">1、友元函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、友元类"><span class="toc-text">2、友元类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、运算符重载"><span class="toc-text">五、运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、单独进行运算符重载"><span class="toc-text">1、单独进行运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、类成员函数运算符重载"><span class="toc-text">2、类成员函数运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、友元函数运算符重载"><span class="toc-text">3、友元函数运算符重载</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E4%B8%AD%E7%9A%84%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E4%B8%8Ethis%E6%8C%87%E9%92%88"><span class="toc-text"> C++中的静态成员与this指针</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%9D%99%E6%80%81%E6%88%90%E5%91%98"><span class="toc-text"> 一、静态成员</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-static-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text"> 1、static 关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%B1%BB%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="toc-text"> 二、类的大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-this-%E6%8C%87%E9%92%88"><span class="toc-text"> 三、this 指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-this%E6%8C%87%E9%92%88"><span class="toc-text"> 1、this指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E5%87%BD%E6%95%B0const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0"><span class="toc-text"> 2、常函数（const修饰函数）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8F%8B%E5%85%83%E7%B1%BB"><span class="toc-text"> 四、友元函数与友元类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0"><span class="toc-text"> 1、友元函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8B%E5%85%83%E7%B1%BB"><span class="toc-text"> 2、友元类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 五、运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%95%E7%8B%AC%E8%BF%9B%E8%A1%8C%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 1、单独进行运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 2、类成员函数运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text"> 3、友元函数运算符重载</span></a></li></ol></li></ol></li></ol>
   </article>
   
   
@@ -825,22 +871,22 @@ void main() {
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -889,7 +935,7 @@ void main() {
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

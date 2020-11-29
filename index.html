@@ -113,7 +113,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -185,15 +198,16 @@
   <article class="card card-content">
     <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/">
       <h1 class="post-title">
-        Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务
+        
       </h1>
     </a>
     <div class="card-excerpt">
       
-      【笔记四】编译插桩操纵字节码，实现不可能完成的任务根据之前学习的class 字节码文件的解析，接下来在此基础上进行一些更深入的操作，来加深对 class 字节码文件的理解。
+       【笔记四】编译插桩操纵字节码，实现不可能完成的任务
+根据之前学习的class 字节码文件的解析，接下来在此基础上进行一些更深入的操作，来加深对 class 字节码文件的理解。
 相信做过 Android 开发的工程师大多都遇到过这种需求：
 
-记录每一个页面的打开和关闭事件，并通过各种 DataTr...
+记录每一个页面的打开和关闭事件，并通过各种 Data...
       
     </div>
     <div class="card-post-footer">
@@ -214,12 +228,14 @@
   <article class="card card-content">
     <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/">
       <h1 class="post-title">
-        Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构
+        
       </h1>
     </a>
     <div class="card-excerpt">
       
-      【笔记三】字节码层面分析 class 文件结构1. class 的来龙去脉Java 能够实现“一次编译，到处运行”，这其中 class 文件要占大部分功劳；为了让 Java 具有良好的跨平台能力，Java 独具匠心的提供了一种可以在所有平台上都能使用的一种中间代码—字节码类文件（.c...
+       【笔记三】字节码层面分析 class 文件结构
+ 1. class 的来龙去脉
+Java 能够实现“一次编译，到处运行”，这其中 class 文件要占大部分功劳；为了让 Java 具有良好的跨平台能力，Java 独具匠心的提供了一种可以在所有平台上都能使用的一种中间代码—字节码类文...
       
     </div>
     <div class="card-post-footer">
@@ -240,12 +256,13 @@
   <article class="card card-content">
     <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/">
       <h1 class="post-title">
-        Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略
+        
       </h1>
     </a>
     <div class="card-excerpt">
       
-      【笔记二】GC 回收机制和分代回收策略垃圾回收（Garbage Collection，简写为: GC）是 Java 开发者最关注的一块知识点。Java 语言开发者比 C 语言开发者幸福的地方就在于，不需要手动释放对象的内存，JVM 中的垃圾回收器（Garbage Collector）会为我们自...
+       【笔记二】GC 回收机制和分代回收策略
+垃圾回收（Garbage Collection，简写为: GC）是 Java 开发者最关注的一块知识点。Java 语言开发者比 C 语言开发者幸福的地方就在于，不需要手动释放对象的内存，JVM 中的垃圾回收器（Garbage Collector）会为我...
       
     </div>
     <div class="card-post-footer">
@@ -266,15 +283,16 @@
   <article class="card card-content">
     <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/">
       <h1 class="post-title">
-        Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的
+        
       </h1>
     </a>
     <div class="card-excerpt">
       
-      【笔记一】Java程序运行时，内存是如何分配的Java 虚拟机在执行Java 程序的过程中，会把它所管理的内存划分为不同的数据区域；主要分为：程序计数器、虚拟机栈、本地方法栈、堆、方法区。
+       【笔记一】Java程序运行时，内存是如何分配的
+Java 虚拟机在执行Java 程序的过程中，会把它所管理的内存划分为不同的数据区域；主要分为：程序计数器、虚拟机栈、本地方法栈、堆、方法区。
 下图描述一个 HelloWord.java 文件被加载到内存的过程：
 
-HelloWord.java 首...
+HelloWord.java...
       
     </div>
     <div class="card-post-footer">
@@ -295,15 +313,18 @@ HelloWord.java 首...
   <article class="card card-content">
     <a href="/20200626/java/bing-fa-bian-cheng/bi-ji-yi-bing-fa-bian-cheng-xian-cheng-ji-chu/">
       <h1 class="post-title">
-        java/并发编程/笔记一【并发编程】线程基础
+        
       </h1>
     </a>
     <div class="card-excerpt">
       
-      【并发编程】线程基础一. 实现线程的方式1. 为何说只有一种实现线程的方式1.1 常见的实现线程的方式1.1.1 继承Thread类继承 Thread 类，并重写其中的 run() 方法。
-public class DemoThread extends Thread {
-
-    @Overr...
+       【并发编程】线程基础
+ 一. 实现线程的方式
+ 1. 为何说只有一种实现线程的方式
+ 1.1 常见的实现线程的方式
+ 1.1.1 继承Thread类
+继承 Thread 类，并重写其中的 run() 方法。
+public class DemoThread extends Thread &amp;#1...
       
     </div>
     <div class="card-post-footer">
@@ -509,13 +530,16 @@ public class DemoThread extends Thread {
     </a>
     <div class="card-excerpt">
       
-      视频解码、像素格式转换与Native原生绘制一、视频解码1、FFmpeg 库简介FFmpeg 一共包含8个库
+       视频解码、像素格式转换与Native原生绘制
+ 一、视频解码
+ 1、FFmpeg 库简介
+FFmpeg 一共包含8个库
 
 avcodec：编解码（最重要的库）
 avformat：封装格式处理
 avfilter：滤镜特效处理
 avdevice：各自设备的输入输出
-avutil：工具库（大部分库都需要这个库...
+avutil：工具库（大部分库...
       
     </div>
     <div class="card-post-footer">
@@ -597,7 +621,7 @@ avutil：工具库（大部分库都需要这个库...
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -628,13 +652,6 @@ avutil：工具库（大部分库都需要这个库...
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -680,9 +697,9 @@ avutil：工具库（大部分库都需要这个库...
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -690,14 +707,21 @@ avutil：工具库（大部分库都需要这个库...
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -705,6 +729,13 @@ avutil：工具库（大部分库都需要这个库...
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -741,13 +772,13 @@ avutil：工具库（大部分库都需要这个库...
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -1091,22 +1122,22 @@ avutil：工具库（大部分库都需要这个库...
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -1478,7 +1509,7 @@ avutil：工具库（大部分库都需要这个库...
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

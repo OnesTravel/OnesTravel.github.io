@@ -131,7 +131,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -251,25 +264,42 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="自动化构建Android项目-—-Jenkins自动化部署学习笔记（二）"><a href="#自动化构建Android项目-—-Jenkins自动化部署学习笔记（二）" class="headerlink" title="自动化构建Android项目 —- Jenkins自动化部署学习笔记（二）"></a>自动化构建Android项目 —- Jenkins自动化部署学习笔记（二）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;上篇文章跟大家分享了在Windows上安装Jenkins的方法，这篇文章来跟大家分享一下利用Jenkins自动化构建Android项目：</p>
-<h2 id="一、所需准备："><a href="#一、所需准备：" class="headerlink" title="一、所需准备："></a>一、所需准备：</h2><ol>
-<li>Android项目上传至版本管理平台，这里我准备了Github上的Android项目<a href="https://github.com/onestravel/WebView404Example.git" target="_blank" rel="noopener">https://github.com/onestravel/WebView404Example.git</a></li>
-<li>配置Android SDK环境变量<br> 参考上篇文章，我们进入   系统管理 -&gt; 系统设置  ，选择环境变量，进行增加<br> 输入 键：ANDROID_HOME<br> 输入 值：D:\android\sdk<br> <img src="https://upload-images.jianshu.io/upload_images/3236417-cc4874a8851f29f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配置Android SDK环境变量" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-cc4874a8851f29f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"><br> SDK环境变量配置完成，点击保存。</li>
+    <h1 id="自动化构建android项目-jenkins自动化部署学习笔记二"><a class="markdownIt-Anchor" href="#自动化构建android项目-jenkins自动化部署学习笔记二"></a> 自动化构建Android项目 ---- Jenkins自动化部署学习笔记（二）</h1>
+<h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
+<p>  上篇文章跟大家分享了在Windows上安装Jenkins的方法，这篇文章来跟大家分享一下利用Jenkins自动化构建Android项目：</p>
+<h2 id="一-所需准备"><a class="markdownIt-Anchor" href="#一-所需准备"></a> 一、所需准备：</h2>
+<ol>
+<li>Android项目上传至版本管理平台，这里我准备了Github上的Android项目https://github.com/onestravel/WebView404Example.git</li>
+<li>配置Android SDK环境变量<br />
+参考上篇文章，我们进入   系统管理 -&gt; 系统设置  ，选择环境变量，进行增加<br />
+输入 键：ANDROID_HOME<br />
+输入 值：D:\android\sdk<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-cc4874a8851f29f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配置Android SDK环境变量" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-cc4874a8851f29f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"><br />
+SDK环境变量配置完成，点击保存。</li>
 </ol>
-<h2 id="二、自动化构建配置"><a href="#二、自动化构建配置" class="headerlink" title="二、自动化构建配置"></a>二、自动化构建配置</h2><p>1.我们再Jenkins网站，新建一个任务<br><img src="https://upload-images.jianshu.io/upload_images/3236417-63920a9fd6df1393.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新建任务" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-63920a9fd6df1393.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<h2 id="二-自动化构建配置"><a class="markdownIt-Anchor" href="#二-自动化构建配置"></a> 二、自动化构建配置</h2>
+<p>1.我们再Jenkins网站，新建一个任务<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-63920a9fd6df1393.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新建任务" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-63920a9fd6df1393.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <p>2.我们在新建任务界面，输入任务名称，选择任务类型，我们来选择构建一个自由风格的软件项目</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-00829bb1801c9a96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="任务创建" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-00829bb1801c9a96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-00829bb1801c9a96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="任务创建" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-00829bb1801c9a96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <p>3.点击确定，进入任务配置界面，进行自动化构建的一些配置，包括任务设置，源码管理，构建触发器，构建环境，构建和构建后操作。</p>
 <ul>
-<li><p>(1)、配置自定义工作空间<br>Jenkins构建默认使用的是Jenkins安装目录下的workspace，我们也可以更改为自定义的workspace，如下，在 General  板块右下方，点击高级 ，勾选<strong>使用自定义的工作空间</strong>，设置工作空间目录和显示名称。<br><img src="https://upload-images.jianshu.io/upload_images/3236417-30053e0a62f18bfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配置自定义工作空间" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-30053e0a62f18bfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<li>
+<p>(1)、配置自定义工作空间<br />
+Jenkins构建默认使用的是Jenkins安装目录下的workspace，我们也可以更改为自定义的workspace，如下，在 General  板块右下方，点击高级 ，勾选<strong>使用自定义的工作空间</strong>，设置工作空间目录和显示名称。<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-30053e0a62f18bfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配置自定义工作空间" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-30053e0a62f18bfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 </li>
-<li><p>(2)、配置源码管理，这里我们选择Git，在Repository URL    输入框中输入Android项目存放的Git路径，Credentials，需要配置Git仓库访问的用户名和密码或者SSH验证，点击Add进行添加用户验证口令</p>
+<li>
+<p>(2)、配置源码管理，这里我们选择Git，在Repository URL	输入框中输入Android项目存放的Git路径，Credentials，需要配置Git仓库访问的用户名和密码或者SSH验证，点击Add进行添加用户验证口令</p>
 </li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-5397376b0f9e017f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="源码管理" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-5397376b0f9e017f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-67fa5a9859b8fe67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加用户验证口令-用户名密码模式" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-67fa5a9859b8fe67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"><br>添加完用户验证口令后，我们在Credentials中选择这个验证口令，在Branches to build中更改需要自动打包的分支，这里采用默认分支master<br><img src="https://upload-images.jianshu.io/upload_images/3236417-6ef1d5f9fa14ec80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="选择验证口令，选择build分支" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-6ef1d5f9fa14ec80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-5397376b0f9e017f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="源码管理" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-5397376b0f9e017f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-67fa5a9859b8fe67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加用户验证口令-用户名密码模式" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-67fa5a9859b8fe67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"><br />
+添加完用户验证口令后，我们在Credentials中选择这个验证口令，在Branches to build中更改需要自动打包的分支，这里采用默认分支master<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-6ef1d5f9fa14ec80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="选择验证口令，选择build分支" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-6ef1d5f9fa14ec80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <ul>
-<li>(3)、构建触发器，这里我们一般选择 Poll SCM 可以自定义构建触发，如：每日定时触发构建，提<br>交时触发构建，这里采用每两分钟检查构建</li>
+<li>(3)、构建触发器，这里我们一般选择 Poll SCM 可以自定义构建触发，如：每日定时触发构建，提<br />
+交时触发构建，这里采用每两分钟检查构建</li>
 </ul>
 <table>
 <thead>
@@ -278,7 +308,8 @@
 <th>命令</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>每 15分钟构建一次</td>
 <td>H/15 * * * *   或*/5 * * * *</td>
 </tr>
@@ -298,46 +329,59 @@
 <td>每月1号、15号各构建一次，除12月</td>
 <td>H H 1,15 1-11 *</td>
 </tr>
-<tr>
-<td><img src="https://upload-images.jianshu.io/upload_images/3236417-2c56b434364b6919.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建触发器" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-2c56b434364b6919.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></td>
-<td></td>
-</tr>
-</tbody></table>
+</tbody>
+</table>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-2c56b434364b6919.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建触发器" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-2c56b434364b6919.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <ul>
-<li><p>(4)、构建环境我们这里不用设置</p>
+<li>
+<p>(4)、构建环境我们这里不用设置</p>
 </li>
-<li><p>(5)、构建设置，点击增加构建步骤，选择Invoke Gradle Script，我们采用Gradle进行编译，选择完成之后，在增加的内容中，点击高级，展开构建配置界面<br><img src="https://upload-images.jianshu.io/upload_images/3236417-25e6b0a7b8369b54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="增加构建步骤" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-25e6b0a7b8369b54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<li>
+<p>(5)、构建设置，点击增加构建步骤，选择Invoke Gradle Script，我们采用Gradle进行编译，选择完成之后，在增加的内容中，点击高级，展开构建配置界面<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-25e6b0a7b8369b54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="增加构建步骤" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-25e6b0a7b8369b54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 </li>
 </ul>
-<p>在Invoke Gradle 的Gradle Version中选择我们上篇文章配置好的本地Gradle环境，采用本地环境进行编译<br>在Task中，我们输入编译的命令，多命令用空格隔开，如果有配置渠道，我们可以设置打对应的渠道包，如：clean assembleDebug，或者 clean build<br>Root build script 中输入我们的工作空间路径<br>Build File 写项目的build.gradle文件名<br><img src="https://upload-images.jianshu.io/upload_images/3236417-2f219073bd942cb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建配置" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-2f219073bd942cb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<p>至此，我们自动化构建配置完成，点击保存按钮，保存配置。<br>我们来点击立即构建，即可查看项目正在构建，点击Build History 中本次构建的时间上的小箭头（鼠标移上就会出现），点击控制台输出，即可实时查看编译日志<br><img src="https://upload-images.jianshu.io/upload_images/3236417-c8a5f9a5eb51edfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="立即构建" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-c8a5f9a5eb51edfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-fcca34e42fed0d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="控制台输出" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-fcca34e42fed0d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<h2 id="三、项目构建中遇到的一些问题"><a href="#三、项目构建中遇到的一些问题" class="headerlink" title="三、项目构建中遇到的一些问题"></a>三、项目构建中遇到的一些问题</h2><ol>
-<li>Error: Some file crunching failed, see logs for details<br> :app:mergeCeshiDebugResources** FAILED</li>
+<p>在Invoke Gradle 的Gradle Version中选择我们上篇文章配置好的本地Gradle环境，采用本地环境进行编译<br />
+在Task中，我们输入编译的命令，多命令用空格隔开，如果有配置渠道，我们可以设置打对应的渠道包，如：clean assembleDebug，或者 clean build<br />
+Root build script 中输入我们的工作空间路径<br />
+Build File 写项目的build.gradle文件名</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-2f219073bd942cb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建配置" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-2f219073bd942cb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p>至此，我们自动化构建配置完成，点击保存按钮，保存配置。<br />
+我们来点击立即构建，即可查看项目正在构建，点击Build History 中本次构建的时间上的小箭头（鼠标移上就会出现），点击控制台输出，即可实时查看编译日志<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-c8a5f9a5eb51edfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="立即构建" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-c8a5f9a5eb51edfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-fcca34e42fed0d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="控制台输出" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-fcca34e42fed0d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<h2 id="三-项目构建中遇到的一些问题"><a class="markdownIt-Anchor" href="#三-项目构建中遇到的一些问题"></a> 三、项目构建中遇到的一些问题</h2>
+<ol>
+<li>Error: Some file crunching failed, see logs for details<br />
+:app:mergeCeshiDebugResources** FAILED</li>
 </ol>
-<pre><code>* What went wrong:
+<pre class="line-numbers language-none"><code class="language-none">* What went wrong:
 Execution failed for task &#39;:app:mergeCeshiDebugResources&#39;.
 &gt; Error: Some file crunching failed, see logs for details
 
 * Try:
-Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/3236417-7c8dbaae0a42bde7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误信息 一" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-7c8dbaae0a42bde7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-c8a9e391d23beda8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误信息 一" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-c8a9e391d23beda8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-7c8dbaae0a42bde7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误信息 一" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-7c8dbaae0a42bde7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-c8a9e391d23beda8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误信息 一" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-c8a9e391d23beda8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <p>出现该问题主要是gradle 编译时的 build-cache 目录路径太长，导致 jenkins 无法识别该路径，才会出现此错误。</p>
 <p>如图所示，现在build-cache 目录是在 C:\Windows\System32\config\systemprofile.android\build-cache 下，目录太长（深），导致运行时找不到文件</p>
-<pre><code>C:\Windows\System32\config\systemprofile\.android\build-cache\63e2e64e89749266e10d6160c2536dd981719789\output\res\drawable-xhdpi-v4\abc_ab_share_pack_mtrl_alpha.9.png</code></pre><p>解决此错误的方法，是在项目的gradle.properties 文件中增加 build-cache 目录，设置一个较短的目录</p>
-<pre><code>android.buildCacheDir=D:/android-studio/build-cache</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/3236417-fc303f1010ebf64d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-fc303f1010ebf64d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<pre class="line-numbers language-none"><code class="language-none">C:\Windows\System32\config\systemprofile\.android\build-cache\63e2e64e89749266e10d6160c2536dd981719789\output\res\drawable-xhdpi-v4\abc_ab_share_pack_mtrl_alpha.9.png<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>解决此错误的方法，是在项目的gradle.properties 文件中增加 build-cache 目录，设置一个较短的目录</p>
+<pre class="line-numbers language-none"><code class="language-none">android.buildCacheDir&#x3D;D:&#x2F;android-studio&#x2F;build-cache<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-fc303f1010ebf64d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-fc303f1010ebf64d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <ol start="2">
 <li>如果我们的项目中有使用 google 服务，如：下图一</li>
 </ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-4efd06ea88e1fb09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图一" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-4efd06ea88e1fb09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-4efd06ea88e1fb09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图一" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-4efd06ea88e1fb09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <p>这时候使用jenkins 自动化构建时，有可能会编译出错，找不到google()的服务，这是因为我们的gradle版本太低的缘故，在本文中，我们的gradle 版本使用的是3.3 的，页使用的google的服务，在编译时，出现了错误，错误信息如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-b876552e488cac90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误信息" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-b876552e488cac90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-b876552e488cac90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误信息" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-b876552e488cac90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <p>我们在Jenkins 中的  系统管理 -&gt; 全局系统设置中，重新添加高版本的Gradle 这里使用的是4.1 版本（本地）；</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-cc2079e209a9a04e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Gradle 4.1" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-cc2079e209a9a04e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"><br>配置完成之后，我们再本次构建任务中选用Gradle4.1进行编译该项目，则会编译通过。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-69a31e0b785bc5b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建任务中选用Gradle4.1" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-69a31e0b785bc5b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-11e5508da83d551c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Gradle编译成功" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-11e5508da83d551c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<p>上一篇：<a href="https://www.jianshu.com/p/de9c4f5ae7fa" target="_blank" rel="noopener">在Windows系统上安装Jenkins —- Jenkins自动化部署学习笔记（一）</a></p>
-<p>下一篇：<a href="https://www.jianshu.com/p/ca07a19d036a" target="_blank" rel="noopener">配置项目构建完成后文件移动—- Jenkins自动化部署学习笔记（三）</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-cc2079e209a9a04e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Gradle 4.1" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-cc2079e209a9a04e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"><br />
+配置完成之后，我们再本次构建任务中选用Gradle4.1进行编译该项目，则会编译通过。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-69a31e0b785bc5b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建任务中选用Gradle4.1" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-69a31e0b785bc5b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-11e5508da83d551c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Gradle编译成功" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-11e5508da83d551c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p>上一篇：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/de9c4f5ae7fa">在Windows系统上安装Jenkins ---- Jenkins自动化部署学习笔记（一）</a></p>
+<p>下一篇：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ca07a19d036a">配置项目构建完成后文件移动---- Jenkins自动化部署学习笔记（三）</a></p>
 
   </div>
   <div>
@@ -366,11 +410,11 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
   
   
   <div class="nav-item-next">
-    <a href="/20180509/java/cong-ling-kai-shi-shi-yong-intellij-idea-chuang-jian-springboot-xiang-mu/" class="nav-link">
+    <a href="/20180509/jenkins/zai-windows-xi-tong-shang-an-zhuang-jenkins-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-yi/" class="nav-link">
       <div>
         <div class="nav-label">下一篇</div>
         
-        <div class="nav-title">从零开始-使用IntelliJ IDEA创建SpringBoot项目 </div>
+        <div class="nav-title">在Windows系统上安装Jenkins ---- Jenkins自动化部署学习笔记（一） </div>
         
       </div>
       <i class="iconfont icon-right nav-next-icon"></i>
@@ -410,7 +454,7 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自动化构建Android项目-—-Jenkins自动化部署学习笔记（二）"><span class="toc-text">自动化构建Android项目 —- Jenkins自动化部署学习笔记（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、所需准备："><span class="toc-text">一、所需准备：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、自动化构建配置"><span class="toc-text">二、自动化构建配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、项目构建中遇到的一些问题"><span class="toc-text">三、项目构建中遇到的一些问题</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BAandroid%E9%A1%B9%E7%9B%AE-jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C"><span class="toc-text"> 自动化构建Android项目 ---- Jenkins自动化部署学习笔记（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%89%80%E9%9C%80%E5%87%86%E5%A4%87"><span class="toc-text"> 一、所需准备：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E9%85%8D%E7%BD%AE"><span class="toc-text"> 二、自动化构建配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-text"> 三、项目构建中遇到的一些问题</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -426,7 +470,7 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -443,7 +487,7 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自动化构建Android项目-—-Jenkins自动化部署学习笔记（二）"><span class="toc-text">自动化构建Android项目 —- Jenkins自动化部署学习笔记（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、所需准备："><span class="toc-text">一、所需准备：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、自动化构建配置"><span class="toc-text">二、自动化构建配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、项目构建中遇到的一些问题"><span class="toc-text">三、项目构建中遇到的一些问题</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BAandroid%E9%A1%B9%E7%9B%AE-jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C"><span class="toc-text"> 自动化构建Android项目 ---- Jenkins自动化部署学习笔记（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%89%80%E9%9C%80%E5%87%86%E5%A4%87"><span class="toc-text"> 一、所需准备：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E9%85%8D%E7%BD%AE"><span class="toc-text"> 二、自动化构建配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-text"> 三、项目构建中遇到的一些问题</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -464,13 +508,6 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -516,9 +553,9 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -526,14 +563,21 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -541,6 +585,13 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -577,13 +628,13 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -598,7 +649,7 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自动化构建Android项目-—-Jenkins自动化部署学习笔记（二）"><span class="toc-text">自动化构建Android项目 —- Jenkins自动化部署学习笔记（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、所需准备："><span class="toc-text">一、所需准备：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、自动化构建配置"><span class="toc-text">二、自动化构建配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、项目构建中遇到的一些问题"><span class="toc-text">三、项目构建中遇到的一些问题</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BAandroid%E9%A1%B9%E7%9B%AE-jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C"><span class="toc-text"> 自动化构建Android项目 ---- Jenkins自动化部署学习笔记（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%89%80%E9%9C%80%E5%87%86%E5%A4%87"><span class="toc-text"> 一、所需准备：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E9%85%8D%E7%BD%AE"><span class="toc-text"> 二、自动化构建配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-text"> 三、项目构建中遇到的一些问题</span></a></li></ol></li></ol>
   </article>
   
   
@@ -609,22 +660,22 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -673,7 +724,7 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

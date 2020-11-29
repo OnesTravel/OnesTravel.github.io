@@ -129,7 +129,20 @@
 
   
   
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+  
+  
+  
+  
+  <link href="/js/lib/prism/prism-tomorrow.min.css" rel="stylesheet" data-prism="prism-tomorrow">
+  
+  
+  
+<link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -223,7 +236,7 @@
     
     
     <span class="dot"></span>
-    <span>956 字</span>
+    <span>948 字</span>
     
   </div>
   
@@ -244,60 +257,95 @@
   
   </header>
   <div id="section" class="post-content">
-    <h1 id="在Windows系统上安装Jenkins-—-Jenkins自动化部署学习笔记（一）"><a href="#在Windows系统上安装Jenkins-—-Jenkins自动化部署学习笔记（一）" class="headerlink" title="在Windows系统上安装Jenkins —- Jenkins自动化部署学习笔记（一）"></a>在Windows系统上安装Jenkins —- Jenkins自动化部署学习笔记（一）</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&emsp;&emsp;之前一直想着学习一下Jenkins自动化部署，最近刚好有点时间，就利用这点时间来学习一下Jenkins自动化部署，做个笔记，既可以巩固自己的学习，也可以帮助更多的人了解Jenkins自动化部署。</p>
-<p> &emsp;&emsp;先从简单的开始，我们先用Windows系统来安装Jenkins，当然以后肯定会在Ubuntu上进行Jenkins安装配置的。</p>
-<h1 id="一、安装前准备："><a href="#一、安装前准备：" class="headerlink" title="一、安装前准备："></a>一、安装前准备：</h1><h3 id="1、JDK1-7，或者JDK1-8："><a href="#1、JDK1-7，或者JDK1-8：" class="headerlink" title="1、JDK1.7，或者JDK1.8："></a>1、JDK1.7，或者JDK1.8：</h3><p>​    Jdk下载地址如下：<br>​        Windows  X86:  <a href="http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-windows-i586.exe" target="_blank" rel="noopener">jdk-8u171-windows-i586.exe</a><br>​        Windows  X64:  <a href="http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-windows-x64.exe" target="_blank" rel="noopener">jdk-8u171-windows-x64.exe</a><br>​        Linux X64：<a href="http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz" target="_blank" rel="noopener">jdk-8u171-linux-x64.tar.gz</a></p>
-<h3 id="2、Jenkins安装包："><a href="#2、Jenkins安装包：" class="headerlink" title="2、Jenkins安装包："></a>2、Jenkins安装包：</h3><p>​        Jenkins for windows ：<a href="https://jenkins.io/download/thank-you-downloading-windows-installer-stable/" target="_blank" rel="noopener">Jenkins-for-windows-installer</a></p>
-<h2 id="二、安装Jdk，配置环境变量"><a href="#二、安装Jdk，配置环境变量" class="headerlink" title="二、安装Jdk，配置环境变量"></a>二、安装Jdk，配置环境变量</h2><h3 id="1、安装jdk"><a href="#1、安装jdk" class="headerlink" title="1、安装jdk"></a>1、安装jdk</h3><p>&emsp;&emsp;上面准备好的Jdk安装包，选择自己电脑系统适合的进行下载，一直默认安装就可以，也可以更改安装路径，最好jdk和jre路径一起改。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-db7f6970fb9acef0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="更改jdk安装路径" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-db7f6970fb9acef0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-1984703cb48a757d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="更改jre安装路径" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-1984703cb48a757d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<h3 id="2、配置环境变量"><a href="#2、配置环境变量" class="headerlink" title="2、配置环境变量"></a>2、配置环境变量</h3><p>&emsp;&emsp;安装好jdk之后，我们进行环境变量的配置：</p>
+    <h1 id="在windows系统上安装jenkins-jenkins自动化部署学习笔记一"><a class="markdownIt-Anchor" href="#在windows系统上安装jenkins-jenkins自动化部署学习笔记一"></a> 在Windows系统上安装Jenkins ---- Jenkins自动化部署学习笔记（一）</h1>
+<h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+<p>  之前一直想着学习一下Jenkins自动化部署，最近刚好有点时间，就利用这点时间来学习一下Jenkins自动化部署，做个笔记，既可以巩固自己的学习，也可以帮助更多的人了解Jenkins自动化部署。</p>
+<p>  先从简单的开始，我们先用Windows系统来安装Jenkins，当然以后肯定会在Ubuntu上进行Jenkins安装配置的。</p>
+<h1 id="一-安装前准备"><a class="markdownIt-Anchor" href="#一-安装前准备"></a> 一、安装前准备：</h1>
+<h3 id="1-jdk17或者jdk18"><a class="markdownIt-Anchor" href="#1-jdk17或者jdk18"></a> 1、JDK1.7，或者JDK1.8：</h3>
+<p>​	Jdk下载地址如下：<br />
+​		Windows  X86:  <a target="_blank" rel="noopener" href="http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-windows-i586.exe">jdk-8u171-windows-i586.exe</a><br />
+​		Windows  X64:  <a target="_blank" rel="noopener" href="http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-windows-x64.exe">jdk-8u171-windows-x64.exe</a><br />
+​		Linux X64：<a target="_blank" rel="noopener" href="http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz">jdk-8u171-linux-x64.tar.gz</a></p>
+<h3 id="2-jenkins安装包"><a class="markdownIt-Anchor" href="#2-jenkins安装包"></a> 2、Jenkins安装包：</h3>
+<p>​		Jenkins for windows ：<a target="_blank" rel="noopener" href="https://jenkins.io/download/thank-you-downloading-windows-installer-stable/">Jenkins-for-windows-installer</a></p>
+<h2 id="二-安装jdk配置环境变量"><a class="markdownIt-Anchor" href="#二-安装jdk配置环境变量"></a> 二、安装Jdk，配置环境变量</h2>
+<h3 id="1-安装jdk"><a class="markdownIt-Anchor" href="#1-安装jdk"></a> 1、安装jdk</h3>
+<p>  上面准备好的Jdk安装包，选择自己电脑系统适合的进行下载，一直默认安装就可以，也可以更改安装路径，最好jdk和jre路径一起改。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-db7f6970fb9acef0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="更改jdk安装路径" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-db7f6970fb9acef0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-1984703cb48a757d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="更改jre安装路径" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-1984703cb48a757d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<h3 id="2-配置环境变量"><a class="markdownIt-Anchor" href="#2-配置环境变量"></a> 2、配置环境变量</h3>
+<p>  安装好jdk之后，我们进行环境变量的配置：</p>
 <ul>
-<li><p>在「计算机」右键，选择「属性」，在弹出页面，选择「高级系统设置」，「环境变量」</p>
-<p> <img src="https://upload-images.jianshu.io/upload_images/3236417-6cfccfab63a4a90d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="环境变量" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-6cfccfab63a4a90d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<li>
+<p>在「计算机」右键，选择「属性」，在弹出页面，选择「高级系统设置」，「环境变量」</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-6cfccfab63a4a90d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="环境变量" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-6cfccfab63a4a90d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+</li>
+<li>
+<p>在环境变量弹出窗中点击「系统变量」下方的新建按钮，新建JAVA_HOME变量，值为刚安装的JDK路径，如我的JDK路径为：D:\Program Files\Java\jdk1.8.0_162</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-5437a7a3f31db6c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新建JAVA_HOME变量" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-5437a7a3f31db6c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+</li>
+<li>
+<p>找到 Path 变量，没有的话就新建一个，不过一般都会有的 ，点击编辑，在path变量的最前面添加Jdk的路径为“ %JAVA_HOME%\bin; ”</p>
 </li>
 </ul>
-<ul>
-<li><p>在环境变量弹出窗中点击「系统变量」下方的新建按钮，新建JAVA_HOME变量，值为刚安装的JDK路径，如我的JDK路径为：D:\Program Files\Java\jdk1.8.0_162</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-5437a7a3f31db6c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新建JAVA_HOME变量" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-5437a7a3f31db6c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-</li>
-<li><p>找到 Path 变量，没有的话就新建一个，不过一般都会有的 ，点击编辑，在path变量的最前面添加Jdk的路径为“ %JAVA_HOME%\bin; ”</p>
-</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-6ddc36e5eb577b3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在Path变量中添加jdk路径" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-6ddc36e5eb577b3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-6ddc36e5eb577b3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在Path变量中添加jdk路径" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-6ddc36e5eb577b3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <ul>
 <li>找到classpath变量，没有的话，新建，增加classpath变量：%JAVA_HOME%\lib;</li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-61a46da5f0f875be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="增加classpath变量" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-61a46da5f0f875be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-61a46da5f0f875be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="增加classpath变量" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-61a46da5f0f875be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <ul>
-<li>环境变量这就配置完成了，我们打开命令窗口，输入命令来验证是否配置合适：<br>命令为：<br>  java -version  //查看java版本号<br>或<br>  javac   </li>
+<li>环境变量这就配置完成了，我们打开命令窗口，输入命令来验证是否配置合适：<br />
+命令为：<br />
+java -version  //查看java版本号<br />
+或<br />
+javac</li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-2c3136f894087003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="java -version命令" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-2c3136f894087003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-a2fdb8a4daa46a4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="javac命令" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-a2fdb8a4daa46a4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
-<h2 id="三、安装Jenkins"><a href="#三、安装Jenkins" class="headerlink" title="三、安装Jenkins"></a>三、安装Jenkins</h2><ol>
-<li><p>windows双击下载的Jenkins安装包 Jenkins.msi ，进入安装模式，选择默认配置，安装完成之后，就会默认打开浏览器 <a href="http://localhost:8080,显示">http://localhost:8080,显示</a>   Jenkins正在启动，请稍后…<br> 这个过程需要一段时间，耐心等待启动完成<br> <img src="https://upload-images.jianshu.io/upload_images/3236417-5fe56e9319f817d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jenkins正在启动，请稍后..." srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-5fe56e9319f817d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-2c3136f894087003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="java -version命令" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-2c3136f894087003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-a2fdb8a4daa46a4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="javac命令" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-a2fdb8a4daa46a4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<h2 id="三-安装jenkins"><a class="markdownIt-Anchor" href="#三-安装jenkins"></a> 三、安装Jenkins</h2>
+<ol>
+<li>
+<p>windows双击下载的Jenkins安装包 Jenkins.msi ，进入安装模式，选择默认配置，安装完成之后，就会默认打开浏览器 <a target="_blank" rel="noopener" href="http://localhost:8080">http://localhost:8080</a>,显示   Jenkins正在启动，请稍后…<br />
+这个过程需要一段时间，耐心等待启动完成<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-5fe56e9319f817d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jenkins正在启动，请稍后..." / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-5fe56e9319f817d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 </li>
-<li><p>在安装过程中对自动生成密码，存储在Jenkins安装位置下的一个文件里，启动完成之后会到登录界面<br> <img src="https://upload-images.jianshu.io/upload_images/3236417-9a297bb432fedacc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="登录界面" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-9a297bb432fedacc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<li>
+<p>在安装过程中对自动生成密码，存储在Jenkins安装位置下的一个文件里，启动完成之后会到登录界面<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-9a297bb432fedacc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="登录界面" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-9a297bb432fedacc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 </li>
-<li><p>在界面所示路径下，打开文件，复制密码，在管理员密码框输入密码，点击继续，等待系统初始化，出现自定义Jenkins界面，可以选择安装推荐的插件，括者选择需要的插件来安装，也可以不选择安装，直接点击右上角的X号关闭界面，以后可以通过插件管理器安装插件<br> <img src="https://upload-images.jianshu.io/upload_images/3236417-e755cf9025abd857.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="自定义Jenkins" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-e755cf9025abd857.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<li>
+<p>在界面所示路径下，打开文件，复制密码，在管理员密码框输入密码，点击继续，等待系统初始化，出现自定义Jenkins界面，可以选择安装推荐的插件，括者选择需要的插件来安装，也可以不选择安装，直接点击右上角的X号关闭界面，以后可以通过插件管理器安装插件<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-e755cf9025abd857.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="自定义Jenkins" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-e755cf9025abd857.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 </li>
 </ol>
-<p>4.这里选择插件来安装，选择之后点击下一步，进入如下安装界面，等待安装完成<br><img src="https://upload-images.jianshu.io/upload_images/3236417-1399f05cba30a59a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="插件安装" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-1399f05cba30a59a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p>4.这里选择插件来安装，选择之后点击下一步，进入如下安装界面，等待安装完成<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-1399f05cba30a59a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="插件安装" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-1399f05cba30a59a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <ol start="5">
-<li><p>插件安装完成之后，进入创建第一个管理员用户界面，输入信息，点击保存并完成，添加第一个管理员<br> <img src="https://upload-images.jianshu.io/upload_images/3236417-4a30cc9995b264d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建第一个管理员用户" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-4a30cc9995b264d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<li>
+<p>插件安装完成之后，进入创建第一个管理员用户界面，输入信息，点击保存并完成，添加第一个管理员<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-4a30cc9995b264d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建第一个管理员用户" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-4a30cc9995b264d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 </li>
-<li><p>安装完成 ，点击开始使用Jenkins<br> <img src="https://upload-images.jianshu.io/upload_images/3236417-1ab7417f03dcf1da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-1ab7417f03dcf1da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<li>
+<p>安装完成 ，点击开始使用Jenkins<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-1ab7417f03dcf1da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-1ab7417f03dcf1da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 </li>
-<li><p>在Jenkins主界面点击系统管理，进入系统设置页面，选择全局工具配置<br> <img src="https://upload-images.jianshu.io/upload_images/3236417-240bbecf4396d1d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="系统设置页面" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-240bbecf4396d1d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<li>
+<p>在Jenkins主界面点击系统管理，进入系统设置页面，选择全局工具配置<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-240bbecf4396d1d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="系统设置页面" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-240bbecf4396d1d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 </li>
-<li><p>配置本地JDK全局环境，若有Git，Gradle，Ant ，Maven环境都可以在此配置，目前只配置JDK环境和Git环境如下：<br> <img src="https://upload-images.jianshu.io/upload_images/3236417-dfbdc3fb144d4f88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配置JDK环境和Git环境" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-dfbdc3fb144d4f88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<li>
+<p>配置本地JDK全局环境，若有Git，Gradle，Ant ，Maven环境都可以在此配置，目前只配置JDK环境和Git环境如下：<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-dfbdc3fb144d4f88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配置JDK环境和Git环境" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-dfbdc3fb144d4f88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 </li>
-<li><p>我们可以看到，目前Jenkins的访问路径还是<a href="http://localhost:8080/，如果想要更改Jenkins访问端口号，在Jenkins安装目录下打开jenkins.xml文件，更改端口号，然后再电脑的服务中找到Jenkins服务，进行重启，然后就可以使用新的端口访问Jenkins了" target="_blank" rel="noopener">http://localhost:8080/，如果想要更改Jenkins访问端口号，在Jenkins安装目录下打开jenkins.xml文件，更改端口号，然后再电脑的服务中找到Jenkins服务，进行重启，然后就可以使用新的端口访问Jenkins了</a><br> <img src="https://upload-images.jianshu.io/upload_images/3236417-57d18681d7919394.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="更改Jenkins访问端口" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-57d18681d7919394.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<li>
+<p>我们可以看到，目前Jenkins的访问路径还是http://localhost:8080/，如果想要更改Jenkins访问端口号，在Jenkins安装目录下打开jenkins.xml文件，更改端口号，然后再电脑的服务中找到Jenkins服务，进行重启，然后就可以使用新的端口访问Jenkins了<br />
+<img src="https://upload-images.jianshu.io/upload_images/3236417-57d18681d7919394.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="更改Jenkins访问端口" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-57d18681d7919394.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 </li>
 </ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/3236417-89f460d6ff7e33ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="重启Jenkins服务" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-89f460d6ff7e33ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3236417-89f460d6ff7e33ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="重启Jenkins服务" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://upload-images.jianshu.io/upload_images/3236417-89f460d6ff7e33ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lozad post-image"></p>
 <p>至此，Jenkins安装完成，若要使用Jenkins进行项目构建，请参考下面文章</p>
-<p>下一篇：<a href="https://www.jianshu.com/p/f3cf39738788" target="_blank" rel="noopener">自动化构建Android项目 —- Jenkins自动化部署学习笔记（二）</a></p>
+<p>下一篇：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f3cf39738788">自动化构建Android项目 ---- Jenkins自动化部署学习笔记（二）</a></p>
 
   </div>
   <div>
@@ -313,12 +361,12 @@
 <div class="nav">
   
   <div class="nav-item-prev">
-    <a href="/20180509/java/cong-ling-kai-shi-shi-yong-intellij-idea-chuang-jian-springboot-xiang-mu/" class="nav-link">
+    <a href="/20180522/jenkins/zi-dong-hua-gou-jian-android-xiang-mu-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-er/" class="nav-link">
       <i class="iconfont icon-left nav-prev-icon"></i>
       <div>
         <div class="nav-label">上一篇</div>
         
-        <div class="nav-title">从零开始-使用IntelliJ IDEA创建SpringBoot项目 </div>
+        <div class="nav-title">自动化构建Android项目 ---- Jenkins自动化部署学习笔记（二） </div>
         
       </div>
     </a>
@@ -326,11 +374,11 @@
   
   
   <div class="nav-item-next">
-    <a href="/20180506/developtools/zui-quan-idea-kuai-jie-jian-zong-jie-da-fu-du-ti-gao-gong-zuo-xiao-lu/" class="nav-link">
+    <a href="/20180509/java/cong-ling-kai-shi-shi-yong-intellij-idea-chuang-jian-springboot-xiang-mu/" class="nav-link">
       <div>
         <div class="nav-label">下一篇</div>
         
-        <div class="nav-title">最全IDEA快捷键总结，大幅度提高工作效率 </div>
+        <div class="nav-title">从零开始-使用IntelliJ IDEA创建SpringBoot项目 </div>
         
       </div>
       <i class="iconfont icon-right nav-next-icon"></i>
@@ -370,7 +418,7 @@
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在Windows系统上安装Jenkins-—-Jenkins自动化部署学习笔记（一）"><span class="toc-text">在Windows系统上安装Jenkins —- Jenkins自动化部署学习笔记（一）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一、安装前准备："><span class="toc-text">一、安装前准备：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、JDK1-7，或者JDK1-8："><span class="toc-text">1、JDK1.7，或者JDK1.8：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Jenkins安装包："><span class="toc-text">2、Jenkins安装包：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、安装Jdk，配置环境变量"><span class="toc-text">二、安装Jdk，配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、安装jdk"><span class="toc-text">1、安装jdk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、配置环境变量"><span class="toc-text">2、配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、安装Jenkins"><span class="toc-text">三、安装Jenkins</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8windows%E7%B3%BB%E7%BB%9F%E4%B8%8A%E5%AE%89%E8%A3%85jenkins-jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80"><span class="toc-text"> 在Windows系统上安装Jenkins ---- Jenkins自动化部署学习笔记（一）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E5%AE%89%E8%A3%85%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text"> 一、安装前准备：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jdk17%E6%88%96%E8%80%85jdk18"><span class="toc-text"> 1、JDK1.7，或者JDK1.8：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jenkins%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-text"> 2、Jenkins安装包：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%89%E8%A3%85jdk%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 二、安装Jdk，配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85jdk"><span class="toc-text"> 1、安装jdk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 2、配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AE%89%E8%A3%85jenkins"><span class="toc-text"> 三、安装Jenkins</span></a></li></ol></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -386,7 +434,7 @@
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>13</span>
+    <span>14</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
@@ -403,7 +451,7 @@
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在Windows系统上安装Jenkins-—-Jenkins自动化部署学习笔记（一）"><span class="toc-text">在Windows系统上安装Jenkins —- Jenkins自动化部署学习笔记（一）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一、安装前准备："><span class="toc-text">一、安装前准备：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、JDK1-7，或者JDK1-8："><span class="toc-text">1、JDK1.7，或者JDK1.8：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Jenkins安装包："><span class="toc-text">2、Jenkins安装包：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、安装Jdk，配置环境变量"><span class="toc-text">二、安装Jdk，配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、安装jdk"><span class="toc-text">1、安装jdk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、配置环境变量"><span class="toc-text">2、配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、安装Jenkins"><span class="toc-text">三、安装Jenkins</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8windows%E7%B3%BB%E7%BB%9F%E4%B8%8A%E5%AE%89%E8%A3%85jenkins-jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80"><span class="toc-text"> 在Windows系统上安装Jenkins ---- Jenkins自动化部署学习笔记（一）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E5%AE%89%E8%A3%85%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text"> 一、安装前准备：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jdk17%E6%88%96%E8%80%85jdk18"><span class="toc-text"> 1、JDK1.7，或者JDK1.8：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jenkins%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-text"> 2、Jenkins安装包：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%89%E8%A3%85jdk%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 二、安装Jdk，配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85jdk"><span class="toc-text"> 1、安装jdk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 2、配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AE%89%E8%A3%85jenkins"><span class="toc-text"> 三、安装Jenkins</span></a></li></ol></li></ol>
     </div>
   </article>
   
@@ -424,13 +472,6 @@
         <div class="categories-list-item">
           Android
           <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Kotlin">
-        <div class="categories-list-item">
-          Kotlin
-          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -476,9 +517,9 @@
         </div>
       </a>
     
-      <a href="/categories/SpringBoot">
+      <a href="/categories/文 - Jenkins">
         <div class="categories-list-item">
-          SpringBoot
+          文 - Jenkins
           <span class="categories-list-item-badge">1</span>
         </div>
       </a>
@@ -486,14 +527,21 @@
       <a href="/categories/Jenkins">
         <div class="categories-list-item">
           Jenkins
-          <span class="categories-list-item-badge">5</span>
+          <span class="categories-list-item-badge">4</span>
         </div>
       </a>
     
-      <a href="/categories/Git">
+      <a href="/categories/SpringBoot">
         <div class="categories-list-item">
-          Git
+          SpringBoot
           <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Kotlin">
+        <div class="categories-list-item">
+          Kotlin
+          <span class="categories-list-item-badge">8</span>
         </div>
       </a>
     
@@ -501,6 +549,13 @@
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Git">
+        <div class="categories-list-item">
+          Git
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
@@ -537,13 +592,13 @@
     
     <a href="\tags\html" title="html"><div class="tags-list-item">html</div></a>
     
+    <a href="\tags\Fmod" title="Fmod"><div class="tags-list-item">Fmod</div></a>
+    
     <a href="\tags\centos" title="centos"><div class="tags-list-item">centos</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
     <a href="\tags\Android studio" title="Android studio"><div class="tags-list-item">Android studio</div></a>
-    
-    <a href="\tags\DevTools" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
   </div>
 </div>
@@ -558,7 +613,7 @@
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在Windows系统上安装Jenkins-—-Jenkins自动化部署学习笔记（一）"><span class="toc-text">在Windows系统上安装Jenkins —- Jenkins自动化部署学习笔记（一）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一、安装前准备："><span class="toc-text">一、安装前准备：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、JDK1-7，或者JDK1-8："><span class="toc-text">1、JDK1.7，或者JDK1.8：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Jenkins安装包："><span class="toc-text">2、Jenkins安装包：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、安装Jdk，配置环境变量"><span class="toc-text">二、安装Jdk，配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、安装jdk"><span class="toc-text">1、安装jdk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、配置环境变量"><span class="toc-text">2、配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、安装Jenkins"><span class="toc-text">三、安装Jenkins</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8windows%E7%B3%BB%E7%BB%9F%E4%B8%8A%E5%AE%89%E8%A3%85jenkins-jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80"><span class="toc-text"> 在Windows系统上安装Jenkins ---- Jenkins自动化部署学习笔记（一）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E5%AE%89%E8%A3%85%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text"> 一、安装前准备：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jdk17%E6%88%96%E8%80%85jdk18"><span class="toc-text"> 1、JDK1.7，或者JDK1.8：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jenkins%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-text"> 2、Jenkins安装包：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%89%E8%A3%85jdk%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 二、安装Jdk，配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85jdk"><span class="toc-text"> 1、安装jdk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text"> 2、配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AE%89%E8%A3%85jenkins"><span class="toc-text"> 三、安装Jenkins</span></a></li></ol></li></ol>
   </article>
   
   
@@ -569,22 +624,22 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-19</div>
-        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记四】编译插桩操纵字节码，实现不可能完成的任务</div></a>
+        <a href="/20200819/android-ndk/jvm-dvm/bi-ji-si-bian-yi-cha-zhuang-cao-zong-zi-jie-ma-shi-xian-bu-ke-neng-wan-cheng-de-ren-wu/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-08-17</div>
-        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记三】字节码层面分析 class 文件结构</div></a>
+        <a href="/20200817/android-ndk/jvm-dvm/bi-ji-san-zi-jie-ma-ceng-mian-fen-xi-class-wen-jian-jie-gou/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-19</div>
-        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记二】GC 回收机制和分代回收策略</div></a>
+        <a href="/20200719/android-ndk/jvm-dvm/bi-ji-er-gc-hui-shou-ji-zhi-he-fen-dai-hui-shou-ce-lue/"><div class="recent-posts-item-content"></div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-18</div>
-        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content">Android_NDK/JVM&amp;DVM/【笔记一】Java 程序运行时，内存是如何分配的</div></a>
+        <a href="/20200718/android-ndk/jvm-dvm/bi-ji-yi-java-cheng-xu-yun-xing-shi-nei-cun-shi-ru-he-fen-pei-de/"><div class="recent-posts-item-content"></div></a>
       </div>
     
   </div>
@@ -633,7 +688,7 @@
     
     
     <div class="BbeiAn-info">
-      <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备20009541号 </a>
+      <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/">京ICP备20009541号 </a>
     </div>
     
     

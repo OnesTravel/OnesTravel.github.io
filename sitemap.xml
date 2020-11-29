@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.onestravel.cn/20190325/algorithm/10.ju-zhen-zhong-de-lu-jing/</loc>
+    
+    <lastmod>2020-11-27T15:34:27.566Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20180615/jenkins/zai-linux-shang-pei-zhi-android-zi-dong-hua-gou-jian-huan-jing/</loc>
+    
+    <lastmod>2020-11-27T15:29:19.030Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20180522/jenkins/zi-dong-hua-gou-jian-android-xiang-mu-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-er/</loc>
+    
+    <lastmod>2020-11-27T15:27:50.650Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20190316/algorithm/8.fei-bo-na-qi-shu-lie/</loc>
+    
+    <lastmod>2020-11-27T15:24:13.574Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20190306/algorithm/4.cong-wei-dao-tou-da-yin-lian-biao/</loc>
+    
+    <lastmod>2020-11-27T15:22:13.221Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.onestravel.cn/20180506/developtools/zui-quan-idea-kuai-jie-jian-zong-jie-da-fu-du-ti-gao-gong-zuo-xiao-lu/</loc>
     
     <lastmod>2020-11-27T02:46:09.297Z</lastmod>
@@ -72,23 +107,9 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180522/jenkins/zi-dong-hua-gou-jian-android-xiang-mu-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-er/</loc>
-    
-    <lastmod>2020-11-27T02:31:43.914Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.onestravel.cn/20180509/jenkins/zai-windows-xi-tong-shang-an-zhuang-jenkins-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-yi/</loc>
     
     <lastmod>2020-11-27T02:31:39.308Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20180615/jenkins/zai-linux-shang-pei-zhi-android-zi-dong-hua-gou-jian-huan-jing/</loc>
-    
-    <lastmod>2020-11-27T02:31:36.251Z</lastmod>
     
   </url>
   
@@ -103,13 +124,6 @@
     <loc>https://blog.onestravel.cn/20180530/jenkins/pei-zhi-xiang-mu-gou-jian-wan-cheng-hou-wen-jian-yi-dong-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-san/</loc>
     
     <lastmod>2020-11-27T02:31:29.324Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20190325/algorithm/10.ju-zhen-zhong-de-lu-jing/</loc>
-    
-    <lastmod>2020-11-27T02:29:09.622Z</lastmod>
     
   </url>
   
@@ -401,13 +415,6 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20190316/algorithm/8.fei-bo-na-qi-shu-lie/</loc>
-    
-    <lastmod>2020-04-26T15:01:04.862Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.onestravel.cn/20190315/algorithm/7.yong-liang-ge-zhan-shi-xian-yi-ge-dui-lie/</loc>
     
     <lastmod>2020-04-26T14:59:41.583Z</lastmod>
@@ -418,13 +425,6 @@
     <loc>https://blog.onestravel.cn/20190309/algorithm/5.chong-jian-er-cha-shu/</loc>
     
     <lastmod>2020-04-26T14:59:00.919Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20190306/algorithm/4.cong-wei-dao-tou-da-yin-lian-biao/</loc>
-    
-    <lastmod>2020-04-26T14:58:07.238Z</lastmod>
     
   </url>
   
@@ -471,14 +471,14 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/about/index.html</loc>
+    <loc>https://blog.onestravel.cn/categories/index.html</loc>
     
     <lastmod>2020-03-30T03:14:16.749Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/categories/index.html</loc>
+    <loc>https://blog.onestravel.cn/about/index.html</loc>
     
     <lastmod>2020-03-30T03:14:16.749Z</lastmod>
     
@@ -492,14 +492,14 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20161009/linux/linux-yong-hu-yong-hu-zu-tian-jia-xiu-gai-shan-chu-ubuntu-centos/</loc>
+    <loc>https://blog.onestravel.cn/20180619/linux/centos-7-huan-jing-pei-zhi/</loc>
     
     <lastmod>2020-03-30T03:14:16.748Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180619/linux/centos-7-huan-jing-pei-zhi/</loc>
+    <loc>https://blog.onestravel.cn/20161009/linux/linux-yong-hu-yong-hu-zu-tian-jia-xiu-gai-shan-chu-ubuntu-centos/</loc>
     
     <lastmod>2020-03-30T03:14:16.748Z</lastmod>
     
