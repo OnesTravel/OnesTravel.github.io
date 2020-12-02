@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.onestravel.cn/20170328/developtools/git-de-shi-yong-fang-fa/</loc>
+    
+    <lastmod>2020-12-02T02:47:33.451Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.onestravel.cn/20190325/algorithm/10.ju-zhen-zhong-de-lu-jing/</loc>
     
     <lastmod>2020-11-27T15:34:27.566Z</lastmod>
@@ -96,13 +103,6 @@
     <loc>https://blog.onestravel.cn/20180509/java/cong-ling-kai-shi-shi-yong-intellij-idea-chuang-jian-springboot-xiang-mu/</loc>
     
     <lastmod>2020-11-27T02:34:28.235Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20170328/developtools/git-de-shi-yong-fang-fa/</loc>
-    
-    <lastmod>2020-11-27T02:33:50.768Z</lastmod>
     
   </url>
   

@@ -439,6 +439,9 @@ push时，将数据压入栈A；pop时，如果栈B没有数据，则将栈A数�
   
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
+  
+<script src="/js/lib/md5.min.js"></script>
+
   <script>
     var gitalk = new Gitalk({
       clientID: 'a52a65db0a634019e27f',
@@ -446,7 +449,7 @@ push时，将数据压入栈A；pop时，如果栈B没有数据，则将栈A数�
       repo: 'onestravel.github.io',
       owner: 'onestravel',
       admin: "onestravel",
-      id: location.href,
+      id: md5(location.href),
       distractionFreeMode: true,
       language: 'navigator.language || navigator.userLanguage',
       labels: ["Gitalk"],
@@ -476,11 +479,11 @@ push时，将数据压入栈A；pop时，如果栈B没有数据，则将栈A数�
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
-    <span>14</span>
+    <span>15</span>
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
-    <span>45</span>
+    <span>46</span>
     <span>标签</span>
   </a>
 </div>
@@ -591,6 +594,13 @@ push时，将数据压入栈A；pop时，如果栈B没有数据，则将栈A数�
         <div class="categories-list-item">
           Linux
           <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Developer Tools">
+        <div class="categories-list-item">
+          Developer Tools
+          <span class="categories-list-item-badge">1</span>
         </div>
       </a>
     
