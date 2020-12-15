@@ -2,23 +2,114 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.onestravel.cn/20170328/developtools/git-de-shi-yong-fang-fa/</loc>
+    <loc>https://blog.onestravel.cn/20180530/jenkins/pei-zhi-xiang-mu-gou-jian-wan-cheng-hou-wen-jian-yi-dong-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-san/</loc>
     
-    <lastmod>2020-12-02T02:47:33.451Z</lastmod>
+    <lastmod>2020-12-15T10:56:14.097Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20190325/algorithm/10.ju-zhen-zhong-de-lu-jing/</loc>
+    <loc>https://blog.onestravel.cn/20181015/c-c/er-c-zhong-de-lei-yu-gou-zao-han-shu/</loc>
     
-    <lastmod>2020-11-27T15:34:27.566Z</lastmod>
+    <lastmod>2020-12-15T09:41:01.345Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20180930/c-c/yi-c-ming-ming-kong-jian-ji-yin-yong/</loc>
+    
+    <lastmod>2020-12-15T09:40:54.748Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20181103/c-c/wu-c-zhong-de-yi-chang-chu-li-yu-mo-ban-lei/</loc>
+    
+    <lastmod>2020-12-15T09:40:34.902Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20181025/c-c/si-c-zhong-de-ji-cheng-duo-tai-he-mo-ban-han-shu/</loc>
+    
+    <lastmod>2020-12-15T09:40:29.947Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20181020/c-c/san-c-zhong-de-jing-tai-cheng-yuan-this-zhi-zhen-you-yuan-han-shu-yu-yun-suan-fu-chong-zai/</loc>
+    
+    <lastmod>2020-12-15T09:40:23.949Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20181123/c-c/liu-c-zhong-de-lei-xing-zhuan-huan-io-liu-yu-stl-biao-zhun-mo-ban-ku/</loc>
+    
+    <lastmod>2020-12-15T09:40:15.853Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20170328/devtools/git-de-shi-yong-fang-fa/</loc>
+    
+    <lastmod>2020-12-15T09:39:44.513Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20180825/c-c/yi-c-yu-yan-zhi-ji-ben-shu-ju-lei-xing-shu-ru-shu-chu-zhi-zhen/</loc>
+    
+    <lastmod>2020-12-15T09:39:12.841Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20180901/c-c/san-c-yu-yan-zhi-zi-fu-chuan-yu-zi-fu-chuan-han-shu/</loc>
+    
+    <lastmod>2020-12-15T09:38:57.528Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20180903/c-c/si-c-yu-yan-zhi-jie-gou-ti/</loc>
+    
+    <lastmod>2020-12-15T09:38:53.940Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20180910/c-c/wu-c-yu-yan-zhi-lian-he-ti-mei-ju-yu-io/</loc>
+    
+    <lastmod>2020-12-15T09:38:49.825Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20180828/c-c/er-c-yu-yan-zhi-dong-tai-nei-cun-fen-pei/</loc>
+    
+    <lastmod>2020-12-15T09:38:39.984Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20180915/jni/yi-jni-kai-fa-liu-cheng/</loc>
+    
+    <lastmod>2020-12-07T02:22:53.307Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.onestravel.cn/20180615/jenkins/zai-linux-shang-pei-zhi-android-zi-dong-hua-gou-jian-huan-jing/</loc>
     
-    <lastmod>2020-11-27T15:29:19.030Z</lastmod>
+    <lastmod>2020-12-07T02:22:26.535Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20190325/algorithm/10.ju-zhen-zhong-de-lu-jing/</loc>
+    
+    <lastmod>2020-12-04T01:56:26.079Z</lastmod>
     
   </url>
   
@@ -44,58 +135,16 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180506/developtools/zui-quan-idea-kuai-jie-jian-zong-jie-da-fu-du-ti-gao-gong-zuo-xiao-lu/</loc>
+    <loc>https://blog.onestravel.cn/20180506/devtools/zui-quan-idea-kuai-jie-jian-zong-jie-da-fu-du-ti-gao-gong-zuo-xiao-lu/</loc>
     
     <lastmod>2020-11-27T02:46:09.297Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180615/developtools/idea-chuang-jian-lei-zhu-shi-mo-ban-he-fang-fa-zhu-shi-mo-ban/</loc>
+    <loc>https://blog.onestravel.cn/20180615/devtools/idea-chuang-jian-lei-zhu-shi-mo-ban-he-fang-fa-zhu-shi-mo-ban/</loc>
     
     <lastmod>2020-11-27T02:45:50.740Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20181015/c-c/er-c-zhong-de-lei-yu-gou-zao-han-shu/</loc>
-    
-    <lastmod>2020-11-27T02:40:28.687Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20181123/c-c/liu-c-zhong-de-lei-xing-zhuan-huan-io-liu-yu-stl-biao-zhun-mo-ban-ku/</loc>
-    
-    <lastmod>2020-11-27T02:40:21.920Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20181020/c-c/san-c-zhong-de-jing-tai-cheng-yuan-this-zhi-zhen-you-yuan-han-shu-yu-yun-suan-fu-chong-zai/</loc>
-    
-    <lastmod>2020-11-27T02:40:17.276Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20181025/c-c/si-c-zhong-de-ji-cheng-duo-tai-he-mo-ban-han-shu/</loc>
-    
-    <lastmod>2020-11-27T02:40:13.635Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20181103/c-c/wu-c-zhong-de-yi-chang-chu-li-yu-mo-ban-lei/</loc>
-    
-    <lastmod>2020-11-27T02:40:05.213Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20180930/c-c/yi-c-ming-ming-kong-jian-ji-yin-yong/</loc>
-    
-    <lastmod>2020-11-27T02:39:59.887Z</lastmod>
     
   </url>
   
@@ -121,13 +170,6 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180530/jenkins/pei-zhi-xiang-mu-gou-jian-wan-cheng-hou-wen-jian-yi-dong-jenkins-zi-dong-hua-bu-shu-xue-xi-bi-ji-san/</loc>
-    
-    <lastmod>2020-11-27T02:31:29.324Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.onestravel.cn/20180920/jni/er-jni-de-shu-ju-lei-xing-yi-ji-c-fang-wen-java-shu-xing-he-fang-fa/</loc>
     
     <lastmod>2020-11-27T02:28:40.856Z</lastmod>
@@ -138,48 +180,6 @@
     <loc>https://blog.onestravel.cn/20180925/jni/san-jni-yin-yong-yi-chang-chu-li-he-huan-cun-ce-lue/</loc>
     
     <lastmod>2020-11-27T02:28:36.200Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20180915/jni/yi-jni-kai-fa-liu-cheng/</loc>
-    
-    <lastmod>2020-11-27T02:28:28.915Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20180825/c-c/yi-c-yu-yan-zhi-ji-ben-shu-ju-lei-xing-shu-ru-shu-chu-zhi-zhen/</loc>
-    
-    <lastmod>2020-11-27T02:27:44.147Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20180910/c-c/wu-c-yu-yan-zhi-lian-he-ti-mei-ju-yu-io/</loc>
-    
-    <lastmod>2020-11-27T02:27:24.109Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20180903/c-c/si-c-yu-yan-zhi-jie-gou-ti/</loc>
-    
-    <lastmod>2020-11-27T02:27:03.702Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20180901/c-c/san-c-yu-yan-zhi-zi-fu-chuan-yu-zi-fu-chuan-han-shu/</loc>
-    
-    <lastmod>2020-11-27T02:26:41.255Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.onestravel.cn/20180828/c-c/er-c-yu-yan-zhi-dong-tai-nei-cun-fen-pei/</loc>
-    
-    <lastmod>2020-11-27T02:26:07.722Z</lastmod>
     
   </url>
   
@@ -450,14 +450,14 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/note/%25E6%25A0%2587%25E7%25AD%25BE%25E5%2588%2586%25E7%25B1%25BB%25E8%25AE%25B0%25E5%25BD%2595.html</loc>
+    <loc>https://blog.onestravel.cn/tags/index.html</loc>
     
     <lastmod>2020-03-30T03:14:16.790Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/tags/index.html</loc>
+    <loc>https://blog.onestravel.cn/note/%25E6%25A0%2587%25E7%25AD%25BE%25E5%2588%2586%25E7%25B1%25BB%25E8%25AE%25B0%25E5%25BD%2595.html</loc>
     
     <lastmod>2020-03-30T03:14:16.790Z</lastmod>
     
@@ -471,14 +471,14 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/categories/index.html</loc>
+    <loc>https://blog.onestravel.cn/about/index.html</loc>
     
     <lastmod>2020-03-30T03:14:16.749Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/about/index.html</loc>
+    <loc>https://blog.onestravel.cn/categories/index.html</loc>
     
     <lastmod>2020-03-30T03:14:16.749Z</lastmod>
     
@@ -492,14 +492,14 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180619/linux/centos-7-huan-jing-pei-zhi/</loc>
+    <loc>https://blog.onestravel.cn/20161009/linux/linux-yong-hu-yong-hu-zu-tian-jia-xiu-gai-shan-chu-ubuntu-centos/</loc>
     
     <lastmod>2020-03-30T03:14:16.748Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20161009/linux/linux-yong-hu-yong-hu-zu-tian-jia-xiu-gai-shan-chu-ubuntu-centos/</loc>
+    <loc>https://blog.onestravel.cn/20180619/linux/centos-7-huan-jing-pei-zhi/</loc>
     
     <lastmod>2020-03-30T03:14:16.748Z</lastmod>
     
