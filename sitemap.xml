@@ -471,13 +471,6 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/about/index.html</loc>
-    
-    <lastmod>2020-03-30T03:14:16.749Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.onestravel.cn/categories/index.html</loc>
     
     <lastmod>2020-03-30T03:14:16.749Z</lastmod>
@@ -492,14 +485,21 @@
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20180619/linux/centos-7-huan-jing-pei-zhi/</loc>
+    <loc>https://blog.onestravel.cn/about/index.html</loc>
+    
+    <lastmod>2020-03-30T03:14:16.749Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.onestravel.cn/20161009/linux/linux-yong-hu-yong-hu-zu-tian-jia-xiu-gai-shan-chu-ubuntu-centos/</loc>
     
     <lastmod>2020-03-30T03:14:16.748Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.onestravel.cn/20161009/linux/linux-yong-hu-yong-hu-zu-tian-jia-xiu-gai-shan-chu-ubuntu-centos/</loc>
+    <loc>https://blog.onestravel.cn/20180619/linux/centos-7-huan-jing-pei-zhi/</loc>
     
     <lastmod>2020-03-30T03:14:16.748Z</lastmod>
     
