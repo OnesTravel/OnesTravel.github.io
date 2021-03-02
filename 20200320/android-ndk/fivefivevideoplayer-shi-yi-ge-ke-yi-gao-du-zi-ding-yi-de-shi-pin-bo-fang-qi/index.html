@@ -277,7 +277,7 @@
 <p>例如：</p>
 <pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">implementation <span class="token string">'cn.onestravel:FiveFiveVideoPlayer:1.0.1'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="22-添加权限"><a class="markdownIt-Anchor" href="#22-添加权限"></a> 2.2 添加权限</h3>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.INTERNET<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>android.permission.INTERNET<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="23-使用-fivevideoplayeractivity-播放视频"><a class="markdownIt-Anchor" href="#23-使用-fivevideoplayeractivity-播放视频"></a> 2.3 使用 <code>FiveVideoPlayerActivity</code> 播放视频</h3>
 <p>FiveVideoPlayerActivity 是一个集成播放器的Activity,在只需要播放视频的情况下可直接使用</p>
 <blockquote>
@@ -302,9 +302,9 @@ FiveVideoPlayerActivity<span class="token punctuation">.</span><span class="toke
 <li>在布局 xml 文件中加入一下代码</li>
 </ul>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cn.onestravel.fivefiveplayer.FiveVideoPlayer</span>
-       <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/fiveVideoPlayer<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+       <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@+id/fiveVideoPlayer<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>在Activity 中使用该 View 进行视频播放</li>
 </ul>
@@ -363,11 +363,11 @@ FiveVideoPlayerActivity<span class="token punctuation">.</span><span class="toke
 <li>在布局 xml 文件中加入一下代码</li>
 </ul>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cn.onestravel.fivefiveplayer.FiveVideoView</span>
-       <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/fiveVideoView<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>200dp<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@android:color/black<span class="token punctuation">"</span></span>
-       <span class="token attr-name"><span class="token namespace">app:</span>layout_constraintTop_toTopOf</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>parent<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+       <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@+id/fiveVideoView<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>200dp<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@android:color/black<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">app:</span>layout_constraintTop_toTopOf</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>parent<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>在Activity 中使用该 View 进行视频播放</li>
 </ul>
@@ -555,6 +555,20 @@ FiveVideoPlayerActivity<span class="token punctuation">.</span><span class="toke
   <div class="categories-header"><i class="iconfont icon-fenlei" style="padding-right: 2px;"></i>分类</div>
   <div class="categories-list">
     
+      <a href="/categories/Android/">
+        <div class="categories-list-item">
+          Android
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/NDK/">
+        <div class="categories-list-item">
+          NDK
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
       <a href="/categories/cpp/">
         <div class="categories-list-item">
           C++
@@ -569,6 +583,13 @@ FiveVideoPlayerActivity<span class="token punctuation">.</span><span class="toke
         </div>
       </a>
     
+      <a href="/categories/h5/">
+        <div class="categories-list-item">
+          前端H5
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
       <a href="/categories/JNI/">
         <div class="categories-list-item">
           JNI
@@ -580,27 +601,6 @@ FiveVideoPlayerActivity<span class="token punctuation">.</span><span class="toke
         <div class="categories-list-item">
           算法
           <span class="categories-list-item-badge">18</span>
-        </div>
-      </a>
-    
-      <a href="/categories/h5/">
-        <div class="categories-list-item">
-          前端H5
-          <span class="categories-list-item-badge">3</span>
-        </div>
-      </a>
-    
-      <a href="/categories/NDK/">
-        <div class="categories-list-item">
-          NDK
-          <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Android/">
-        <div class="categories-list-item">
-          Android
-          <span class="categories-list-item-badge">5</span>
         </div>
       </a>
     
@@ -625,17 +625,17 @@ FiveVideoPlayerActivity<span class="token punctuation">.</span><span class="toke
         </div>
       </a>
     
-      <a href="/categories/Linux/">
-        <div class="categories-list-item">
-          Linux
-          <span class="categories-list-item-badge">2</span>
-        </div>
-      </a>
-    
       <a href="/categories/Kotlin/">
         <div class="categories-list-item">
           Kotlin
           <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Linux/">
+        <div class="categories-list-item">
+          Linux
+          <span class="categories-list-item-badge">2</span>
         </div>
       </a>
     
@@ -665,11 +665,11 @@ FiveVideoPlayerActivity<span class="token punctuation">.</span><span class="toke
     
     <a href="/tags/Jenkins/" title="Jenkins"><div class="tags-list-item">Jenkins</div></a>
     
-    <a href="/tags/NDK/" title="NDK"><div class="tags-list-item">NDK</div></a>
-    
     <a href="/tags/array/" title="数组"><div class="tags-list-item">数组</div></a>
     
     <a href="/tags/cl/" title="C语言"><div class="tags-list-item">C语言</div></a>
+    
+    <a href="/tags/NDK/" title="NDK"><div class="tags-list-item">NDK</div></a>
     
     <a href="/tags/fbnqsl/" title="斐波那契数列"><div class="tags-list-item">斐波那契数列</div></a>
     
@@ -677,9 +677,9 @@ FiveVideoPlayerActivity<span class="token punctuation">.</span><span class="toke
     
     <a href="/tags/DevTools/" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
-    <a href="/tags/html/" title="html"><div class="tags-list-item">html</div></a>
-    
     <a href="/tags/JNI/" title="JNI"><div class="tags-list-item">JNI</div></a>
+    
+    <a href="/tags/html/" title="html"><div class="tags-list-item">html</div></a>
     
     <a href="/tags/Fmod/" title="Fmod"><div class="tags-list-item">Fmod</div></a>
     

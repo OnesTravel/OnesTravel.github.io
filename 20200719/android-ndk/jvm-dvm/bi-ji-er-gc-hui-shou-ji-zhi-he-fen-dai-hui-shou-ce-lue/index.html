@@ -679,9 +679,9 @@ Metaspace       used <span class="token number">2632</span>K<span class="token p
 <p>首先通过-Xmx将堆最大内存设置为200M。从日志中可以看出，当第一次GC时，内存中还有剩余可用内存，所以软引用并不会被GC回收。但是当我们再次创建一个120M的强引用时，JVM可用内存已经不够，所以会尝试将软引用给回收掉。</p>
 <p><strong>软引用隐藏问题</strong></p>
 <p>需要注意的是，被软引用对象关联的对象会自动被垃圾回收器回收，但是软引用对象本身也是一个对象，这些创建的软引用并不会自动被垃圾回收器回收掉。比如如下代码：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>ref</span><span class="token punctuation">.</span><span class="token class-name">SoftReference</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util</span><span class="token punctuation">.</span><span class="token class-name">Set</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util</span><span class="token punctuation">.</span><span class="token class-name">HashSet</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>ref<span class="token punctuation">.</span></span><span class="token class-name">SoftReference</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Set</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">HashSet</span><span class="token punctuation">;</span>
 
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SoftReferenceTest</span> <span class="token punctuation">&#123;</span>
 	<span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">SoftObject</span> <span class="token punctuation">&#123;</span>
@@ -716,11 +716,11 @@ Exception in thread <span class="token string">"main"</span> java<span class="to
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>限制堆内存大小为4M，最终程序崩溃，但是异常的原因并不是普通的堆内存溢出，而是&quot;GC overhead&quot;。之所以会抛出这个错误，是由于虚拟机一直在不断回收软引用，回收进行的速度过快，占用的cpu过大(超过98%)，并且每次回收掉的内存过小(小于2%)，导致最终抛出了这个错误。</p>
 <p>这里需要做优化，合适的处理方式是注册一个引用队列，每次循环之后将引用队列中出现的软引用对象从cache中移除。如下所示：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>ref</span><span class="token punctuation">.</span><span class="token class-name">SoftReference</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>ref</span><span class="token punctuation">.</span><span class="token class-name">ReferenceQueue</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>ref</span><span class="token punctuation">.</span><span class="token class-name">Reference</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util</span><span class="token punctuation">.</span><span class="token class-name">Set</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util</span><span class="token punctuation">.</span><span class="token class-name">HashSet</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>ref<span class="token punctuation">.</span></span><span class="token class-name">SoftReference</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>ref<span class="token punctuation">.</span></span><span class="token class-name">ReferenceQueue</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>ref<span class="token punctuation">.</span></span><span class="token class-name">Reference</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Set</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">HashSet</span><span class="token punctuation">;</span>
 
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SoftReferenceTest</span> <span class="token punctuation">&#123;</span>
 	<span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">SoftObject</span> <span class="token punctuation">&#123;</span>
@@ -906,6 +906,20 @@ The End! removes soft Reference 100657
   <div class="categories-header"><i class="iconfont icon-fenlei" style="padding-right: 2px;"></i>分类</div>
   <div class="categories-list">
     
+      <a href="/categories/Android/">
+        <div class="categories-list-item">
+          Android
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/NDK/">
+        <div class="categories-list-item">
+          NDK
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
       <a href="/categories/cpp/">
         <div class="categories-list-item">
           C++
@@ -920,6 +934,13 @@ The End! removes soft Reference 100657
         </div>
       </a>
     
+      <a href="/categories/h5/">
+        <div class="categories-list-item">
+          前端H5
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
       <a href="/categories/JNI/">
         <div class="categories-list-item">
           JNI
@@ -931,27 +952,6 @@ The End! removes soft Reference 100657
         <div class="categories-list-item">
           算法
           <span class="categories-list-item-badge">18</span>
-        </div>
-      </a>
-    
-      <a href="/categories/h5/">
-        <div class="categories-list-item">
-          前端H5
-          <span class="categories-list-item-badge">3</span>
-        </div>
-      </a>
-    
-      <a href="/categories/NDK/">
-        <div class="categories-list-item">
-          NDK
-          <span class="categories-list-item-badge">5</span>
-        </div>
-      </a>
-    
-      <a href="/categories/Android/">
-        <div class="categories-list-item">
-          Android
-          <span class="categories-list-item-badge">5</span>
         </div>
       </a>
     
@@ -976,17 +976,17 @@ The End! removes soft Reference 100657
         </div>
       </a>
     
-      <a href="/categories/Linux/">
-        <div class="categories-list-item">
-          Linux
-          <span class="categories-list-item-badge">2</span>
-        </div>
-      </a>
-    
       <a href="/categories/Kotlin/">
         <div class="categories-list-item">
           Kotlin
           <span class="categories-list-item-badge">8</span>
+        </div>
+      </a>
+    
+      <a href="/categories/Linux/">
+        <div class="categories-list-item">
+          Linux
+          <span class="categories-list-item-badge">2</span>
         </div>
       </a>
     
@@ -1016,11 +1016,11 @@ The End! removes soft Reference 100657
     
     <a href="/tags/Jenkins/" title="Jenkins"><div class="tags-list-item">Jenkins</div></a>
     
-    <a href="/tags/NDK/" title="NDK"><div class="tags-list-item">NDK</div></a>
-    
     <a href="/tags/array/" title="数组"><div class="tags-list-item">数组</div></a>
     
     <a href="/tags/cl/" title="C语言"><div class="tags-list-item">C语言</div></a>
+    
+    <a href="/tags/NDK/" title="NDK"><div class="tags-list-item">NDK</div></a>
     
     <a href="/tags/fbnqsl/" title="斐波那契数列"><div class="tags-list-item">斐波那契数列</div></a>
     
@@ -1028,9 +1028,9 @@ The End! removes soft Reference 100657
     
     <a href="/tags/DevTools/" title="DevTools"><div class="tags-list-item">DevTools</div></a>
     
-    <a href="/tags/html/" title="html"><div class="tags-list-item">html</div></a>
-    
     <a href="/tags/JNI/" title="JNI"><div class="tags-list-item">JNI</div></a>
+    
+    <a href="/tags/html/" title="html"><div class="tags-list-item">html</div></a>
     
     <a href="/tags/Fmod/" title="Fmod"><div class="tags-list-item">Fmod</div></a>
     
